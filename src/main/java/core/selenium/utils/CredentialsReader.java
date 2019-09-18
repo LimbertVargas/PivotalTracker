@@ -26,7 +26,7 @@ import java.io.FileReader;
  * @version 1.0
  */
 public class CredentialsReader {
-    final String JSONPATH = "employees.json";
+    final String JSONPATH = "credentials.json";
     JsonObject jsonObject;
 
     /**
