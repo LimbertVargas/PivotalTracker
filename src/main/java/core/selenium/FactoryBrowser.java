@@ -10,9 +10,11 @@
  * with Jala Foundation.
  */
 
-package core.selenium.webDrivers;
+package core.selenium;
 
-import core.selenium.WebDriverConfig;
+import core.selenium.webDrivers.Chrome;
+import core.selenium.webDrivers.Firefox;
+import core.selenium.webDrivers.IDriver;
 import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;

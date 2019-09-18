@@ -12,7 +12,6 @@
 
 package core.selenium;
 
-import core.selenium.webDrivers.FactoryBrowser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
