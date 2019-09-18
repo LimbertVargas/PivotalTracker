@@ -1,10 +1,10 @@
 {
   "User1": {
-    "username": "armaX3000",
-    "password": "password123"
+    "username": "at10user1",
+    "password": "pa55w0rd_user1"
   },
   "User2": {
-    "username": "user2",
-    "password": "password456"
+    "username": "at10user2",
+    "password": "pa55w0rd_user2"
   }
 }

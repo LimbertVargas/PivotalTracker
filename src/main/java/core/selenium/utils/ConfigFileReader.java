@@ -1,11 +1,5 @@
 /*
- * ConfigFileReader class
- *
- * v1.0
- *
- * 09-17-2019
- *
- * Copyright (c) 2019 Jala Foundation.
+ * @(#) ConfigFileReader.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -28,6 +22,7 @@ import java.util.Properties;
  * ConfigFileReader class.
  *
  * @author John Salazar Pinto
+ * @version 1.0
  */
 public class ConfigFileReader {
     private Properties properties;
