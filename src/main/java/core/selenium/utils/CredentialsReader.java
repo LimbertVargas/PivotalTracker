@@ -27,19 +27,33 @@ import java.io.FileReader;
  */
 public class CredentialsReader {
     final String JSONPATH = "credentials.json";
-    JsonObject jsonObject;
+    private JsonObject jsonObject;
+    private static CredentialsReader instance;
 
     /**
-     * Constructor class init reader json file.
+     * Constructor class init initReader json file.
      */
-    public CredentialsReader() {
-        reader();
+    private CredentialsReader() {
+        initReader();
+    }
+
+    /**
+     * Constructor of CredentialsReader.
+     * Gets CredentialsReader as Singleton.
+     *
+     * @return a instance.
+     */
+    public static CredentialsReader getInstance() {
+        if (instance == null) {
+            instance = new CredentialsReader();
+        }
+        return instance;
     }
 
     /**
      * Reads json file and save the data in jsonObject.
      */
-    private void reader() {
+    private void initReader() {
         try {
             JsonReader reader = new JsonReader(new FileReader(JSONPATH));
             jsonObject = new JsonParser().parse(reader).getAsJsonObject();
