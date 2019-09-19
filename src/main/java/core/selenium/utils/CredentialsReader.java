@@ -68,7 +68,7 @@ public class CredentialsReader {
      * @param user - Keyword with which the credential will be searched.
      * @return username - User name credential.
      */
-    public String getUseName(String user) {
+    public String getUseName(final String user) {
         String username = jsonObject.getAsJsonObject(user).get("username").getAsString();
         return username;
     }
@@ -79,7 +79,7 @@ public class CredentialsReader {
      * @param user - Keyword with which the credential will be searched.
      * @return password - User password credential.
      */
-    public String getUsePassword(String user) {
+    public String getUsePassword(final String user) {
         String password = jsonObject.getAsJsonObject(user).get("password").getAsString();
         return password;
     }
