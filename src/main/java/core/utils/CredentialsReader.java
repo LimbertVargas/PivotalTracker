@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package core.selenium.utils;
+package core.utils;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -25,7 +25,7 @@ import java.io.FileReader;
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class CredentialsReader {
+public final class CredentialsReader {
     private static final String JSONPATH = "credentials.json";
     private JsonObject jsonObject;
     private static CredentialsReader instance;

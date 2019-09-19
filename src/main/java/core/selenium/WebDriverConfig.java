@@ -1,16 +1,18 @@
 /*
- * @(#) WebDriverConfig.java Copyright (c) 2019 Jala Foundation .
- * 2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
+ * @(#) WebDriverConfig.java Copyright (c) 2019 Jala Foundation.
+ * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
- * This software is the confidential and proprietary information of Jala
- * Foundation, Inc. ("Confidential Information").  You shall not
+ * This software is the confidential and proprietary information of
+ * Jala Foundation, ("Confidential Information").  You shall not
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
  */
 
 package core.selenium;
+
+import core.utils.ConfigFileReader;
 
 /**
  * WebDriverConfig class.
@@ -19,7 +21,6 @@ package core.selenium;
  * @version 1.0
  */
 public class WebDriverConfig {
-
     private static final String BROWSER = "browser";
     private static final String IMPLICIT = "implicitWaitTime";
     private static final String EXPLICIT = "explicitWaitTime";
@@ -56,10 +57,10 @@ public class WebDriverConfig {
      * Initializes WebDriverConfig.
      */
     public void initialize() {
-        browser = "chrome";
-        implicitWaitTime = Integer.parseInt("30");
-        explicitWaitTime = Integer.parseInt("40");
-        waitSleepTime = Integer.parseInt("500");
+        browser = ConfigFileReader.getInstance().getProperties().get(BROWSER);
+        implicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get(IMPLICIT));
+        explicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get(EXPLICIT));
+        waitSleepTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get(WAIT_SLEEP_TIME));
     }
 
     /**

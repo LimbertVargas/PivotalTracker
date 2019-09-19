@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package core.selenium.utils;
+package core.utils;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
