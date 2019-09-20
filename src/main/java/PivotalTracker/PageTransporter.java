@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package pivotaltracker.ui;
+package PivotalTracker;
 
 import core.selenium.WebDriverManager;
 

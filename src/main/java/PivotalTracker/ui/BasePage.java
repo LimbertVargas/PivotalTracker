@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package pivotaltracker.ui;
+package PivotalTracker.ui;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -37,4 +37,6 @@ public abstract class BasePage {
     }
 
     protected abstract void waitUntilPageObjectIsLoaded();
+
+
 }

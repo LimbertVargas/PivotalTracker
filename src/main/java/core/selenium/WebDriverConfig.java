@@ -22,8 +22,8 @@ import core.utils.ConfigFileReader;
  */
 public class WebDriverConfig {
     private static final String BROWSER = "browser";
-    private static final String IMPLICIT = "implicitWaitTime";
-    private static final String EXPLICIT = "explicitWaitTime";
+    private static final String IMPLICIT = "implicitWait";
+    private static final String EXPLICIT = "explicitWait";
     private static final String WAIT_SLEEP_TIME = "waitSleepTime";
 
     private String browser;
