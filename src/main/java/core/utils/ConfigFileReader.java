@@ -80,31 +80,4 @@ public final class ConfigFileReader {
         }
         return properties;
     }
-
-    /**
-     * Returns the token from the properties file.
-     *
-     * @return the token as string.
-     */
-    public String getAccessToken() {
-        return getProperties().get("accessToken");
-    }
-
-    /**
-     * Returns the url to request to the API from the properties file.
-     *
-     * @return the url as string.
-     */
-    public String getUrlApi() {
-        return getProperties().get("urlBase").concat(getProperties().get("apiUrl"));
-    }
-
-    /**
-     * Returns the content type from the properties file.
-     *
-     * @return the content type as string.
-     */
-    public String getContentType() {
-        return getProperties().get("contentType=application/json");
-    }
 }
