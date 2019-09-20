@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package pivotaltracker.ui;
+package pivotaltracker;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.WebDriver;
