@@ -51,13 +51,13 @@ public class LoginSteps {
         user = new User();
         user.setUserName(userName);
         loginPage = new LoginPage();
-        loginPage.putCredentials(userName);
+        loginPage.setCredentials(userName);
     }
 
     @Then("I verify the user name will be shown on the top bar")
     public void verifyTheUserNameTheWillBeShownOnTheTopBar() {
         DashboardPage dashboardPage = new DashboardPage();
-        String actual = dashboardPage.profileDropDownButtonText();
+        String actual = dashboardPage.getTextProfileDrownBtn();
         String userName = user.getUserName();
         String expected = CredentialsReader.getInstance().getUserName(userName);
         Assert.assertEquals(actual, expected);

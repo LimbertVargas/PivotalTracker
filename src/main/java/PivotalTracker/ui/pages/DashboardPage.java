@@ -2,8 +2,6 @@ package PivotalTracker.ui.pages;
 
 import PivotalTracker.ui.BasePage;
 import core.utils.PivotalTrackerUtils;
-import java.util.Base64;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -21,8 +19,12 @@ public class DashboardPage extends BasePage {
     protected void waitUntilPageObjectIsLoaded() {
     }
 
-    public String profileDropDownButtonText() {
-        String profileDropDownButtonText = PivotalTrackerUtils.getMessage(profileBtn);
-        return profileDropDownButtonText;
+    /**
+     * Return text from profile button.
+     * @return textProfileDrownBtn - Profile name text.
+     */
+    public String getTextProfileDrownBtn() {
+        String textProfileDrownBtn = PivotalTrackerUtils.getMessage(profileBtn);
+        return textProfileDrownBtn;
     }
 }

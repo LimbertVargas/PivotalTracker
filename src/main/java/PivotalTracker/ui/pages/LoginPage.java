@@ -12,8 +12,6 @@
 
 package PivotalTracker.ui.pages;
 
-import PivotalTracker.PageTransporter;
-import trabajopolis.entities.Context;
 import PivotalTracker.ui.BasePage;
 import core.utils.CredentialsReader;
 import core.utils.PivotalTrackerUtils;
@@ -28,7 +26,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @version 1.0
  */
 public class LoginPage extends BasePage {
-    private Context context;
 
     @FindBy(id = "credentials_username")
     private WebElement userNameTextField;
@@ -47,11 +44,11 @@ public class LoginPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(userNameTextField));
     }
 
-    public LoginPage() {
-        this.context = new Context();
-    }
-
-    public void putCredentials(final String user) {
+    /**
+     * Sets credentials and login on the page.
+     * @param user - User from where obtains the credentials.
+     */
+    public void setCredentials(final String user) {
         String username = CredentialsReader.getInstance().getUserName(user);
         String password = CredentialsReader.getInstance().getUserPassword(user);
         PivotalTrackerUtils.setText(userNameTextField, username);
