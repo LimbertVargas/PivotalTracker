@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package core.selenium.utils;
+package core.utils;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -25,21 +25,35 @@ import java.io.FileReader;
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class CredentialsReader {
-    final String JSONPATH = "credentials.json";
-    JsonObject jsonObject;
+public final class CredentialsReader {
+    private static final String JSONPATH = "credentials.json";
+    private JsonObject jsonObject;
+    private static CredentialsReader instance;
 
     /**
-     * Constructor class init reader json file.
+     * Constructor class init initReader json file.
      */
-    public CredentialsReader() {
-        reader();
+    private CredentialsReader() {
+        initReader();
+    }
+
+    /**
+     * Constructor of CredentialsReader.
+     * Gets CredentialsReader as Singleton.
+     *
+     * @return a instance.
+     */
+    public static CredentialsReader getInstance() {
+        if (instance == null) {
+            instance = new CredentialsReader();
+        }
+        return instance;
     }
 
     /**
      * Reads json file and save the data in jsonObject.
      */
-    private void reader() {
+    private void initReader() {
         try {
             JsonReader reader = new JsonReader(new FileReader(JSONPATH));
             jsonObject = new JsonParser().parse(reader).getAsJsonObject();
@@ -54,7 +68,7 @@ public class CredentialsReader {
      * @param user - Keyword with which the credential will be searched.
      * @return username - User name credential.
      */
-    public String getUseName(String user) {
+    public String getUserName(final String user) {
         String username = jsonObject.getAsJsonObject(user).get("username").getAsString();
         return username;
     }
@@ -65,8 +79,19 @@ public class CredentialsReader {
      * @param user - Keyword with which the credential will be searched.
      * @return password - User password credential.
      */
-    public String getUsePassword(String user) {
+    public String getUserPassword(final String user) {
         String password = jsonObject.getAsJsonObject(user).get("password").getAsString();
         return password;
+    }
+
+    /**
+     * Gets user password from json object from specific user.
+     *
+     * @param user - Keyword with which the credential will be searched.
+     * @return email - User password credential.
+     */
+    public String getUserEmail(final String user) {
+        String email = jsonObject.getAsJsonObject(user).get("email").getAsString();
+        return email;
     }
 }
