@@ -37,15 +37,6 @@ public class PivotalTrackerUtils {
     }
 
     /**
-     * This method makes click action.
-     *
-     * @param element - Element type for do the action.
-     */
-    public static void click(final WebElement element) {
-        element.click();
-    }
-
-    /**
      * This method get the result for assert.
      *
      * @param element - Locator type.

@@ -13,6 +13,7 @@
 package PivotalTracker.ui.pages;
 
 import PivotalTracker.PageTransporter;
+import trabajopolis.entities.Context;
 import PivotalTracker.ui.BasePage;
 import core.utils.CredentialsReader;
 import core.utils.PivotalTrackerUtils;
@@ -27,8 +28,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @version 1.0
  */
 public class LoginPage extends BasePage {
+    private Context context;
+
     @FindBy(id = "credentials_username")
     private WebElement userNameTextField;
+
     @FindBy(id = "credentials_password")
     private WebElement passwordTextField;
 
@@ -43,21 +47,16 @@ public class LoginPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(userNameTextField));
     }
 
-    public static void goLoginPage() {
-        PageTransporter.navigatePage("signin?source=navbar");
+    public LoginPage() {
+        this.context = new Context();
     }
 
     public void putCredentials(final String user) {
         String username = CredentialsReader.getInstance().getUserName(user);
         String password = CredentialsReader.getInstance().getUserPassword(user);
         PivotalTrackerUtils.setText(userNameTextField, username);
-        PivotalTrackerUtils.click(nextButtonLogin);
+        nextButtonLogin.click();
         PivotalTrackerUtils.setText(passwordTextField, password);
-        PivotalTrackerUtils.click(nextButtonLogin);
-    }
-
-    public String profileDropDownButtonText() {
-        String profileDropDownButtonText = PivotalTrackerUtils.getMessage(profileDropDownButton);
-        return profileDropDownButtonText;
+        nextButtonLogin.click();
     }
 }
