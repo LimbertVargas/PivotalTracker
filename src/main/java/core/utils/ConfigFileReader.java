@@ -27,7 +27,7 @@ import java.util.Properties;
  */
 public final class ConfigFileReader {
 
-    private static final String PIVOTAL_TRACKER_PROPERTIES = "PivotalTracker.properties";
+    private static final String PIVOTAL_TRACKER_PROPERTIES = "pivotaltracker.properties";
     private Map<String, String> properties;
 
     /**
@@ -79,5 +79,32 @@ public final class ConfigFileReader {
             Log.getInstance().getLog().error(e.getMessage());
         }
         return properties;
+    }
+
+    /**
+     * Returns the token from the properties file.
+     *
+     * @return the token as string.
+     */
+    public String getAccessToken() {
+        return getProperties().get("accessToken");
+    }
+
+    /**
+     * Returns the url to request to the API from the properties file.
+     *
+     * @return the url as string.
+     */
+    public String getUrlApi() {
+        return getProperties().get("baseUrl").concat(getProperties().get("apiUrl"));
+    }
+
+    /**
+     * Returns the content type from the properties file.
+     *
+     * @return the content type as string.
+     */
+    public String getContentType() {
+        return getProperties().get("contentType=application/json");
     }
 }
