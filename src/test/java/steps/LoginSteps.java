@@ -33,9 +33,9 @@ public class LoginSteps {
     private User user;
 
     /**
-     * Steps for visit any page.
+     * This method opens the page.
      *
-     * @param page - Page to visit.
+     * @param page
      */
     @Given("I visit the (.*) Page of Pivotal Tracker")
     public void goThePagesOfPivotalTracker(final String page) {
@@ -43,7 +43,8 @@ public class LoginSteps {
     }
 
     /**
-     * 
+     * This method fills in the user data to be able to log in.
+     *
      * @param userName
      */
     @When("^I fill the field with credentials from user \"([^\"]*)\"$")
@@ -54,6 +55,9 @@ public class LoginSteps {
         loginPage.setCredentials(userName);
     }
 
+    /**
+     * This method checks the user login with a text in the window.
+     */
     @Then("I verify the user name will be shown on the top bar")
     public void verifyTheUserNameTheWillBeShownOnTheTopBar() {
         DashboardPage dashboardPage = new DashboardPage();

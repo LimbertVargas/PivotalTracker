@@ -30,7 +30,7 @@ public class Firefox implements IDriver {
      * @return FirefoxDriver
      */
     public WebDriver initDriver() {
-        FirefoxDriverManager.getInstance().version("0.25.0").setup();
+        FirefoxDriverManager.getInstance().version("0.24.0").setup();
         return new FirefoxDriver();
     }
 }
