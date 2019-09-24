@@ -58,6 +58,7 @@ public class WebDriverConfig {
      * Initializes WebDriverConfig.
      */
     public void initialize() {
+<<<<<<< HEAD
         try {
             input = new FileInputStream("gradle.properties");
             prop.load(input);
@@ -65,6 +66,9 @@ public class WebDriverConfig {
             event.printStackTrace();
         }
         browser = System.getProperty(BROWSER) != null ? System.getProperty(BROWSER) : prop.getProperty(BROWSER);
+=======
+        browser = ConfigFileReader.getInstance().getProperties().get("browser");
+>>>>>>> 055e921a294920c689277a7112ad0e1b27185b58
         implicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("implicitWait"));
         explicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("explicitWait"));
         waitSleepTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("waitSleepTime"));
