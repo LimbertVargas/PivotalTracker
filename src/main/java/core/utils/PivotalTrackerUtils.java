@@ -12,8 +12,6 @@
 
 package core.utils;
 
-import core.selenium.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -23,7 +21,6 @@ import org.openqa.selenium.WebElement;
  * @version 1.0
  */
 public class PivotalTrackerUtils {
-    private static WebDriver driver = WebDriverManager.getInstance().getWebDriver();
 
     /**
      * This method works for fill data.
@@ -34,30 +31,5 @@ public class PivotalTrackerUtils {
     public static void setText(final WebElement element, final String text) {
         element.clear();
         element.sendKeys(text);
-    }
-
-    /**
-     * This method get the result for assert.
-     *
-     * @param element - Locator type.
-     * @return value - Text of the locator.
-     */
-    public static String getMessage(final WebElement element) {
-        String message = element.getText();
-        return message;
-    }
-
-    /**
-     * This method close the browser after of the test.
-     */
-    public void close() {
-        driver.close();
-    }
-
-    /**
-     * This method quit the browser after of the test.
-     */
-    public void quit() {
-        driver.quit();
     }
 }
