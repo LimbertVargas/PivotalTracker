@@ -12,7 +12,8 @@
 
 package core.selenium.webDrivers;
 
-import io.github.bonigarcia.wdm.FirefoxDriverManager;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -30,7 +31,7 @@ public class Firefox implements IDriver {
      * @return FirefoxDriver
      */
     public WebDriver initDriver() {
-        FirefoxDriverManager.getInstance().version("0.24.0").setup();
+        WebDriverManager.firefoxdriver().setup();
         return new FirefoxDriver();
     }
 }

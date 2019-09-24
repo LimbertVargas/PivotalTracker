@@ -12,6 +12,7 @@
 
 package steps;
 
+import org.testng.Assert;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.pages.DashboardPage;
@@ -20,7 +21,6 @@ import core.utils.CredentialsReader;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
 
 /**
  * LoginSteps class.
