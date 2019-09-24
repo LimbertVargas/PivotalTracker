@@ -12,7 +12,6 @@
 
 package runner;
 
-
 import core.report.GeneratorReport;
 import core.selenium.WebDriverManager;
 import cucumber.api.CucumberOptions;
