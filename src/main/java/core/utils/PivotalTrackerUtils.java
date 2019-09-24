@@ -15,12 +15,18 @@ package core.utils;
 import org.openqa.selenium.WebElement;
 
 /**
- * PivotalTrackerUtils class
+ * PivotalTrackerUtils class.
  *
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class PivotalTrackerUtils {
+public final class PivotalTrackerUtils {
+
+    /**
+     * Constructor class.
+     */
+    private PivotalTrackerUtils() {
+    }
 
     /**
      * This method works for fill data.
