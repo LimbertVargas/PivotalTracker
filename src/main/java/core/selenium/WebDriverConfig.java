@@ -53,8 +53,8 @@ public class WebDriverConfig {
      */
     public void initialize() {
         browser = ConfigFileReader.getInstance().getProperties().get("browser");
-        implicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("implicitWaitTime"));
-        explicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("explicitWaitTime"));
+        implicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("implicitWait"));
+        explicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("explicitWait"));
         waitSleepTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("waitSleepTime"));
     }
 
