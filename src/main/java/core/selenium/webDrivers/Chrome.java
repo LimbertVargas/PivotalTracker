@@ -30,7 +30,7 @@ public class Chrome implements IDriver {
      * @return A new ChromeDriver.
      */
     public WebDriver initDriver() {
-        ChromeDriverManager.getInstance().version("77.0.3865.40").setup();
+        ChromeDriverManager.getInstance().version("76.0.3809.126").setup();
         return new ChromeDriver();
     }
 }
