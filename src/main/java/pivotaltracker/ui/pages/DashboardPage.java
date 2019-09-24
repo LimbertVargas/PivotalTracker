@@ -24,7 +24,7 @@ public class DashboardPage extends BasePage {
      * @return textProfileDrownBtn - Profile name text.
      */
     public String getTextProfileDrownBtn() {
-        String textProfileDrownBtn = PivotalTrackerUtils.getMessage(profileBtn);
+        String textProfileDrownBtn = profileBtn.getText();
         return textProfileDrownBtn;
     }
 }
