@@ -24,23 +24,22 @@ import io.restassured.specification.RequestSpecification;
  */
 public final class Authentication {
 
-    private String accessToken;
-    private String apiUrl;
-    private String contentType;
+    private static String accessToken;
+    private static String apiUrl;
+    private static String contentType;
 
     /**
      * Method that allows to build an address and then be sent to the page of sales force according to a token.
      *
      * @return RequestSpecification variable.
      */
-    public RequestSpecification requestSpecification() {
+    public static RequestSpecification requestSpecification() {
         return new RequestSpecBuilder()
                 .setBaseUri(apiUrl)
-                .addHeader("Authorization", accessToken)
+                .addHeader("X-TrackerToken", accessToken)
                 .setContentType(contentType)
                 .build();
     }
-
 
     /**
      * Constructor.
