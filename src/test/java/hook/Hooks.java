@@ -1,14 +1,25 @@
 package hook;
 
+import PivotalTracker.api.request.FactoryRequest;
+import PivotalTracker.api.request.RequestManagerAbstract;
+import core.utils.ConfigFileReader;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import pivotaltracker.api.restclient.Authentication;
+
+
 public class Hooks {
 
     public static void main(String[] args) {
-        RequestSpecification req = Authentication.requestSpecification();
-        Response response = req.get();
-        System.out.println(response.toString());
-        //response.
+
+        RequestManagerAbstract requestManagerAbstract;
+        String method = "get";
+        String endPoint = "/me/";
+        requestManagerAbstract = FactoryRequest.getRequest(method);
+        requestManagerAbstract.setMethod(method);
+        requestManagerAbstract.setEndPoint(endPoint);
+        Response response = requestManagerAbstract.makeRequest();
+
+        System.out.println(response.getStatusCode());
+
+
     }
 }

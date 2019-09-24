@@ -96,7 +96,7 @@ public final class ConfigFileReader {
      * @return the url as string.
      */
     public String getUrlApi() {
-        return getProperties().get("baseUrl").concat(getProperties().get("apiUrl"));
+        return getProperties().get("baseUrl");
     }
 
     /**
