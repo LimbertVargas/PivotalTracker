@@ -26,6 +26,7 @@ import java.util.Properties;
  * @version 1.0
  */
 public final class ConfigFileReader {
+
     private static final String PIVOTAL_TRACKER_PROPERTIES = "PivotalTracker.properties";
     private Map<String, String> properties;
 

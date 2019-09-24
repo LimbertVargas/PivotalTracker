@@ -21,11 +21,14 @@ import core.utils.ConfigFileReader;
  * @version 1.0
  */
 public class WebDriverConfig {
+<<<<<<< HEAD
     private static final String BROWSER = "browser";
     private static final String IMPLICIT = "implicitWait";
     private static final String EXPLICIT = "explicitWait";
     private static final String WAIT_SLEEP_TIME = "waitSleepTime";
 
+=======
+>>>>>>> develop
     private String browser;
     private int implicitWaitTime;
     private int explicitWaitTime;
@@ -57,10 +60,10 @@ public class WebDriverConfig {
      * Initializes WebDriverConfig.
      */
     public void initialize() {
-        browser = ConfigFileReader.getInstance().getProperties().get(BROWSER);
-        implicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get(IMPLICIT));
-        explicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get(EXPLICIT));
-        waitSleepTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get(WAIT_SLEEP_TIME));
+        browser = ConfigFileReader.getInstance().getProperties().get("browser");
+        implicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("implicitWaitTime"));
+        explicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("explicitWaitTime"));
+        waitSleepTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("waitSleepTime"));
     }
 
     /**

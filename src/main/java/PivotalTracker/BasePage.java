@@ -10,7 +10,11 @@
  * with Jala Foundation.
  */
 
+<<<<<<< HEAD:src/main/java/PivotalTracker/ui/BasePage.java
 package PivotalTracker.ui;
+=======
+package pivotaltracker;
+>>>>>>> develop:src/main/java/PivotalTracker/BasePage.java
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.WebDriver;
