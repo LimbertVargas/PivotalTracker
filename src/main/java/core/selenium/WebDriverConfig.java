@@ -13,6 +13,7 @@
 package core.selenium;
 
 import core.utils.ConfigFileReader;
+import core.utils.Log;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -58,17 +59,14 @@ public class WebDriverConfig {
      * Initializes WebDriverConfig.
      */
     public void initialize() {
-<<<<<<< HEAD
         try {
             input = new FileInputStream("gradle.properties");
             prop.load(input);
         } catch (IOException event) {
             event.printStackTrace();
+            Log.getInstance().getLog().error(event.getMessage());
         }
         browser = System.getProperty(BROWSER) != null ? System.getProperty(BROWSER) : prop.getProperty(BROWSER);
-=======
-        browser = ConfigFileReader.getInstance().getProperties().get("browser");
->>>>>>> 055e921a294920c689277a7112ad0e1b27185b58
         implicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("implicitWait"));
         explicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("explicitWait"));
         waitSleepTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("waitSleepTime"));

@@ -27,21 +27,21 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class LoginPage extends BasePage {
 
+    @FindBy(id = "login_type_check_form")
+    private WebElement loginForm;
+
     @FindBy(id = "credentials_username")
-    private WebElement userNameTextField;
+    private WebElement userNameTxtBox;
 
     @FindBy(id = "credentials_password")
-    private WebElement passwordTextField;
+    private WebElement passwordTxtBox;
 
-    @FindBy(name = "action")
-    private WebElement nextButtonLogin;
-
-    @FindBy(xpath = "//div[@class=\"Dropdown__content\"] //button[@aria-label=\"Profile Dropdown\"]\n")
-    private WebElement profileDropDownButton;
+    @FindBy(css = "input[class='app_signin_action_button']")
+    private WebElement nextLoginBtn;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(userNameTextField));
+        wait.until(ExpectedConditions.visibilityOf(loginForm));
     }
 
     /**
@@ -51,9 +51,9 @@ public class LoginPage extends BasePage {
     public void setCredentials(final String user) {
         String username = CredentialsReader.getInstance().getUserName(user);
         String password = CredentialsReader.getInstance().getUserPassword(user);
-        PivotalTrackerUtils.setText(userNameTextField, username);
-        nextButtonLogin.click();
-        PivotalTrackerUtils.setText(passwordTextField, password);
-        nextButtonLogin.click();
+        PivotalTrackerUtils.setText(userNameTxtBox, username);
+        nextLoginBtn.click();
+        PivotalTrackerUtils.setText(passwordTxtBox, password);
+        nextLoginBtn.click();
     }
 }
