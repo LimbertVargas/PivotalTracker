@@ -1,4 +1,4 @@
-package PivotalTracker.entities;
+package pivotaltracker.entities;
 
 /**
  * User class.

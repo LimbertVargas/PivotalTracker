@@ -10,9 +10,9 @@
  * with Jala Foundation.
  */
 
-package PivotalTracker.ui.pages;
+package pivotaltracker.ui.pages;
 
-import PivotalTracker.ui.BasePage;
+import pivotaltracker.BasePage;
 import core.utils.CredentialsReader;
 import core.utils.PivotalTrackerUtils;
 import org.openqa.selenium.WebElement;

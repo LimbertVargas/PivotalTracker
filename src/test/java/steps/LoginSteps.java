@@ -12,10 +12,10 @@
 
 package steps;
 
-import PivotalTracker.PageTransporter;
-import PivotalTracker.entities.User;
-import PivotalTracker.ui.pages.DashboardPage;
-import PivotalTracker.ui.pages.LoginPage;
+import pivotaltracker.PageTransporter;
+import pivotaltracker.entities.User;
+import pivotaltracker.ui.pages.DashboardPage;
+import pivotaltracker.ui.pages.LoginPage;
 import core.utils.CredentialsReader;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
