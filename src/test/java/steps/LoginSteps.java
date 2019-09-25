@@ -37,7 +37,7 @@ public class LoginSteps {
      *
      * @param page
      */
-    @Given("I go the (.*) Page of Pivotal Tracker")
+    @Given("I go to the (.*) Page of Pivotal Tracker")
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage("signin?source=navbar");
     }
