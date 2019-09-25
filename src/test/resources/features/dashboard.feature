@@ -11,7 +11,7 @@ Feature: Manage Project
     Then I should see the project in Dashboard Page.
 
   Scenario: Create workspace
-    When I visit the Dashboard Page of Pivotal Tracker
+    When I go to the Dashboard Page of Pivotal Tracker
       And I Create a (workspace) on Workspaces tab with following data
         | Workspace Name | Workspace1 |
 
