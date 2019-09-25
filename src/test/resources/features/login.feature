@@ -1,3 +1,4 @@
+@login
 Feature: Login with a valid create parameters
 
   Scenario: Login
