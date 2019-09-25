@@ -12,7 +12,15 @@
 
 package core.utils;
 
+
+import core.selenium.WebDriverConfig;
+import core.selenium.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import pivotaltracker.BasePage;
 
 /**
  * PivotalTrackerUtils class.
@@ -22,6 +30,8 @@ import org.openqa.selenium.WebElement;
  */
 public final class PivotalTrackerUtils {
 
+    protected WebDriverWait webDriverWait;
+    protected WebDriver webDriver;
     /**
      * Constructor class.
      */
@@ -37,5 +47,24 @@ public final class PivotalTrackerUtils {
     public static void setText(final WebElement element, final String text) {
         element.clear();
         element.sendKeys(text);
+    }
+
+    /**
+     *
+     * @param elementBy
+     * @return
+     */
+    private boolean isElementPresent(final By elementBy) {
+        webDriverWait = new WebDriverWait(webDriver, 1);
+        boolean isDisplayed;
+        try {
+            webDriver.findElement(elementBy);
+            isDisplayed = true;
+        } catch (NoSuchElementException e) {
+            isDisplayed = false;
+        } finally {
+            webDriverWait = WebDriverManager.getInstance().getWait();
+        }
+        return isDisplayed;
     }
 }

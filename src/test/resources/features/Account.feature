@@ -1,11 +1,11 @@
 Feature: Manage Account
   Background:
-    Given I visit the Login Page of Pivotal Tracker
+    Given I go the Login Page of Pivotal Tracker
     When I fill the field with credentials from user "Regular User1"
 
 @deleteAccount
   Scenario: Create a new account in Pivotal Tracker
-    Given I visit the Account Page of Pivotal Tracker
+    Given I go the Account Page of Pivotal Tracker
     When I create a new account "New Account" in Pivotal Tracker
     Then I should see the new Account Page
     When I navigate to Account page
@@ -15,7 +15,7 @@ Feature: Manage Account
 
   @deleteAccount
   Scenario: Configure the account name of an account created
-    Given I visit the Account Page of Pivotal Tracker
+    Given I go the Account Page of Pivotal Tracker
     When I create a new account "New Account" in Pivotal Tracker
     And I update the account Name with "Change Name"
     Then I should see the new account page
@@ -24,7 +24,7 @@ Feature: Manage Account
 
     @deleteAccount
   Scenario Outline: Add member to the account of Pivotal Tracker with permission of Project Creator
-    Given I visit the Account Page of Pivotal Tracker
+    Given I go the Account Page of Pivotal Tracker
     When I create a new account "New Account" in Pivotal Tracker
       And I add a Member "<nameMember>", "<memberEmail>" to the account and assign a Account Role "<role>" with permission of project creator
     Then I should see message of confirmation "Updated member '<nameMember>'" in the Membership Page of Account
