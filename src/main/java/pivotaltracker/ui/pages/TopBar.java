@@ -13,9 +13,21 @@ public class TopBar {
     @FindBy(css = "[aria-label='Profile Dropdown']")
     private WebElement profileBtn;
 
-    @FindBy(xpath = "//div[@class='Dropdown'] //button[contains(.,'Help')]")
+    @FindBy(linkText = "Help")
     private WebElement helpBtn;
 
-    @FindBy(xpath = "//div[@class='Dropdown'] //button[contains(.,'What's New')]")
+    @FindBy(linkText = "What's New")
     private WebElement newsBtn;
+
+    @FindBy(xpath = "//div[@class='Dropdown__options Dropdown__options--small'] //a[@href='/profile']")
+    private WebElement profileOptionLink;
+
+    @FindBy(xpath = "//div[@class='Dropdown__options Dropdown__options--small'] //a[@href='/accounts']")
+    private WebElement accountOptionLink;
+
+    @FindBy(xpath = "//div[@class='Dropdown__options Dropdown__options--small'] //button")
+    private WebElement signOutBtn;
+
+    @FindBy(css = "[class='search_bar']")
+    private WebElement searchTxtBox;
 }
