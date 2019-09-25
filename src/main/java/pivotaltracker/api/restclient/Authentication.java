@@ -53,7 +53,6 @@ public final class Authentication {
         return authentication;
     }
 
-
     /**
      * Gives the request specification resultant of oauth.
      *

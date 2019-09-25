@@ -37,7 +37,6 @@ public class AuthenticationTest {
         requestManagerAbstract.setMethod(method);
         requestManagerAbstract.setEndPoint(endPoint);
         Response response = requestManagerAbstract.makeRequest();
-
         Assert.assertEquals(response.getStatusCode(), successCode);
 
     }
