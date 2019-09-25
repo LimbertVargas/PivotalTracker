@@ -13,15 +13,16 @@
 package steps;
 
 import org.testng.Assert;
+
+import core.utils.CredentialsReader;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.DashboardPage;
 import pivotaltracker.ui.pages.LoginPage;
-import core.utils.CredentialsReader;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 
 /**
  * LoginSteps class.
