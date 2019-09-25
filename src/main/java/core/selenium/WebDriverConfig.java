@@ -13,6 +13,11 @@
 package core.selenium;
 
 import core.utils.ConfigFileReader;
+import core.utils.Log;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * WebDriverConfig class.
@@ -25,7 +30,9 @@ public class WebDriverConfig {
     private int implicitWaitTime;
     private int explicitWaitTime;
     private int waitSleepTime;
-
+    private static final String BROWSER = "browser";
+    private Properties prop = new Properties();
+    private InputStream input = null;
     private static WebDriverConfig instance;
 
     /**
@@ -52,9 +59,16 @@ public class WebDriverConfig {
      * Initializes WebDriverConfig.
      */
     public void initialize() {
-        browser = ConfigFileReader.getInstance().getProperties().get("browser");
-        implicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("implicitWaitTime"));
-        explicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("explicitWaitTime"));
+        try {
+            input = new FileInputStream("gradle.properties");
+            prop.load(input);
+        } catch (IOException event) {
+            event.printStackTrace();
+            Log.getInstance().getLog().error(event.getMessage());
+        }
+        browser = System.getProperty(BROWSER) != null ? System.getProperty(BROWSER) : prop.getProperty(BROWSER);
+        implicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("implicitWait"));
+        explicitWaitTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("explicitWait"));
         waitSleepTime = Integer.parseInt(ConfigFileReader.getInstance().getProperties().get("waitSleepTime"));
     }
 

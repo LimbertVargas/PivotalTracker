@@ -1,5 +1,5 @@
 /*
- * @(#) RequestGet.java Copyright (c) 2019 Jala Foundation.
+ * @(#) RequestPut.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -10,36 +10,39 @@
  * with Jala Foundation.
  */
 
-package PivotalTracker.api.request;
+package pivotaltracker.api.request;
 
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.http.ContentType.JSON;
 
 /**
- * RequestGet class.
+ * RequestPut class.
  *
- * @author Raul Choque
- * @version 0.0.1
+ * @author Andres Burgos
+ * @version 1.0
  */
-public class RequestGet extends RequestManagerAbstract {
+public class RequestPut extends RequestManagerAbstract {
 
     /**
      * Call the method initializeValue from RequestManagerAbstract class.
      */
-    public RequestGet() {
+    public RequestPut() {
         super.initializeValue();
     }
 
     /**
-     * Makes a get request and returns its response.
+     * Makes a put request and returns its response.
      *
-     * @return a Response of a get request.
+     * @return a Response of a put request.
      */
     public Response makeRequest() {
         return given().
-                spec(super.getRequest()).
+                spec(getRequest()).
+                contentType(JSON).
+                body(getData()).
                 when().
-                get(super.getEndPoint());
+                put(getEndPoint());
     }
 }

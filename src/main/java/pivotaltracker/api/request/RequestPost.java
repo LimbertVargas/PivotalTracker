@@ -1,5 +1,5 @@
 /*
- * @(#) RequestDelete.java Copyright (c) 2019 Jala Foundation.
+ * @(#) RequestPost.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -10,36 +10,39 @@
  * with Jala Foundation.
  */
 
-package PivotalTracker.api.request;
+package pivotaltracker.api.request;
 
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.http.ContentType.JSON;
 
 /**
- * RequestDelete class.
+ * RequestPost class.
  *
- * @author Raul Choque
- * @version 0.0.1
+ * @author Andres Burgos
+ * @version 1.0
  */
-public class RequestDelete extends RequestManagerAbstract {
+public class RequestPost extends RequestManagerAbstract {
 
     /**
      * Call the method initializeValue from RequestManagerAbstract class.
      */
-    public RequestDelete() {
+    public RequestPost() {
         super.initializeValue();
     }
 
     /**
-     * Makes a delete request and returns its response.
+     * Makes a post request and returns its response.
      *
-     * @return a Response of a delete request.
+     * @return a Response of a post request.
      */
     public Response makeRequest() {
         return given().
-                spec(super.getRequest()).
+                spec(getRequest()).
+                contentType(JSON).
+                body(getData()).
                 when().
-                delete(super.getEndPoint());
+                post(getEndPoint());
     }
 }

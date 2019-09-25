@@ -1,5 +1,5 @@
 /*
- * @(#) RequestPut.java Copyright (c) 2019 Jala Foundation.
+ * @(#) RequestDelete.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -10,39 +10,36 @@
  * with Jala Foundation.
  */
 
-package PivotalTracker.api.request;
+package pivotaltracker.api.request;
 
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.http.ContentType.JSON;
 
 /**
- * RequestPut class.
+ * RequestDelete class.
  *
- * @author Raul Choque
- * @version 0.0.1
+ * @author Andres Burgos
+ * @version 1.0
  */
-public class RequestPut extends RequestManagerAbstract {
+public class RequestDelete extends RequestManagerAbstract {
 
     /**
      * Call the method initializeValue from RequestManagerAbstract class.
      */
-    public RequestPut() {
+    public RequestDelete() {
         super.initializeValue();
     }
 
     /**
-     * Makes a put request and returns its response.
+     * Makes a delete request and returns its response.
      *
-     * @return a Response of a put request.
+     * @return a Response of a delete request.
      */
     public Response makeRequest() {
         return given().
-                spec(getRequest()).
-                contentType(JSON).
-                body(getData()).
+                spec(super.getRequest()).
                 when().
-                put(getEndPoint());
+                delete(super.getEndPoint());
     }
 }

@@ -12,7 +12,7 @@
 
 package core.selenium.webDrivers;
 
-import io.github.bonigarcia.wdm.ChromeDriverManager;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -30,7 +30,7 @@ public class Chrome implements IDriver {
      * @return A new ChromeDriver.
      */
     public WebDriver initDriver() {
-        ChromeDriverManager.getInstance().version("76.0.3809.126").setup();
+        WebDriverManager.chromedriver().setup();
         return new ChromeDriver();
     }
 }

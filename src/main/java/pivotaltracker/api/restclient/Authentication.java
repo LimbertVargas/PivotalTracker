@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package PivotalTracker.api.restclient;
+package pivotaltracker.api.restclient;
 
 import core.utils.ConfigFileReader;
 import io.restassured.builder.RequestSpecBuilder;
@@ -25,25 +25,19 @@ import io.restassured.specification.RequestSpecification;
 public final class Authentication {
 
     private static Authentication authentication;
-    private static String accessToken;
+    private String accessToken;
     private String apiUrl;
-    private String contentType;
     private RequestSpecification request;
-
-
 
     /**
      * This is constructor that initializes variables.
      */
     private Authentication() {
-
         accessToken = ConfigFileReader.getInstance().getAccessToken();
-        apiUrl = ConfigFileReader.getInstance().getUrlApi();
-        contentType = ConfigFileReader.getInstance().getContentType();
+        apiUrl = ConfigFileReader.getInstance().getBaseUrl();
         request = new RequestSpecBuilder()
-                .addHeader("X-TrackerToken",accessToken)
+                .addHeader("X-TrackerToken", accessToken)
                 .setBaseUri(apiUrl)
-
                 .build();
     }
 

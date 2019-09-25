@@ -10,13 +10,13 @@
  * with Jala Foundation.
  */
 
-package PivotalTracker.api.request;
+package pivotaltracker.api.request;
 
 /**
  * FactoryRequest class.
  *
- * @author Raul Choque
- * @version 0.0.1
+ * @author Andres Burgos
+ * @version 1.0
  */
 public final class FactoryRequest {
     public static final String MESSAGE_FOR_UNKNOWN_METHOD = "Unknown method type";
@@ -33,7 +33,7 @@ public final class FactoryRequest {
      * @param method is for validate the type of RequestManagerAbstract.
      * @return an instance RequestManagerAbstract.
      */
-    public static RequestManagerAbstract getRequest(String method) {
+    public static RequestManagerAbstract getRequest(final String method) {
         String nameMethod = method.toUpperCase();
         RequestMethod requestMethod = RequestMethod.valueOf(nameMethod);
         switch (requestMethod) {

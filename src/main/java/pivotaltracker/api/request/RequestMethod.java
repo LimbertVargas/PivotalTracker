@@ -10,13 +10,12 @@
  * with Jala Foundation.
  */
 
-package PivotalTracker.api.request;
-
+package pivotaltracker.api.request;
 /**
  * RequestMethod enum.
  *
- * @author Raul Choque
- * @version 0.0.1
+ * @author Andres Burgos
+ * @version 1.0
  */
 public enum RequestMethod {
     POST,

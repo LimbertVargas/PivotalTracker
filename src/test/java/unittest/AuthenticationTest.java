@@ -10,34 +10,35 @@
  * with Jala Foundation.
  */
 
-package UnitTest;
+package unittest;
 
-import PivotalTracker.api.request.FactoryRequest;
-import PivotalTracker.api.request.RequestManagerAbstract;
 import core.utils.ConfigFileReader;
+import pivotaltracker.api.request.FactoryRequest;
+import pivotaltracker.api.request.RequestManagerAbstract;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 /**
- * AuthenticationTest class
+ * AuthenticationTest class.
  *
  * @author Andres Burgos
  * @version 1.0
  */
 public class AuthenticationTest {
+    private final int successCode = 200;
 
     @Test
     public void authenticationTest() {
         RequestManagerAbstract requestManagerAbstract;
         String method = "get";
-        String endPoint = "/me/";
+        String endPoint = "me/";
         requestManagerAbstract = FactoryRequest.getRequest(method);
         requestManagerAbstract.setMethod(method);
         requestManagerAbstract.setEndPoint(endPoint);
         Response response = requestManagerAbstract.makeRequest();
 
-        Assert.assertEquals(response.getStatusCode(),200);
+        Assert.assertEquals(response.getStatusCode(), successCode);
 
     }
 }

@@ -10,12 +10,13 @@
  * with Jala Foundation.
  */
 
-package PivotalTracker.api.request;
+package pivotaltracker.api.request;
 
 import core.utils.ConfigFileReader;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import PivotalTracker.api.restclient.Authentication;
+import pivotaltracker.api.restclient.Authentication;
+
 
 /**
  * RequestManagerAbstract class.
@@ -42,8 +43,8 @@ public abstract class RequestManagerAbstract {
      *
      * @param endPoint is new value for set endPoint attribute.
      */
-    public void setEndPoint(String endPoint) {
-        this.endPoint = ConfigFileReader.getInstance().getUrlApi()+endPoint;
+    public void setEndPoint(final String endPoint) {
+        this.endPoint = ConfigFileReader.getInstance().getBaseUrl() + endPoint;
     }
 
     /**
@@ -51,7 +52,7 @@ public abstract class RequestManagerAbstract {
      *
      * @param data is the new value for set data attribute.
      */
-    public void setData(String data) {
+    public void setData(final String data) {
         this.data = data;
     }
 
@@ -78,7 +79,7 @@ public abstract class RequestManagerAbstract {
      *
      * @param method is the new value for set method attribute.
      */
-    public void setMethod(String method) {
+    public void setMethod(final String method) {
         this.method = method;
     }
 
