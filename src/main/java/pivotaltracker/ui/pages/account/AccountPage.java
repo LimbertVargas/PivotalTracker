@@ -16,6 +16,7 @@ import core.utils.Log;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pivotaltracker.BasePage;
 
 
 /**
@@ -24,7 +25,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountPage extends AccountBasePage {
+public class AccountPage extends BasePage {
     @FindBy(css = "[class='page_description']")
     private WebElement accountCreateForm;
 
@@ -47,7 +48,6 @@ public class AccountPage extends AccountBasePage {
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        Log.getInstance().getLog().info("Wait for Create Account Popup upload in the Browser");
         wait.until(ExpectedConditions.visibilityOf(accountCreateForm));
     }
 

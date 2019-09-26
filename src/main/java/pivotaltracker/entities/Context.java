@@ -1,5 +1,5 @@
 /*
- * @(#) AccountBasePage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) Context.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -10,26 +10,31 @@
  * with Jala Foundation.
  */
 
-package pivotaltracker.ui.pages.account;
-
-import pivotaltracker.ui.components.AccountBar;
+package pivotaltracker.entities;
 
 /**
- * AccountBasePage class.
+ * Context class.
  *
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountBasePage extends AccountPage {
+public class Context {
 
-    private AccountBar accountBar;
+    private Account account;
 
-    public AccountBasePage() {
-        super();
-        accountBar = new AccountBar();
+    /**
+     * Context for creation of the constructor.
+     */
+    public Context() {
+        this.account = new Account();
     }
 
-    public AccountBar getAccountBar() {
-        return accountBar;
+    /**
+     * Returns the Courses of context.
+     *
+     * @return courses.
+     */
+    public Account getAccount() {
+        return account;
     }
 }

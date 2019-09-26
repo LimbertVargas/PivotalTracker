@@ -13,6 +13,7 @@
 package pivotaltracker.ui.pages.account;
 
 import core.utils.Log;
+import core.utils.PivotalTrackerUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,13 +26,13 @@ import pivotaltracker.BasePage;
  * @version 1.0
  */
 public class CreateAccountPopup extends BasePage {
-    @FindBy(xpath = "//div[@class=\"tc-form-modal__section\"]")
+    @FindBy(className = "tc_modal_content")
     private WebElement createAccountPopup;
 
-    @FindBy(xpath = "//input[@data-aid=\"input\"]")
+    @FindBy(css = "input[class='tc-form__input']")
     private WebElement nameAccountTxt;
 
-    @FindBy(xpath = "//button[@data-aid=\"FormModal__submit\"]")
+    @FindBy(css = "footer [class='zWDds__Button pvXpn__Button--positive']")
     private WebElement createAccountBtn;
 
     @Override
@@ -40,7 +41,7 @@ public class CreateAccountPopup extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(createAccountPopup));
     }
 
-    public AccountPlansPage createNewAccount(String accountName) {
+    public AccountPlansPage createNewAccount(final String accountName) {
         Log.getInstance().getLog().info("Create a New Account setting " + accountName + " in the Name Account Text");
         setAccountName(accountName);
         Log.getInstance().getLog().info("Click to the Create Project Button");
@@ -48,8 +49,8 @@ public class CreateAccountPopup extends BasePage {
         return new AccountPlansPage();
     }
 
-    private void setAccountName(String accountName) {
-        nameAccountTxt.sendKeys(accountName);
+    private void setAccountName(final String accountName) {
+        PivotalTrackerUtils.setText(nameAccountTxt, accountName);
     }
 
     private void clickCreateAccountBtn() {
