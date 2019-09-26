@@ -20,7 +20,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
 
 /**
- * LoginPage class
+ * LoginPage class.
  *
  * @author John Salazar Pinto
  * @version 1.0
@@ -46,6 +46,7 @@ public class LoginPage extends BasePage {
 
     /**
      * Sets credentials and login on the page.
+     *
      * @param user - User from where obtains the credentials.
      */
     public void setCredentials(final String user) {
