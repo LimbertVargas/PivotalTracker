@@ -12,11 +12,10 @@
 
 package pivotaltracker.ui.components;
 
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.ui.pages.account.AccountBasePage;
+
 
 /**
  * AccountBar class.
@@ -26,18 +25,8 @@ import pivotaltracker.ui.pages.account.AccountBasePage;
  */
 public class AccountBar extends AccountBasePage {
 
-    @FindBy(css = "div[class='content clearfix']")
-    private WebElement accountForm;
+    @FindBy(className = SELECTED_TAB)
+    private WebElement accountsTabs;
 
-    @FindBy(css = "h2[class='account_name'] span")
-    private WebElement nameAccountTxt;
-
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(accountForm));
-    }
-
-    public String getNameAccount() {
-        return nameAccountTxt.getText();
-    }
+    private static final String SELECTED_TAB = "//div[@class='sections'] //a[contains(text(),'%s')]";
 }

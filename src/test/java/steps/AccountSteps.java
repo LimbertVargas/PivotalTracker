@@ -17,6 +17,9 @@ import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
 import pivotaltracker.entities.Account;
 import pivotaltracker.entities.Context;
+import pivotaltracker.ui.pages.account.AccountPage;
+import pivotaltracker.ui.pages.account.AccountPlansPage;
+import pivotaltracker.ui.pages.account.CreateAccountPopup;
 
 /**
  * AccountSteps class.
@@ -28,6 +31,9 @@ public class AccountSteps {
     private Account account;
     private Context context;
     private Logger logs = Log.getInstance().getLog();
+    private AccountPage accountPage;
+    private CreateAccountPopup createAccountPopup;
+    private AccountPlansPage accountPlansPage;
 
     /**
      * Constructor of account steps sending the context.
@@ -43,6 +49,9 @@ public class AccountSteps {
     public void createANewAccountInPivotalTracker(final String nameAccount) {
         logs.info("Create a new account " + nameAccount + " in Pivotal Tracker");
         account.setNameAccount(nameAccount);
+        accountPage = new AccountPage();
+        createAccountPopup = accountPage.clickNewAccountCreateBtn();
+        accountPlansPage = createAccountPopup.createNewAccount(nameAccount);
     }
 
 }

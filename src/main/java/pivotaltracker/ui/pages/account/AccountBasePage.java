@@ -20,7 +20,7 @@ import pivotaltracker.ui.components.AccountBar;
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountBasePage extends AccountPage {
+public abstract class AccountBasePage extends AccountPage {
 
     private AccountBar accountBar;
 

@@ -31,7 +31,6 @@ public class AccountPlansPage extends BasePage {
     private WebElement accountPlansForm;
 
     private static final String URL_SETTINGS = "//a[@class='button'] [normalize-space()='Settings']";
-
     private AccountBar accountBar;
 
     @Override

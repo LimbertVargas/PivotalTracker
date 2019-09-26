@@ -1,5 +1,5 @@
 /*
- * @(#) Context.java Copyright (c) 2019 Jala Foundation.
+ * @(#) AccountMenu.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -10,31 +10,13 @@
  * with Jala Foundation.
  */
 
-package pivotaltracker.entities;
+package pivotaltracker.ui.components;
 
 /**
- * Context class.
+ * AccountMenu class.
  *
  * @author Cristian Lujan
  * @version 1.0
  */
-public class Context {
-
-    private Account account;
-
-    /**
-     * Context for creation of the constructor.
-     */
-    public Context() {
-        this.account = new Account();
-    }
-
-    /**
-     * Returns the account of context.
-     *
-     * @return account.
-     */
-    public Account getAccount() {
-        return account;
-    }
+public class AccountMenu {
 }
