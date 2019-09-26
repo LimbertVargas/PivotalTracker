@@ -4,7 +4,7 @@
  * All rights reserved.
  *
  * This software is the confidential and proprietary information of
- * Jala Foundation, ("Confidential Information").  You shall not
+ * Jala Foundation, ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
@@ -19,34 +19,45 @@ import io.restassured.specification.RequestSpecification;
 /**
  * Authentication class.
  *
- * @author Cristian Lujan
+ * @author Andres Burgos
  * @version 1.0
  */
 public final class Authentication {
 
-    private static String accessToken;
-    private static String apiUrl;
-    private static String contentType;
+    private static Authentication authentication;
+    private String accessToken;
+    private String apiUrl;
+    private RequestSpecification request;
 
     /**
-     * Method that allows to build an address and then be sent to the page of sales force according to a token.
-     *
-     * @return RequestSpecification variable.
+     * This is constructor that initializes variables.
      */
-    public static RequestSpecification requestSpecification() {
-        return new RequestSpecBuilder()
-                .setBaseUri(apiUrl)
+    private Authentication() {
+        accessToken = ConfigFileReader.getInstance().getAccessToken();
+        apiUrl = ConfigFileReader.getInstance().getBaseUrl();
+        request = new RequestSpecBuilder()
                 .addHeader("X-TrackerToken", accessToken)
-                .setContentType(contentType)
                 .build();
     }
 
     /**
-     * Constructor.
+     * Gives the class instance according Singleton pattern.
+     *
+     * @return an instance.
      */
-    private Authentication() {
-        accessToken = ConfigFileReader.getInstance().getAccessToken();
-        apiUrl = ConfigFileReader.getInstance().getUrlApi();
-        contentType = ConfigFileReader.getInstance().getContentType();
+    public static Authentication getInstance() {
+        if (authentication == null) {
+            authentication = new Authentication();
+        }
+        return authentication;
+    }
+
+    /**
+     * Gives the request specification resultant of oauth.
+     *
+     * @return an request specification.
+     */
+    public RequestSpecification getRequestSpecification() {
+        return request;
     }
 }
