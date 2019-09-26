@@ -1,15 +1,18 @@
-package pivotaltracker.ui.pages;
+package pivotaltracker.ui.components;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pivotaltracker.BasePage;
+import pivotaltracker.ui.pages.DashboardPage;
 
 /**
- * TopBar class.
+ * TopBarBasePage class.
  *
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class TopBar {
+public class TopBarBasePage extends BasePage {
+    private DashboardPage dashboardPage;
     @FindBy(css = "[aria-label='Profile Dropdown']")
     private WebElement profileBtn;
 
@@ -30,4 +33,20 @@ public class TopBar {
 
     @FindBy(css = "[class='search_bar']")
     private WebElement searchTxtBox;
+
+    @FindBy(css = "[class='tc_projects_dropdown_link tc_context_name']")
+    private WebElement principalBtn;
+
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+    }
+
+    public TopBarBasePage() {
+        super();
+        this.dashboardPage = new DashboardPage();
+    }
+
+    public DashboardPage getDashboardPage() {
+        return dashboardPage;
+    }
 }
