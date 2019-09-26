@@ -30,12 +30,8 @@ public class AuthenticationTest {
 
     @Test
     public void authenticationTest() {
-        RequestManagerAbstract requestManagerAbstract;
-        String method = "get";
-        String endPoint = "me/";
-        requestManagerAbstract = FactoryRequest.getRequest(method);
-        requestManagerAbstract.setMethod(method);
-        requestManagerAbstract.setEndPoint(endPoint);
+        RequestManagerAbstract requestManagerAbstract = FactoryRequest.getRequest("get");
+        requestManagerAbstract.setEndPoint("me/");
         Response response = requestManagerAbstract.makeRequest();
         Assert.assertEquals(response.getStatusCode(), successCode);
 

@@ -37,7 +37,6 @@ public final class Authentication {
         apiUrl = ConfigFileReader.getInstance().getBaseUrl();
         request = new RequestSpecBuilder()
                 .addHeader("X-TrackerToken", accessToken)
-                .setBaseUri(apiUrl)
                 .build();
     }
 

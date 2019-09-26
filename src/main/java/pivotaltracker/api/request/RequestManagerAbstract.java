@@ -44,7 +44,9 @@ public abstract class RequestManagerAbstract {
      * @param endPoint is new value for set endPoint attribute.
      */
     public void setEndPoint(final String endPoint) {
-        this.endPoint = ConfigFileReader.getInstance().getBaseUrl() + endPoint;
+        this.endPoint = ConfigFileReader.getInstance().getBaseUrl()
+                + ConfigFileReader.getInstance().getApiUrl()
+                + endPoint;
     }
 
     /**
