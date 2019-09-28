@@ -8,7 +8,7 @@ Feature: Manage Account
     When I go to the Account Page of Pivotal Tracker
       And I create a new account "New Account" in Pivotal Tracker
 #    Then I should see the new Account Page
-#    When I navigate to Account page
+    When I go to the Profile in Account page
 #    Then I should see the new account in the Accounts page
 #    When I navigate to Dashboard page
 #    Then I should see the new account in the Project Creation popup

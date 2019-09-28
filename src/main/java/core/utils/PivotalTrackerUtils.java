@@ -12,15 +12,12 @@
 
 package core.utils;
 
-
-import core.selenium.WebDriverConfig;
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pivotaltracker.BasePage;
 
 /**
  * PivotalTrackerUtils class.
@@ -50,9 +47,10 @@ public final class PivotalTrackerUtils {
     }
 
     /**
+     * This method work for see displayed webElement.
      *
-     * @param elementBy
-     * @return
+     * @param elementBy web element.
+     * @return true or false
      */
     private boolean isElementPresent(final By elementBy) {
         webDriverWait = new WebDriverWait(webDriver, 1);

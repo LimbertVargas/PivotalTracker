@@ -12,12 +12,10 @@
 
 package pivotaltracker.ui.pages.account;
 
-import core.utils.Log;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
-
 
 /**
  * AccountPage class.
@@ -45,19 +43,30 @@ public class AccountPage extends BasePage {
 
     private String accountList = "//div[@id='accounts_module']//div[@class='name']";
 
-
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(accountCreateForm));
     }
 
+    /**
+     * Gets add account.
+     *
+     * @return new account Popup.
+     */
     public CreateAccountPopup clickNewAccountCreateBtn() {
         newAccountCreateBtn.click();
         return new CreateAccountPopup();
     }
 
+    /**
+     * Gets of message delete.
+     *
+     * @return text of message.
+     */
     public String getMessageDelete() {
         return messageDelete.getText();
     }
-
 }
