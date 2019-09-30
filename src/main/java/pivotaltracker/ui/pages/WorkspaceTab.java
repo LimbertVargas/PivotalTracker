@@ -1,6 +1,6 @@
 package pivotaltracker.ui.pages;
 
-import core.utils.PivotalTrackerUtils;
+import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -26,7 +26,7 @@ public class WorkspaceTab extends DashboardPage {
     public void createWorkspace(final String workspaceName) {
         workspaceTab.click();
         workspaceBtn.click();
-        PivotalTrackerUtils.setText(workspaceNameTextBox, workspaceName);
+        DriverMethods.setText(workspaceNameTextBox, workspaceName);
         createWorkspaceBtn.click();
     }
 
