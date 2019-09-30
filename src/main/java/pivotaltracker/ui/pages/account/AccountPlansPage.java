@@ -12,13 +12,11 @@
 
 package pivotaltracker.ui.pages.account;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
 import pivotaltracker.ui.components.AccountMenu;
-import pivotaltracker.ui.components.AccountNavBar;
 
 /**
  * AccountPlansPage class.

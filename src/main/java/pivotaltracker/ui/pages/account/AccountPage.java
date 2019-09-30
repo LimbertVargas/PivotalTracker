@@ -40,7 +40,7 @@ public class AccountPage extends BasePage {
     @FindBy(id = "notice")
     private WebElement messageDelete;
 
-    private static String NAME_ACCOUNT = "//div[@class='header'] //div[contains(text(),'%s')]";
+    private static final String NAME_ACCOUNT = "//div[@class='header'] //div[contains(text(),'%s')]";
 
     /**
      * Waits until page object is loaded.
@@ -75,7 +75,7 @@ public class AccountPage extends BasePage {
      * @param name of account string.
      * @return boolean.
      */
-    public boolean isDisplayedNewAccount(String name) {
-        return driver.findElement(By.xpath(String.format(NAME_ACCOUNT,name))).isDisplayed();
+    public boolean isDisplayedNewAccount(final String name) {
+        return driver.findElement(By.xpath(String.format(NAME_ACCOUNT, name))).isDisplayed();
     }
 }

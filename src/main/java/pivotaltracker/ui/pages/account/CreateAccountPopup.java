@@ -30,7 +30,7 @@ public class CreateAccountPopup extends BasePage {
     private WebElement createAccountPopup;
 
     @FindBy(className = "tc-form__input")
-    private WebElement nameAccountTxt;
+    private WebElement accountNameTxt;
 
     @FindBy(css = "footer [class='zWDds__Button pvXpn__Button--positive']")
     private WebElement createAccountBtn;
@@ -64,7 +64,7 @@ public class CreateAccountPopup extends BasePage {
      * @param accountName of type String.
      */
     private void setAccountName(final String accountName) {
-        DriverMethods.setText(nameAccountTxt, accountName);
+        DriverMethods.setText(accountNameTxt, accountName);
     }
 
     /**

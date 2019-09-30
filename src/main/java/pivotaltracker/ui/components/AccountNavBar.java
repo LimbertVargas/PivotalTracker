@@ -12,8 +12,6 @@
 
 package pivotaltracker.ui.components;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -37,6 +35,8 @@ public class AccountNavBar extends BasePage {
 
     private static final String SELECTED_TAB = "//div[@class='sections'] //a[contains(text(),'%s')]";
     private static final String ACCOUNT = "accounts";
+    private static final String PROFILE = "profile";
+    private static final String NOTIFICATION = "notifications";
     private AccountPage accountPage;
     private ProfilePage profilePage;
 
@@ -73,8 +73,8 @@ public class AccountNavBar extends BasePage {
      *
      * @return new profile Page.
      */
-    public ProfilePage goToProfilePage(final String namTab) {
-        clickTabOption(namTab);
+    public ProfilePage goToProfilePage() {
+        clickTabOption(PROFILE);
         return new ProfilePage();
     }
 
@@ -83,8 +83,8 @@ public class AccountNavBar extends BasePage {
      *
      * @return new notification Page.
      */
-    public NotificationsPage goToNotificationsPage(final String namTab) {
-        clickTabOption(namTab);
+    public NotificationsPage goToNotificationsPage() {
+        clickTabOption(NOTIFICATION);
         return new NotificationsPage();
     }
 }
