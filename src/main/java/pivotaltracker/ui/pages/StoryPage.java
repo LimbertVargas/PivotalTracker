@@ -1,4 +1,3 @@
-
 /*
  * @(#) StoryPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
@@ -51,7 +50,6 @@ public class StoryPage extends BasePage {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public void createBacklogStory(final String storyTitle) {
