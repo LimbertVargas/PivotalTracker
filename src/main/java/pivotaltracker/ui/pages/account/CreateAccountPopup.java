@@ -13,7 +13,7 @@
 package pivotaltracker.ui.pages.account;
 
 import core.utils.Log;
-import core.utils.PivotalTrackerUtils;
+import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -64,7 +64,7 @@ public class CreateAccountPopup extends BasePage {
      * @param accountName of type String.
      */
     private void setAccountName(final String accountName) {
-        PivotalTrackerUtils.setText(nameAccountTxt, accountName);
+        DriverMethods.setText(nameAccountTxt, accountName);
     }
 
     /**

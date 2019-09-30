@@ -1,5 +1,5 @@
 /*
- * @(#) PivotalTrackerUtils.java Copyright (c) 2019 Jala Foundation.
+ * @(#) DriverMethods.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -20,19 +20,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * PivotalTrackerUtils class.
+ * DriverMethods class.
  *
  * @author John Salazar Pinto
  * @version 1.0
  */
-public final class PivotalTrackerUtils {
+public final class DriverMethods {
 
     protected WebDriverWait webDriverWait;
     protected WebDriver webDriver;
     /**
      * Constructor class.
      */
-    private PivotalTrackerUtils() {
+    private DriverMethods() {
     }
 
     /**
