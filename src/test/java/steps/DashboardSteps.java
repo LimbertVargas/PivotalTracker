@@ -26,16 +26,14 @@ WorkspaceTab workspaceTab;
     public void iShouldSeeTheProjectInProjectPage() {
     }
 
-
-    @And("I Create a Project on Project tab with following data")
-    public void iCreateAProjectOnProjectTabWithFollowingData() {
-
-    }
-
-    @When("I Create a workspace on Workspaces tab with following data")
+    @When("I Create a Workspace on Workspaces tab with following data")
     public void iCreateAWorkspaceOnWorkspacesTabWithFollowingData(Map name) {
         workspaceTab = new WorkspaceTab();
         workspaceTab.createWorkspace(name.get("Workspace Name").toString());
+    }
+
+    @Then("I should see the workspace in Workspace Page.")
+    public void iShouldSeeTheWorkspaceInWorkspacePage() {
     }
 }
 
