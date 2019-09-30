@@ -29,18 +29,27 @@ public class CreateAccountPopup extends BasePage {
     @FindBy(className = "tc_modal_content")
     private WebElement createAccountPopup;
 
-    @FindBy(css = "input[class='tc-form__input']")
+    @FindBy(className = "tc-form__input")
     private WebElement nameAccountTxt;
 
     @FindBy(css = "footer [class='zWDds__Button pvXpn__Button--positive']")
     private WebElement createAccountBtn;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
         Log.getInstance().getLog().info("Wait for Create Account Popup upload in the Browser");
         wait.until(ExpectedConditions.visibilityOf(createAccountPopup));
     }
 
+    /**
+     * Gets account plan page with account name.
+     *
+     * @param accountName of type string
+     * @return an account plan page.
+     */
     public AccountPlansPage createNewAccount(final String accountName) {
         Log.getInstance().getLog().info("Create a New Account setting " + accountName + " in the Name Account Text");
         setAccountName(accountName);
@@ -49,10 +58,18 @@ public class CreateAccountPopup extends BasePage {
         return new AccountPlansPage();
     }
 
+    /**
+     * Sets the account name.
+     *
+     * @param accountName of type String.
+     */
     private void setAccountName(final String accountName) {
         PivotalTrackerUtils.setText(nameAccountTxt, accountName);
     }
 
+    /**
+     * Account save button.
+     */
     private void clickCreateAccountBtn() {
         createAccountBtn.click();
     }

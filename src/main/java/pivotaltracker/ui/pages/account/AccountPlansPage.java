@@ -17,6 +17,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
+import pivotaltracker.ui.components.AccountMenu;
 import pivotaltracker.ui.components.AccountNavBar;
 
 /**
@@ -30,8 +31,7 @@ public class AccountPlansPage extends BasePage {
     @FindBy(id = "plans_table")
     private WebElement accountPlansForm;
 
-    private static final String URL_SETTINGS = "//a[@class='button'] [normalize-space()='Settings']";
-    private AccountNavBar accountNavBar;
+    private AccountMenu accountMenu;
 
     /**
      * Waits until page object is loaded.
@@ -41,15 +41,19 @@ public class AccountPlansPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(accountPlansForm));
     }
 
+    /**
+     * Constructor.
+     */
     public AccountPlansPage() {
-        this.accountNavBar = new AccountNavBar();
+        this.accountMenu = new AccountMenu();
     }
 
-    public String getURLAccountSettings() {
-        return driver.findElement(By.xpath(URL_SETTINGS)).getAttribute("href");
-    }
-
-    public AccountNavBar getAccountNavBar() {
-        return accountNavBar;
+    /**
+     * Gets of account menu.
+     *
+     * @return new account menu.
+     */
+    public AccountMenu getAccountMenu() {
+        return accountMenu;
     }
 }

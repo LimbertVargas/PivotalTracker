@@ -12,6 +12,7 @@
 
 package pivotaltracker.ui.pages.account;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,9 +40,7 @@ public class AccountPage extends BasePage {
     @FindBy(id = "notice")
     private WebElement messageDelete;
 
-    private String accountPath = "//div[contains(text(),'account')]";
-
-    private String accountList = "//div[@id='accounts_module']//div[@class='name']";
+    private static String NAME_ACCOUNT = "//div[@class='header'] //div[contains(text(),'%s')]";
 
     /**
      * Waits until page object is loaded.
@@ -68,5 +67,15 @@ public class AccountPage extends BasePage {
      */
     public String getMessageDelete() {
         return messageDelete.getText();
+    }
+
+    /**
+     * Checks name in account List.
+     *
+     * @param name of account string.
+     * @return boolean.
+     */
+    public boolean isDisplayedNewAccount(String name) {
+        return driver.findElement(By.xpath(String.format(NAME_ACCOUNT,name))).isDisplayed();
     }
 }

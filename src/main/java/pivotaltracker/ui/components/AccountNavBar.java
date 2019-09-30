@@ -58,16 +58,31 @@ public class AccountNavBar extends BasePage {
         accountTabs.click();
     }
 
+    /**
+     * Gets of account Page.
+     *
+     * @return new account Page.
+     */
     public AccountPage goToAccountPage() {
         clickTabOption(ACCOUNT);
         return new AccountPage();
     }
 
+    /**
+     * Gets of profile Page.
+     *
+     * @return new profile Page.
+     */
     public ProfilePage goToProfilePage(final String namTab) {
         clickTabOption(namTab);
         return new ProfilePage();
     }
 
+    /**
+     * Gets of notification Page.
+     *
+     * @return new notification Page.
+     */
     public NotificationsPage goToNotificationsPage(final String namTab) {
         clickTabOption(namTab);
         return new NotificationsPage();

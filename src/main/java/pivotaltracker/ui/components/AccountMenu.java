@@ -12,12 +12,38 @@
 
 package pivotaltracker.ui.components;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import pivotaltracker.BasePage;
+
 /**
  * AccountMenu class.
  *
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountMenu {
+public class AccountMenu extends BasePage {
+    @FindBy(className = "content clearfix")
+    private WebElement accountForm;
 
+    @FindBy(className = "account_name")
+    private WebElement nameAccountLbl;
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(accountForm));
+    }
+
+    /**
+     * Gets name Account.
+     *
+     * @return a string.
+     */
+    public String getNameAccount() {
+        return nameAccountLbl.getText();
+    }
 }

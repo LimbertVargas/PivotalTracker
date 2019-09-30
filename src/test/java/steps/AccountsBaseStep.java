@@ -27,10 +27,11 @@ public class AccountsBaseStep {
     private AccountPage accountPage;
 
     /**
-     * Opens the  page.
+     * Open page of selected in tab of account.
      */
-    @When("^I go to the (.*) in Account page$")
-    public void goToTheContactsPage(final String nameTab) {
+    @When("^I go to the Account in Account page$")
+    public void goToTheContactsPage() {
+        accountBasePage = new AccountBasePage();
         accountPage = accountBasePage.getAccountNavBar().goToAccountPage();
     }
 }
