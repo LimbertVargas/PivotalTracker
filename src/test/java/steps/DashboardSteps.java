@@ -1,10 +1,7 @@
 package steps;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import pivotaltracker.PageTransporter;
-import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.WorkspaceTab;
 
 import java.util.Map;
@@ -36,4 +33,3 @@ WorkspaceTab workspaceTab;
     public void iShouldSeeTheWorkspaceInWorkspacePage() {
     }
 }
-
