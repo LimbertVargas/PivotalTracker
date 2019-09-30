@@ -14,9 +14,8 @@ package pivotaltracker.ui.pages.account;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
-import pivotaltracker.ui.components.AccountNavBar;
+import pivotaltracker.ui.components.AccountMenu;
 
 /**
  * AccountBasePage class.
@@ -24,25 +23,17 @@ import pivotaltracker.ui.components.AccountNavBar;
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountBasePage extends BasePage {
+public abstract class AccountBasePage extends BasePage {
     @FindBy(className = "user_management_header")
     private WebElement accountHeader;
-    private AccountNavBar accountNavBar;
+    private AccountMenu accountMenu;
 
     /**
      * Constructor.
      */
     public AccountBasePage() {
         super();
-        accountNavBar = new AccountNavBar();
-    }
-
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(accountHeader));
+        accountMenu = new AccountMenu();
     }
 
     /**
@@ -50,7 +41,9 @@ public class AccountBasePage extends BasePage {
      *
      * @return account of bar.
      */
-    public AccountNavBar getAccountNavBar() {
-        return accountNavBar;
+    public AccountMenu getAccountMenu() {
+        return accountMenu;
     }
+
+
 }

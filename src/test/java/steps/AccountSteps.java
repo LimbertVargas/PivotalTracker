@@ -54,7 +54,7 @@ public class AccountSteps {
      *
      * @param nameAccount contains the account values.
      */
-    @When("^I create a new account \"(.*)\" in Pivotal Tracker$")
+    @When("I create a new account \"(.*)\"")
     public void createANewAccountInPivotalTracker(final String nameAccount) {
         logs.info("Create a new account " + nameAccount + " in Pivotal Tracker");
         account.setNameAccount(nameAccount);

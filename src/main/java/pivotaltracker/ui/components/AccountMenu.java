@@ -24,8 +24,6 @@ import pivotaltracker.BasePage;
  * @version 1.0
  */
 public class AccountMenu extends BasePage {
-    @FindBy(className = "content clearfix")
-    private WebElement accountForm;
 
     @FindBy(className = "account_name")
     private WebElement nameAccountLbl;
@@ -35,7 +33,7 @@ public class AccountMenu extends BasePage {
      */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(accountForm));
+        wait.until(ExpectedConditions.visibilityOf(nameAccountLbl));
     }
 
     /**
@@ -46,4 +44,6 @@ public class AccountMenu extends BasePage {
     public String getNameAccount() {
         return nameAccountLbl.getText();
     }
+
+
 }
