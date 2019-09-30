@@ -91,12 +91,21 @@ public final class ConfigFileReader {
     }
 
     /**
-     * Returns the url to request to the API from the properties file.
+     * Returns the url to request to the Base URL from the properties file.
      *
      * @return the url as string.
      */
-    public String getUrlApi() {
-        return getProperties().get("urlBase").concat(getProperties().get("apiUrl"));
+    public String getBaseUrl() {
+        return getProperties().get("baseUrl");
+    }
+
+    /**
+     * Returns the url to request to the API Url from the properties file.
+     *
+     * @return the url as string.
+     */
+    public String getApiUrl() {
+        return getProperties().get("apiUrl");
     }
 
     /**

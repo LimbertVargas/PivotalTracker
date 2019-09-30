@@ -4,7 +4,7 @@
  * All rights reserved.
  *
  * This software is the confidential and proprietary information of
- * Jala Foundation, ("Confidential Information").  You shall not
+ * Jala Foundation, ("Confidential Information"). You shall not
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
@@ -12,12 +12,12 @@
 
 package pivotaltracker.ui.pages;
 
-import pivotaltracker.BasePage;
 import core.utils.CredentialsReader;
-import core.utils.PivotalTrackerUtils;
+import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pivotaltracker.BasePage;
 
 /**
  * LoginPage class.
@@ -52,9 +52,9 @@ public class LoginPage extends BasePage {
     public void setCredentials(final String user) {
         String username = CredentialsReader.getInstance().getUserName(user);
         String password = CredentialsReader.getInstance().getUserPassword(user);
-        PivotalTrackerUtils.setText(userNameTxtBox, username);
+        DriverMethods.setText(userNameTxtBox, username);
         nextLoginBtn.click();
-        PivotalTrackerUtils.setText(passwordTxtBox, password);
+        DriverMethods.setText(passwordTxtBox, password);
         nextLoginBtn.click();
     }
 }
