@@ -3,7 +3,7 @@ package steps;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import pivotaltracker.ui.pages.StoryPage;
+import pivotaltracker.ui.pages.story.StoryPage;
 
 import java.util.Map;
 
@@ -12,7 +12,7 @@ public class StorySteps {
 
     @When("I go the (.*) Page of Pivotal Tracker")
     public void iVisitTheStoryPageOfPivotalTracker(final String page) {
-        System.out.println(page);
+
     }
 
     @And("I create a story on (.*) with following characteristics")

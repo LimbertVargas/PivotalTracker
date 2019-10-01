@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package pivotaltracker.ui.pages;
+package pivotaltracker.ui.pages.story;
 
 import core.utils.PivotalTrackerUtils;
 import org.openqa.selenium.WebDriver;
