@@ -23,6 +23,10 @@ public class WorkspaceTab extends DashboardPage {
     @FindBy(css = "[class='zWDds__Button pvXpn__Button--positive']")
     private WebElement createWorkspaceBtn;
 
+    /**
+     *
+     * @param workspaceName
+     */
     public void createWorkspace(final String workspaceName) {
         workspaceTab.click();
         workspaceBtn.click();
@@ -30,5 +34,9 @@ public class WorkspaceTab extends DashboardPage {
         createWorkspaceBtn.click();
     }
 
+    private String nameWorkspace;
 
+    public String getNameWorkspace(){
+        return nameWorkspace;
+    }
 }

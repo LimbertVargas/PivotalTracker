@@ -1,5 +1,6 @@
 package steps;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pivotaltracker.ui.pages.WorkspaceTab;
@@ -23,13 +24,9 @@ WorkspaceTab workspaceTab;
     public void iShouldSeeTheProjectInProjectPage() {
     }
 
-    @When("I Create a Workspace on Workspaces tab with following data")
-    public void iCreateAWorkspaceOnWorkspacesTabWithFollowingData(Map name) {
+    @When("I create a new workspace (.*)")
+    public void iCreateANewWorkspace(String name) {
         workspaceTab = new WorkspaceTab();
-        workspaceTab.createWorkspace(name.get("Workspace Name").toString());
-    }
-
-    @Then("I should see the workspace in Workspace Page.")
-    public void iShouldSeeTheWorkspaceInWorkspacePage() {
+        workspaceTab.createWorkspace(name);
     }
 }

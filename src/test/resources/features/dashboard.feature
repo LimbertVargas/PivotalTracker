@@ -1,6 +1,6 @@
 Feature: Manage Project
 Background:
-  Given I go to the Login Page of Pivotal Tracker
+  Given I go to the Login Page
   When I fill the field with credentials from user "Regular User1"
 
   Scenario: Create project
@@ -14,8 +14,7 @@ Background:
 
   Scenario: Create workspace
     When I go to the Dashboard Page
-      And I Create a Workspace on Workspaces tab with following data
-        | Workspace Name | Workspace1 |
+      And I create a new workspace "New Workspace"
     Then I should see the workspace in Workspace Page.
     When I go to the Dashboard Page
     Then I should see the workspace in Dashboard Page.
