@@ -16,6 +16,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
+import pivotaltracker.ui.pages.account.AccountMemberPage;
+import pivotaltracker.ui.pages.account.AccountSettingsPage;
 
 /**
  * AccountMenu class.
@@ -45,5 +47,11 @@ public class AccountMenu extends BasePage {
         return nameAccountLbl.getText();
     }
 
+    public AccountMemberPage goToAccountMemberPage() {
+        return new AccountMemberPage();
+    }
 
+    public AccountSettingsPage goToAccountSettingsPage() {
+        return new AccountSettingsPage();
+    }
 }
