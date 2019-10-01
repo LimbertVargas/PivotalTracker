@@ -16,9 +16,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
-import pivotaltracker.ui.pages.account.AccountPage;
-import pivotaltracker.ui.pages.account.NotificationsPage;
-import pivotaltracker.ui.pages.account.ProfilePage;
+import pivotaltracker.ui.pages.user.AccountPage;
+import pivotaltracker.ui.pages.user.NotificationsPage;
+import pivotaltracker.ui.pages.user.ProfilePage;
 
 /**
  * UserNavBar class.
@@ -30,14 +30,14 @@ public class UserNavBar extends BasePage {
     @FindBy(className = "user_management_header")
     private WebElement accountsBar;
 
-    @FindBy(xpath = "//div[@class='sections'] //a[contains(text(),'accounts')]")
-    private WebElement accountTab;
+    @FindBy(xpath = "//a[text()='accounts']")
+    private WebElement accountTabOption;
 
-    @FindBy(xpath = "//div[@class='sections'] //a[contains(text(),'profile')]")
-    private WebElement profileTab;
+    @FindBy(xpath = "//a[text()='profile']")
+    private WebElement profileTabOption;
 
-    @FindBy(xpath = "//div[@class='sections'] //a[contains(text(),'notifications')]")
-    private WebElement notificationTab;
+    @FindBy(xpath = "//a[text()='notifications']")
+    private WebElement notificationTabOption;
 
     /**
      * Waits until page object is loaded.
@@ -51,21 +51,21 @@ public class UserNavBar extends BasePage {
      * Clicks in account menu nameTab.
      */
     private void clickAccountTabOption() {
-        accountTab.click();
+        accountTabOption.click();
     }
 
     /**
      * Clicks in profile menu nameTab.
      */
     private void clickProfileTabOption() {
-        profileTab.click();
+        profileTabOption.click();
     }
 
     /**
      * Clicks in notification menu nameTab.
      */
     private void clickNotificationTabOption() {
-        notificationTab.click();
+        notificationTabOption.click();
     }
 
     /**

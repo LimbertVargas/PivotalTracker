@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package pivotaltracker.ui.pages.account;
+package pivotaltracker.ui.pages.user;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

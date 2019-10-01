@@ -26,6 +26,9 @@ public class DashboardPage extends BasePage {
     @FindBy(css = "[aria-label='Profile Dropdown']")
     private WebElement profileBtn;
 
+    @FindBy(id = "create-project-button")
+    private WebElement createProjectBtn;
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
     }
@@ -38,4 +41,10 @@ public class DashboardPage extends BasePage {
     public String getTextProfileDrownBtn() {
         return profileBtn.getText();
     }
+
+//    public CreateProjectPopup clickCreateProjectBtn() {
+//        Logs.getInstance().getLog().info("Click to the Button Create Project in the Dashboard Page");
+//        createProjectBtn.click();
+//        return new CreateProjectPopup();
+//    }
 }

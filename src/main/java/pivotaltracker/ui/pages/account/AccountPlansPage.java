@@ -12,10 +12,12 @@
 
 package pivotaltracker.ui.pages.account;
 
+import core.utils.ConfigFileReader;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
+import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.components.AccountMenu;
 
 /**
@@ -53,5 +55,21 @@ public class AccountPlansPage extends BasePage {
      */
     public AccountMenu getAccountMenu() {
         return accountMenu;
+    }
+
+    public String getUrlAccount() {
+        String urlResult =  driver.getCurrentUrl()
+                .replace(ConfigFileReader.getInstance().getBaseUrl(), "")
+                .replace(Permalink.ACCOUNT_PAGE, "");
+        return urlResult;
+    }
+
+    public int getId() {
+        String idResult = getUrlAccount()
+                .replace(ConfigFileReader.getInstance().getBaseUrl(), "")
+                .replace(Permalink.ACCOUNT_PAGE, "")
+                .replace(Permalink.ACCOUNT_PLANS_PAGE, "")
+                .replaceAll("/", "");
+        return Integer.parseInt(idResult);
     }
 }

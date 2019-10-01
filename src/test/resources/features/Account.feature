@@ -22,7 +22,7 @@ Feature: Manage Account
       And I update the account Name with "Other Name"
     Then I should see the new name in account settings page
     When I go to the Account Page
-    Then I should see the name of account update in the Accounts page
+    Then I should see the new account in list of Accounts page
 #
 #  @deleteAccount
 #  Scenario Outline: Add member to the account of Pivotal Tracker with permission of Project Creator

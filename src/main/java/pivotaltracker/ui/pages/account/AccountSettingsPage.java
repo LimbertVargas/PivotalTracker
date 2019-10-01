@@ -17,6 +17,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
+import pivotaltracker.entities.Account;
+import pivotaltracker.ui.pages.user.AccountPage;
 
 /**
  * AccountSettingsPage class.
@@ -33,6 +35,9 @@ public class AccountSettingsPage extends BasePage {
 
     @FindBy(id = "account_name")
     private WebElement accountNameTxt;
+
+    @FindBy(xpath = "//h4[text()='ID']/following-sibling::div")
+    private WebElement accountIdTxt;
 
     @FindBy(css = "div[class='save_changes'] input")
     private WebElement saveBtn;
@@ -63,6 +68,15 @@ public class AccountSettingsPage extends BasePage {
      */
     public void setNameAccount(final String accountName) {
         DriverMethods.setText(accountNameTxt, accountName);
+    }
+
+    /**
+     * Sets the account name in .
+     *
+     * @param accountId of type String.
+     */
+    public void setIdAccount(final String accountId) {
+        DriverMethods.setText(accountIdTxt, accountId);
     }
 
     /**
