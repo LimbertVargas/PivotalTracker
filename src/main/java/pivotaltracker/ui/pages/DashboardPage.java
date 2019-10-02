@@ -12,7 +12,8 @@
 
 package pivotaltracker.ui.pages;
 
-import core.utils.PivotalTrackerUtils;
+import core.utils.DriverMethods;
+import java.sql.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pivotaltracker.BasePage;
@@ -67,7 +68,7 @@ public class DashboardPage extends BasePage {
     public void createProject(final String projectName) {
         openProjectFormBtn.click();
         createProjectForm.click();
-        PivotalTrackerUtils.setText(projectNameTxtBox, projectName);
+        DriverMethods.setText(projectNameTxtBox, projectName);
         accountSelectorMenu.click();
         optionAccountNameComboBox.click();
         createProjectBtn.click();

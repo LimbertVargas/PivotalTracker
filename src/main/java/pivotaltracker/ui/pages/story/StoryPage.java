@@ -12,12 +12,10 @@
 
 package pivotaltracker.ui.pages.story;
 
-import core.utils.PivotalTrackerUtils;
+import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import pivotaltracker.BasePage;
 
 public class StoryPage extends BasePage {
@@ -36,43 +34,35 @@ public class StoryPage extends BasePage {
     @FindBy(id = "story_type_dropdown_c235_arrow")
     private WebElement storyTypeBtn;
 
-    @FindBy(xpath = "//div[@class='dropdown_menu search'] //li")
-    private ArrayList<WebElement> selectMenuDropDownTable;
-
     @FindBy(id = "story_estimate_dropdown_c235_arrow")
     private WebElement storyPointsBtn;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        try {
-            actionsBtn.wait(900);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public void createBacklogStory(final String storyTitle) {
         addBacklogStoryBtn.click();
-        PivotalTrackerUtils.setText(storyTitleTxtBox, storyTitle);
-        selectTable();
+        DriverMethods.setText(storyTitleTxtBox, storyTitle);
+  //      selectTable();
     }
 
     /**
      * Separates current of the backlog panel.
      */
     public void separateCurrentBacklog() {
-        String url = driver.getCurrentUrl();
-        System.out.printf(url + "URL");
         actionsBtn.click();
+        String url = driver.getCurrentUrl();
+        System.out.printf(url);
         splitCurrentIterationAndBacklogMenu.click();
     }
 
-    public void selectTable() {
-        int sizeTable = selectMenuDropDownTable.size();
-        Iterator<WebElement> iter = selectMenuDropDownTable.iterator();
-        for (int i = 0; i <= sizeTable; i++) {
-            String elementText = iter.next().getText();
-            System.out.println(elementText);
-        }
-    }
+//    public void selectTable() {
+//        int sizeTable = selectMenuDropDownTable.size();
+//        Iterator<WebElement> iter = selectMenuDropDownTable.iterator();
+//        for (int i = 0; i <= sizeTable; i++) {
+//            String elementText = iter.next().getText();
+//            System.out.println(elementText);
+//        }
+//    }
 }

@@ -17,11 +17,8 @@ public class StorySteps {
     @And("I create a story on Backlog with following characteristics")
     public void iCreateAStoryOnPanelWithFollowingCharacteristics(final Map<String, String> bodyFields) {
         String storyName = bodyFields.get("Story name");
-        System.out.printf("00000000000");
         storyPage = new StoryPage();
-        System.out.printf("1111111111");
         storyPage.separateCurrentBacklog();
-        System.out.printf("2222222222");
         storyPage.createBacklogStory(storyName);
     }
 
