@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package core.selenium.webDrivers;
+package core.selenium.webdrivers;
 
 
 import io.github.bonigarcia.wdm.WebDriverManager;

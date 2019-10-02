@@ -21,6 +21,7 @@ package pivotaltracker.entities;
 public class Context {
 
     private Account account;
+    private Workspace workspace;
 
     /**
      * Context for creation of the constructor.
@@ -36,5 +37,9 @@ public class Context {
      */
     public Account getAccount() {
         return account;
+    }
+
+    public Workspace getWorkspace() {
+        return workspace;
     }
 }

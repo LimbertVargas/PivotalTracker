@@ -64,7 +64,7 @@ public class AccountSteps {
     }
 
     /**
-     * verify name of account in accounts plans page.
+     * Verify name of account in accounts plans page.
      */
     @Then("I should see the new Account Page")
     public void seeTheNewAccountPage() {
@@ -72,6 +72,9 @@ public class AccountSteps {
         assertEquals(accountPlansPage.getAccountMenu().getNameAccount(), account.getNameAccount());
     }
 
+    /**
+     *
+     */
     @Then("I should see the new account in list of Accounts page")
     public void displayTheNewAccountInTheAccountsPage() {
         logs.info("The Account Page is tested if show in the account page");

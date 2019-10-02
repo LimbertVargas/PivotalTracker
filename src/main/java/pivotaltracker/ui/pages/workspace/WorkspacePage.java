@@ -1,11 +1,8 @@
-package pivotaltracker.ui.pages;
+package pivotaltracker.ui.pages.workspace;
 
-import org.kohsuke.rngom.parse.host.Base;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
 import pivotaltracker.BasePage;
 
 /**
@@ -20,7 +17,10 @@ public class WorkspacePage extends BasePage {
     private WebElement workspaceForm;
 
     @FindBy(css = "[class='raw_context_name']")
-    private  WebElement nameWorkspaceLbl;
+    private WebElement nameWorkspaceLbl;
+
+    @FindBy(id = "create-workspace-button")
+    private WebElement workspaceCreateBtn;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -32,7 +32,8 @@ public class WorkspacePage extends BasePage {
      *
      * @return getNameWorkspace.
      */
-    public String getNameWorkspace() {
-        return nameWorkspaceLbl.getText();
+    public WorkspacePopup clickNewWorkspaceCreateBtn() {
+        workspaceCreateBtn.click();
+        return new WorkspacePopup();
     }
 }

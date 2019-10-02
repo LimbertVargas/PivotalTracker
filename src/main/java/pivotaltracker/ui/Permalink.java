@@ -23,7 +23,7 @@ import java.util.Map;
  */
 public final class Permalink {
     public static final String LOGIN_PAGE = "/signin";
-    public static final String DASHBOARD_PAGE = "/dashboard";
+    public static final String DASHBOARD_PAGE = "/workspace";
     public static final String ACCOUNT_PAGE = "/accounts";
 
     private static Map<String, String> course = new HashMap<>();

@@ -1,8 +1,9 @@
-package pivotaltracker.ui.pages;
+package pivotaltracker.ui.pages.workspace;
 
 import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pivotaltracker.ui.pages.DashboardPage;
 
 /**
  * WorkspaceTab class

@@ -1,11 +1,8 @@
 package steps;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import pivotaltracker.ui.pages.WorkspaceTab;
-
-import java.util.Map;
+import pivotaltracker.ui.pages.workspace.WorkspaceTab;
 
 /**
  * DashboardSteps class
@@ -22,11 +19,5 @@ WorkspaceTab workspaceTab;
 
     @Then("I should see the project in Project Page.")
     public void iShouldSeeTheProjectInProjectPage() {
-    }
-
-    @When("I create a new workspace (.*)")
-    public void iCreateANewWorkspace(String name) {
-        workspaceTab = new WorkspaceTab();
-        workspaceTab.createWorkspace(name);
     }
 }

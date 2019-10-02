@@ -12,4 +12,8 @@ public class Workspace {
     public String getNameWorkspace() {
         return nameWorkspace;
     }
+
+    public String setNameWorkspace(final String nameWorkspace) {
+        this.nameWorkspace = nameWorkspace;
+    }
 }
