@@ -84,7 +84,7 @@ public class AccountSteps {
 
     @And("I update the account Name with {string}")
     public void updateTheAccountNameWith(String nameAccount) {
-        accountSettingsPage = new AccountSettingsPage();
+//        accountSettingsPage = new AccountSettingsPage();
         logs.info("Update the name of " + account.getNameAccount() + " to: " + nameAccount);
         account.setNameAccount(nameAccount);
         logs.info("Navigate to the Settings page of the Account");

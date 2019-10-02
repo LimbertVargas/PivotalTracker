@@ -24,8 +24,6 @@ import pivotaltracker.ui.components.AccountMenu;
  * @version 1.0
  */
 public abstract class AccountBasePage extends BasePage {
-    @FindBy(className = "user_management_header")
-    private WebElement accountHeader;
     private AccountMenu accountMenu;
 
     /**

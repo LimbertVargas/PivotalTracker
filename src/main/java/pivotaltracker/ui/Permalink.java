@@ -28,7 +28,6 @@ public final class Permalink {
     public static final String ACCOUNT_PLANS_PAGE = "/plans";
     public static final String ACCOUNT_SETTINGS_PAGE = "/settings";
 
-
     private static Map<String, String> course = new HashMap<>();
     static {
         course.put("Login", LOGIN_PAGE);

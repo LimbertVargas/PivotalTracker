@@ -15,7 +15,6 @@ package steps;
 import cucumber.api.java.en.When;
 import pivotaltracker.ui.pages.account.AccountBasePage;
 import pivotaltracker.ui.pages.account.AccountSettingsPage;
-import pivotaltracker.ui.pages.user.AccountPage;
 
 /**
  * AccountsBaseStep class.
@@ -33,5 +32,6 @@ public class AccountsBaseStep {
     @When("^I go to the Settings tab inside Account page$")
     public void goToTheContactsPage() {
         accountSettingsPage = accountBasePage.getAccountMenu().goToAccountSettingsPage();
+        accountSettingsPage = new AccountSettingsPage();
     }
 }

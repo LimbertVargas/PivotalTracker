@@ -14,6 +14,7 @@ package steps;
 
 import org.testng.Assert;
 import pivotaltracker.PageTransporter;
+import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.DashboardPage;
@@ -31,14 +32,25 @@ import cucumber.api.java.en.When;
  */
 public class LoginSteps {
     private LoginPage loginPage;
+    private DashboardPage dashboardPage;
     private User user;
+    Context context;
+    /**
+     * Constructor of account steps sending the context.
+     *
+     * @param context init the context.
+     */
+    public LoginSteps(Context context) {
+        this.context = context;
+        this.user = context.getUser();
+    }
 
     /**
      * This method opens the page.
      *
      * @param page for navigate.
      */
-    @Given("I go to the (.*) Page")
+    @Given("^I go to the (.*) Page$")
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
@@ -50,10 +62,9 @@ public class LoginSteps {
      */
     @When("^I fill the field with credentials from user \"([^\"]*)\"$")
     public void fillTheFieldWithCredentialsFromUser(String userName) {
-        user = new User();
-        user.setUserName(userName);
         loginPage = new LoginPage();
         loginPage.setCredentials(userName);
+        user.setUserName(userName);
     }
 
     /**
@@ -61,8 +72,8 @@ public class LoginSteps {
      */
     @Then("I verify the user name will be shown on the top bar")
     public void verifyTheUserNameTheWillBeShownOnTheTopBar() {
-        DashboardPage dashboardPage = new DashboardPage();
-        String actual = dashboardPage.getTextProfileDrownBtn();
+        dashboardPage = new DashboardPage();
+        String actual = dashboardPage.getTextProfileDrownBtn().toLowerCase();
         String userName = user.getUserName();
         String expected = CredentialsReader.getInstance().getUserName(userName);
         Assert.assertEquals(actual, expected);

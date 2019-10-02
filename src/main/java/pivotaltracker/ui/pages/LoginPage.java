@@ -44,17 +44,28 @@ public class LoginPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(loginForm));
     }
 
+    private void setUserName(final String userName) {
+        DriverMethods.setText(userNameTxtBox, userName);
+    }
+
+    /**
+     * Click login btn.
+     */
+    private void clickLoginBtn() {
+        nextLoginBtn.click();
+    }
+
     /**
      * Sets credentials and login on the page.
      *
      * @param user - User from where obtains the credentials.
      */
     public void setCredentials(final String user) {
-        String username = CredentialsReader.getInstance().getUserName(user);
+        String userName = CredentialsReader.getInstance().getUserName(user);
         String password = CredentialsReader.getInstance().getUserPassword(user);
-        DriverMethods.setText(userNameTxtBox, username);
-        nextLoginBtn.click();
+        setUserName(userName);
+        clickLoginBtn();
         DriverMethods.setText(passwordTxtBox, password);
-        nextLoginBtn.click();
+        clickLoginBtn();
     }
 }

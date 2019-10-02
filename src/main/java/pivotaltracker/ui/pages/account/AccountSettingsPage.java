@@ -30,7 +30,7 @@ public class AccountSettingsPage extends BasePage {
     @FindBy(className = "settings")
     private WebElement settingsAccountForm;
 
-    @FindBy(css = "a[data-method='delete']")
+    @FindBy(xpath = "//a[@data-method=\"delete\"]")
     private WebElement deleteLbl;
 
     @FindBy(id = "account_name")
@@ -51,13 +51,19 @@ public class AccountSettingsPage extends BasePage {
     }
 
     /**
+     * Click delete option.
+     */
+    private void clickDeleteOption() {
+        deleteLbl.click();
+        driver.switchTo().alert().accept();
+    }
+    /**
      * Get account page then accept delete.
      *
      * @return account page
      */
     public AccountPage deleteAccount() {
-        deleteLbl.click();
-        driver.switchTo().alert().accept();
+        clickDeleteOption();
         return new AccountPage();
     }
 

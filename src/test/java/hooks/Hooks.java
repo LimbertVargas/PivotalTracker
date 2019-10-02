@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package hook;
+package hooks;
 
 import core.selenium.WebDriverManager;
 import core.utils.Log;
@@ -25,6 +25,8 @@ import pivotaltracker.PageTransporter;
 import pivotaltracker.entities.Account;
 import pivotaltracker.entities.Context;
 import pivotaltracker.ui.Permalink;
+import pivotaltracker.ui.components.TopBar;
+import pivotaltracker.ui.pages.LoginPage;
 import pivotaltracker.ui.pages.account.AccountPlansPage;
 import pivotaltracker.ui.pages.account.AccountSettingsPage;
 import pivotaltracker.ui.pages.user.AccountPage;
@@ -43,6 +45,7 @@ public class Hooks {
     private Account account;
     private AccountPlansPage accountPlansPage;
     private AccountSettingsPage accountSettingsPage;
+    private TopBar topBar;
 
     /**
      * Constructor of class.
@@ -74,11 +77,19 @@ public class Hooks {
 
     @After("@deleteAccount")
     public void deleteAccount() {
-        logs.info("The Account is deleting");
         String urlAccount = account.getUrlAccount()
                 .replace(Permalink.ACCOUNT_SETTINGS_PAGE,Permalink.ACCOUNT_PLANS_PAGE);
         PageTransporter.navigatePage(Permalink.ACCOUNT_PAGE.concat(urlAccount));
         accountSettingsPage = new AccountSettingsPage();
         accountSettingsPage.deleteAccount();
+        logs.info("The Account is deleting");
+    }
+
+    @After("@logOut")
+    public void logOutWebSite() {
+        topBar = new TopBar();
+        topBar.logOut();
+        LoginPage loginPage = new LoginPage();
+        logs.info("The Web Site log out");
     }
 }
