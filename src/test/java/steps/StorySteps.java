@@ -12,20 +12,22 @@ public class StorySteps {
 
     @When("I go the (.*) Page of Pivotal Tracker")
     public void iVisitTheStoryPageOfPivotalTracker(final String page) {
-
     }
 
-    @And("I create a story on (.*) with following characteristics")
-    public void iCreateAStoryOnPanelWithFollowingCharacteristics(final String page, final Map<String, String> bodyFields) {
+    @And("I create a story on Backlog with following characteristics")
+    public void iCreateAStoryOnPanelWithFollowingCharacteristics(final Map<String, String> bodyFields) {
         String storyName = bodyFields.get("Story name");
+        System.out.printf("00000000000");
         storyPage = new StoryPage();
+        System.out.printf("1111111111");
         storyPage.separateCurrentBacklog();
+        System.out.printf("2222222222");
         storyPage.createBacklogStory(storyName);
     }
 
     @And("I finish and deliver the story")
     public void iFinishAndDeliverTheStory() {
-        System.out.println("a");
+
     }
 
     @Then("I should see the story on Accepted Stories on Current Iteration panel")

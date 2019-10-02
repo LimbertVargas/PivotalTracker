@@ -1,9 +1,6 @@
 Feature: Manage stories
-Background:
-  Given I go to the Login Page of Pivotal Tracker
-  When I fill the field with credentials from user "Regular User1"
 
-  @CreateProjectAPI
+  @Login @CreateProject
   Scenario: complete flow of a story
     When I go the Story Page of Pivotal Tracker
     And I create a story on Backlog with following characteristics

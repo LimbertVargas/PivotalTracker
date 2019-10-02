@@ -13,13 +13,12 @@
 package pivotaltracker.ui.pages.story;
 
 import core.utils.PivotalTrackerUtils;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pivotaltracker.BasePage;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import pivotaltracker.BasePage;
 
 public class StoryPage extends BasePage {
     @FindBy(xpath = "//div[@data-type='backlog'] //div[@class='DropdownButton__icon___1qwu3upG tn-DropdownButton___nNklb3UY']")
@@ -62,6 +61,8 @@ public class StoryPage extends BasePage {
      * Separates current of the backlog panel.
      */
     public void separateCurrentBacklog() {
+        String url = driver.getCurrentUrl();
+        System.out.printf(url + "URL");
         actionsBtn.click();
         splitCurrentIterationAndBacklogMenu.click();
     }

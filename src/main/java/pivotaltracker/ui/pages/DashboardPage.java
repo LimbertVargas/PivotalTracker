@@ -30,6 +30,9 @@ public class DashboardPage extends BasePage {
     @FindBy(id = "create-project-button")
     private WebElement openProjectFormBtn;
 
+    @FindBy(css = "[class='tc_modal tc-form-modal g-zym__ProjectModalDialog']")
+    private WebElement createProjectForm;
+
     @FindBy(css = "[class='tc-form__input']")
     private WebElement projectNameTxtBox;
 
@@ -63,6 +66,7 @@ public class DashboardPage extends BasePage {
      */
     public void createProject(final String projectName) {
         openProjectFormBtn.click();
+        createProjectForm.click();
         PivotalTrackerUtils.setText(projectNameTxtBox, projectName);
         accountSelectorMenu.click();
         optionAccountNameComboBox.click();
