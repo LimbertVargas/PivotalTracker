@@ -13,7 +13,7 @@
 package pivotaltracker.ui.pages;
 
 import core.utils.CredentialsReader;
-import core.utils.PivotalTrackerUtils;
+import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -52,9 +52,9 @@ public class LoginPage extends BasePage {
     public void setCredentials(final String user) {
         String username = CredentialsReader.getInstance().getUserName(user);
         String password = CredentialsReader.getInstance().getUserPassword(user);
-        PivotalTrackerUtils.setText(userNameTxtBox, username);
+        DriverMethods.setText(userNameTxtBox, username);
         nextLoginBtn.click();
-        PivotalTrackerUtils.setText(passwordTxtBox, password);
+        DriverMethods.setText(passwordTxtBox, password);
         nextLoginBtn.click();
     }
 }

@@ -24,11 +24,13 @@ import java.util.Map;
 public final class Permalink {
     public static final String LOGIN_PAGE = "/signin";
     public static final String DASHBOARD_PAGE = "/dashboard";
+    public static final String ACCOUNT_PAGE = "/accounts";
 
     private static Map<String, String> course = new HashMap<>();
     static {
         course.put("Login", LOGIN_PAGE);
         course.put("Dashboard", DASHBOARD_PAGE);
+        course.put("Account", ACCOUNT_PAGE);
     }
 
     /**
