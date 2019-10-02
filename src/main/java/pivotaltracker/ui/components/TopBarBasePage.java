@@ -16,6 +16,9 @@ public class TopBarBasePage extends BasePage {
     @FindBy(css = "[aria-label='Profile Dropdown']")
     private WebElement profileBtn;
 
+    @FindBy(css = "[class='Dropdown__option selected Dropdown__option--button']")
+    private WebElement singOutBtn;
+
     @FindBy(linkText = "Help")
     private WebElement helpBtn;
 
