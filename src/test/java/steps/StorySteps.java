@@ -17,18 +17,18 @@ public class StorySteps {
     @And("I create a story on Backlog with following characteristics")
     public void iCreateAStoryOnPanelWithFollowingCharacteristics(final Map<String, String> bodyFields) {
         String storyName = bodyFields.get("Story name");
+        String storyType = bodyFields.get("Story Type");
+        String storyEstimate = bodyFields.get("Points");
+        String label = bodyFields.get("Labels");
         storyPage = new StoryPage();
-        storyPage.separateCurrentBacklog();
-        storyPage.createBacklogStory(storyName);
+        storyPage.createStory(storyName, storyType, storyEstimate, label);
     }
 
     @And("I finish and deliver the story")
     public void iFinishAndDeliverTheStory() {
-
     }
 
     @Then("I should see the story on Accepted Stories on Current Iteration panel")
     public void iShouldSeeTheStoryOnAcceptedStoriesOnCurrentIterationPanel() {
-        System.out.println("asdf");
     }
 }
