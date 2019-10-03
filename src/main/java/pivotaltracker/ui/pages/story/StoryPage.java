@@ -19,14 +19,13 @@ import org.openqa.selenium.support.FindBy;
 import pivotaltracker.BasePage;
 
 public class StoryPage extends BasePage {
+    private String addBacklogStoryBtn = "//div[@class='panel c261 backlog_%S backlog items_draggable visible'] //a[@title='Add Story']";
+
     @FindBy(xpath = "//div[@data-type='backlog'] //div[@class='DropdownButton__icon___1qwu3upG tn-DropdownButton___nNklb3UY']")
     private WebElement actionsBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Split Current Iteration and Backlog')]")
     private WebElement splitCurrentIterationAndBacklogMenu;
-
-    @FindBy(xpath = "//div[@class='panel c261 backlog_2401267 backlog items_draggable visible'] //a[@title='Add Story']")
-    private WebElement addBacklogStoryBtn;
 
     @FindBy(css = "[aria-label='story title']")
     private WebElement storyTitleTxtBox;
@@ -42,9 +41,7 @@ public class StoryPage extends BasePage {
     }
 
     public void createBacklogStory(final String storyTitle) {
-        addBacklogStoryBtn.click();
         DriverMethods.setText(storyTitleTxtBox, storyTitle);
-  //      selectTable();
     }
 
     /**
@@ -56,13 +53,4 @@ public class StoryPage extends BasePage {
         System.out.printf(url);
         splitCurrentIterationAndBacklogMenu.click();
     }
-
-//    public void selectTable() {
-//        int sizeTable = selectMenuDropDownTable.size();
-//        Iterator<WebElement> iter = selectMenuDropDownTable.iterator();
-//        for (int i = 0; i <= sizeTable; i++) {
-//            String elementText = iter.next().getText();
-//            System.out.println(elementText);
-//        }
-//    }
 }

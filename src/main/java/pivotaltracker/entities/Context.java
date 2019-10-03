@@ -21,12 +21,14 @@ package pivotaltracker.entities;
 public class Context {
 
     private Account account;
+    private Project project;
 
     /**
      * Context for creation of the constructor.
      */
     public Context() {
         this.account = new Account();
+        this.project = new Project();
     }
 
     /**
@@ -36,5 +38,14 @@ public class Context {
      */
     public Account getAccount() {
         return account;
+    }
+
+    /**
+     * Returns the project of context.
+     *
+     * @return project
+     */
+    public Project getProject() {
+        return project;
     }
 }
