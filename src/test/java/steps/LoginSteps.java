@@ -53,7 +53,7 @@ public class LoginSteps {
         user = new User();
         user.setUserName(userName);
         loginPage = new LoginPage();
-        loginPage.setCredentials(userName);
+        loginPage.login(userName);
     }
 
     /**

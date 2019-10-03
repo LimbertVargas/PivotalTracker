@@ -45,16 +45,33 @@ public class LoginPage extends BasePage {
     }
 
     /**
+     * Click on login button.
+     */
+    private void clickLogin() {
+        nextLoginBtn.click();
+    }
+
+    /**
+     * Sets credentials
+     *
+     * @param element - Element where will write the credentials.
+     * @param user    - Text for the credentials.
+     */
+    private void setCredential(final WebElement element, final String user) {
+        DriverMethods.setText(element, user);
+    }
+
+    /**
      * Sets credentials and login on the page.
      *
      * @param user - User from where obtains the credentials.
      */
-    public void setCredentials(final String user) {
+    public void login(final String user) {
         String username = CredentialsReader.getInstance().getUserName(user);
         String password = CredentialsReader.getInstance().getUserPassword(user);
-        DriverMethods.setText(userNameTxtBox, username);
-        nextLoginBtn.click();
-        DriverMethods.setText(passwordTxtBox, password);
-        nextLoginBtn.click();
+        setCredential(userNameTxtBox, username);
+        clickLogin();
+        setCredential(passwordTxtBox, password);
+        clickLogin();
     }
 }
