@@ -75,16 +75,22 @@ public class Hooks {
         }
     }
 
+    /**
+     * Method for delete a acoount.
+     */
     @After("@deleteAccount")
     public void deleteAccount() {
-        String urlAccount = account.getUrlAccount()
-                .replace(Permalink.ACCOUNT_SETTINGS_PAGE,Permalink.ACCOUNT_PLANS_PAGE);
-        PageTransporter.navigatePage(Permalink.ACCOUNT_PAGE.concat(urlAccount));
+        int accountId = account.getId();
+        PageTransporter.navigatePageById(Permalink.ACCOUNT_PAGE, accountId, Permalink.ACCOUNT_SETTINGS_PAGE);
+//        System.out.println("url :::: " + PageTransporter.navigatePageByIdString(Permalink.ACCOUNT_PAGE, accountId, Permalink.ACCOUNT_SETTINGS_PAGE));
         accountSettingsPage = new AccountSettingsPage();
         accountSettingsPage.deleteAccount();
         logs.info("The Account is deleting");
     }
 
+    /**
+     * Method for logOut.
+     */
     @After("@logOut")
     public void logOutWebSite() {
         topBar = new TopBar();

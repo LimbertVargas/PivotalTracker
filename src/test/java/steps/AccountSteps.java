@@ -60,11 +60,11 @@ public class AccountSteps {
     @When("I create a new account \"(.*)\"")
     public void createANewAccountInPivotalTracker(final String nameAccount) {
         logs.info("Create a new account " + nameAccount + " in Pivotal Tracker");
-        account.setNameAccount(nameAccount);
         accountPage = new AccountPage();
         createAccountPopup = accountPage.clickNewAccountCreateBtn();
         accountPlansPage = createAccountPopup.createNewAccount(nameAccount);
-        account.setUrlAccount(accountPlansPage.getUrlAccount());
+        account.setNameAccount(nameAccount);
+        account.setId(accountPlansPage.getId());
     }
 
     /**

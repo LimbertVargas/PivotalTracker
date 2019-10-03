@@ -49,6 +49,24 @@ public final class PageTransporter {
     }
 
     /**
+     * Navigates to a page sending the url with Id.
+     * @param keyUrl type of page.
+     * @param id of object.
+     * @param permalink type of page that belongs to an object.
+     */
+    public static void navigatePageById(final String keyUrl, final int id, final String permalink) {
+        String baseUrl = ConfigFileReader.getInstance().getProperties().get("baseUrl");
+        goToURL(baseUrl.concat(keyUrl).concat("/").concat(String.valueOf(id)).concat(permalink));
+    }
+
+//    public static String navigatePageByIdString(final String keyUrl, final int id, final String permalink) {
+//        String baseUrl = ConfigFileReader.getInstance().getProperties().get("baseUrl");
+//        goToURL(baseUrl.concat(keyUrl).concat("/").concat(String.valueOf(id)).concat(permalink));
+//        return baseUrl;
+//    }
+
+
+    /**
      * Constructor for class.
      */
     private PageTransporter() { }

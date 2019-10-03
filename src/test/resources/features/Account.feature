@@ -11,19 +11,19 @@ Feature: Manage Account
     Then I should see the new Account Page
     When I go to the Account Page
     Then I should see the new account in list of Accounts page
-#    When I go to the Dashboard Page
-#    Then I should see the new account in the Project Creation Popup
+    When I go to the Dashboard Page
+    Then I should see the new account in the Project Creation Popup
 
-  @deleteAccount @logOut
-  Scenario: Configure the account name of an account created
-    When I go to the Account Page
-      And I create a new account "Test Account2"
-    Then I should see the new Account Page
-    When I go to the Settings tab inside Account page
-      And I update the account Name with "Other Name"
-    Then I should see the new name in account settings page
-    When I go to the Account Page
-    Then I should see the new account in list of Accounts page
+#  @deleteAccount @logOut
+#  Scenario: Configure the account name of an account created
+#    When I go to the Account Page
+#      And I create a new account "Test Account2"
+#    Then I should see the new Account Page
+#    When I go to the Settings tab inside Account page
+#      And I update the account Name with "Other Name"
+#    Then I should see the new name in account settings page
+#    When I go to the Account Page
+#    Then I should see the new account in list of Accounts page
 #
 #  @deleteAccount
 #  Scenario Outline: Add member to the account of Pivotal Tracker with permission of Project Creator

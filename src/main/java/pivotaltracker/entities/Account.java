@@ -116,21 +116,4 @@ public class Account {
         isProjectCreator = projectCreator;
     }
 
-    /**
-     * Gets url account of the account.
-     *
-     * @return url account as string.
-     */
-    public String getUrlAccount() {
-        return urlAccount;
-    }
-
-    /**
-     * Sets url account of account.
-     *
-     * @param urlAccount for the account.
-     */
-    public void setUrlAccount(final String urlAccount) {
-        this.urlAccount = urlAccount;
-    }
 }
