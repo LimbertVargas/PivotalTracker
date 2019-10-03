@@ -1,5 +1,6 @@
 package pivotaltracker.ui.pages.workspace;
 
+import core.utils.DriverMethods;
 import core.utils.Log;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,5 +30,35 @@ public class WorkspacePopup extends BasePage {
     public void waitUntilPageObjectIsLoaded() {
         Log.getInstance().getLog().info("Wait for Crete Workspace Popup upload in the Browser");
         wait.until(ExpectedConditions.visibilityOf(createWorkspacePopup));
+    }
+
+    /**
+     * Gets worksapce tracker page with workspace name.
+     *
+     * @param workspaceName of type string.
+     * @return an workspace trancker page.
+     */
+    public WorkspaceTrackerPage createNewWorkspace(final String workspaceName) {
+        Log.getInstance().getLog().info("Create a New Workspace setting " + workspaceName);
+        setWorkspaceName(workspaceName);
+        Log.getInstance().getLog().info("Click to the Create Workspace Button");
+        clickCreateWorkspaceBtn();
+        return new WorkspaceTrackerPage();
+    }
+
+    /**
+     * Sets the worksapce name.
+     *
+     * @param workspaceName of type String.
+     */
+    private void setWorkspaceName(final String workspaceName) {
+        DriverMethods.setText(workspaceNameTxt, workspaceName);
+    }
+
+    /**
+     * Workspace save button.
+     */
+    private void clickCreateWorkspaceBtn() {
+        createWorkspaceBtn.click();
     }
 }

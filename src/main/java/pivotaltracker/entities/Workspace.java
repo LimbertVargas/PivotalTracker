@@ -13,7 +13,7 @@ public class Workspace {
         return nameWorkspace;
     }
 
-    public String setNameWorkspace(final String nameWorkspace) {
+    public void setNameWorkspace(final String nameWorkspace) {
         this.nameWorkspace = nameWorkspace;
     }
 }

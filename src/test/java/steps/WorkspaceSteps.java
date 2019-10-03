@@ -3,14 +3,13 @@ package steps;
 import core.utils.Log;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.apache.log4j.Logger;
 import org.testng.Assert;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.Workspace;
 import pivotaltracker.ui.pages.workspace.WorkspacePage;
 import pivotaltracker.ui.pages.workspace.WorkspacePopup;
-import pivotaltracker.ui.pages.workspace.WorkspaceTab;
-
-import java.util.logging.Logger;
+import pivotaltracker.ui.pages.workspace.WorkspaceTrackerPage;
 
 /**
  * WorkspaceSteps class
@@ -24,6 +23,7 @@ public class WorkspaceSteps {
     private Context context;
     private WorkspacePage workspacePage;
     private WorkspacePopup workspacePopup;
+    private WorkspaceTrackerPage workspaceTrackerPage;
 
     /**
      * Constructor of workspace steps sending the context.
@@ -46,6 +46,7 @@ public class WorkspaceSteps {
         workspace.setNameWorkspace(nameWorkspace);
         workspacePage = new WorkspacePage();
         workspacePopup = workspacePage.clickNewWorkspaceCreateBtn();
+        workspaceTrackerPage = workspacePopup.createNewWorkspace(nameWorkspace);
     }
 
     /**
@@ -53,11 +54,10 @@ public class WorkspaceSteps {
      */
     @Then("I should see the workspace in Workspace Page.")
     public void iShouldSeeTheWorkspaceInWorkspacePage() {
-        Assert.assertEquals(workspacePage.getNameWorkspace(), workspace.getNameWorkspace());
+        Assert.assertEquals(workspaceTrackerPage.getNameWorkspace(),workspace.getNameWorkspace());
     }
 
     @Then("I should see the workspace in Dashboard Page.")
     public void iShouldSeeTheWorkspaceInDashboardPage() {
-        Assert.assertEquals(workspacePage.getNameWorkspace(), workspaceTab.getNameWorkspace());
     }
 }
