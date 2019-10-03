@@ -52,7 +52,7 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * Sets credentials
+     * Sets credentials user.
      *
      * @param element - Element where will write the credentials.
      * @param user    - Text for the credentials.
