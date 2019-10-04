@@ -14,6 +14,7 @@ package pivotaltracker.ui.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
 
 /**
@@ -27,16 +28,17 @@ public class DashboardPage extends BasePage {
     private WebElement profileBtn;
 
     @FindBy(css = "[class='Dashboard__Tabs__tab']")
-    public WebElement projectTab;
+    private WebElement projectTab;
 
     @FindBy(css = "[class='Dashboard__Tabs__tab Dashboard__Tabs__tab--active']")
-    public WebElement workspaceTab;
+    private WebElement workspaceTab;
 
     @FindBy(css = "[class='content clearfix']")
-    public WebElement dashboardForm;
+    private WebElement dashboardForm;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(dashboardForm));
     }
 
     /**

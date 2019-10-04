@@ -24,6 +24,9 @@ public class WorkspaceTab extends DashboardPage {
     @FindBy(css = "[class='zWDds__Button pvXpn__Button--positive']")
     private WebElement createWorkspaceBtn;
 
+    @FindBy(css = "['Dashboard__Tabs__tab Dashboard__Tabs__tab--active']")
+    private WebElement workspaceTab;
+
     /**
      *
      * @param workspaceName

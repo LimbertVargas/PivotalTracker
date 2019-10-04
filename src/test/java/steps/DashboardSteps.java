@@ -26,12 +26,6 @@ public class DashboardSteps {
     private WorkspacePopup workspacePopup;
     private WorkspaceTrackerPage workspaceTrackerPage;
 
-    @When("I Create a (.*) on Project tab with following data")
-    public void iCreateAProjectOnProjectTabWithFollowingData(final String dashboardRef) {
-
-    }
-
-
     /**
      * Creates a new workspace sending the information.
      *

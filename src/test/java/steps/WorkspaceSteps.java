@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.Workspace;
+import pivotaltracker.ui.pages.DashboardPage;
 import pivotaltracker.ui.pages.workspace.WorkspacePage;
 import pivotaltracker.ui.pages.workspace.WorkspacePopup;
 import pivotaltracker.ui.pages.workspace.WorkspaceTrackerPage;
@@ -24,6 +25,7 @@ public class WorkspaceSteps {
     private WorkspacePage workspacePage;
     private WorkspacePopup workspacePopup;
     private WorkspaceTrackerPage workspaceTrackerPage;
+    private DashboardPage dashboardPage;
 
     /**
      * Constructor of workspace steps sending the context.
@@ -41,9 +43,5 @@ public class WorkspaceSteps {
     @Then("I should see the workspace in Workspace Page.")
     public void iShouldSeeTheWorkspaceInWorkspacePage() {
         Assert.assertEquals(workspaceTrackerPage.getNameWorkspace(),workspace.getNameWorkspace());
-    }
-
-    @Then("I should see the workspace in Dashboard Page.")
-    public void iShouldSeeTheWorkspaceInDashboardPage() {
     }
 }
