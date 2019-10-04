@@ -15,13 +15,15 @@ import pivotaltracker.BasePage;
  */
 public class WorkspacePopup extends BasePage {
     @FindBy(className = "tc_modal_content")
-    private WebElement createWorkspacePopup;
+    private WebElement createWorkspacePopupForm;
 
     @FindBy(className = "tc-form__input")
     private WebElement workspaceNameTxt;
 
-    @FindBy(css = "footer [class='zWDds__Button pvXpn__Button--positive']")
+    @FindBy(className = "zWDds__Button pvXpn__Button--positive")
     private WebElement createWorkspaceBtn;
+
+    //necsito para el cancel
 
     /**
      * Waits until page object is loaded.
@@ -29,25 +31,23 @@ public class WorkspacePopup extends BasePage {
     @Override
     public void waitUntilPageObjectIsLoaded() {
         Log.getInstance().getLog().info("Wait for Crete Workspace Popup upload in the Browser");
-        wait.until(ExpectedConditions.visibilityOf(createWorkspacePopup));
+        wait.until(ExpectedConditions.visibilityOf(createWorkspacePopupForm));
     }
 
     /**
-     * Gets worksapce tracker page with workspace name.
+     * Gets worksapce page with workspace name.
      *
      * @param workspaceName of type string.
      * @return an workspace trancker page.
      */
-    public WorkspaceTrackerPage createNewWorkspace(final String workspaceName) {
-        Log.getInstance().getLog().info("Create a New Workspace setting " + workspaceName);
+    public WorkspacePage createNewWorkspace(final String workspaceName) {
         setWorkspaceName(workspaceName);
-        Log.getInstance().getLog().info("Click to the Create Workspace Button");
         clickCreateWorkspaceBtn();
-        return new WorkspaceTrackerPage();
+        return new WorkspacePage();
     }
 
     /**
-     * Sets the worksapce name.
+     * Sets the workspace name.
      *
      * @param workspaceName of type String.
      */
