@@ -100,7 +100,7 @@ public class DashboardPage extends BasePage {
      *
      * @param projectName - Name of the project.
      */
-    public void createStory(final String projectName) {
+    public void createProject(final String projectName) {
         openCreateProjectForm();
         projectFormFocus();
         DriverMethods.setText(projectNameTxtBox, projectName);

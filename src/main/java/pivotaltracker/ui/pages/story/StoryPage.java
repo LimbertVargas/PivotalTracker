@@ -166,7 +166,6 @@ public class StoryPage extends BasePage {
     }
 
     public void finishStoryFlow(final String storyType) {
-        System.out.printf(storyStart(storyType) + " This is story type");
         driver.findElement(By.xpath(storyStart(storyType))).click();
         driver.findElement(By.xpath(storyStart(storyType))).click();
         driver.findElement(By.xpath(storyStart(storyType))).click();
