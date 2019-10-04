@@ -14,6 +14,7 @@ package core.selenium;
 
 import core.selenium.webDrivers.Chrome;
 import core.selenium.webdrivers.Firefox;
+import core.selenium.webdrivers.IDriver;
 import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
@@ -37,7 +38,7 @@ public final class FactoryBrowser {
      */
     public static WebDriver getWebDriver() {
         webDriverConfig = WebDriverConfig.getInstance();
-        Map<String, Chrome> strategyBrowser = new HashMap<>();
+        Map<String, IDriver> strategyBrowser = new HashMap<>();
         strategyBrowser.put(FIREFOX, new Firefox());
         strategyBrowser.put(CHROME, new Chrome());
         return strategyBrowser.get(webDriverConfig.getBrowser()).initDriver();

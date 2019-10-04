@@ -36,20 +36,6 @@ public class WorkspaceSteps {
     }
 
     /**
-     * Creates a new workspace sending the information.
-     *
-     * @param nameWorkspace contains the workspace values.
-     */
-    @When("I create a new workspace (.*)")
-    public void iCreateANewWorkspace(final String nameWorkspace) {
-        logs.info("Create a new workspace "+nameWorkspace);
-        workspace.setNameWorkspace(nameWorkspace);
-        workspacePage = new WorkspacePage();
-        workspacePopup = workspacePage.clickNewWorkspaceCreateBtn();
-        workspaceTrackerPage = workspacePopup.createNewWorkspace(nameWorkspace);
-    }
-
-    /**
      * This method check the created workspace in workspace page.
      */
     @Then("I should see the workspace in Workspace Page.")
