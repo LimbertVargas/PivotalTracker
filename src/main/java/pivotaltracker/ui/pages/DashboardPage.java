@@ -12,11 +12,13 @@
 
 package pivotaltracker.ui.pages;
 
-import core.utils.DriverMethods;
-import java.sql.Driver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import pivotaltracker.BasePage;
+        import core.utils.DriverMethods;
+
+        import java.sql.Driver;
+
+        import org.openqa.selenium.WebElement;
+        import org.openqa.selenium.support.FindBy;
+        import pivotaltracker.BasePage;
 
 /**
  * DashboardPage class.
@@ -40,7 +42,6 @@ public class DashboardPage extends BasePage {
     @FindBy(css = "[class='zWDds__Button pvXpn__Button--positive']")
     private WebElement createProjectBtn;
 
-    //Type of element correct?
     @FindBy(css = "[class='tc-account-selector__header']")
     private WebElement accountSelectorMenu;
 
@@ -61,16 +62,52 @@ public class DashboardPage extends BasePage {
     }
 
     /**
+     * Opens the form for creates project.
+     */
+    private void openCreateProjectForm() {
+        openProjectFormBtn.click();
+    }
+
+    /**
+     * Focuses the project form.
+     */
+    private void projectFormFocus() {
+        createProjectForm.click();
+
+    }
+
+    /**
+     * Opens account selector.
+     */
+    private void accountSelectorClick() {
+        accountSelectorMenu.click();
+    }
+
+    /**
+     * Selects first account.
+     */
+    private void selectAccount() {
+        optionAccountNameComboBox.click();
+    }
+
+    /**
+     * Does click on create project.
+     */
+    private void createProjectBtn() {
+        createProjectBtn.click();
+    }
+
+    /**
      * Create Project.
      *
      * @param projectName - Name of the project.
      */
     public void createProject(final String projectName) {
-        openProjectFormBtn.click();
-        createProjectForm.click();
+        openCreateProjectForm();
+        projectFormFocus();
         DriverMethods.setText(projectNameTxtBox, projectName);
-        accountSelectorMenu.click();
-        optionAccountNameComboBox.click();
-        createProjectBtn.click();
+        accountSelectorClick();
+        selectAccount();
+        createProjectBtn();
     }
 }

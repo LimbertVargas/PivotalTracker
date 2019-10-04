@@ -2,7 +2,6 @@ package hook;
 
 import cucumber.api.java.Before;
 import io.restassured.response.Response;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import pivotaltracker.api.request.FactoryRequest;
 import pivotaltracker.api.request.RequestManagerAbstract;
 import pivotaltracker.ui.pages.DashboardPage;
@@ -15,7 +14,7 @@ public class StoryHooks {
     private Response response;
 
     /**
-     * This method delete the last curriculum.
+     * This method create a project through UI.
      */
     @Before("@CreateProject")
     public void createProject() {
@@ -23,6 +22,9 @@ public class StoryHooks {
         dashboardPage.createProject("Project01");
     }
 
+    /**
+     * This method create a project through API.
+     */
     @Before("@CreateProjectAPI")
     public void postProject() {
         requestManagerAbstract = FactoryRequest.getRequest("POST");
@@ -30,6 +32,5 @@ public class StoryHooks {
         String data = "{\"name\":\"Project0\"}";
         requestManagerAbstract.setData(data);
         response = requestManagerAbstract.makeRequest();
-     //   System.out.println(response.asString());
     }
 }
