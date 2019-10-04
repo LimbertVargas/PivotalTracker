@@ -61,8 +61,8 @@ public class StoryPage extends BasePage {
     private static final String ADDSTORYBTN = "//div[@id='panel_backlog_%S'] //a[@title='Add Story']";
     private static final String BACKLOGFOCUS = "panel_backlog_%S";
     private static final String STORYTYPE = "//a[@class='item_%s ']";
-    private static final String STARTSTORY = "//div [@aria-label='%s'] //label[@data-aid='StateButton']";
-    private static final String ACCEPTSTORY = "//div [@aria-label='%s'] //label[text()='Accept']";
+    private static final String STARTSTORY = "//div[@aria-label='%s'] //label[@data-aid='StateButton']";
+    private static final String ACCEPTSTORY = "//div[@aria-label='%s'] //label[text()='Accept']";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -166,9 +166,10 @@ public class StoryPage extends BasePage {
     }
 
     public void finishStoryFlow(final String storyType) {
-        driver.findElement(By.xpath(storyStart(storyType)));
-        driver.findElement(By.xpath(storyStart(storyType)));
-        driver.findElement(By.xpath(storyStart(storyType)));
-        driver.findElement(By.xpath(buildAcceptStoryLocator(storyType)));
+        System.out.printf(storyStart(storyType) + " This is story type");
+        driver.findElement(By.xpath(storyStart(storyType))).click();
+        driver.findElement(By.xpath(storyStart(storyType))).click();
+        driver.findElement(By.xpath(storyStart(storyType))).click();
+        driver.findElement(By.xpath(buildAcceptStoryLocator(storyType))).click();
     }
 }
