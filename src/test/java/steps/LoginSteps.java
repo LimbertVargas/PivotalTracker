@@ -49,7 +49,7 @@ public class LoginSteps {
      * @param userName
      */
     @When("^I fill the field with credentials from user \"([^\"]*)\"$")
-    public void fillTheFieldWithCredentialsFromUser(String userName) {
+    public void fillTheFieldWithCredentialsFromUser(final String userName) {
         user = new User();
         user.setUserName(userName);
         loginPage = new LoginPage();

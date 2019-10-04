@@ -1,14 +1,16 @@
-Feature: Invite
+Feature: Invite members to project.
 
-  Scenario: Invite people as viewer to project from mail
-    Given: I login as "Regular User 1"
-    When: I go to the members Page of Pivotal Tracker
-      And I open the invite people option
+  Background: Login as Regular User
+    Given I go to the Login Page of Pivotal Tracker
+    When I fill the field with credentials from user "Regular User1"
+
+
+  Scenario: Invite people as viewer to project from mail.
+    When I go to the invite Page of the project.
       And the user insert the invited list mails
         | userdemo1@gmail.com |
         | userdemo2@gmail.com |
         | userdemo3@gmail.com |
-      And the user sets the invitation type as viewer
+      And the user sets the invitations type as viewer
     Then the mails list should be displayed with Invitation pending
-    Then the mails list should be displayed with Viewer
-
+      And the mails list should be displayed with Viewer tag
