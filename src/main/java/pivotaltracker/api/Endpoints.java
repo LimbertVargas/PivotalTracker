@@ -19,8 +19,8 @@ package pivotaltracker.api;
  * @version 1.0
  */
 public final class Endpoints {
-    public static final String ACCOUNT_ENDPOINT = "/accounts/";
-    public static final String PROJECT_ENDPOINT = "projects";
+    public static final String ACCOUNT_ENDPOINT = "/accounts";
+    public static final String PROJECT_ENDPOINT = "/projects";
 
     /**
      * Constructor.
