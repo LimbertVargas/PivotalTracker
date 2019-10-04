@@ -95,6 +95,7 @@ public class Hooks {
     public void logOutWebSite() {
         topBar = new TopBar();
         topBar.logOut();
+        webDriver.manage().deleteAllCookies();
         LoginPage loginPage = new LoginPage();
         logs.info("The Web Site log out");
     }

@@ -30,8 +30,7 @@ public class AccountsBaseStep {
      * Open page of selected in tab of account.
      */
     @When("^I go to the Settings tab inside Account page$")
-    public void goToTheContactsPage() {
+    public void goToTheAccountSettingsPage() {
         accountSettingsPage = accountBasePage.getAccountMenu().goToAccountSettingsPage();
-        accountSettingsPage = new AccountSettingsPage();
     }
 }

@@ -23,6 +23,9 @@ import pivotaltracker.BasePage;
  * @version 1.0
  */
 public class DashboardPage extends BasePage {
+    @FindBy(className = "Dashboard")
+    private WebElement dashboardForm;
+
     @FindBy(css = "[aria-label='Profile Dropdown']")
     private WebElement profileBtn;
 
@@ -31,6 +34,7 @@ public class DashboardPage extends BasePage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+
     }
 
     /**
