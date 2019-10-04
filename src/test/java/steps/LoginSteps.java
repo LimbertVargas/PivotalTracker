@@ -53,7 +53,7 @@ public class LoginSteps {
         user = new User();
         user.setUserName(userName);
         loginPage = new LoginPage();
-        loginPage.setCredentials(userName);
+        loginPage.login(userName);
     }
 
     /**
@@ -64,7 +64,7 @@ public class LoginSteps {
         DashboardPage dashboardPage = new DashboardPage();
         String actual = dashboardPage.getTextProfileDrownBtn();
         String userName = user.getUserName();
-        String expected = CredentialsReader.getInstance().getUserName(userName);
+        String expected = CredentialsReader.getInstance().getUserName(userName).toUpperCase();
         Assert.assertEquals(actual, expected);
     }
 }
