@@ -64,7 +64,7 @@ public class LoginSteps {
         DashboardPage dashboardPage = new DashboardPage();
         String actual = dashboardPage.getTextProfileDrownBtn();
         String userName = user.getUserName();
-        String expected = CredentialsReader.getInstance().getUserName(userName);
+        String expected = CredentialsReader.getInstance().getUserName(userName).toUpperCase();
         Assert.assertEquals(actual, expected);
     }
 }
