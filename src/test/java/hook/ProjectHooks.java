@@ -1,9 +1,7 @@
 package hook;
 
-import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import io.restassured.response.Response;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import pivotaltracker.api.request.FactoryRequest;
 import pivotaltracker.api.request.RequestManagerAbstract;
 import pivotaltracker.ui.pages.DashboardPage;
@@ -18,7 +16,7 @@ public class ProjectHooks {
     /**
      * This method create a project through UI.
      */
-    @After("@CreateProject")
+    @Before("@CreateProject")
     public void createProject() {
         dashboardPage = new DashboardPage();
         dashboardPage.createProject("Project01");
