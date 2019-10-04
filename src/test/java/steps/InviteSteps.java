@@ -25,6 +25,7 @@ import cucumber.api.java.en.When;
 public class InviteSteps {
     @When("I go to the invite Page of the project.")
     public void iGoToTheInvitePageOfTheProject() {
+
     }
 
     @When("the user insert the invited list mails")
