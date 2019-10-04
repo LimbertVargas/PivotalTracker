@@ -14,6 +14,7 @@ package steps;
 
 import org.testng.Assert;
 import pivotaltracker.PageTransporter;
+import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.DashboardPage;
@@ -32,13 +33,22 @@ import cucumber.api.java.en.When;
 public class LoginSteps {
     private LoginPage loginPage;
     private User user;
+    private Context context;
+
+    /**
+     * Constructor class.
+     */
+    private LoginSteps(Context context) {
+        this.context = context;
+        user = context.getUser();
+    }
 
     /**
      * This method opens the page.
      *
      * @param page for navigate.
      */
-    @Given("I go to the (.*) Page of Pivotal Tracker")
+    @Given("I go to the (.*) Page")
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
@@ -50,7 +60,6 @@ public class LoginSteps {
      */
     @When("^I fill the field with credentials from user \"([^\"]*)\"$")
     public void fillTheFieldWithCredentialsFromUser(String userName) {
-        user = new User();
         user.setUserName(userName);
         loginPage = new LoginPage();
         loginPage.login(userName);
