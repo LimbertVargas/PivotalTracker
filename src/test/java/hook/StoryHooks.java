@@ -19,7 +19,7 @@ public class StoryHooks {
     @Before("@CreateProject")
     public void createProject() {
         dashboardPage = new DashboardPage();
-        dashboardPage.createProject("Project01");
+        dashboardPage.createStory("Project01");
     }
 
     /**

@@ -19,9 +19,9 @@ package pivotaltracker.entities;
  * @version 1.0
  */
 public class Context {
-
     private Account account;
     private Project project;
+    private Story story;
 
     /**
      * Context for creation of the constructor.
@@ -29,6 +29,7 @@ public class Context {
     public Context() {
         this.account = new Account();
         this.project = new Project();
+        this.story = new Story();
     }
 
     /**
@@ -47,5 +48,9 @@ public class Context {
      */
     public Project getProject() {
         return project;
+    }
+
+    public Story getStory() {
+        return story;
     }
 }

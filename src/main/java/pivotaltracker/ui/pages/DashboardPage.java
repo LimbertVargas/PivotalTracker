@@ -12,13 +12,11 @@
 
 package pivotaltracker.ui.pages;
 
-        import core.utils.DriverMethods;
+import core.utils.DriverMethods;
 
-        import java.sql.Driver;
-
-        import org.openqa.selenium.WebElement;
-        import org.openqa.selenium.support.FindBy;
-        import pivotaltracker.BasePage;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import pivotaltracker.BasePage;
 
 /**
  * DashboardPage class.
@@ -102,7 +100,7 @@ public class DashboardPage extends BasePage {
      *
      * @param projectName - Name of the project.
      */
-    public void createProject(final String projectName) {
+    public void createStory(final String projectName) {
         openCreateProjectForm();
         projectFormFocus();
         DriverMethods.setText(projectNameTxtBox, projectName);
