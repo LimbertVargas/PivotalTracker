@@ -12,13 +12,13 @@
 
 package steps;
 
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.LoginPage;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 
 /**
  * LoginSteps class.
@@ -30,7 +30,7 @@ public class LoginSteps {
     private LoginPage loginPage;
     private User user;
     private Context context;
-<<<<<<< HEAD
+
     /**
      * Constructor of account steps sending the context.
      *
@@ -39,47 +39,27 @@ public class LoginSteps {
     public LoginSteps(final Context context) {
         this.context = context;
         this.user = context.getUser();
-=======
-
-    /**
-     * Constructor class.
-     */
-    private LoginSteps(Context context) {
-        this.context = context;
-        user = context.getUser();
->>>>>>> develop
     }
 
-    /**
-     * This method opens the page.
-     *
-     * @param page for navigate.
-     */
-<<<<<<< HEAD
+        /**
+         * This method opens the page.
+         *
+         * @param page for navigate.
+         */
     @Given("^I go to the (.*) Page$")
-=======
-    @Given("I go to the (.*) Page")
->>>>>>> develop
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
 
-    /**
-     * This method fills in the user data to be able to log in.
-     *
-     * @param userName is string
-     */
-<<<<<<< HEAD
+        /**
+         * This method fills in the user data to be able to log in.
+         *
+         * @param userName is string
+         */
     @When("^I fill the field with credentials from user \"(.*)\"$")
     public void fillTheFieldWithCredentialsFromUser(final String userName) {
-=======
-    @When("^I fill the field with credentials from user \"([^\"]*)\"$")
-    public void fillTheFieldWithCredentialsFromUser(String userName) {
-        user.setUserName(userName);
->>>>>>> develop
         loginPage = new LoginPage();
         loginPage.login(userName);
         user.setUserName(userName);
     }
-
 }
