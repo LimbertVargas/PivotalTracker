@@ -21,7 +21,6 @@ public class ProjectObject {
      * @return idProject
      */
     public static int getIdProject() {
-        System.out.println(idProject + " id project");
         return idProject;
     }
 
@@ -31,7 +30,6 @@ public class ProjectObject {
      * @param idProject
      */
     public void setIdProject(int idProject) {
-        System.out.println(idProject+ " alsjf;lajf;l");
         this.idProject = idProject;
     }
 

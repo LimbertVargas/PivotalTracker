@@ -28,7 +28,6 @@ public class StorySteps {
         String endpoint = "/n/projects";
         PageTransporter.navigatePageThroughId(endpoint, ProjectObject.getIdProject());
         String storyName = bodyFields.get("Story name");
-        context = new Context();
         story.setStoryName(storyName);
         String storyType = bodyFields.get("Story Type");
         String storyEstimate = bodyFields.get("Points");
@@ -39,7 +38,7 @@ public class StorySteps {
 
     @And("I finish and deliver the story")
     public void iFinishAndDeliverTheStory() {
-        //    storyPage.finishStoryFlow(story.getStoryName());
+            storyPage.finishStoryFlow(story.getStoryName());
     }
 
     @Then("I should see the story on Accepted Stories on Current Iteration panel")
