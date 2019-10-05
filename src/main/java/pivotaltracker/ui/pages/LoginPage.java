@@ -39,6 +39,9 @@ public class LoginPage extends BasePage {
     @FindBy(css = "input[class='app_signin_action_button']")
     private WebElement nextLoginBtn;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(loginForm));

@@ -1,5 +1,5 @@
 /*
- * @(#) AccountsBaseStep.java Copyright (c) 2019 Jala Foundation.
+ * @(#) AccountsBaseSteps.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -14,24 +14,23 @@ package steps;
 
 import cucumber.api.java.en.When;
 import pivotaltracker.ui.pages.account.AccountBasePage;
-import pivotaltracker.ui.pages.account.AccountPage;
+import pivotaltracker.ui.pages.account.AccountSettingsPage;
 
 /**
- * AccountsBaseStep class.
+ * AccountsBaseSteps class.
  *
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountsBaseStep {
+public class AccountsBaseSteps {
     private AccountBasePage accountBasePage;
-    private AccountPage accountPage;
+    private AccountSettingsPage accountSettingsPage;
 
     /**
-     * Open page of selected in tab of account.
+     * Opens page of selected in tab of account.
      */
-    @When("^I go to the Account in Account page$")
-    public void goToTheContactsPage() {
-        accountBasePage = new AccountBasePage();
-        accountPage = accountBasePage.getAccountNavBar().goToAccountPage();
+    @When("^I go to the Settings tab inside Account page$")
+    public void goToTheAccountSettingsPage() {
+        accountSettingsPage = accountBasePage.getAccountMenu().goToAccountSettingsPage();
     }
 }

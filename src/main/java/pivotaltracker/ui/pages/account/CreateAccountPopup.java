@@ -53,7 +53,6 @@ public class CreateAccountPopup extends BasePage {
     public AccountPlansPage createNewAccount(final String accountName) {
         Log.getInstance().getLog().info("Create a New Account setting " + accountName + " in the Name Account Text");
         setAccountName(accountName);
-        Log.getInstance().getLog().info("Click to the Create Project Button");
         clickCreateAccountBtn();
         return new AccountPlansPage();
     }
