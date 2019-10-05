@@ -59,13 +59,6 @@ public final class PageTransporter {
         goToURL(baseUrl.concat(keyUrl).concat("/").concat(String.valueOf(id)).concat(permalink));
     }
 
-//    public static String navigatePageByIdString(final String keyUrl, final int id, final String permalink) {
-//        String baseUrl = ConfigFileReader.getInstance().getProperties().get("baseUrl");
-//        goToURL(baseUrl.concat(keyUrl).concat("/").concat(String.valueOf(id)).concat(permalink));
-//        return baseUrl;
-//    }
-
-
     /**
      * Constructor for class.
      */
