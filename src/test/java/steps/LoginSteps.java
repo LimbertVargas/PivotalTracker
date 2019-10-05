@@ -61,9 +61,9 @@ public class LoginSteps {
      * This method checks the user login with a text in the window.
      */
     @Then("I verify the user name will be shown on the top bar")
-    public void verifyTheUserNameTheWillBeShownOnTheTopBar(String nameWorkspace) {
+    public void verifyTheUserNameTheWillBeShownOnTheTopBar() {
         DashboardWorkspacePage dashboardPage = new DashboardWorkspacePage();
-        Boolean actual = dashboardPage.IsDisplayedWorkspaceInTheList(nameWorkspace);
+        String actual = dashboardPage.getTextProfileDrownBtn();
         String userName = user.getUserName();
         String expected = CredentialsReader.getInstance().getUserName(userName).toUpperCase();
         Assert.assertEquals(actual, expected);

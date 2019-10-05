@@ -25,6 +25,9 @@ public class DashboardWorkspacePage extends BasePage {
     @FindBy(css = "[class='Dashboard__Tabs__tab Dashboard__Tabs__tab--active']")
     private WebElement workspaceTab;
 
+    @FindBy(className = "Dropdown__content")
+    private WebElement userName;
+
     private final String LIST_WORKSPACE = "//a[@class='WorkspaceTile__name'] [text()='nameWorkspace']";
 
     /**
@@ -42,7 +45,7 @@ public class DashboardWorkspacePage extends BasePage {
      * @return the comparision of workspace's name.
      */
     public Boolean IsDisplayedWorkspaceInTheList(final String nameWorkspace) {
-        return driver.findElement(By.xpath(LIST_WORKSPACE.replace("nameWorkspace",nameWorkspace))).isDisplayed();
+        return driver.findElement(By.xpath(LIST_WORKSPACE.replace("nameWorkspace", nameWorkspace))).isDisplayed();
     }
 
     /**
@@ -74,5 +77,9 @@ public class DashboardWorkspacePage extends BasePage {
     public WorkspacePopup clickCreateWorkspacePopup() {
         clickWorkspaceBtn();
         return new WorkspacePopup();
+    }
+
+    public String getTextProfileDrownBtn() {
+        return userName.getText();
     }
 }
