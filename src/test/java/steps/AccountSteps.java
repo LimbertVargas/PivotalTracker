@@ -67,7 +67,7 @@ public class AccountSteps {
     }
 
     /**
-     * verify name of account in accounts plans page.
+     * Verifies name of account in accounts plans page.
      */
     @Then("I should see the new account in Account Plans Page")
     public void verifyTheNewAccountPage() {
@@ -76,7 +76,7 @@ public class AccountSteps {
     }
 
     /**
-     * verify name of account in account page.
+     * Verifies name of account in account page.
      */
     @Then("I should see the new account in list of Accounts page")
     public void displayTheNewAccountInTheAccountsPage() {
@@ -86,7 +86,7 @@ public class AccountSteps {
     }
 
     /**
-     * Update  a new account sending the information.
+     * Updates  a new account sending the information.
      *
      * @param nameAccount of type string.
      */
@@ -98,7 +98,7 @@ public class AccountSteps {
     }
 
     /**
-     * verify name of account in accounts settings page.
+     * Verifies name of account in accounts settings page.
      */
     @Then("I should see the new name in account settings page")
     public void displayTheNewNameInAccountSettingsPage() {

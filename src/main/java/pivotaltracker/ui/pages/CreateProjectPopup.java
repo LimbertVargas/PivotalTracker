@@ -41,7 +41,7 @@ public class CreateProjectPopup extends BasePage {
     }
 
     /**
-     * account select combo box.
+     * Selects account combo box.
      */
     private void clickAccountCmb() {
         accountCmb.click();

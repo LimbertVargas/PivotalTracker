@@ -35,7 +35,7 @@ public class DashboardSteps {
     private User user;
 
     /**
-     * constructor for the class.
+     * Constructor for the class.
      *
      * @param context init the context.
      */

@@ -27,7 +27,7 @@ public class AccountsBaseSteps {
     private AccountSettingsPage accountSettingsPage;
 
     /**
-     * Open page of selected in tab of account.
+     * Opens page of selected in tab of account.
      */
     @When("^I go to the Settings tab inside Account page$")
     public void goToTheAccountSettingsPage() {

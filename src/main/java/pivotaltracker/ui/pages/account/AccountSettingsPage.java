@@ -60,7 +60,7 @@ public class AccountSettingsPage extends BasePage {
         driver.switchTo().alert().accept();
     }
     /**
-     * Get account page then accept delete.
+     * Gets account page then accept delete.
      *
      * @return account page
      */
@@ -95,7 +95,7 @@ public class AccountSettingsPage extends BasePage {
     }
 
     /**
-     * Get name in account settings.
+     * Gets name in account settings.
      *
      * @return account name in String
      */

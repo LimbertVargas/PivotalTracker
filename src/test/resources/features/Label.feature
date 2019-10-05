@@ -30,22 +30,3 @@
 #    When I go to the Project Page
 #    And I delete a Story in "Icebox" Panel
 #
-#
-#  Scenario Outline: Search job by keyword with maximum and minimum characters in trabajopolis
-#    When A user unregistered navigate in search page
-#      And The user searches with <keyword>
-#    Then The user sees the result of the search in result search page
-#    Examples:
-#      | keyword                                        |
-#      | tres tristes tigres trigo trigaban en un trigal|
-#      | Cx                                             |
-#
-#  Scenario Outline: Search job without characters in trabajopolis
-#    When A user unregistered navigate in search page
-#      And The user searches with <keyword>
-#    Then a message indicates that something must be typed in the search
-#      And The user does not see the search result on the search results page
-#    Examples:
-#      | keyword|
-#      | null   |
-#      |        |

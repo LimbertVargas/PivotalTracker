@@ -60,7 +60,7 @@ public class AccountPlansPage extends BasePage {
     }
 
     /**
-     * Get url setting of account.
+     * Gets url setting of account.
      *
      * @return string of url account
      */
@@ -69,7 +69,7 @@ public class AccountPlansPage extends BasePage {
     }
 
     /**
-     * Get id from url account setting.
+     * Gets id from url account setting.
      *
      * @return id of type int.
      */

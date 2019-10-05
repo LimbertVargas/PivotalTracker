@@ -54,7 +54,7 @@ public class DashboardPage extends BasePage {
 
 
     /**
-     * Does click on create project.
+     * Does click on create new project.
      */
     private void createProjectBtn() {
         createProjectBtn.click();

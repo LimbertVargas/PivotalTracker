@@ -34,5 +34,4 @@ public class NotificationsPage extends BasePage {
     protected void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(notificationsForm));
     }
-
 }
