@@ -14,8 +14,6 @@ package pivotaltracker.ui.pages;
 
 import core.utils.DriverMethods;
 
-import java.sql.Driver;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pivotaltracker.BasePage;
