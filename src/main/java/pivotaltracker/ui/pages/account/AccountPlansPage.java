@@ -12,10 +12,13 @@
 
 package pivotaltracker.ui.pages.account;
 
+import core.utils.ConfigFileReader;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
+import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.components.AccountMenu;
 
 /**
@@ -26,9 +29,10 @@ import pivotaltracker.ui.components.AccountMenu;
  */
 public class AccountPlansPage extends BasePage {
 
-    @FindBy(id = "plans_table")
+    @FindBy(className = "accounts_plans_page-wrapper")
     private WebElement accountPlansForm;
 
+    private static final String URL_SETTINGS = "//a[@class='button'][text()='Settings']";
     private AccountMenu accountMenu;
 
     /**
@@ -53,5 +57,28 @@ public class AccountPlansPage extends BasePage {
      */
     public AccountMenu getAccountMenu() {
         return accountMenu;
+    }
+
+    /**
+     * Gets url setting of account.
+     *
+     * @return string of url account
+     */
+    public String getUrlAccount() {
+        return driver.findElement(By.xpath(URL_SETTINGS)).getAttribute("href");
+    }
+
+    /**
+     * Gets id from url account setting.
+     *
+     * @return id of type int.
+     */
+    public int getId() {
+        String idResult = getUrlAccount()
+                .replace(ConfigFileReader.getInstance().getBaseUrl(), "")
+                .replace(Permalink.ACCOUNT_PAGE, "")
+                .replace(Permalink.ACCOUNT_SETTINGS_PAGE, "")
+                .replaceAll("/", "");
+        return Integer.valueOf(idResult);
     }
 }

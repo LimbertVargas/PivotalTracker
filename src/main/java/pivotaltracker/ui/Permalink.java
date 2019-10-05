@@ -14,7 +14,6 @@ package pivotaltracker.ui;
 
 import java.util.HashMap;
 import java.util.Map;
-import pivotaltracker.ProjectObject;
 
 /**
  * Permalink class.
@@ -27,10 +26,10 @@ public final class Permalink {
     public static final String DASHBOARD_PAGE = "/dashboard";
     public static final String ACCOUNT_PAGE = "/accounts";
     public static final String PROJECT_PAGE = "/n/projects";
-    private static ProjectObject projectObject = new ProjectObject();
+    public static final String ACCOUNT_PLANS_PAGE = "/plans";
+    public static final String ACCOUNT_SETTINGS_PAGE = "/settings";
 
     private static Map<String, String> course = new HashMap<>();
-
     static {
         course.put("Login", LOGIN_PAGE);
         course.put("Dashboard", DASHBOARD_PAGE);
@@ -50,6 +49,5 @@ public final class Permalink {
     /**
      * Constructor private.
      */
-    private Permalink() {
-    }
+    private Permalink() { }
 }

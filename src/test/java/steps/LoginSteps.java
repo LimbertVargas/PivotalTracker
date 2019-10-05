@@ -12,8 +12,10 @@
 
 package steps;
 
-import org.testng.Assert;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 import pivotaltracker.PageTransporter;
+import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.DashboardPage;
@@ -32,39 +34,37 @@ import cucumber.api.java.en.When;
 public class LoginSteps {
     private LoginPage loginPage;
     private User user;
+    private Context context;
 
     /**
-     * This method opens the page.
+     * Constructor of account steps sending the context.
      *
-     * @param page for navigate.
+     * @param context init the context.
      */
-    @Given("I go to the (.*) Page")
+    public LoginSteps(final Context context) {
+        this.context = context;
+        this.user = context.getUser();
+    }
+
+        /**
+         * This method opens the page.
+         *
+         * @param page for navigate.
+         */
+    @Given("^I go to the (.*) Page$")
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
 
-    /**
-     * This method fills in the user data to be able to log in.
-     *
-     * @param userName
-     */
-    @When("^I fill the field with credentials from user \"([^\"]*)\"$")
-    public void fillTheFieldWithCredentialsFromUser(String userName) {
-        user = new User();
-        user.setUserName(userName);
+        /**
+         * This method fills in the user data to be able to log in.
+         *
+         * @param userName is string
+         */
+    @When("^I fill the field with credentials from user \"(.*)\"$")
+    public void fillTheFieldWithCredentialsFromUser(final String userName) {
         loginPage = new LoginPage();
         loginPage.login(userName);
-    }
-
-    /**
-     * This method checks the user login with a text in the window.
-     */
-    @Then("I verify the user name will be shown on the top bar")
-    public void verifyTheUserNameTheWillBeShownOnTheTopBar() {
-        DashboardPage dashboardPage = new DashboardPage();
-        String actual = dashboardPage.getTextProfileDrownBtn();
-        String userName = user.getUserName();
-        String expected = CredentialsReader.getInstance().getUserName(userName).toUpperCase();
-        Assert.assertEquals(actual, expected);
+        user.setUserName(userName);
     }
 }
