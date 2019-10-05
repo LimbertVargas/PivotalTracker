@@ -20,6 +20,6 @@ public class CommonHooks {
         user = new User();
         user.setUserName("Regular User1");
         loginPage = new LoginPage();
-        loginPage.setCredentials("Regular User1");
+        loginPage.login("Regular User1");
     }
 }

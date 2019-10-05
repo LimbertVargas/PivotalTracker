@@ -13,13 +13,8 @@
 package hook;
 
 import cucumber.api.java.Before;
-import io.restassured.response.Response;
 import pivotaltracker.api.ProjectAPI;
-import pivotaltracker.api.request.FactoryRequest;
-import pivotaltracker.api.request.RequestManagerAbstract;
 import pivotaltracker.ui.pages.DashboardPage;
-
-import static pivotaltracker.api.Endpoints.PROJECT_ENDPOINT;
 
 /**
  * ProjectHooks class.

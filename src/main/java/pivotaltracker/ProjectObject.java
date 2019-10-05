@@ -6,7 +6,7 @@ package pivotaltracker;
  * @author John Salazar Pinto
  * @version 1.0
  */
-public class Project {
+public class ProjectObject {
     private int idProject;
     private int storyPoints;
     private String projectName;
@@ -17,6 +17,7 @@ public class Project {
      * @return idProject
      */
     public int getIdProject() {
+        System.out.println(idProject + " id project");
         return idProject;
     }
 

@@ -48,6 +48,11 @@ public final class PageTransporter {
         goToURL(baseUrl.concat(keyUrl));
     }
 
+    public static void navigatePageThroughId(String keyUrl, int id) {
+        String baseUrl = ConfigFileReader.getInstance().getProperties().get("baseUrl");
+        goToURL(baseUrl.concat(keyUrl).concat("/").concat(String.valueOf(id)));
+    }
+
     /**
      * Constructor for class.
      */

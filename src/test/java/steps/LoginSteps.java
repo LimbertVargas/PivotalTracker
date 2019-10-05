@@ -38,7 +38,7 @@ public class LoginSteps {
      *
      * @param page for navigate.
      */
-    @Given("I go to the (.*) Page of Pivotal Tracker")
+    @Given("I go to the (.*) Page")
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
