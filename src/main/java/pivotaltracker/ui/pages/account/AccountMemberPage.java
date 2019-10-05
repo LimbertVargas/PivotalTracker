@@ -51,7 +51,7 @@ public class AccountMemberPage extends BasePage {
     @FindBy(id = "save_roles")
     private WebElement saveRoles;
 
-    @FindBy(xpath = "//div[@class=\"actions_overlay removable\"]")
+    @FindBy(xpath = "//div[@class='actions_overlay removable']")
     private WebElement actionMemberForm;
 
     @Override
