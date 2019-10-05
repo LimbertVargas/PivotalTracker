@@ -16,6 +16,7 @@ import core.utils.DriverMethods;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
 
 /**
@@ -25,29 +26,21 @@ import pivotaltracker.BasePage;
  * @version 1.0
  */
 public class DashboardPage extends BasePage {
+    @FindBy(className = "Dashboard")
+    private WebElement dashboardForm;
+
     @FindBy(css = "[aria-label='Profile Dropdown']")
     private WebElement profileBtn;
 
     @FindBy(id = "create-project-button")
-    private WebElement openProjectFormBtn;
-
-    @FindBy(css = "[class='tc_modal tc-form-modal g-zym__ProjectModalDialog']")
-    private WebElement createProjectForm;
-
-    @FindBy(css = "[class='tc-form__input']")
-    private WebElement projectNameTxtBox;
-
-    @FindBy(css = "[class='zWDds__Button pvXpn__Button--positive']")
     private WebElement createProjectBtn;
 
-    @FindBy(css = "[class='tc-account-selector__header']")
-    private WebElement accountSelectorMenu;
-
-    @FindBy(css = "[class='tc-account-selector__option-account-name']")
-    private WebElement optionAccountNameComboBox;
-
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(dashboardForm));
     }
 
     /**
@@ -59,53 +52,17 @@ public class DashboardPage extends BasePage {
         return profileBtn.getText();
     }
 
-    /**
-     * Opens the form for creates project.
-     */
-    private void openCreateProjectForm() {
-        openProjectFormBtn.click();
-    }
 
     /**
-     * Focuses the project form.
-     */
-    private void projectFormFocus() {
-        createProjectForm.click();
-
-    }
-
-    /**
-     * Opens account selector.
-     */
-    private void accountSelectorClick() {
-        accountSelectorMenu.click();
-    }
-
-    /**
-     * Selects first account.
-     */
-    private void selectAccount() {
-        optionAccountNameComboBox.click();
-    }
-
-    /**
-     * Does click on create project.
+     * Does click on create new project.
      */
     private void createProjectBtn() {
         createProjectBtn.click();
     }
 
-    /**
-     * Create Project.
-     *
-     * @param projectName - Name of the project.
-     */
-    public void createProject(final String projectName) {
-        openCreateProjectForm();
-        projectFormFocus();
-        DriverMethods.setText(projectNameTxtBox, projectName);
-        accountSelectorClick();
-        selectAccount();
+
+    public CreateProjectPopup clickCreateProjectBtn() {
         createProjectBtn();
+        return new CreateProjectPopup();
     }
 }

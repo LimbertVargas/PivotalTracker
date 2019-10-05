@@ -20,9 +20,6 @@ import org.openqa.selenium.WebDriver;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.openqa.selenium.remote.BrowserType.CHROME;
-import static org.openqa.selenium.remote.BrowserType.FIREFOX;
-
 /**
  * FactoryBrowser class.
  *

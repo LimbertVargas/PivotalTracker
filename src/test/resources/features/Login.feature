@@ -1,6 +1,5 @@
 Feature: Login with a valid create parameters
 
-  @CreateProjectAPI
   Scenario: Login of Pivotal Tracker
     Given I go to the Login Page
     When I fill the field with credentials from user "Regular User1"

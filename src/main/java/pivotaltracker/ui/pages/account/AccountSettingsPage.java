@@ -17,6 +17,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
+import pivotaltracker.ui.pages.user.AccountPage;
 
 /**
  * AccountSettingsPage class.
@@ -28,11 +29,17 @@ public class AccountSettingsPage extends BasePage {
     @FindBy(className = "settings")
     private WebElement settingsAccountForm;
 
-    @FindBy(css = "a[data-method='delete']")
+    @FindBy(xpath = "//a[@data-method='delete']")
     private WebElement deleteLbl;
 
     @FindBy(id = "account_name")
     private WebElement accountNameTxt;
+
+    @FindBy(xpath = "//h4[text()='ID']/following-sibling::div")
+    private WebElement accountIdTxt;
+
+    @FindBy(className = "account_name")
+    private WebElement accountNameLbl;
 
     @FindBy(css = "div[class='save_changes'] input")
     private WebElement saveBtn;
@@ -46,13 +53,19 @@ public class AccountSettingsPage extends BasePage {
     }
 
     /**
-     * Get account page then accept delete.
+     * Click delete option.
+     */
+    private void clickDeleteOption() {
+        deleteLbl.click();
+        driver.switchTo().alert().accept();
+    }
+    /**
+     * Gets account page then accept delete.
      *
      * @return account page
      */
     public AccountPage deleteAccount() {
-        deleteLbl.click();
-        driver.switchTo().alert().accept();
+        clickDeleteOption();
         return new AccountPage();
     }
 
@@ -66,9 +79,27 @@ public class AccountSettingsPage extends BasePage {
     }
 
     /**
+     * Sets the account name in .
+     *
+     * @param accountId of type String.
+     */
+    public void setIdAccount(final String accountId) {
+        DriverMethods.setText(accountIdTxt, accountId);
+    }
+
+    /**
      * Account save button.
      */
     private void clickCreateAccountBtn() {
         saveBtn.click();
+    }
+
+    /**
+     * Gets name in account settings.
+     *
+     * @return account name in String
+     */
+    public String getNameAccount() {
+        return accountNameLbl.getText();
     }
 }

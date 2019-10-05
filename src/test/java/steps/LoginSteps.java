@@ -12,17 +12,13 @@
 
 package steps;
 
-import org.testng.Assert;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
-import pivotaltracker.ui.pages.DashboardPage;
 import pivotaltracker.ui.pages.LoginPage;
-import core.utils.CredentialsReader;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 
 /**
  * LoginSteps class.
@@ -36,44 +32,34 @@ public class LoginSteps {
     private Context context;
 
     /**
-     * Constructor class.
+     * Constructor of account steps sending the context.
+     *
+     * @param context init the context.
      */
-    private LoginSteps(Context context) {
+    public LoginSteps(final Context context) {
         this.context = context;
-        user = context.getUser();
+        this.user = context.getUser();
     }
 
-    /**
-     * This method opens the page.
-     *
-     * @param page for navigate.
-     */
-    @Given("I go to the (.*) Page")
+        /**
+         * This method opens the page.
+         *
+         * @param page for navigate.
+         */
+    @Given("^I go to the (.*) Page$")
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
 
-    /**
-     * This method fills in the user data to be able to log in.
-     *
-     * @param userName
-     */
-    @When("^I fill the field with credentials from user \"([^\"]*)\"$")
-    public void fillTheFieldWithCredentialsFromUser(String userName) {
-        user.setUserName(userName);
+        /**
+         * This method fills in the user data to be able to log in.
+         *
+         * @param userName is string
+         */
+    @When("^I fill the field with credentials from user \"(.*)\"$")
+    public void fillTheFieldWithCredentialsFromUser(final String userName) {
         loginPage = new LoginPage();
         loginPage.login(userName);
-    }
-
-    /**
-     * This method checks the user login with a text in the window.
-     */
-    @Then("I verify the user name will be shown on the top bar")
-    public void verifyTheUserNameTheWillBeShownOnTheTopBar() {
-        DashboardPage dashboardPage = new DashboardPage();
-        String actual = dashboardPage.getTextProfileDrownBtn();
-        String userName = user.getUserName();
-        String expected = CredentialsReader.getInstance().getUserName(userName).toUpperCase();
-        Assert.assertEquals(actual, expected);
+        user.setUserName(userName);
     }
 }
