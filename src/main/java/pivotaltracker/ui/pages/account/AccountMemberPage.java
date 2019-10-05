@@ -15,7 +15,7 @@ package pivotaltracker.ui.pages.account;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pivotaltracker.BasePage;
+
 
 /**
  * AccountMemberPage class.
@@ -23,7 +23,7 @@ import pivotaltracker.BasePage;
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountMemberPage extends BasePage {
+public class AccountMemberPage extends AccountBasePage {
     @FindBy(className = "card tabular_data")
     private WebElement accountHeader;
 

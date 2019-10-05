@@ -3,16 +3,6 @@
 #    Given I go to the Login Page
 #    When I fill the field with credentials from user "Regular User1"
 #
-#  @CreateStory @deleteAccount
-#  Scenario: Create a new account in Pivotal Tracker
-#  When I go to the Account Page
-#    And I create a new account "New Account"
-#  Then I should see the new Account Page
-#  When I go to the Account Page of Pivotal Tracker
-#  Then I should see the new account in list of Accounts page
-#  When I go to the Dashboard Page
-#  Then I should see the new account in the Project Creation popup
-#
 #  @CreateStory
 #  Scenario: Delete a story and recover those in Pivotal Tracker
 #    When I go to the Project Page

@@ -16,7 +16,7 @@ import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pivotaltracker.BasePage;
+import pivotaltracker.ui.components.AccountMenu;
 import pivotaltracker.ui.pages.user.AccountPage;
 
 /**
@@ -25,7 +25,7 @@ import pivotaltracker.ui.pages.user.AccountPage;
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountSettingsPage extends BasePage {
+public class AccountSettingsPage extends AccountBasePage {
     @FindBy(className = "settings")
     private WebElement settingsAccountForm;
 
@@ -44,6 +44,7 @@ public class AccountSettingsPage extends BasePage {
     @FindBy(css = "div[class='save_changes'] input")
     private WebElement saveBtn;
 
+
     /**
      * Waits until page object is loaded.
      */
@@ -55,18 +56,9 @@ public class AccountSettingsPage extends BasePage {
     /**
      * Click delete option.
      */
-    private void clickDeleteOption() {
+    public void clickDeleteOption() {
         deleteLbl.click();
         driver.switchTo().alert().accept();
-    }
-    /**
-     * Gets account page then accept delete.
-     *
-     * @return account page
-     */
-    public AccountPage deleteAccount() {
-        clickDeleteOption();
-        return new AccountPage();
     }
 
     /**
@@ -74,8 +66,9 @@ public class AccountSettingsPage extends BasePage {
      *
      * @param accountName of type String.
      */
-    public void setNameAccount(final String accountName) {
+    public void setAccountName(final String accountName) {
         DriverMethods.setText(accountNameTxt, accountName);
+        clickSaveAccountBtn();
     }
 
     /**
@@ -90,7 +83,7 @@ public class AccountSettingsPage extends BasePage {
     /**
      * Account save button.
      */
-    private void clickCreateAccountBtn() {
+    private void clickSaveAccountBtn() {
         saveBtn.click();
     }
 
