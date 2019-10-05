@@ -21,10 +21,13 @@ public class StoryAPI {
         requestManagerAbstract = FactoryRequest.getRequest("GET");
         requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT + "/" + ProjectObject.getIdProject() + "/" + "stories");
         response = requestManagerAbstract.makeRequest();
-        String json = response.jsonPath().get("$").toString();
+        response.jsonPath().get("$").toString();
+        String json = response.asString();
         response.prettyPrint();
-        Gson gson = new Gson();
-        StoryObject storyObject = gson.fromJson(json, StoryObject.class);
-        System.out.println(storyObject.toString() + " HOLAAA");
+        String[] storyO = json.split(",");
+        System.out.println(storyO[0] + " / / " + storyO[1] + " / / " + storyO[2]);
+//        Gson gson = new Gson();
+//        StoryObject storyObject = gson.fromJson(json, StoryObject.class);
+//        System.out.println(storyObject.toString() + " HOLAAA");
     }
 }

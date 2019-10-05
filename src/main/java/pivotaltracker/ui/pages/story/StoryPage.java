@@ -99,9 +99,6 @@ public class StoryPage extends BasePage {
      *
      */
     public void clickBacklogMenuBtn() {
-        System.out.println(getIdProject());
-        System.out.println(addIdAddStoryBtn());
-        System.out.println(backlogFormFocus());
         backlogFocusForm();
         driver.findElement(By.xpath(addIdAddStoryBtn())).click();
     }
