@@ -30,6 +30,7 @@ public class LoginSteps {
     private LoginPage loginPage;
     private User user;
     private Context context;
+<<<<<<< HEAD
     /**
      * Constructor of account steps sending the context.
      *
@@ -38,6 +39,15 @@ public class LoginSteps {
     public LoginSteps(final Context context) {
         this.context = context;
         this.user = context.getUser();
+=======
+
+    /**
+     * Constructor class.
+     */
+    private LoginSteps(Context context) {
+        this.context = context;
+        user = context.getUser();
+>>>>>>> develop
     }
 
     /**
@@ -45,7 +55,11 @@ public class LoginSteps {
      *
      * @param page for navigate.
      */
+<<<<<<< HEAD
     @Given("^I go to the (.*) Page$")
+=======
+    @Given("I go to the (.*) Page")
+>>>>>>> develop
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
@@ -55,8 +69,14 @@ public class LoginSteps {
      *
      * @param userName is string
      */
+<<<<<<< HEAD
     @When("^I fill the field with credentials from user \"(.*)\"$")
     public void fillTheFieldWithCredentialsFromUser(final String userName) {
+=======
+    @When("^I fill the field with credentials from user \"([^\"]*)\"$")
+    public void fillTheFieldWithCredentialsFromUser(String userName) {
+        user.setUserName(userName);
+>>>>>>> develop
         loginPage = new LoginPage();
         loginPage.login(userName);
         user.setUserName(userName);
