@@ -7,16 +7,20 @@ package pivotaltracker;
  * @version 1.0
  */
 public class ProjectObject {
-    private int idProject;
+    private static int idProject;
     private int storyPoints;
     private String projectName;
+
+    public ProjectObject(){
+        idProject = 0;
+    }
 
     /**
      * Gets id project.
      *
      * @return idProject
      */
-    public int getIdProject() {
+    public static int getIdProject() {
         System.out.println(idProject + " id project");
         return idProject;
     }
@@ -27,6 +31,7 @@ public class ProjectObject {
      * @param idProject
      */
     public void setIdProject(int idProject) {
+        System.out.println(idProject+ " alsjf;lajf;l");
         this.idProject = idProject;
     }
 

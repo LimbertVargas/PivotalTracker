@@ -21,14 +21,13 @@ public class StorySteps {
     public StorySteps(Context context) {
         this.context = context;
         story = context.getStory();
-        projectObject = new ProjectObject();
     }
 
     @And("I create a story on Backlog with following characteristics")
     public void iCreateAStoryOnPanelWithFollowingCharacteristics(final Map<String, String> bodyFields) {
         String endpoint = "/n/projects";
-        System.out.println(((projectObject.getIdProject()) + " ####@#@#@##@$%!#@$%@$#^%"));
-        PageTransporter.navigatePageThroughId(endpoint, projectObject.getIdProject());
+        System.out.println(((ProjectObject.getIdProject()) + " ####@#@#@##@$%!#@$%@$#^%"));
+        PageTransporter.navigatePageThroughId(endpoint, ProjectObject.getIdProject());
         String storyName = bodyFields.get("Story name");
         context = new Context();
         story.setStoryName(storyName);

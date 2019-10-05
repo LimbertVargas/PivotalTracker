@@ -22,13 +22,13 @@ public class ProjectAPI {
      * This method post a project from API.
      */
     public void postProject() {
-        projectObject = new ProjectObject();
         requestManagerAbstract = FactoryRequest.getRequest("POST");
         requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT);
         String data = "{\"name\":\"Project02\"}";
         requestManagerAbstract.setData(data);
         response = requestManagerAbstract.makeRequest();
-        int id =Integer.parseInt(response.jsonPath().get("id").toString());
+        int id = response.jsonPath().get("id");
+        projectObject = new ProjectObject();
         projectObject.setIdProject(id);
     }
 }
