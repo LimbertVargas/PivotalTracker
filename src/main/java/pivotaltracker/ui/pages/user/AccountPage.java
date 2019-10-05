@@ -10,13 +10,14 @@
  * with Jala Foundation.
  */
 
-package pivotaltracker.ui.pages.account;
+package pivotaltracker.ui.pages.user;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
+import pivotaltracker.ui.pages.account.CreateAccountPopup;
 
 /**
  * AccountPage class.
@@ -72,10 +73,10 @@ public class AccountPage extends BasePage {
     /**
      * Checks name in account List.
      *
-     * @param name of account string.
+     * @param nameAccount of account string.
      * @return boolean.
      */
-    public boolean isDisplayedNewAccount(final String name) {
-        return driver.findElement(By.xpath(String.format(NAME_ACCOUNT, name))).isDisplayed();
+    public String isDisplayedNewAccount(final String nameAccount) {
+        return driver.findElement(By.xpath(String.format(NAME_ACCOUNT, nameAccount))).getText();
     }
 }

@@ -10,11 +10,10 @@
  * with Jala Foundation.
  */
 
-package hook;
+package hooks;
 
 import cucumber.api.java.Before;
 import pivotaltracker.api.ProjectAPI;
-import pivotaltracker.ui.pages.workspace.DashboardWorkspacePage;
 
 /**
  * ProjectHooks class.
@@ -23,17 +22,7 @@ import pivotaltracker.ui.pages.workspace.DashboardWorkspacePage;
  * @version 1.0
  */
 public class ProjectHooks {
-    private DashboardWorkspacePage dashboardPage;
     private ProjectAPI projectAPI;
-
-    /**
-     * This method create a project through UI.
-     */
-//    @Before("@CreateProject")
-//    public void createProject() {
-//        dashboardPage = new DashboardPage();
-//        dashboardPage.createProject("Project01");
-//    }
 
     /**
      * This method create a project through API.

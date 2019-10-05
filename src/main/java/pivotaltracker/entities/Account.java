@@ -19,10 +19,30 @@ package pivotaltracker.entities;
  * @version 1.0
  */
 public class Account {
+    private int id;
     private String nameAccount;
     private String roleMember;
     private String nameMember;
+    private String urlAccount;
     private boolean isProjectCreator;
+
+    /**
+     * Gets the id of the account.
+     *
+     * @return id as string.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets id of account.
+     *
+     * @param id for the account.
+     */
+    public void setId(final int id) {
+        this.id = id;
+    }
 
     /**
      * Gets the name of the account.
@@ -95,4 +115,5 @@ public class Account {
     public void setProjectCreator(boolean projectCreator) {
         isProjectCreator = projectCreator;
     }
+
 }

@@ -22,12 +22,14 @@ public class Context {
 
     private Account account;
     private Workspace workspace;
+    private User user;
 
     /**
      * Context for creation of the constructor.
      */
     public Context() {
         this.account = new Account();
+        this.user = new User();
     }
 
     /**
@@ -39,7 +41,21 @@ public class Context {
         return account;
     }
 
+    /**
+     * Returns the workspace of context.
+     *
+     * @return workspace.
+     */
     public Workspace getWorkspace() {
         return workspace;
+    }
+
+    /**
+     * Returns the user of context.
+     *
+     * @return user.
+     */
+    public User getUser() {
+        return user;
     }
 }

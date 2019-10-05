@@ -1,5 +1,5 @@
 /*
- * @(#) AccountNavBar.java Copyright (c) 2019 Jala Foundation.
+ * @(#) UserNavBar.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -16,29 +16,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
-import pivotaltracker.ui.pages.account.AccountPage;
-import pivotaltracker.ui.pages.account.NotificationsPage;
-import pivotaltracker.ui.pages.account.ProfilePage;
+import pivotaltracker.ui.pages.user.AccountPage;
+import pivotaltracker.ui.pages.user.NotificationsPage;
+import pivotaltracker.ui.pages.user.ProfilePage;
 
 /**
- * AccountNavBar class.
+ * UserNavBar class.
  *
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountNavBar extends BasePage {
+public class UserNavBar extends BasePage {
     @FindBy(className = "user_management_header")
     private WebElement accountsBar;
 
-    @FindBy(className = SELECTED_TAB)
-    private WebElement accountTabs;
+    @FindBy(xpath = "//a[text()='accounts']")
+    private WebElement accountTabOption;
 
-    private static final String SELECTED_TAB = "//div[@class='sections'] //a[contains(text(),'%s')]";
-    private static final String ACCOUNT = "accounts";
-    private static final String PROFILE = "profile";
-    private static final String NOTIFICATION = "notifications";
-    private AccountPage accountPage;
-    private ProfilePage profilePage;
+    @FindBy(xpath = "//a[text()='profile']")
+    private WebElement profileTabOption;
+
+    @FindBy(xpath = "//a[text()='notifications']")
+    private WebElement notificationTabOption;
 
     /**
      * Waits until page object is loaded.
@@ -50,12 +49,23 @@ public class AccountNavBar extends BasePage {
 
     /**
      * Clicks in account menu nameTab.
-     *
-     * @param nameTab is for navigate to tabs.
      */
-    private void clickTabOption(final String nameTab) {
-        String.format(SELECTED_TAB, nameTab);
-        accountTabs.click();
+    private void clickAccountTabOption() {
+        accountTabOption.click();
+    }
+
+    /**
+     * Clicks in profile menu nameTab.
+     */
+    private void clickProfileTabOption() {
+        profileTabOption.click();
+    }
+
+    /**
+     * Clicks in notification menu nameTab.
+     */
+    private void clickNotificationTabOption() {
+        notificationTabOption.click();
     }
 
     /**
@@ -64,7 +74,7 @@ public class AccountNavBar extends BasePage {
      * @return new account Page.
      */
     public AccountPage goToAccountPage() {
-        clickTabOption(ACCOUNT);
+        clickAccountTabOption();
         return new AccountPage();
     }
 
@@ -74,7 +84,7 @@ public class AccountNavBar extends BasePage {
      * @return new profile Page.
      */
     public ProfilePage goToProfilePage() {
-        clickTabOption(PROFILE);
+        clickProfileTabOption();
         return new ProfilePage();
     }
 
@@ -84,7 +94,7 @@ public class AccountNavBar extends BasePage {
      * @return new notification Page.
      */
     public NotificationsPage goToNotificationsPage() {
-        clickTabOption(NOTIFICATION);
+        clickNotificationTabOption();
         return new NotificationsPage();
     }
 }

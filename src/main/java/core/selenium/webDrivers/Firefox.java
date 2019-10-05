@@ -9,10 +9,8 @@
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
  */
-
 package core.selenium.webdrivers;
 
-import core.selenium.webDrivers.Chrome;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;

@@ -1,5 +1,5 @@
 /*
- * @(#) ProfilePage.java Copyright (c) 2019 Jala Foundation.
+ * @(#) NotificationsPage.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -10,7 +10,7 @@
  * with Jala Foundation.
  */
 
-package pivotaltracker.ui.pages.account;
+package pivotaltracker.ui.pages.user;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,20 +18,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
 
 /**
- * ProfilePage class.
+ * NotificationsPage class.
  *
  * @author Cristian Lujan
  * @version 1.0
  */
-public class ProfilePage extends BasePage {
-    @FindBy(id = "general")
-    private WebElement profileForm;
+public class NotificationsPage extends BasePage {
+    @FindBy(className = "in_app_form")
+    private WebElement notificationsForm;
 
     /**
      * Waits until page object is loaded.
      */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(profileForm));
+        wait.until(ExpectedConditions.visibilityOf(notificationsForm));
     }
 }

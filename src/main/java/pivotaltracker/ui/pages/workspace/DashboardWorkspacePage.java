@@ -56,13 +56,6 @@ public class DashboardWorkspacePage extends BasePage {
     }
 
     /**
-     * This method verifies the access to a workspace tab.
-     */
-    private void accessWorkspaceTab() {
-        workspaceTab.click();
-    }
-
-    /**
      * This method verifies to access to workspace button.
      */
     private void clickWorkspaceBtn() {
