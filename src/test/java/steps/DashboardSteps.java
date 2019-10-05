@@ -21,10 +21,8 @@ import pivotaltracker.ui.pages.workspace.WorkspacePopup;
  */
 public class DashboardSteps {
     private DashboardWorkspacePage dashboardWorkspacePage;
-
     private Logger logs = Log.getInstance().getLog();
     private Workspace workspace;
-    private Context context;
     private WorkspacePopup workspacePopup;
     private WorkspacePage workspacePage;
     private DashboardWorkspacePage dashboard;
@@ -43,10 +41,12 @@ public class DashboardSteps {
         workspacePage = workspacePopup.createNewWorkspace(nameWorkspace);
     }
 
-    //cambiar titulo de metodo
+    /**
+     * This method check the created workspace in dashboard page.
+     */
     @Then("I should see the workspace in Dashboard Page.")
-    public void iShouldSeeTheWorkspaceInDashboardPage(final String nameWorkspace) {
+    public void VerifyThatIShouldSeeTheWorkspaceInDashboardPage(final String nameWorkspace) {
         dashboard = new DashboardWorkspacePage();
-        Assert.assertEquals(dashboard.IsDisplayedWorkspaceInTheList(nameWorkspace),workspace.getNameWorkspace());
+        Assert.assertEquals(dashboard.IsDisplayedWorkspaceInTheList(nameWorkspace), workspace.getNameWorkspace());
     }
 }

@@ -22,6 +22,7 @@ import pivotaltracker.PageTransporter;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.LoginPage;
+import pivotaltracker.ui.pages.workspace.DashboardWorkspacePage;
 
 /**
  * LoginSteps class.
@@ -60,9 +61,9 @@ public class LoginSteps {
      * This method checks the user login with a text in the window.
      */
     @Then("I verify the user name will be shown on the top bar")
-    public void verifyTheUserNameTheWillBeShownOnTheTopBar() {
-        DashboardPage dashboardPage = new DashboardPage();
-        String actual = dashboardPage.getTextProfileDrownBtn();
+    public void verifyTheUserNameTheWillBeShownOnTheTopBar(String nameWorkspace) {
+        DashboardWorkspacePage dashboardPage = new DashboardWorkspacePage();
+        Boolean actual = dashboardPage.IsDisplayedWorkspaceInTheList(nameWorkspace);
         String userName = user.getUserName();
         String expected = CredentialsReader.getInstance().getUserName(userName).toUpperCase();
         Assert.assertEquals(actual, expected);

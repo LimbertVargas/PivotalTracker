@@ -23,7 +23,8 @@ public class WorkspacePopup extends BasePage {
     @FindBy(className = "zWDds__Button pvXpn__Button--positive")
     private WebElement createWorkspaceBtn;
 
-    //necsito para el cancel
+    @FindBy(className = "zWDds__Button CMa1J__Button--open")
+    private WebElement cancelWorkspaceBtn;
 
     /**
      * Waits until page object is loaded.
@@ -60,5 +61,12 @@ public class WorkspacePopup extends BasePage {
      */
     private void clickCreateWorkspaceBtn() {
         createWorkspaceBtn.click();
+    }
+
+    /**
+     * Workspace cancel button.
+     */
+    private void clickCancelWorkspaceBtn() {
+        cancelWorkspaceBtn.click();
     }
 }

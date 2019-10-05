@@ -27,14 +27,24 @@ public class DashboardWorkspacePage extends BasePage {
 
     private final String LIST_WORKSPACE = "//a[@class='WorkspaceTile__name'] [text()='nameWorkspace']";
 
+    /**
+     * Waits until page object is loaded
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(DashboardForm));
     }
 
+    /**
+     * This method is in charge of find a workspaces for lists.
+     *
+     * @param nameWorkspace is the name of the Workspace created.
+     * @return the comparision of workspace's name.
+     */
     public Boolean IsDisplayedWorkspaceInTheList(final String nameWorkspace) {
         return driver.findElement(By.xpath(LIST_WORKSPACE.replace("nameWorkspace",nameWorkspace))).isDisplayed();
     }
+
     /**
      * This method verifies the access to a project tab.
      */

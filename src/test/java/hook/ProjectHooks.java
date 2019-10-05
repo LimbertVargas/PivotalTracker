@@ -14,6 +14,7 @@ package hook;
 
 import cucumber.api.java.Before;
 import pivotaltracker.api.ProjectAPI;
+import pivotaltracker.ui.pages.workspace.DashboardWorkspacePage;
 
 /**
  * ProjectHooks class.
@@ -22,17 +23,17 @@ import pivotaltracker.api.ProjectAPI;
  * @version 1.0
  */
 public class ProjectHooks {
-    private DashboardPage dashboardPage;
+    private DashboardWorkspacePage dashboardPage;
     private ProjectAPI projectAPI;
 
     /**
      * This method create a project through UI.
      */
-    @Before("@CreateProject")
-    public void createProject() {
-        dashboardPage = new DashboardPage();
-        dashboardPage.createProject("Project01");
-    }
+//    @Before("@CreateProject")
+//    public void createProject() {
+//        dashboardPage = new DashboardPage();
+//        dashboardPage.createProject("Project01");
+//    }
 
     /**
      * This method create a project through API.

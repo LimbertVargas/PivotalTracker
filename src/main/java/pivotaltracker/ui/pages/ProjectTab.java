@@ -2,6 +2,7 @@ package pivotaltracker.ui.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
 
 /**
@@ -28,6 +29,14 @@ public class ProjectTab extends BasePage {
 
     @FindBy(css = "[class='tc-account-selector__option-account-name']")
     private WebElement optionAccountNameComboBox;
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    protected void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(createProjectForm));
+    }
 
     /**
      * Opens the form for creates project.
@@ -63,10 +72,5 @@ public class ProjectTab extends BasePage {
      */
     private void createProjectBtn() {
         createProjectBtn.click();
-    }
-
-    @Override
-    protected void waitUntilPageObjectIsLoaded() {
-
     }
 }

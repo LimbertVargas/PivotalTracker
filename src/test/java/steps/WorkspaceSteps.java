@@ -7,7 +7,6 @@ import org.testng.Assert;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.Workspace;
 import pivotaltracker.ui.pages.workspace.WorkspacePage;
-import pivotaltracker.ui.pages.workspace.WorkspaceTrackerPage;
 
 /**
  * WorkspaceSteps class
@@ -38,6 +37,4 @@ public class WorkspaceSteps {
     public void verifyTheWorkspaceCreatedIsInWorkspacePage() {
         Assert.assertEquals(workspacePage.getNameWorkspace(),workspace.getNameWorkspace());
     }
-
-    //hacer lo mismo de aqui en dashboard steps
 }

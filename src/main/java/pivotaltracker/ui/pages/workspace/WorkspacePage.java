@@ -26,6 +26,11 @@ public class WorkspacePage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(workspaceForm));
     }
 
+    /**
+     * This method is in charge of get a workspace name.
+     *
+     * @return the workspace name.
+     */
     public String getNameWorkspace() {
         return nameWorkspaceLbl.getText();
     }
