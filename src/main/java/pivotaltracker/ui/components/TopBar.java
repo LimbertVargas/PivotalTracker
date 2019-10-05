@@ -27,10 +27,10 @@ public class TopBar extends BasePage {
     @FindBy(id = "header_wrapper")
     private WebElement topBarHeader;
 
-    @FindBy(css = "div [aria-label='Profile Dropdown']")
+    @FindBy(css = "div button[aria-label='Profile Dropdown']")
     private WebElement profileBtn;
 
-    @FindBy(css = "button[data-aid=\"ProfileDropdown__signout\"]")
+    @FindBy(css = "button[data-aid='ProfileDropdown__signout']")
     private WebElement singOutBtn;
 
     @FindBy(linkText = "Help")

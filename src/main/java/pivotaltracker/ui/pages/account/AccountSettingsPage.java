@@ -38,6 +38,9 @@ public class AccountSettingsPage extends BasePage {
     @FindBy(xpath = "//h4[text()='ID']/following-sibling::div")
     private WebElement accountIdTxt;
 
+    @FindBy(className = "account_name")
+    private WebElement accountNameLbl;
+
     @FindBy(css = "div[class='save_changes'] input")
     private WebElement saveBtn;
 
@@ -89,5 +92,14 @@ public class AccountSettingsPage extends BasePage {
      */
     private void clickCreateAccountBtn() {
         saveBtn.click();
+    }
+
+    /**
+     * Get name in account settings.
+     *
+     * @return account name in String
+     */
+    public String getNameAccount() {
+        return accountNameLbl.getText();
     }
 }

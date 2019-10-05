@@ -39,20 +39,29 @@ public class LoginPage extends BasePage {
     @FindBy(css = "input[class='app_signin_action_button']")
     private WebElement nextLoginBtn;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(loginForm));
     }
 
-    private void setUserName(final String userName) {
-        DriverMethods.setText(userNameTxtBox, userName);
+    /**
+     * Click on login button.
+     */
+    private void clickLogin() {
+        nextLoginBtn.click();
     }
 
     /**
-     * Click login btn.
+     * Sets credentials user.
+     *
+     * @param element - Element where will write the credentials.
+     * @param user    - Text for the credentials.
      */
-    private void clickLoginBtn() {
-        nextLoginBtn.click();
+    private void setCredential(final WebElement element, final String user) {
+        DriverMethods.setText(element, user);
     }
 
     /**
@@ -60,12 +69,12 @@ public class LoginPage extends BasePage {
      *
      * @param user - User from where obtains the credentials.
      */
-    public void setCredentials(final String user) {
-        String userName = CredentialsReader.getInstance().getUserName(user);
+    public void login(final String user) {
+        String username = CredentialsReader.getInstance().getUserName(user);
         String password = CredentialsReader.getInstance().getUserPassword(user);
-        setUserName(userName);
-        clickLoginBtn();
-        DriverMethods.setText(passwordTxtBox, password);
-        clickLoginBtn();
+        setCredential(userNameTxtBox, username);
+        clickLogin();
+        setCredential(passwordTxtBox, password);
+        clickLogin();
     }
 }

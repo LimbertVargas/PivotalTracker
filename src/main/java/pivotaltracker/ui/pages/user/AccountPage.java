@@ -73,10 +73,10 @@ public class AccountPage extends BasePage {
     /**
      * Checks name in account List.
      *
-     * @param name of account string.
+     * @param nameAccount of account string.
      * @return boolean.
      */
-    public boolean isDisplayedNewAccount(final String name) {
-        return driver.findElement(By.xpath(String.format(NAME_ACCOUNT, name))).isDisplayed();
+    public String isDisplayedNewAccount(final String nameAccount) {
+        return driver.findElement(By.xpath(String.format(NAME_ACCOUNT, nameAccount))).getText();
     }
 }

@@ -27,9 +27,7 @@ import pivotaltracker.entities.Context;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.components.TopBar;
 import pivotaltracker.ui.pages.LoginPage;
-import pivotaltracker.ui.pages.account.AccountPlansPage;
 import pivotaltracker.ui.pages.account.AccountSettingsPage;
-import pivotaltracker.ui.pages.user.AccountPage;
 
 /**
  * Hooks class.
@@ -40,15 +38,15 @@ import pivotaltracker.ui.pages.user.AccountPage;
 public class Hooks {
     private Logger logs = Log.getInstance().getLog();
     private WebDriver webDriver;
-    private AccountPage accountPage;
     private Context context;
     private Account account;
-    private AccountPlansPage accountPlansPage;
     private AccountSettingsPage accountSettingsPage;
     private TopBar topBar;
 
     /**
-     * Constructor of class.
+     * constructor for the class.
+     *
+     * @param context init the context.
      */
     public Hooks(final Context context) {
         this.context = context;
@@ -82,7 +80,6 @@ public class Hooks {
     public void deleteAccount() {
         int accountId = account.getId();
         PageTransporter.navigatePageById(Permalink.ACCOUNT_PAGE, accountId, Permalink.ACCOUNT_SETTINGS_PAGE);
-//        System.out.println("url :::: " + PageTransporter.navigatePageByIdString(Permalink.ACCOUNT_PAGE, accountId, Permalink.ACCOUNT_SETTINGS_PAGE));
         accountSettingsPage = new AccountSettingsPage();
         accountSettingsPage.deleteAccount();
         logs.info("The Account is deleting");

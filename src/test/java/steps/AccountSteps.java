@@ -24,7 +24,6 @@ import pivotaltracker.ui.pages.user.AccountPage;
 import pivotaltracker.ui.pages.account.AccountPlansPage;
 import pivotaltracker.ui.pages.account.CreateAccountPopup;
 
-import static org.testng.Assert.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 
 /**
@@ -47,7 +46,7 @@ public class AccountSteps {
      *
      * @param context init the context.
      */
-    public AccountSteps(Context context) {
+    public AccountSteps(final Context context) {
         this.context = context;
         this.account = context.getAccount();
     }
@@ -70,31 +69,39 @@ public class AccountSteps {
     /**
      * verify name of account in accounts plans page.
      */
-    @Then("I should see the new Account Page")
+    @Then("I should see the new account in Account Plans Page")
     public void verifyTheNewAccountPage() {
         logs.info("The Account Page is tested if it owns to the account created");
         assertEquals(accountPlansPage.getAccountMenu().getNameAccount(), account.getNameAccount());
     }
 
+    /**
+     * verify name of account in account page.
+     */
     @Then("I should see the new account in list of Accounts page")
     public void displayTheNewAccountInTheAccountsPage() {
         logs.info("The Account Page is tested if show in the account page");
-        assertTrue(accountPage.isDisplayedNewAccount(account.getNameAccount()),"the account Name not displayed");
+        assertEquals(accountPage.isDisplayedNewAccount(account.getNameAccount()),
+                account.getNameAccount().toUpperCase());
     }
 
+    /**
+     * Update  a new account sending the information.
+     *
+     * @param nameAccount of type string.
+     */
     @And("I update the account Name with {string}")
-    public void updateTheAccountNameWith(String nameAccount) {
-//        accountSettingsPage = new AccountSettingsPage();
+    public void updateTheAccountNameWith(final String nameAccount) {
         logs.info("Update the name of " + account.getNameAccount() + " to: " + nameAccount);
-        account.setNameAccount(nameAccount);
-        logs.info("Navigate to the Settings page of the Account");
         accountSettingsPage.setNameAccount(nameAccount);
+        account.setNameAccount(nameAccount);
     }
 
+    /**
+     * verify name of account in accounts settings page.
+     */
     @Then("I should see the new name in account settings page")
-    public void verifyTheNewNameInAccountSettingsPage() {
-        logs.info("Verify the account " + account.getNameAccount() + " exists in the Account List");
-        boolean existAccount = accountPage.isDisplayedNewAccount(account.getNameAccount());
-        assertTrue(existAccount,"Don't exist the account in the Account Page");
+    public void displayTheNewNameInAccountSettingsPage() {
+        assertEquals(accountSettingsPage.getNameAccount(), account.getNameAccount());
     }
 }

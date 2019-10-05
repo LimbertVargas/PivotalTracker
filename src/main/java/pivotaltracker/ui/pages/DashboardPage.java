@@ -12,8 +12,11 @@
 
 package pivotaltracker.ui.pages;
 
+import core.utils.DriverMethods;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
 
 /**
@@ -32,9 +35,12 @@ public class DashboardPage extends BasePage {
     @FindBy(id = "create-project-button")
     private WebElement createProjectBtn;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-
+        wait.until(ExpectedConditions.visibilityOf(dashboardForm));
     }
 
     /**
@@ -46,9 +52,17 @@ public class DashboardPage extends BasePage {
         return profileBtn.getText();
     }
 
-//    public CreateProjectPopup clickCreateProjectBtn() {
-//        Logs.getInstance().getLog().info("Click to the Button Create Project in the Dashboard Page");
-//        createProjectBtn.click();
-//        return new CreateProjectPopup();
-//    }
+
+    /**
+     * Does click on create project.
+     */
+    private void createProjectBtn() {
+        createProjectBtn.click();
+    }
+
+
+    public CreateProjectPopup clickCreateProjectBtn() {
+        createProjectBtn();
+        return new CreateProjectPopup();
+    }
 }

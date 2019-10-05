@@ -12,8 +12,6 @@
 
 package pivotaltracker.ui.pages.account;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import pivotaltracker.BasePage;
 import pivotaltracker.ui.components.AccountMenu;
 
@@ -42,6 +40,4 @@ public abstract class AccountBasePage extends BasePage {
     public AccountMenu getAccountMenu() {
         return accountMenu;
     }
-
-
 }

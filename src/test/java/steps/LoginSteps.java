@@ -12,16 +12,12 @@
 
 package steps;
 
-import org.testng.Assert;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
-import pivotaltracker.ui.pages.DashboardPage;
 import pivotaltracker.ui.pages.LoginPage;
-import core.utils.CredentialsReader;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 /**
@@ -32,15 +28,14 @@ import cucumber.api.java.en.When;
  */
 public class LoginSteps {
     private LoginPage loginPage;
-    private DashboardPage dashboardPage;
     private User user;
-    Context context;
+    private Context context;
     /**
      * Constructor of account steps sending the context.
      *
      * @param context init the context.
      */
-    public LoginSteps(Context context) {
+    public LoginSteps(final Context context) {
         this.context = context;
         this.user = context.getUser();
     }
@@ -58,24 +53,13 @@ public class LoginSteps {
     /**
      * This method fills in the user data to be able to log in.
      *
-     * @param userName
+     * @param userName is string
      */
-    @When("^I fill the field with credentials from user \"([^\"]*)\"$")
-    public void fillTheFieldWithCredentialsFromUser(String userName) {
+    @When("^I fill the field with credentials from user \"(.*)\"$")
+    public void fillTheFieldWithCredentialsFromUser(final String userName) {
         loginPage = new LoginPage();
-        loginPage.setCredentials(userName);
+        loginPage.login(userName);
         user.setUserName(userName);
     }
 
-    /**
-     * This method checks the user login with a text in the window.
-     */
-    @Then("I verify the user name will be shown on the top bar")
-    public void verifyTheUserNameTheWillBeShownOnTheTopBar() {
-        dashboardPage = new DashboardPage();
-        String actual = dashboardPage.getTextProfileDrownBtn().toLowerCase();
-        String userName = user.getUserName();
-        String expected = CredentialsReader.getInstance().getUserName(userName);
-        Assert.assertEquals(actual, expected);
-    }
 }

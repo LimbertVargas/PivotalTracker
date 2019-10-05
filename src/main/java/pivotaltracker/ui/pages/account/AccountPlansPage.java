@@ -59,17 +59,26 @@ public class AccountPlansPage extends BasePage {
         return accountMenu;
     }
 
+    /**
+     * Get url setting of account.
+     *
+     * @return string of url account
+     */
     public String getUrlAccount() {
         return driver.findElement(By.xpath(URL_SETTINGS)).getAttribute("href");
     }
 
+    /**
+     * Get id from url account setting.
+     *
+     * @return id of type int.
+     */
     public int getId() {
         String idResult = getUrlAccount()
                 .replace(ConfigFileReader.getInstance().getBaseUrl(), "")
                 .replace(Permalink.ACCOUNT_PAGE, "")
                 .replace(Permalink.ACCOUNT_SETTINGS_PAGE, "")
                 .replaceAll("/", "");
-        System.out.println("id...... :" + idResult);
         return Integer.valueOf(idResult);
     }
 }

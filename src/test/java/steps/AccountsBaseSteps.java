@@ -1,5 +1,5 @@
 /*
- * @(#) AccountsBaseStep.java Copyright (c) 2019 Jala Foundation.
+ * @(#) AccountsBaseSteps.java Copyright (c) 2019 Jala Foundation.
  * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
  * All rights reserved.
  *
@@ -17,12 +17,12 @@ import pivotaltracker.ui.pages.account.AccountBasePage;
 import pivotaltracker.ui.pages.account.AccountSettingsPage;
 
 /**
- * AccountsBaseStep class.
+ * AccountsBaseSteps class.
  *
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountsBaseStep {
+public class AccountsBaseSteps {
     private AccountBasePage accountBasePage;
     private AccountSettingsPage accountSettingsPage;
 

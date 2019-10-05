@@ -79,6 +79,4 @@ public class AccountMemberPage extends BasePage {
     private void checkProjectCreatorChk() {
         projectCreatorChk.click();
     }
-
-
 }
