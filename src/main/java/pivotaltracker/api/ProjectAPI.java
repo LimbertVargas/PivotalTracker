@@ -31,4 +31,15 @@ public class ProjectAPI {
         projectObject = new ProjectObject();
         projectObject.setIdProject(id);
     }
+
+    /**
+     * Deletes a project created throught API.
+     */
+    public void deleteProject() {
+        requestManagerAbstract = FactoryRequest.getRequest("DELETE");
+        requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT + "/" + ProjectObject.getIdProject());
+        response = requestManagerAbstract.makeRequest();
+        response.jsonPath().get("$");
+        response.prettyPrint();
+    }
 }
