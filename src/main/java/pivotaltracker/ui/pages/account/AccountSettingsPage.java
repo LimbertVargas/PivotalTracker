@@ -27,7 +27,7 @@ public class AccountSettingsPage extends AccountBasePage {
     @FindBy(className = "settings")
     private WebElement settingsAccountForm;
 
-    @FindBy(xpath = "//a[@data-method='delete']")
+    @FindBy(css = "div[class='description'] a[data-method='delete']")
     private WebElement deleteLbl;
 
     @FindBy(id = "account_name")
