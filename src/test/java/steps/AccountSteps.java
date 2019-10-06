@@ -116,6 +116,6 @@ public class AccountSteps {
         logs.info("Navigate to the Membership Page");
         accountMemberPage = accountPlansPage.getAccountMenu().goToAccountMemberPage();
         logs.info("It is added a member into the account with permission of Project Creator");
-//        accountMemberPage.addAccountMember(email, role, true);
+        accountMemberPage.addAccountMember(email, role, true);
     }
 }
