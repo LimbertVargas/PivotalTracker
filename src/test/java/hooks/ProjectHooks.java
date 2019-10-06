@@ -15,6 +15,7 @@ package hooks;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import pivotaltracker.api.ProjectAPI;
+import pivotaltracker.api.StoryAPI;
 
 /**
  * ProjectHooks class.
@@ -24,15 +25,18 @@ import pivotaltracker.api.ProjectAPI;
  */
 public class ProjectHooks {
     private ProjectAPI projectAPI;
+    private StoryAPI storyAPI;
 
     /**
      * This method create a project through API.
      */
-    @Before("@CreateProjectAPI")
+    @Before(value = "@CreateProjectAPI", order = 0)
     public void postProject() {
         projectAPI = new ProjectAPI();
         projectAPI.postProject();
     }
+
+
 
     /**
      * This method delete a project

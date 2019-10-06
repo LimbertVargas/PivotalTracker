@@ -30,6 +30,17 @@ public class StoryAPI {
         storyObject = gson.fromJson(storyObjectJson, StoryObject.class);
     }
 
+    /**
+     * This method gets a story data.
+     */
+    public void postStories() {
+        requestManagerAbstract = FactoryRequest.getRequest("POST");
+        requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT + "/" + ProjectObject.getIdProject() + "/" + "stories");
+        String data = "{\"name\":\"Exhaust ports are ray shielded\"}";
+        requestManagerAbstract.setData(data);
+        response = requestManagerAbstract.makeRequest();
+    }
+
     public static StoryObject getStoryObject() {
         return storyObject;
     }

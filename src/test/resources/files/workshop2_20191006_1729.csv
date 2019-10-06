@@ -1,0 +1,23 @@
+Id,Title,Labels,Iteration,Iteration Start,Iteration End,Type,Estimate,Current State,Created at,Accepted at,Deadline,Requested By,Description,URL,Owned By,Comment,Comment
+164517310, existing started story,"label one, label two",1,"Feb 18, 2019","Feb 24, 2019",feature,1,accepted,"Feb 18, 2019","Feb 18, 2019",,John Salazar Pinto,this will update story 100,https://www.pivotaltracker.com/story/show/164517310,
+164517311,Schedule Reports,"",1,"Feb 18, 2019","Feb 24, 2019",feature,2,accepted,"Feb 18, 2019","Feb 18, 2019",,John Salazar Pinto,As user I would like to be able to schedule reports to be calculated weekly,https://www.pivotaltracker.com/story/show/164517311,
+164517312,MySQL Error deployed while looking for a DB ,"",1,"Feb 18, 2019","Feb 24, 2019",bug,,accepted,"Feb 18, 2019","Feb 20, 2019",,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517312,
+164517313,Add level to the logs,"",1,"Feb 18, 2019","Feb 24, 2019",chore,,accepted,"Feb 18, 2019","Feb 22, 2019",,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517313,
+164517318,Unable to connect to the report,"",31,"Sep 16, 2019","Sep 22, 2019",bug,,accepted,"Feb 18, 2019","Sep 17, 2019",,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517318,
+164517314,Add paginations for tables,"",31,"Sep 16, 2019","Sep 22, 2019",feature,0,accepted,"Feb 18, 2019","Sep 17, 2019",,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517314,John Salazar Pinto,"missing feature (John Salazar Pinto - Sep 17, 2019)"
+164517315,MySQL status displays Offline all the time,"",33,"Sep 30, 2019","Oct 6, 2019",bug,,rejected,"Feb 18, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517315,,"Not working (Lisandro Montano -October 18, 2018) (Unknown - Mar 9, 2019)"
+164517316,Improve Performance while loading images,"",33,"Sep 30, 2019","Oct 6, 2019",feature,2,finished,"Feb 18, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517316,
+164517317,Get email once logged to the page,"",33,"Sep 30, 2019","Oct 6, 2019",feature,2,started,"Feb 18, 2019",,,John Salazar Pinto,As a user I would like to connect to get an email once I login to the page,https://www.pivotaltracker.com/story/show/164517317,
+164517992,prueba32,"",33,"Sep 30, 2019","Oct 6, 2019",release,,unstarted,"Mar 9, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517992,
+164517995,bug32,"",33,"Sep 30, 2019","Oct 6, 2019",bug,,delivered,"Mar 9, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517995,John Salazar Pinto
+164517998,chore32,"",33,"Sep 30, 2019","Oct 6, 2019",chore,,unstarted,"Mar 9, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517998,
+164517319,Update config file to UTC 0,"",33,"Sep 30, 2019","Oct 6, 2019",chore,,unstarted,"Feb 18, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517319,
+164517320,First Milestone,"",33,"Sep 30, 2019","Oct 6, 2019",release,,unstarted,"Feb 18, 2019",,"Feb 22, 2019",John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517320,
+164517321,Importa data from Excel,"",33,"Sep 30, 2019","Oct 6, 2019",feature,,unstarted,"Feb 18, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517321,
+164517323,Export data to Excel,"",33,"Sep 30, 2019","Oct 6, 2019",feature,3,unstarted,"Feb 18, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517323,
+164517325,Move all options to  a Left Bar Menu,"",33,"Sep 30, 2019","Oct 6, 2019",feature,3,unstarted,"Feb 18, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517325,
+164517328,Fix typo on the year,"",,,,bug,,unscheduled,"Feb 18, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517328,
+164517331,Update EULA,"",,,,feature,,unscheduled,"Feb 18, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517331,
+164517333,Regression,"",,,,feature,,unscheduled,"Feb 18, 2019",,,John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517333,
+164517338,BETA I,"",,,,release,,unscheduled,"Feb 18, 2019",,"Mar 11, 2019",John Salazar Pinto,,https://www.pivotaltracker.com/story/show/164517338,
+164517341,new story,label one,,,,feature,,unscheduled,"Feb 18, 2019",,,John Salazar Pinto,this will create a new story in the icebox,https://www.pivotaltracker.com/story/show/164517341,,"comment1 (Unknown - Mar 17, 2017)","comment2 (Unknown - Mar 17, 2017)"
