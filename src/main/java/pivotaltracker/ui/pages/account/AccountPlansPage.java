@@ -17,9 +17,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pivotaltracker.BasePage;
 import pivotaltracker.ui.Permalink;
-import pivotaltracker.ui.components.AccountMenu;
 
 /**
  * AccountPlansPage class.
@@ -27,13 +25,12 @@ import pivotaltracker.ui.components.AccountMenu;
  * @author Cristian Lujan
  * @version 1.0
  */
-public class AccountPlansPage extends BasePage {
+public class AccountPlansPage extends AccountBasePage {
 
     @FindBy(className = "accounts_plans_page-wrapper")
     private WebElement accountPlansForm;
 
     private static final String URL_SETTINGS = "//a[@class='button'][text()='Settings']";
-    private AccountMenu accountMenu;
 
     /**
      * Waits until page object is loaded.
@@ -41,22 +38,6 @@ public class AccountPlansPage extends BasePage {
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(accountPlansForm));
-    }
-
-    /**
-     * Constructor.
-     */
-    public AccountPlansPage() {
-        this.accountMenu = new AccountMenu();
-    }
-
-    /**
-     * Gets of account menu.
-     *
-     * @return new account menu.
-     */
-    public AccountMenu getAccountMenu() {
-        return accountMenu;
     }
 
     /**

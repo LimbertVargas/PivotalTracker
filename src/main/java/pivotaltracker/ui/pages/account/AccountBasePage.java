@@ -30,6 +30,7 @@ public abstract class AccountBasePage extends BasePage {
     public AccountBasePage() {
         super();
         accountMenu = new AccountMenu();
+        waitUntilPageObjectIsLoaded();
     }
 
     /**
