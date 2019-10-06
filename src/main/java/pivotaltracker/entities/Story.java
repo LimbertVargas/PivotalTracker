@@ -13,43 +13,93 @@ public class Story {
     private String storyType;
     private String label;
 
+    /**
+     * Gets story name.
+     *
+     * @return storyName
+     */
     public String getStoryName() {
         return storyName;
     }
 
-    public void setStoryName(String storyName) {
+    /**
+     * Sets story name.
+     *
+     * @param storyName - Story name.
+     */
+    public void setStoryName(final String storyName) {
         this.storyName = storyName;
     }
 
+    /**
+     * Gets storyid.
+     *
+     * @return id
+     */
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
+    /**
+     * Sets id.
+     *
+     * @param id - Story id.
+     */
+    public void setId(final int id) {
         this.id = id;
     }
 
+    /**
+     * Gets point estimate.
+     *
+     * @return estimate
+     */
     public int getEstimate() {
         return estimate;
     }
 
-    public void setEstimate(int estimate) {
+    /**
+     * Sets point estimate.
+     *
+     * @param estimate - Point estimate.
+     */
+    public void setEstimate(final int estimate) {
         this.estimate = estimate;
     }
 
+    /**
+     * Gets story type.
+     *
+     * @return storyType
+     */
     public String getStoryType() {
         return storyType;
     }
 
-    public void setStoryType(String storyType) {
+    /**
+     * Sets story type.
+     *
+     * @param storyType - Stroy type.
+     */
+    public void setStoryType(final String storyType) {
         this.storyType = storyType;
     }
 
+    /**
+     * Gets label.
+     *
+     * @return label
+     */
     public String getLabel() {
         return label;
     }
 
-    public void setLabel(String label) {
+    /**
+     * Sets label.
+     *
+     * @param label - Story label.
+     */
+    public void setLabel(final String label) {
         this.label = label;
     }
 }

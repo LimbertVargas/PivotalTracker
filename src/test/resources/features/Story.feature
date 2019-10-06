@@ -6,7 +6,7 @@ Feature: Manage stories
 
   @CreateProjectAPI @DeleteProjectAPI
   Scenario: complete flow of a story of Pivotal Tracker
-#    When I go to the Story Page
+    When I go to the Story page
     And I create a story on Backlog with following characteristics
       | Story name | Metadata |
       | Story Type | feature  |

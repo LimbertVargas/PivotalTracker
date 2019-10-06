@@ -14,6 +14,7 @@ package steps;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.testng.Assert;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.ProjectObject;
@@ -45,6 +46,12 @@ public class StorySteps {
         story = context.getStory();
     }
 
+    @When("I go to the Story page")
+    public void iGoToTheStoryPage() {
+        String endpoint = "/n/projects";
+        PageTransporter.navigatePageThroughId(endpoint, ProjectObject.getIdProject());
+    }
+
     /**
      * Steps for create story.
      *
@@ -52,8 +59,6 @@ public class StorySteps {
      */
     @And("I create a story on Backlog with following characteristics")
     public void iCreateAStoryOnPanelWithFollowingCharacteristics(final Map<String, String> bodyFields) {
-        String endpoint = "/n/projects";
-        PageTransporter.navigatePageThroughId(endpoint, ProjectObject.getIdProject());
         String storyName = bodyFields.get("Story name");
         String storyType = bodyFields.get("Story Type");
         String storyEstimate = bodyFields.get("Points");
