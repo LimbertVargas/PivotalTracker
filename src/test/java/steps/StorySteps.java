@@ -86,8 +86,10 @@ public class StorySteps {
     public void iShouldSeeTheStoryOnAcceptedStoriesOnCurrentIterationPanel() {
         StoryAPI storyAPI = new StoryAPI();
         storyAPI.getStories();
-        Assert.assertEquals(StoryAPI.getStoryObject().getName(), context.getStory().getStoryName());
-        Assert.assertEquals(StoryAPI.getStoryObject().getEstimate(), context.getStory().getEstimate());
+        System.out.println(context.getStoryObject().getName() + "asdf");
+        System.out.println(context.getStoryObject().getEstimate() + "fdsasfdsd");
+        Assert.assertEquals(context.getStoryObject().getName(), context.getStory().getStoryName());
+        Assert.assertEquals(context.getStoryObject().getEstimate(), context.getStory().getEstimate());
         Assert.assertEquals(storyPage.getStoryName(), context.getStory().getStoryName());
         Assert.assertEquals(storyPage.getLabelTxt(), context.getStory().getLabel());
     }

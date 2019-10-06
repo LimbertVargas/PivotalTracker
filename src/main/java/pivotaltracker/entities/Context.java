@@ -12,6 +12,8 @@
 
 package pivotaltracker.entities;
 
+import pivotaltracker.StoryObject;
+
 /**
  * Context class.
  *
@@ -24,6 +26,7 @@ public class Context {
     private Project project;
     private Story story;
     private User user;
+    private StoryObject storyObject;
 
     /**
      * Context for creation of the constructor.
@@ -69,5 +72,13 @@ public class Context {
      */
     public User getUser() {
         return user;
+    }
+
+    public StoryObject getStoryObject() {
+        return storyObject;
+    }
+
+    public void setStoryObject(StoryObject storyObject) {
+        this.storyObject = storyObject;
     }
 }

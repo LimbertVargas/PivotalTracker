@@ -22,10 +22,9 @@ public class StoryObject {
     private String kind;
     private int id;
     private int estimate;
-    private String storyType;
+    private String story_type;
     private String name;
-    private int projectId;
-
+    private int project_id;
 
     /**
      * Gets id.
@@ -75,19 +74,19 @@ public class StoryObject {
     /**
      * Gets story type
      *
-     * @return storyType
+     * @return story_type
      */
-    public String getStoryType() {
-        return storyType;
+    public String getStory_type() {
+        return story_type;
     }
 
     /**
      * Sets story type.
      *
-     * @param storyType - Story type.
+     * @param story_type - Story type.
      */
-    public void setStoryType(final String storyType) {
-        this.storyType = storyType;
+    public void setStory_type(final String story_type) {
+        this.story_type = story_type;
     }
 
     /**
@@ -111,18 +110,18 @@ public class StoryObject {
     /**
      * Gets project id.
      *
-     * @return projectId
+     * @return project_id
      */
-    public int getProjectId() {
-        return projectId;
+    public int getProject_id() {
+        return project_id;
     }
 
     /**
      * Sets project id.
      *
-     * @param projectId = Project id.
+     * @param project_id = Project id.
      */
-    public void setProjectId(final int projectId) {
-        this.projectId = projectId;
+    public void setProject_id(final int project_id) {
+        this.project_id = project_id;
     }
 }

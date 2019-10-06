@@ -6,6 +6,7 @@ import pivotaltracker.ProjectObject;
 import pivotaltracker.StoryObject;
 import pivotaltracker.api.request.FactoryRequest;
 import pivotaltracker.api.request.RequestManagerAbstract;
+import pivotaltracker.entities.Context;
 
 import static pivotaltracker.api.Endpoints.PROJECT_ENDPOINT;
 
@@ -14,6 +15,7 @@ public class StoryAPI {
     private Response response;
     private ProjectObject projectObject;
     private static StoryObject storyObject;
+    private Context context;
 
     /**
      * This method gets a story data.
@@ -28,6 +30,8 @@ public class StoryAPI {
         String storyObjectJson = storyO[0].substring(1) + "," + storyO[1] + "," + storyO[4] + "," + storyO[5] + "," + storyO[6] + "," + storyO[10] + "}";
         Gson gson = new Gson();
         storyObject = gson.fromJson(storyObjectJson, StoryObject.class);
+        context = new Context();
+        context.setStoryObject(storyObject);
     }
 
     /**
