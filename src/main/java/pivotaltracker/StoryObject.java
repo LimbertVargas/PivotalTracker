@@ -22,9 +22,9 @@ public class StoryObject {
     private String kind;
     private int id;
     private int estimate;
-    private String story_type;
+    private String storyType;
     private String name;
-    private int project_id;
+    private int projectId;
 
 
     /**
@@ -48,9 +48,9 @@ public class StoryObject {
     /**
      * Sets kind.
      *
-     * @param kind
+     * @param kind - Kind.
      */
-    public void setKind(String kind) {
+    public void setKind(final String kind) {
         this.kind = kind;
     }
 
@@ -66,9 +66,9 @@ public class StoryObject {
     /**
      * Sets estimate.
      *
-     * @param estimate
+     * @param estimate - Points estimate.
      */
-    public void setEstimate(int estimate) {
+    public void setEstimate(final int estimate) {
         this.estimate = estimate;
     }
 
@@ -77,17 +77,17 @@ public class StoryObject {
      *
      * @return storyType
      */
-    public String getStory_type() {
-        return story_type;
+    public String getStoryType() {
+        return storyType;
     }
 
     /**
      * Sets story type.
      *
-     * @param story_type
+     * @param storyType - Story type.
      */
-    public void setStory_type(String story_type) {
-        this.story_type = story_type;
+    public void setStoryType(final String storyType) {
+        this.storyType = storyType;
     }
 
     /**
@@ -102,9 +102,9 @@ public class StoryObject {
     /**
      * Sets story name.
      *
-     * @param name
+     * @param name - Story name.
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -113,16 +113,16 @@ public class StoryObject {
      *
      * @return projectId
      */
-    public int getProject_id() {
-        return project_id;
+    public int getProjectId() {
+        return projectId;
     }
 
     /**
      * Sets project id.
      *
-     * @param project_id
+     * @param projectId = Project id.
      */
-    public void setProject_id(int project_id) {
-        this.project_id = project_id;
+    public void setProjectId(final int projectId) {
+        this.projectId = projectId;
     }
 }

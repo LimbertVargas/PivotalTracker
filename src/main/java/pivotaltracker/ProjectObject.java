@@ -23,7 +23,7 @@ public class ProjectObject {
     private int storyPoints;
     private String projectName;
 
-    public ProjectObject(){
+    public ProjectObject() {
         idProject = 0;
     }
 
@@ -39,9 +39,9 @@ public class ProjectObject {
     /**
      * Sets id project.
      *
-     * @param idProject
+     * @param idProject - Project id.
      */
-    public void setIdProject(int idProject) {
+    public void setIdProject(final int idProject) {
         this.idProject = idProject;
     }
 
@@ -57,9 +57,9 @@ public class ProjectObject {
     /**
      * Sets story points.
      *
-     * @param storyPoints
+     * @param storyPoints - Story points.
      */
-    public void setStoryPoints(int storyPoints) {
+    public void setStoryPoints(final int storyPoints) {
         this.storyPoints = storyPoints;
     }
 
@@ -75,9 +75,9 @@ public class ProjectObject {
     /**
      * Sets project name.
      *
-     * @param projectName
+     * @param projectName - Project name.
      */
-    public void setProjectName(String projectName) {
+    public void setProjectName(final String projectName) {
         this.projectName = projectName;
     }
 }
