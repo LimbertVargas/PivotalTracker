@@ -13,7 +13,7 @@
 package steps;
 
 import cucumber.api.java.en.When;
-import pivotaltracker.ui.pages.account.AccountBasePage;
+import pivotaltracker.ui.pages.account.AccountMemberPage;
 import pivotaltracker.ui.pages.account.AccountPlansPage;
 import pivotaltracker.ui.pages.account.AccountSettingsPage;
 
@@ -26,6 +26,7 @@ import pivotaltracker.ui.pages.account.AccountSettingsPage;
 public class AccountsBaseSteps {
     private AccountSettingsPage accountSettingsPage;
     private AccountPlansPage accountPlansPage;
+    private AccountMemberPage accountMemberPage;
 
     /**
      * Opens page of selected in tab of account.
@@ -34,5 +35,11 @@ public class AccountsBaseSteps {
     public void goToTheAccountSettingsPage() {
         accountPlansPage = new AccountPlansPage();
         accountSettingsPage = accountPlansPage.getAccountMenu().goToAccountSettingsPage();
+    }
+
+    @When("I go to the Members tab inside Account page")
+    public void goToTheMembersTabInsideAccountPage() {
+        accountPlansPage = new AccountPlansPage();
+        accountMemberPage = accountPlansPage.getAccountMenu().goToAccountMemberPage();
     }
 }

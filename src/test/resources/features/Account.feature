@@ -31,11 +31,13 @@ Feature: Manage Account
   Scenario Outline: Add member to the account of Pivotal Tracker with permission of Project Creator
     When I go to the Account Page
       And I create a new account "New Account3"
+    Then I should see the new account in Account Plans Page
+    When I go to the Members tab inside Account page
       And I add a Member "<nameMember>", "<memberEmail>" to the account and assign "<role>" with permission of project creator
-    Then I should see message of confirmation "Updated member '<nameMember>'" in the Member Page of Account
-    And I should see the member that was added in the table of the Member Page of Account
+    Then I should see message of confirmation "Invitation to <nameMember> sent" in the Member Page of Account
+      And I should see the member that was added in the table of the Member Page of Account
     Examples:
-      |nameMember |memberEmail	           |role   |
-      |User1      |usuario.test1@gmail.com |Member |
-      |User2      |usuario.test2@gmail.com |Admin  |
-      |User3      |usuario.test2@gmail.com |Owner  |
+      |nameMember   |memberEmail	         |role   |
+      |user member  |user.test1@hotmail.com  |Member |
+      |owner member |owner.test2@gmail.com   |Admin  |
+      |admin member |admin.test3@outlook.com |Owner  |

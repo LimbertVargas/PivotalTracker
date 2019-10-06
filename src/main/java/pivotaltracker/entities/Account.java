@@ -23,7 +23,7 @@ public class Account {
     private String nameAccount;
     private String roleMember;
     private String nameMember;
-    private String urlAccount;
+    private String email;
     private boolean isProjectCreator;
 
     /**
@@ -116,4 +116,30 @@ public class Account {
         isProjectCreator = projectCreator;
     }
 
+    /**
+     * Gets the email of the member account.
+     *
+     * @return email of member.
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets email of member account.
+     *
+     * @param email for the member account.
+     */
+    public void setEmail(final String email) {
+        this.email = email;
+    }
+
+    /**
+     * Gets the full information of the member account.
+     *
+     * @return information of member.
+     */
+    public String getFullInformationMember() {
+        return getNameMember().concat("|").concat("|").concat(getEmail());
+    }
 }
