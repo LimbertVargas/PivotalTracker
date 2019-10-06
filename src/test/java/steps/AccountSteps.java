@@ -24,7 +24,6 @@ import pivotaltracker.ui.pages.account.AccountSettingsPage;
 import pivotaltracker.ui.pages.user.AccountPage;
 import pivotaltracker.ui.pages.account.AccountPlansPage;
 import pivotaltracker.ui.pages.account.CreateAccountPopup;
-import static org.testng.Assert.assertTrue;
 
 /**
  * AccountSteps class.
@@ -108,7 +107,8 @@ public class AccountSteps {
     }
 
     @When("I add a Member {string}, {string} to the account and assign {string} with permission of project creator")
-    public void addAMemberToTheAccountWithPermissionOfProjectCreator(final String nameMember, final String email, final String role) {
+    public void addAMemberToTheAccountWithPermissionOfProjectCreator(final String nameMember,
+                                                                     final String email, final String role) {
         accountMemberPage = new AccountMemberPage();
         accountMemberPage.addAccountMember(nameMember, role);
         accountMemberPage.saveDatOfAccountMember(nameMember, email, true);

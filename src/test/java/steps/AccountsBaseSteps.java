@@ -13,7 +13,6 @@
 package steps;
 
 import cucumber.api.java.en.When;
-import pivotaltracker.ui.pages.account.AccountBasePage;
 import pivotaltracker.ui.pages.account.AccountMemberPage;
 import pivotaltracker.ui.pages.account.AccountPlansPage;
 import pivotaltracker.ui.pages.account.AccountSettingsPage;

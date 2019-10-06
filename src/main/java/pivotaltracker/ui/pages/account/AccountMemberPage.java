@@ -106,7 +106,7 @@ public class AccountMemberPage extends AccountBasePage {
      *
      * @param nameMember of type String.
      */
-    private void setNameMember(final String nameMember){
+    private void setNameMember(final String nameMember) {
         DriverMethods.setText(nameMemberTxtBox, nameMember);
     }
 
@@ -115,7 +115,7 @@ public class AccountMemberPage extends AccountBasePage {
      *
      * @param nameMember of type String.
      */
-    private void setFullNameMember(final String nameMember){
+    private void setFullNameMember(final String nameMember) {
         DriverMethods.setText(fullNameMemberTxtBox, nameMember);
     }
 
@@ -124,7 +124,7 @@ public class AccountMemberPage extends AccountBasePage {
      *
      * @param emailMember of type String.
      */
-    private void setEmailMember(final String emailMember){
+    private void setEmailMember(final String emailMember) {
         DriverMethods.setText(emailMemberTxtBox, emailMember);
     }
 
