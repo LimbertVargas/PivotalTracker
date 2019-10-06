@@ -12,10 +12,11 @@
 
 package pivotaltracker.ui.pages.account;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-
+import org.openqa.selenium.support.ui.Select;
 
 /**
  * AccountMemberPage class.
@@ -28,10 +29,13 @@ public class AccountMemberPage extends AccountBasePage {
     private WebElement accountHeader;
 
     @FindBy(id = "new_member_button")
-    private WebElement newMemberBtn;
+    private WebElement newAddMemberBtn;
 
     @FindBy(id = "members_for_lookup")
-    private WebElement memberForLookupTxt;
+    private WebElement nameMemberTxtBox;
+
+    @FindBy(id = "membership_account_role_none")
+    private WebElement accountRoleMemberCmbBox;
 
     @FindBy(id = "notice")
     private WebElement messageConfirmation;
@@ -51,19 +55,16 @@ public class AccountMemberPage extends AccountBasePage {
     @FindBy(id = "save_roles")
     private WebElement saveRoles;
 
-    @FindBy(xpath = "//div[@class='actions_overlay removable']")
-    private WebElement actionMemberForm;
-
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(actionMemberForm));
+        wait.until(ExpectedConditions.visibilityOf(accountHeader));
     }
 
     /**
      * Clicks in new member button.
      */
     private void clickNewMemberBtn() {
-        newMemberBtn.click();
+        newAddMemberBtn.click();
     }
 
     /**

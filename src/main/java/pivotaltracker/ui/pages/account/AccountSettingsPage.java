@@ -16,8 +16,6 @@ import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pivotaltracker.ui.components.AccountMenu;
-import pivotaltracker.ui.pages.user.AccountPage;
 
 /**
  * AccountSettingsPage class.
@@ -43,7 +41,6 @@ public class AccountSettingsPage extends AccountBasePage {
 
     @FindBy(css = "div[class='save_changes'] input")
     private WebElement saveBtn;
-
 
     /**
      * Waits until page object is loaded.

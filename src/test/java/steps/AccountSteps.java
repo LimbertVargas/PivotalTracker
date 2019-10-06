@@ -19,6 +19,7 @@ import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
 import pivotaltracker.entities.Account;
 import pivotaltracker.entities.Context;
+import pivotaltracker.ui.pages.account.AccountMemberPage;
 import pivotaltracker.ui.pages.account.AccountSettingsPage;
 import pivotaltracker.ui.pages.user.AccountPage;
 import pivotaltracker.ui.pages.account.AccountPlansPage;
@@ -40,6 +41,7 @@ public class AccountSteps {
     private CreateAccountPopup createAccountPopup;
     private AccountPlansPage accountPlansPage;
     private AccountSettingsPage accountSettingsPage;
+    private AccountMemberPage accountMemberPage;
 
     /**
      * Constructor of account steps sending the context.
@@ -104,5 +106,16 @@ public class AccountSteps {
     @Then("I should see the new name in account settings page")
     public void displayTheNewNameInAccountSettingsPage() {
         assertEquals(accountSettingsPage.getNameAccount(), account.getNameAccount());
+    }
+
+    @And("I add a Member {string}, {string} to the account and assign {string} with permission of project creator")
+    public void addAMemberToTheAccountWithPermissionOfProjectCreator(final String member, final String email, final String role) {
+        account.setNameMember(member);
+        account.setRoleMember(role);
+        account.setProjectCreator(true);
+        logs.info("Navigate to the Membership Page");
+        accountMemberPage = accountPlansPage.getAccountMenu().goToAccountMemberPage();
+        logs.info("It is added a member into the account with permission of Project Creator");
+        accountMemberPage.addAccountMember(email, role, true);
     }
 }
