@@ -53,6 +53,11 @@ public class Context {
         return project;
     }
 
+    /**
+     * Gets the story of context.
+     *
+     * @return story
+     */
     public Story getStory() {
         return story;
     }
