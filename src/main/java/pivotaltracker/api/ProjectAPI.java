@@ -25,7 +25,7 @@ public class ProjectAPI {
     public void postProject() {
         requestManagerAbstract = FactoryRequest.getRequest("POST");
         requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT);
-        String data = "{\"name\":\"Project1202\"}";
+        String data = "{\"name\":\"Project02\"}";
         requestManagerAbstract.setData(data);
         response = requestManagerAbstract.makeRequest();
         int id = response.jsonPath().get("id");
@@ -37,8 +37,6 @@ public class ProjectAPI {
      * Deletes a project created throught API.
      */
     public void deleteProject() {
-        StoryAPI storyAPI = new StoryAPI();
-        storyAPI.getStories();
         requestManagerAbstract = FactoryRequest.getRequest("DELETE");
         requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT + "/" + ProjectObject.getIdProject());
         response = requestManagerAbstract.makeRequest();

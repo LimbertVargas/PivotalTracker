@@ -13,6 +13,7 @@ public class StoryAPI {
     private RequestManagerAbstract requestManagerAbstract;
     private Response response;
     private ProjectObject projectObject;
+    private static StoryObject storyObject;
 
     /**
      * This method gets a story data.
@@ -23,11 +24,13 @@ public class StoryAPI {
         response = requestManagerAbstract.makeRequest();
         response.jsonPath().get("$").toString();
         String json = response.asString();
-        response.prettyPrint();
         String[] storyO = json.split(",");
-        System.out.println(storyO[0] + " / / " + storyO[1] + " / / " + storyO[2]);
-//        Gson gson = new Gson();
-//        StoryObject storyObject = gson.fromJson(json, StoryObject.class);
-//        System.out.println(storyObject.toString() + " HOLAAA");
+        String storyObjectJson = storyO[0].substring(1) + "," + storyO[1] + "," + storyO[4] + "," + storyO[5] + "," + storyO[6] + "," + storyO[10] + "}";
+        Gson gson = new Gson();
+        storyObject = gson.fromJson(storyObjectJson, StoryObject.class);
+    }
+
+    public static StoryObject getStoryObject() {
+        return storyObject;
     }
 }
