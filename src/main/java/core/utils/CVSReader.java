@@ -14,12 +14,11 @@ public class CVSReader {
         String cvsSplitBy = ",";
         String ids[] = new String[23];
         try {
-            int j =0;
+            int j = 0;
             br = new BufferedReader(new FileReader(csvFile));
             while ((line = br.readLine()) != null) {
                 String[] country = line.split(cvsSplitBy);
                 ids[j] = country[0];
-                System.out.println(ids[j]);
                 j++;
             }
         } catch (FileNotFoundException e) {
