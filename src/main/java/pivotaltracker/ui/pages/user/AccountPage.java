@@ -87,7 +87,7 @@ public class AccountPage extends BasePage {
         return driver.findElement(By.xpath(String.format(NAME_ACCOUNT, nameAccount))).getText();
     }
 
-    public boolean elementDisappear(final String nameAccount) {
-        return DriverMethods.isElementPresent(By.xpath(String.format(NAME_ACCOUNT, nameAccount)));
+    public List<WebElement> elementDisappear(final String nameAccount) {
+        return driver.findElements(By.xpath(String.format(NAME_ACCOUNT, nameAccount)));
     }
 }

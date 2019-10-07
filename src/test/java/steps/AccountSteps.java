@@ -149,6 +149,6 @@ public class AccountSteps {
 
     @And("I should see all of the accounts except the deleted account")
     public void verifyShouldSeeAllOfTheAccountsExceptTheDeletedAccount() {
-        Assert.assertFalse(accountPage.elementDisappear(account.getNameAccount()));
+        Assert.assertTrue(accountPage.elementDisappear(account.getNameAccount()).isEmpty());
     }
 }
