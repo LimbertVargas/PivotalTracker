@@ -1,5 +1,6 @@
 package steps;
 
+import core.utils.CVSReader;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -41,6 +42,8 @@ public class ImportExportProject {
 
     @Then("I should see the stories created")
     public void iShouldSeeTheStoriesCreated() {
-
+        CVSReader cvsReader;
+        cvsReader = new CVSReader();
+        Assert.assertEqualsNoOrder(importProjectPage.getList(),cvsReader.getIdsStory());
     }
 }

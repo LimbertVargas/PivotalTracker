@@ -24,7 +24,7 @@ public class ProjectAPI {
     public void postProject() {
         requestManagerAbstract = FactoryRequest.getRequest("POST");
         requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT);
-        String data = "{\"name\":\"Project02\"}";
+        String data = "{\"name\":\"Project0122\"}";
         requestManagerAbstract.setData(data);
         response = requestManagerAbstract.makeRequest();
         int id = response.jsonPath().get("id");

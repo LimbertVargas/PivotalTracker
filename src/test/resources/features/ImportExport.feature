@@ -4,7 +4,7 @@ Feature: Import export project
     Given I go to the Login Page
     When I fill the field with credentials from user "Regular User1"
 
-  @CreateProjectAPI @CreateStoryAPI
+  @CreateProjectAPI @DeleteProjectAPI
   Scenario: import story from CSV file  of Pivotal Tracker
     When I go to the Import Project page
     And I load the CSV File with stories

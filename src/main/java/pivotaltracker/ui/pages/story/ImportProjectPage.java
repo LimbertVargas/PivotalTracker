@@ -49,7 +49,7 @@ public class ImportProjectPage extends BasePage {
     }
 
     private void sendPath() {
-        DriverMethods.setText(chooseFileBtn, System.getProperty("user.dir") + "/" + "src/test/resources/files/workshop2_20191006_1729.csv");
+        DriverMethods.setText(chooseFileBtn, System.getProperty("user.dir") + "/" + "src/test/resources/files/test_20191006_1736.csv");
     }
 
     public void importFile() {
@@ -73,11 +73,12 @@ public class ImportProjectPage extends BasePage {
         return getMessageTxtPupUP();
     }
 
-
-    private String[] getList(String title) {
+    public String[] getList() {
         String[] a = new String[listWebElements.size()];
-        for (int i; i < listWebElements.size(); i++) {
+        System.out.println(listWebElements.size() + " element size");
+        for (int i = 0; i < listWebElements.size(); i++) {
             a[i] = listWebElements.get(i).getText();
+            System.out.printf(a[i] + " LIST");
         }
         return a;
     }
