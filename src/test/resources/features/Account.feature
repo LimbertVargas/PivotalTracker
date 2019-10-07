@@ -50,3 +50,10 @@ Feature: Manage Account
     And I delete the account that was created
     Then I should see a yellow message "New Account was successfully deleted." in Accounts Page
     And I should see all of the accounts except the deleted account
+
+  @deleteAccount
+#  Scenario Outline: Add member to the account of Pivotal Tracker without permission of Project Creator
+#    Given I create a new account "New Account" in Pivotal Tracker
+#    When I add a Member "<nameMember>", "<memberEmail>" to the account and assign a Account Role "<role>" without permission of project creator
+#    Then I should see message of confirmation "Updated member '<nameMember>'" in the Membership Page of Account
+#    And I should see the member that was added in the table of the Membership Page of Account
