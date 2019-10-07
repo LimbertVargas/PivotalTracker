@@ -46,4 +46,18 @@ public class ImportExportProject {
         cvsReader = new CVSReader();
         Assert.assertEqualsNoOrder(importProjectPage.getList(),cvsReader.getIdsStory());
     }
+
+    @When("I go to the Export Project page")
+    public void iGoToTheExportProjectPage() {
+        String endpoint = "/projects";
+        PageTransporter.navigatePageThroughId(endpoint, ProjectObject.getIdProject(), "export");
+    }
+
+    @And("I export the stories in a CSV File")
+    public void iExportTheStoriesInACSVFile() {
+    }
+
+    @Then("I should see the file in the folder download")
+    public void iShouldSeeTheFileInTheFolderDownload() {
+    }
 }

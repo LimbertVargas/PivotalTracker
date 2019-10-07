@@ -12,7 +12,7 @@ Feature: Import export project
     When I go to the Story page
     Then I should see the stories created
 
-#  Scenario: Export a story with a CSV file  of Pivotal Tracker
-#    When I go to the Export Project Page
-#    And I export the stories in a CSV File
-#    Then I should see the file in the folder download
+  Scenario: Export a story with a CSV file  of Pivotal Tracker
+    When I go to the Export Project page
+    And I export the stories in a CSV File
+    Then I should see the file in the folder download
