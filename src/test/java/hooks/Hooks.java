@@ -74,14 +74,14 @@ public class Hooks {
     }
 
     /**
-     * Method for delete a acoount.
+     * Method for delete a account.
      */
     @After("@deleteAccount")
     public void deleteAccount() {
         int accountId = account.getId();
         PageTransporter.navigatePageById(Permalink.ACCOUNT_PAGE, accountId, Permalink.ACCOUNT_SETTINGS_PAGE);
         accountSettingsPage = new AccountSettingsPage();
-        accountSettingsPage.deleteAccount();
+        accountSettingsPage.clickDeleteOption();
         logs.info("The Account is deleting");
     }
 
