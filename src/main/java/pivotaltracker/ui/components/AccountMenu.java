@@ -40,7 +40,7 @@ public class AccountMenu extends BasePage {
     @FindBy(xpath = "//a[text()='Projects']")
     private WebElement projectsTabOption;
 
-    @FindBy(xpath = "//a[text()='//a[text()='Account Members']']")
+    @FindBy(xpath = "//a[text()='Account Members']")
     private WebElement membersTabOption;
 
     /**

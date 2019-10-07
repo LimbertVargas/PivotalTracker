@@ -13,18 +13,17 @@
 package steps;
 
 import core.utils.Log;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
+import org.testng.Assert;
 import pivotaltracker.entities.Account;
 import pivotaltracker.entities.Context;
+import pivotaltracker.ui.pages.account.AccountMemberPage;
 import pivotaltracker.ui.pages.account.AccountSettingsPage;
 import pivotaltracker.ui.pages.user.AccountPage;
 import pivotaltracker.ui.pages.account.AccountPlansPage;
 import pivotaltracker.ui.pages.account.CreateAccountPopup;
-
-import static org.testng.AssertJUnit.assertEquals;
 
 /**
  * AccountSteps class.
@@ -40,6 +39,7 @@ public class AccountSteps {
     private CreateAccountPopup createAccountPopup;
     private AccountPlansPage accountPlansPage;
     private AccountSettingsPage accountSettingsPage;
+    private AccountMemberPage accountMemberPage;
 
     /**
      * Constructor of account steps sending the context.
@@ -72,7 +72,7 @@ public class AccountSteps {
     @Then("I should see the new account in Account Plans Page")
     public void verifyTheNewAccountPage() {
         logs.info("The Account Page is tested if it owns to the account created");
-        assertEquals(accountPlansPage.getAccountMenu().getNameAccount(), account.getNameAccount());
+        Assert.assertEquals(accountPlansPage.getAccountMenu().getNameAccount(), account.getNameAccount());
     }
 
     /**
@@ -81,7 +81,7 @@ public class AccountSteps {
     @Then("I should see the new account in list of Accounts page")
     public void displayTheNewAccountInTheAccountsPage() {
         logs.info("The Account Page is tested if show in the account page");
-        assertEquals(accountPage.isDisplayedNewAccount(account.getNameAccount()),
+        Assert.assertEquals(accountPage.isDisplayedNewAccount(account.getNameAccount()),
                 account.getNameAccount().toUpperCase());
     }
 
@@ -90,10 +90,11 @@ public class AccountSteps {
      *
      * @param nameAccount of type string.
      */
-    @And("I update the account Name with {string}")
+    @When("I update the account Name with {string}")
     public void updateTheAccountNameWith(final String nameAccount) {
         logs.info("Update the name of " + account.getNameAccount() + " to: " + nameAccount);
-        accountSettingsPage.setNameAccount(nameAccount);
+        accountSettingsPage = new AccountSettingsPage();
+        accountSettingsPage.setAccountName(nameAccount);
         account.setNameAccount(nameAccount);
     }
 
@@ -102,6 +103,33 @@ public class AccountSteps {
      */
     @Then("I should see the new name in account settings page")
     public void displayTheNewNameInAccountSettingsPage() {
-        assertEquals(accountSettingsPage.getNameAccount(), account.getNameAccount());
+        Assert.assertEquals(accountSettingsPage.getNameAccount(), account.getNameAccount());
+    }
+
+    @When("I add a Member {string}, {string} to the account and assign {string} with permission of project creator")
+    public void addAMemberToTheAccountWithPermissionOfProjectCreator(final String nameMember,
+                                                                     final String email, final String role) {
+        accountMemberPage = new AccountMemberPage();
+        accountMemberPage.addAccountMember(nameMember, role);
+        accountMemberPage.saveDatOfAccountMember(nameMember, email, true);
+        account.setNameMember(nameMember);
+        account.setEmail(email);
+        account.setRoleMember(role);
+        account.setProjectCreator(true);
+        logs.info("It is added a member into the account with permission of Project Creator");
+    }
+
+    @Then("I should see message of confirmation {string} in the Member Page of Account")
+    public void verifyMessageOfConfirmationInTheMemberPageOfAccount(final String message) {
+        logs.info("Verify if a message of confirmation that " + account.getNameMember() + "was added");
+        Assert.assertEquals(accountMemberPage.messageConfirmation(), message, "The message is not the correct");
+    }
+
+    @Then("I should see the member that was added in the table of the Member Page of Account")
+    public void verifyTheMemberThatWasAddedInTheTableOfTheMemberPageOfAccount() {
+        logs.info("Verify if " + account.getNameMember() + "was added to Membership Account");
+        Assert.assertEquals(accountMemberPage.getDataMemberInTheList(account.getNameMember(),
+                account.getEmail()), account.getFullInformationMember(),
+                "The member added is not correct, Member: " + account.getNameMember());
     }
 }
