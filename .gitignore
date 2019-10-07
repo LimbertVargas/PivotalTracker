@@ -27,9 +27,13 @@ target/
 
 # Gradle
 .gradle/*
+gradle/*
 *.iml/
 build/
 out/
+gradlew.bat
+gradlew
+
 
 #IntelliJ
 .idea/
