@@ -1,6 +1,6 @@
 package steps;
 
-import core.utils.CVSReader;
+import core.utils.CSVReader;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -31,7 +31,7 @@ public class ImportExportProject {
         PageTransporter.navigatePageThroughId(endpoint, ProjectObject.getIdProject(), "import");
     }
 
-    @And("I load the CSV File with stories")
+    @When("I load the CSV File with stories")
     public void iLoadTheCSVFileWithStories() {
         importProjectPage.importFile();
     }
@@ -42,11 +42,11 @@ public class ImportExportProject {
         Assert.assertTrue(importProjectPage.messageCorrectImport().contains(message));
     }
 
-    @Then("I should see the stories created")
-    public void iShouldSeeTheStoriesCreated() {
-        CVSReader cvsReader;
-        cvsReader = new CVSReader();
-        Assert.assertEqualsNoOrder(importProjectPage.getList(), cvsReader.getIdsStory());
+    @Then("I should see the stories created of the file {string}")
+    public void iShouldSeeTheStoriesCreatedOfTheFile(String file) {
+        CSVReader CSVReader;
+        CSVReader = new CSVReader();
+        Assert.assertEqualsNoOrder(importProjectPage.getList(), CSVReader.getNamesStory(file));
     }
 
     @When("I go to the Export Project page")
@@ -55,8 +55,9 @@ public class ImportExportProject {
         PageTransporter.navigatePageThroughId(endpoint, ProjectObject.getIdProject(), "export");
     }
 
-    @And("I export the stories in a CSV File")
+    @When("I export the stories in a CSV File")
     public void iExportTheStoriesInACSVFile() {
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir"));
         exportProjectPage.exportProject();
     }
 
