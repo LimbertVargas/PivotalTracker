@@ -75,10 +75,8 @@ public class ImportProjectPage extends BasePage {
 
     public String[] getList() {
         String[] a = new String[listWebElements.size()];
-        System.out.println(listWebElements.size() + " element size");
         for (int i = 0; i < listWebElements.size(); i++) {
             a[i] = listWebElements.get(i).getText();
-            System.out.printf(a[i] + " LIST");
         }
         return a;
     }

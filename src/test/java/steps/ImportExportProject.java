@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.ProjectObject;
+import pivotaltracker.ui.pages.story.ExportProjectPage;
 import pivotaltracker.ui.pages.story.ImportProjectPage;
 
 /**
@@ -17,10 +18,11 @@ import pivotaltracker.ui.pages.story.ImportProjectPage;
  */
 public class ImportExportProject {
     private ImportProjectPage importProjectPage;
+    private ExportProjectPage exportProjectPage;
 
     public ImportExportProject() {
         importProjectPage = new ImportProjectPage();
-
+        exportProjectPage = new ExportProjectPage();
     }
 
     @When("I go to the Import Project page")
@@ -44,7 +46,7 @@ public class ImportExportProject {
     public void iShouldSeeTheStoriesCreated() {
         CVSReader cvsReader;
         cvsReader = new CVSReader();
-        Assert.assertEqualsNoOrder(importProjectPage.getList(),cvsReader.getIdsStory());
+        Assert.assertEqualsNoOrder(importProjectPage.getList(), cvsReader.getIdsStory());
     }
 
     @When("I go to the Export Project page")
@@ -55,6 +57,7 @@ public class ImportExportProject {
 
     @And("I export the stories in a CSV File")
     public void iExportTheStoriesInACSVFile() {
+        exportProjectPage.exportProject();
     }
 
     @Then("I should see the file in the folder download")

@@ -12,6 +12,7 @@ Feature: Import export project
     When I go to the Story page
     Then I should see the stories created
 
+  @CreateProjectAPI @CreateStoryAPI
   Scenario: Export a story with a CSV file  of Pivotal Tracker
     When I go to the Export Project page
     And I export the stories in a CSV File
