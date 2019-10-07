@@ -16,6 +16,7 @@ import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pivotaltracker.ui.pages.user.AccountPage;
 
 /**
  * AccountSettingsPage class.
@@ -56,6 +57,16 @@ public class AccountSettingsPage extends AccountBasePage {
     public void clickDeleteOption() {
         deleteLbl.click();
         driver.switchTo().alert().accept();
+    }
+
+    /**
+     * Gets a account page.
+     *
+     * @return account page.
+     */
+    public AccountPage deleteAccount() {
+        clickDeleteOption();
+        return new AccountPage();
     }
 
     /**

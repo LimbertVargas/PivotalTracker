@@ -13,6 +13,7 @@
 package steps;
 
 import core.utils.Log;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
@@ -24,6 +25,8 @@ import pivotaltracker.ui.pages.account.AccountSettingsPage;
 import pivotaltracker.ui.pages.user.AccountPage;
 import pivotaltracker.ui.pages.account.AccountPlansPage;
 import pivotaltracker.ui.pages.account.CreateAccountPopup;
+
+import static org.testng.Assert.assertTrue;
 
 /**
  * AccountSteps class.
@@ -131,5 +134,21 @@ public class AccountSteps {
         Assert.assertEquals(accountMemberPage.getDataMemberInTheList(account.getNameMember(),
                 account.getEmail()), account.getFullInformationMember(),
                 "The member added is not correct, Member: " + account.getNameMember());
+    }
+
+    @And("I delete the account that was created")
+    public void deleteTheAccountThatWasCreated() {
+        accountSettingsPage = new AccountSettingsPage();
+        accountPage = accountSettingsPage.deleteAccount();
+    }
+
+    @Then("I should see a yellow message {string} in Accounts Page")
+    public void verifyShouldSeeAYellowMessageInAccountsPage(final String message) {
+        Assert.assertEquals(message, accountPage.getMessageDelete(), "The message is not the correct");
+    }
+
+    @And("I should see all of the accounts except the deleted account")
+    public void verifyShouldSeeAllOfTheAccountsExceptTheDeletedAccount() {
+        Assert.assertFalse(accountPage.elementDisappear(account.getNameAccount()));
     }
 }

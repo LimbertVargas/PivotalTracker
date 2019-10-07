@@ -19,6 +19,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
 /**
  * DriverMethods class.
  *
@@ -27,8 +28,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public final class DriverMethods {
 
-    protected WebDriverWait webDriverWait;
-    protected WebDriver webDriver;
+    private static WebDriverWait webDriverWait = WebDriverManager.getInstance().getWait();;
+    private static WebDriver webDriver;
+
     /**
      * Constructor class.
      */
@@ -52,7 +54,7 @@ public final class DriverMethods {
      * @param elementBy web element.
      * @return true or false
      */
-    private boolean isElementPresent(final By elementBy) {
+    public static boolean isElementPresent(final By elementBy) {
         webDriverWait = new WebDriverWait(webDriver, 1);
         boolean isDisplayed;
         try {
