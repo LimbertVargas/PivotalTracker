@@ -23,6 +23,9 @@ public class ProjectObject {
     private int storyPoints;
     private String projectName;
 
+    /**
+     * Constructor class.
+     */
     public ProjectObject() {
         idProject = 0;
     }

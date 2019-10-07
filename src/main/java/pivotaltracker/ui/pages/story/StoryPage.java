@@ -87,6 +87,11 @@ public class StoryPage extends BasePage {
         splitCurrentIterationAndBacklogMenu.click();
     }
 
+    /**
+     * Sets backlog story title.
+     *
+     * @param storyTitle - Story title
+     */
     public void createBacklogStory(final String storyTitle) {
         DriverMethods.setText(storyTitleTxtBox, storyTitle);
     }
@@ -102,12 +107,15 @@ public class StoryPage extends BasePage {
         return idProject[idProject.length - 1];
     }
 
+    /**
+     * Focus backlog form.
+     */
     private void backlogFocusForm() {
         driver.findElement(By.id(backlogFormFocus())).click();
     }
 
     /**
-     *
+     * Click on backlog menu button.
      */
     public void clickBacklogMenuBtn() {
         backlogFocusForm();

@@ -21,7 +21,6 @@ import pivotaltracker.StoryObject;
  * @version 1.0
  */
 public class Context {
-
     private Account account;
     private Project project;
     private Story story;
@@ -74,11 +73,21 @@ public class Context {
         return user;
     }
 
+    /**
+     * Gets storyObject.
+     *
+     * @return storyObject
+     */
     public StoryObject getStoryObject() {
         return storyObject;
     }
 
-    public void setStoryObject(StoryObject storyObject) {
+    /**
+     * Sets storyObject.
+     *
+     * @param storyObject - Story object.
+     */
+    public void setStoryObject(final StoryObject storyObject) {
         this.storyObject = storyObject;
     }
 }

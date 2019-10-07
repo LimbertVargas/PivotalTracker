@@ -1,3 +1,15 @@
+/*
+ * @(#) StoryAPI.java Copyright (c) 2019 Jala Foundation.
+ * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of
+ * Jala Foundation, ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jala Foundation.
+ */
+
 package pivotaltracker.api;
 
 import com.google.gson.Gson;
@@ -10,10 +22,15 @@ import pivotaltracker.entities.Context;
 
 import static pivotaltracker.api.Endpoints.PROJECT_ENDPOINT;
 
+/**
+ * StoryAPI class.
+ *
+ * @author John Salazar Pinto
+ * @version 1.0
+ */
 public class StoryAPI {
     private RequestManagerAbstract requestManagerAbstract;
     private Response response;
-    private ProjectObject projectObject;
     private static StoryObject storyObject;
     private Context context;
 
@@ -43,9 +60,5 @@ public class StoryAPI {
         String data = "{\"name\":\"Exhaust ports are ray shielded\"}";
         requestManagerAbstract.setData(data);
         response = requestManagerAbstract.makeRequest();
-    }
-
-    public static StoryObject getStoryObject() {
-        return storyObject;
     }
 }

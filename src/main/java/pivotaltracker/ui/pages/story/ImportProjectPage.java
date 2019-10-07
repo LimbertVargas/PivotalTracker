@@ -44,35 +44,69 @@ public class ImportProjectPage extends BasePage {
     protected void waitUntilPageObjectIsLoaded() {
     }
 
+    /**
+     * Click on import button.
+     */
     private void clickImportBtn() {
         importBtn.click();
     }
 
+    /**
+     * Sends path for upload file.
+     */
     private void sendPath() {
         DriverMethods.setText(chooseFileBtn, System.getProperty("user.dir") + "/" + "src/test/resources/files/test_20191006_1736.csv");
     }
 
+    /**
+     * Imports csv file.
+     */
     public void importFile() {
         sendPath();
         clickImportBtn();
     }
 
+    /**
+     * Gets confirmation message.
+     *
+     * @return message
+     */
     private String getMessageTxt() {
         return messagingTxt.getText();
     }
 
-    private String getMessageTxtPupUP() {
+    /**
+     * Gets message from popup.
+     *
+     * @return popup messasge
+     */
+    private String getMessageTxtPopUP() {
         return noticeMessage.getText();
     }
 
+    /**
+     * Gets message correct import from text.
+     *
+     * @return message import.
+     */
     public String messageCorrectImport() {
         return getMessageTxt();
     }
 
+    /**
+     * Gets message correct import from popup.
+     *
+     * @return message import popup
+     */
     public String messageCorrretImportPopUP() {
-        return getMessageTxtPupUP();
+        return getMessageTxtPopUP();
     }
 
+    /**
+     * Get array text from WebElements.
+     *
+     * @return list of text
+     */
     public String[] getList() {
         String[] a = new String[listWebElements.size()];
         for (int i = 0; i < listWebElements.size(); i++) {

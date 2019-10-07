@@ -25,7 +25,6 @@ import pivotaltracker.api.StoryAPI;
  */
 public class ProjectHooks {
     private ProjectAPI projectAPI;
-    private StoryAPI storyAPI;
 
     /**
      * This method create a project through API.
@@ -35,8 +34,6 @@ public class ProjectHooks {
         projectAPI = new ProjectAPI();
         projectAPI.postProject();
     }
-
-
 
     /**
      * This method delete a project
