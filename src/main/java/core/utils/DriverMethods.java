@@ -28,7 +28,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public final class DriverMethods {
 
-    private static WebDriverWait webDriverWait = WebDriverManager.getInstance().getWait();;
+    private static WebDriverWait webDriverWait = WebDriverManager.getInstance().getWait();
     private static WebDriver webDriver;
 
     /**
