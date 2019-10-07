@@ -13,6 +13,7 @@
 package pivotaltracker.ui.pages.story;
 
 import core.utils.DriverMethods;
+import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pivotaltracker.BasePage;
@@ -35,6 +36,9 @@ public class ImportProjectPage extends BasePage {
 
     @FindBy(id = "notice")
     private WebElement noticeMessage;
+
+    @FindBy(css = "[class='tracker_markup']")
+    private List<WebElement> listWebElements;
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -67,5 +71,14 @@ public class ImportProjectPage extends BasePage {
 
     public String messageCorrretImportPopUP() {
         return getMessageTxtPupUP();
+    }
+
+
+    private String[] getList(String title) {
+        String[] a = new String[listWebElements.size()];
+        for (int i; i < listWebElements.size(); i++) {
+            a[i] = listWebElements.get(i).getText();
+        }
+        return a;
     }
 }

@@ -2,7 +2,6 @@ package pivotaltracker.api;
 
 import io.restassured.response.Response;
 import pivotaltracker.ProjectObject;
-import pivotaltracker.StoryObject;
 import pivotaltracker.api.request.FactoryRequest;
 import pivotaltracker.api.request.RequestManagerAbstract;
 
@@ -25,7 +24,7 @@ public class ProjectAPI {
     public void postProject() {
         requestManagerAbstract = FactoryRequest.getRequest("POST");
         requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT);
-        String data = "{\"name\"=:\"Project02\"}";
+        String data = "{\"name\":\"Project02\"}";
         requestManagerAbstract.setData(data);
         response = requestManagerAbstract.makeRequest();
         int id = response.jsonPath().get("id");
