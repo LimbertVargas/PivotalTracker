@@ -40,7 +40,7 @@ public class Invitation {
      *
      * @param invites for the account.
      */
-    public void setInvites(Map<String, String> invites) {
+    public void setInvites(final Map<String, String> invites) {
         this.invites = invites;
     }
 }

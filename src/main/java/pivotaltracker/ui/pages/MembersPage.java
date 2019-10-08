@@ -14,6 +14,7 @@ package pivotaltracker.ui.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
 
 /**
@@ -48,6 +49,7 @@ public class MembersPage extends BasePage {
      */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(inviteButton));
     }
 
     /**
@@ -89,5 +91,12 @@ public class MembersPage extends BasePage {
      */
     public void clickRemoveButton() {
         removeButton.click();
+    }
+
+    /**
+     * Click on invite for project button web element.
+     */
+    public void clickInviteButton() {
+        inviteButton.click();
     }
 }

@@ -15,6 +15,7 @@ import static pivotaltracker.api.Endpoints.PROJECT_ENDPOINT;
 public class ProjectAPI {
     private RequestManagerAbstract requestManagerAbstract;
     private Response response;
+    private int id;
 
     /**
      * This method post a project from API.
@@ -25,5 +26,15 @@ public class ProjectAPI {
         String data = "{\"name\":\"Project0002\"}";
         requestManagerAbstract.setData(data);
         response = requestManagerAbstract.makeRequest();
+        id = response.jsonPath().get("id");
+    }
+
+    /**
+     * Return the created project ID.
+     *
+     * @return id - ID of the project.
+     */
+    public int getId() {
+        return id;
     }
 }

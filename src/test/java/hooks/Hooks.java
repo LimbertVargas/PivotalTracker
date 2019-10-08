@@ -96,4 +96,8 @@ public class Hooks {
         LoginPage loginPage = new LoginPage();
         logs.info("The Web Site log out");
     }
+
+    public Context getContext() {
+        return context;
+    }
 }
