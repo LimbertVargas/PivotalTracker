@@ -15,8 +15,10 @@ package steps;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.entities.Context;
+import pivotaltracker.entities.Invitation;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.InvitePopup;
 import pivotaltracker.ui.pages.MembersPage;
@@ -34,7 +36,7 @@ public class InviteSteps {
     private Context context;
     private MembersPage membersPage;
     private InvitePopup invitePopup;
-    private final int ID = 2402093;
+    private final int ID = 2402093; // This hardcode will be replaced with John's ProjectAPI with context manage.
 
     @When("I go to the invite Page of the project.")
     public void iGoToTheInvitePageOfTheProject() {
@@ -49,17 +51,18 @@ public class InviteSteps {
         invitePopup.fillInviteForm(mail);
     }
 
-    @When("the user sets the invitations type as viewer")
+    @When("the user sets the invitations type as member")
     public void theUserSetsTheInvitationsTypeAsViewer() {
-        invitePopup.
         invitePopup.clickInviteButton();
     }
 
-    @Then("the mails list should be displayed with Invitation pending")
+    @Then("the mail should be displayed with Invitation pending status")
     public void theMailsListShouldBeDisplayedWithInvitationPending() {
+        Assert.assertEquals(membersPage.getInvitedStatus().getText(), Invitation.PENDING_STATUS);
     }
 
-    @Then("the mails list should be displayed with Viewer tag")
+    @Then("the mail should be displayed with Member tag")
     public void theMailsListShouldBeDisplayedWithViewerTag() {
+        Assert.assertEquals(membersPage.getInvitedRole().getText(), Invitation.MEMBER);
     }
 }

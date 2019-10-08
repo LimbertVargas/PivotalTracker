@@ -21,9 +21,10 @@ import java.util.Map;
  * @version 1.0
  */
 public class Invitation {
-    private static final String VIEWER = "Viewer";
-    private static final String MEMBER = "Member";
-    private static final String OWNER = "Owner";
+    public static final String VIEWER = "Viewer";
+    public static final String MEMBER = "Member";
+    public static final String OWNER = "Owner";
+    public static final String PENDING_STATUS = "Invitation pending";
     private Map<String, String> invites;
 
     /**

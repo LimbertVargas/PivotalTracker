@@ -37,7 +37,7 @@ public class MembersPage extends BasePage {
     @FindBy(css = "li.MembershipItem--inactive div.MembershipItem__Role")
     private WebElement invitedRole;
 
-    @FindBy(css = "li.MembershipItem--inactive button.MembershipItem__Menu")
+    @FindBy(css = "li.MembershipItem--inactive button")
     private WebElement actionsButton;
 
     @FindBy(css = "button[data-aid=remove-from-project]")
@@ -98,5 +98,12 @@ public class MembersPage extends BasePage {
      */
     public void clickInviteButton() {
         inviteButton.click();
+    }
+
+    public void deleteInvitation() {
+        actionsButton.click();
+        wait.until(ExpectedConditions.visibilityOf(removeButton));
+        removeButton.click();
+        wait.until(ExpectedConditions.invisibilityOf(invitedMail));
     }
 }

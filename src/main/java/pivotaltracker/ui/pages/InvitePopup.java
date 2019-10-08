@@ -35,8 +35,12 @@ public class InvitePopup extends BasePage {
     @FindBy(id = "invite-search-results")
     private WebElement inviteResults;
 
-    @FindBy(id = "invite-search-results")
+    @FindBy(id = "button.SelectBox__button")
     private WebElement inviteRole;
+
+    @FindBy(id = "ul.SelectBox__options li:first-child")
+    private WebElement viewerRoleButton;
+
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -55,5 +59,11 @@ public class InvitePopup extends BasePage {
     public void clickInviteButton() {
         waitUntilPageObjectIsLoaded();
         inviteButton.click();
+    }
+
+    public void setRoles() {
+        inviteRole.click();
+        viewerRoleButton.click();
+        clickInviteButton();
     }
 }

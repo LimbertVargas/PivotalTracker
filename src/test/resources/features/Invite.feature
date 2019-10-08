@@ -4,9 +4,10 @@ Feature: Invite members to project.
     Given I go to the Login Page
     When I fill the field with credentials from user "Regular User1"
 
+  @deleteInvitation
   Scenario: Invite people as viewer to project from mail.
     When I go to the invite Page of the project.
       And the user insert the invited mail "userdemo1@gmail.com"
-      And the user sets the invitations type as viewer
-    Then the mails list should be displayed with Invitation pending
-    And the mails list should be displayed with Viewer tag
+    And the user sets the invitations type as member
+    Then the mail should be displayed with Invitation pending status
+    And the mail should be displayed with Member tag

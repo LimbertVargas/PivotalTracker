@@ -27,6 +27,7 @@ import pivotaltracker.entities.Context;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.components.TopBar;
 import pivotaltracker.ui.pages.LoginPage;
+import pivotaltracker.ui.pages.MembersPage;
 import pivotaltracker.ui.pages.account.AccountSettingsPage;
 
 /**
@@ -41,7 +42,9 @@ public class Hooks {
     private Context context;
     private Account account;
     private AccountSettingsPage accountSettingsPage;
+    private MembersPage membersPage;
     private TopBar topBar;
+    private final int ID = 2402093; // This hardcode will be replaced with John's ProjectAPI with context manage.
 
     /**
      * constructor for the class.
@@ -99,5 +102,15 @@ public class Hooks {
 
     public Context getContext() {
         return context;
+    }
+
+    /**
+     * Method for delete a Invitation.
+     */
+    @After("@deleteInvitation")
+    public void deleteInvitation() {
+        PageTransporter.navigatePageById("/projects", ID, Permalink.MEMBERSHIPS_PAGE);
+        membersPage = new MembersPage();
+        membersPage.deleteInvitation();
     }
 }
