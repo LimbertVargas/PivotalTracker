@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.ProjectObject;
+import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.story.ExportProjectPage;
 import pivotaltracker.ui.pages.story.ImportProjectPage;
 
@@ -27,13 +28,12 @@ public class ImportExportProject {
 
     @When("I go to the Import Project page")
     public void iGoToTheImportProjectPage() {
-        String endpoint = "/projects";
-        PageTransporter.navigatePageThroughId(endpoint, ProjectObject.getIdProject(), "import");
+        PageTransporter.navigatePageById(Permalink.PROJECT_PAGE, ProjectObject.getIdProject(), Permalink.PROJECT_IMPORT_PAGE);
     }
 
-    @When("I load the CSV File with stories")
-    public void iLoadTheCSVFileWithStories() {
-        importProjectPage.importFile();
+    @And("I load the CSV File {string} with stories")
+    public void iLoadTheCSVFileWithStories(String fileName) {
+        importProjectPage.importFile(fileName);
     }
 
     @Then("a message is shown indicated that the stories was (.*)")
@@ -51,8 +51,7 @@ public class ImportExportProject {
 
     @When("I go to the Export Project page")
     public void iGoToTheExportProjectPage() {
-        String endpoint = "/projects";
-        PageTransporter.navigatePageThroughId(endpoint, ProjectObject.getIdProject(), "export");
+        PageTransporter.navigatePageById(Permalink.PROJECT_PAGE, ProjectObject.getIdProject(), Permalink.PROJECT_EXPORT_PAGE);
     }
 
     @When("I export the stories in a CSV File")

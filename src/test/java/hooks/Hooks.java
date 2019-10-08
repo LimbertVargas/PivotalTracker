@@ -88,7 +88,7 @@ public class Hooks {
     /**
      * Method for logOut.
      */
-    @After("@logOut")
+    @After(value = "@logOut", order = 0)
     public void logOutWebSite() {
         topBar = new TopBar();
         topBar.logOut();

@@ -21,6 +21,7 @@ import pivotaltracker.ProjectObject;
 import pivotaltracker.api.StoryAPI;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.Story;
+import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.story.StoryPage;
 
 import java.util.Map;
@@ -48,8 +49,7 @@ public class StorySteps {
 
     @When("I go to the Story page")
     public void iGoToTheStoryPage() {
-        String endpoint = "/n/projects";
-        PageTransporter.navigatePageThroughId(endpoint, ProjectObject.getIdProject());
+        PageTransporter.navigatePageThroughId(Permalink.PROJECT_STORY_PAGE, ProjectObject.getIdProject());
     }
 
     /**
@@ -86,11 +86,11 @@ public class StorySteps {
     public void iShouldSeeTheStoryOnAcceptedStoriesOnCurrentIterationPanel() {
         StoryAPI storyAPI = new StoryAPI();
         storyAPI.getStories();
-        System.out.println(context.getStoryObject().getName() + "asdf");
-        System.out.println(context.getStoryObject().getEstimate() + "fdsasfdsd");
+        System.out.println(context.getStoryObject().getName() + " ggg");
+        System.out.println(context.getStory().getStoryName() + " SSS");
         Assert.assertEquals(context.getStoryObject().getName(), context.getStory().getStoryName());
         Assert.assertEquals(context.getStoryObject().getEstimate(), context.getStory().getEstimate());
-        Assert.assertEquals(storyPage.getStoryName(), context.getStory().getStoryName());
+        Assert.assertEquals(storyPage.getStoryTitleTxt(), context.getStory().getStoryName());
         Assert.assertEquals(storyPage.getLabelTxt(), context.getStory().getLabel());
     }
 }

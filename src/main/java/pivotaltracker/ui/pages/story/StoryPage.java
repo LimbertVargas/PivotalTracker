@@ -18,10 +18,16 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
 import pivotaltracker.entities.Context;
 
-
+/**
+ * StoryPage class.
+ *
+ * @author John Salazar Pinto
+ * @version 1.0
+ */
 public class StoryPage extends BasePage {
     private Context context;
     private Integer idProject;
@@ -63,10 +69,13 @@ public class StoryPage extends BasePage {
     private WebElement estimateTxt;
 
     @FindBy(css = "[class='tracker_markup']")
-    private WebElement storyName;
+    private WebElement storyTitleTxt;
 
     @FindBy(css = "[class='std label']")
     private WebElement labelTxt;
+
+    @FindBy(css = "[class='SMkCk__Button QbMBD__Button--primary']")
+    private WebElement reloadPopUPBtn;
 
     private static final String ADDSTORYBTN = "//div[@id='panel_backlog_%S'] //a[@title='Add Story']";
     private static final String BACKLOGFOCUS = "panel_backlog_%S";
@@ -75,8 +84,12 @@ public class StoryPage extends BasePage {
     private static final String ACCEPTSTORY = "//div[@aria-label='%s'] //label[text()='Accept']";
     private static final String ESTIMATESTORY = "//div[@data-id='%s'] //span[@class='meta'] //span";
 
+    /**
+     * Wait for a WebElement.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(actionsBtn));
     }
 
     /**
@@ -125,7 +138,7 @@ public class StoryPage extends BasePage {
     /**
      * Builds button locator.
      *
-     * @return
+     * @return Locator story button
      */
     private String addIdAddStoryBtn() {
         return String.format(ADDSTORYBTN, getIdProject());
@@ -134,7 +147,7 @@ public class StoryPage extends BasePage {
     /**
      * Builds back form focus locator.
      *
-     * @return
+     * @return Locator Backlog form
      */
     private String backlogFormFocus() {
         return String.format(BACKLOGFOCUS, getIdProject());
@@ -157,7 +170,7 @@ public class StoryPage extends BasePage {
     /**
      * Build story type locator.
      *
-     * @param storyType
+     * @param storyType - Story type.
      * @return story type locator
      */
     private String storyType(final String storyType) {
@@ -167,7 +180,7 @@ public class StoryPage extends BasePage {
     /**
      * Click story type.
      *
-     * @param storyType
+     * @param storyType - Story type.
      */
     public void selectStoryType(final String storyType) {
         storyTypeClick();
@@ -184,7 +197,7 @@ public class StoryPage extends BasePage {
     /**
      * Click story type estimate.
      *
-     * @param estimate
+     * @param estimate - Story estimate
      */
     public void selectStoryEstimate(final String estimate) {
         storyEstimateClick();
@@ -194,7 +207,7 @@ public class StoryPage extends BasePage {
     /**
      * This methods create label in the story.
      *
-     * @param label
+     * @param label - Story label
      */
     public void putLabel(final String label) {
         DriverMethods.setText(labelTxtBox, label);
@@ -225,7 +238,7 @@ public class StoryPage extends BasePage {
     /**
      * Builds story start button locator.
      *
-     * @param storyType
+     * @param storyType - Story type.
      * @return Locator
      */
     public String storyStart(final String storyType) {
@@ -235,7 +248,7 @@ public class StoryPage extends BasePage {
     /**
      * Builds accept story button locator.
      *
-     * @param storyType
+     * @param storyType - Story type
      * @return Locator
      */
     public String buildAcceptStoryLocator(final String storyType) {
@@ -245,7 +258,7 @@ public class StoryPage extends BasePage {
     /**
      * Complete the flow for finish the story.
      *
-     * @param storyName
+     * @param storyName - Story name
      */
     public void finishStoryFlow(final String storyName) {
         driver.findElement(By.xpath(storyStart(storyName))).click();
@@ -255,12 +268,12 @@ public class StoryPage extends BasePage {
     }
 
     /**
-     * Gets story name.
+     * Gets story title.
      *
-     * @return storyName
+     * @return storyTitleTxt
      */
-    public String getStoryName() {
-        return storyName.getText();
+    public String getStoryTitleTxt() {
+        return storyTitleTxt.getText();
     }
 
     /**
@@ -270,5 +283,12 @@ public class StoryPage extends BasePage {
      */
     public String getLabelTxt() {
         return labelTxt.getText();
+    }
+
+    /**
+     * Click on reload popup button.
+     */
+    public void clickReloadBtn() {
+        reloadPopUPBtn.click();
     }
 }

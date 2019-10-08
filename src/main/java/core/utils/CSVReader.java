@@ -29,28 +29,28 @@ public class CSVReader {
     /**
      * Gets all story names.
      *
+     * @param file - CSV file name.
      * @return Name story array
      */
     public String[] getNamesStory(final String file) {
         String csvFile = System.getProperty("user.dir") + "/" + "src/test/resources/files/" + file;
-        BufferedReader br = null;
+        BufferedReader bufferedReader = null;
         String line = "";
         String cvsSplitBy = ",";
         int linenumber = 0;
         try {
-            br = new BufferedReader(new FileReader(csvFile));
-            while (br.readLine() != null) {
+            bufferedReader = new BufferedReader(new FileReader(csvFile));
+            while (bufferedReader.readLine() != null) {
                 linenumber++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println(linenumber + " This is the line number");
         String storyData[] = new String[linenumber];
         try {
-            br = new BufferedReader(new FileReader(csvFile));
+            bufferedReader = new BufferedReader(new FileReader(csvFile));
             for (int j = 0; j < storyData.length; j++) {
-                line = br.readLine();
+                line = bufferedReader.readLine();
                 String[] storyField = line.split(cvsSplitBy);
                 storyData[j] = storyField[1];
             }

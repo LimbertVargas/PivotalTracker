@@ -22,7 +22,7 @@ import pivotaltracker.StoryObject;
  */
 public class Context {
     private Account account;
-    private Project project;
+   // private Project project;
     private Story story;
     private User user;
     private StoryObject storyObject;
@@ -32,7 +32,7 @@ public class Context {
      */
     public Context() {
         this.account = new Account();
-        this.project = new Project();
+     //   this.project = new Project();
         this.story = new Story();
         this.user = new User();
     }
@@ -51,9 +51,9 @@ public class Context {
      *
      * @return project
      */
-    public Project getProject() {
-        return project;
-    }
+  //  public Project getProject() {
+  //      return project;
+  //  }
 
     /**
      * Gets the story of context.

@@ -40,6 +40,8 @@ public class ImportProjectPage extends BasePage {
     @FindBy(css = "[class='tracker_markup']")
     private List<WebElement> listWebElements;
 
+    private final String SELENIUM_PROJECT_PATH = System.getProperty("user.dir") + "/src/test/resources/files/";
+
     @Override
     protected void waitUntilPageObjectIsLoaded() {
     }
@@ -53,16 +55,20 @@ public class ImportProjectPage extends BasePage {
 
     /**
      * Sends path for upload file.
+     *
+     * @param filePath - File path
      */
-    private void sendPath() {
-        DriverMethods.setText(chooseFileBtn, System.getProperty("user.dir") + "/" + "src/test/resources/files/test_20191006_1736.csv");
+    private void sendPath(final String filePath) {
+        DriverMethods.setText(chooseFileBtn, SELENIUM_PROJECT_PATH + filePath);
     }
 
     /**
      * Imports csv file.
+     *
+     * @param fileName - File name
      */
-    public void importFile() {
-        sendPath();
+    public void importFile(final String fileName) {
+        sendPath(fileName);
         clickImportBtn();
     }
 

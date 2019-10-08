@@ -38,7 +38,7 @@ public class ProjectHooks {
     /**
      * This method delete a project
      */
-    @After("@DeleteProjectAPI")
+    @After(value = "@DeleteProjectAPI",order = 1)
     public void deleteProject() {
         projectAPI = new ProjectAPI();
         projectAPI.deleteProject();

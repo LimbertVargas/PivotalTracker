@@ -60,18 +60,6 @@ public final class PageTransporter {
     }
 
     /**
-     * Navigates on page with id.
-     *
-     * @param keyUrl - Url key.
-     * @param id     - Project id.
-     */
-    public static void navigatePageThroughId(final String keyUrl, final int id, final String endpoint) {
-        String baseUrl = ConfigFileReader.getInstance().getProperties().get("baseUrl");
-        goToURL(baseUrl.concat(keyUrl).concat("/").concat(String.valueOf(id).concat("/").
-                concat(endpoint)));
-    }
-
-    /**
      * Navigates to a page sending the url with Id.
      *
      * @param keyUrl    type of page.

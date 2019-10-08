@@ -16,6 +16,8 @@ import io.restassured.response.Response;
 import pivotaltracker.ProjectObject;
 import pivotaltracker.api.request.FactoryRequest;
 import pivotaltracker.api.request.RequestManagerAbstract;
+import pivotaltracker.entities.Story;
+import pivotaltracker.ui.pages.story.StoryPage;
 
 import static pivotaltracker.api.Endpoints.PROJECT_ENDPOINT;
 
@@ -51,5 +53,7 @@ public class ProjectAPI {
         requestManagerAbstract = FactoryRequest.getRequest("DELETE");
         requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT + "/" + ProjectObject.getIdProject());
         response = requestManagerAbstract.makeRequest();
+        StoryPage storyPage = new StoryPage();
+        storyPage.clickReloadBtn();
     }
 }
