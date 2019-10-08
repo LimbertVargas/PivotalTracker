@@ -46,7 +46,7 @@ public class DashboardWorkspacePage extends BasePage {
      * @param nameWorkspace is the name of the Workspace created.
      * @return the comparision of workspace's name.
      */
-    public Boolean IsDisplayedWorkspaceInTheList(final String nameWorkspace) {
+    public boolean IsDisplayedWorkspaceInTheList(final String nameWorkspace) {
         return driver.findElement(By.xpath(LIST_WORKSPACE.replace("nameWorkspace", nameWorkspace))).isDisplayed();
     }
 
