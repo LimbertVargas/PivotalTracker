@@ -151,4 +151,9 @@ public class AccountSteps {
     public void verifyShouldSeeAllOfTheAccountsExceptTheDeletedAccount() {
         Assert.assertTrue(accountPage.elementDisappear(account.getNameAccount()).isEmpty());
     }
+
+//    @When("I delete the member {string} from Pivotal Tracker account in the Account Memberships")
+//    public void iDeleteTheMemberFromPivotalTrackerAccountInTheAccountMemberships(final String member) {
+//        accountMemberPage.deleteMember(nameMember);
+//    }
 }
