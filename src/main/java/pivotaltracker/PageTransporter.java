@@ -14,6 +14,7 @@ package pivotaltracker;
 
 import core.selenium.WebDriverManager;
 import core.utils.ConfigFileReader;
+import pivotaltracker.ui.Permalink;
 
 import java.net.MalformedURLException;
 import java.net.URL;

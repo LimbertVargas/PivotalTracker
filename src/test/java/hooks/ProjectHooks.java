@@ -14,6 +14,7 @@ package hooks;
 
 import cucumber.api.java.Before;
 import pivotaltracker.api.ProjectAPI;
+import pivotaltracker.entities.Context;
 
 /**
  * ProjectHooks class.
@@ -23,6 +24,14 @@ import pivotaltracker.api.ProjectAPI;
  */
 public class ProjectHooks {
     private ProjectAPI projectAPI;
+    private Context context;
+
+    /*
+     * Project Hooks constructor.
+     */
+    public ProjectHooks(final Context context) {
+        this.context = context;
+    }
 
     /**
      * This method create a project through API.
@@ -31,5 +40,6 @@ public class ProjectHooks {
     public void postProject() {
         projectAPI = new ProjectAPI();
         projectAPI.postProject();
+        context.getProject().setId(projectAPI.getId());
     }
 }

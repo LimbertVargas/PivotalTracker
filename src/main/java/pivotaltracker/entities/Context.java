@@ -22,6 +22,8 @@ public class Context {
 
     private Account account;
     private User user;
+    private Invitation invitation;
+    private Project project;
 
     /**
      * Context for creation of the constructor.
@@ -29,6 +31,8 @@ public class Context {
     public Context() {
         this.account = new Account();
         this.user = new User();
+        this.invitation = new Invitation();
+        this.project = new Project();
     }
 
     /**
@@ -47,5 +51,23 @@ public class Context {
      */
     public User getUser() {
         return user;
+    }
+
+    /**
+     * Returns the invitation of context.
+     *
+     * @return invitation.
+     */
+    public Invitation getInvitation() {
+        return invitation;
+    }
+
+    /**
+     * Returns the project of context.
+     *
+     * @return project.
+     */
+    public Project getProject() {
+        return project;
     }
 }
