@@ -1,0 +1,65 @@
+/*
+ * @(#) CSVReader.java Copyright (c) 2019 Jala Foundation.
+ * 2643 Av. Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.
+ * All rights reserved.
+ *
+ * This software is the confidential and proprietary information of
+ * Jala Foundation, ("Confidential Information").  You shall not
+ * disclose such Confidential Information and shall use it only in
+ * accordance with the terms of the license agreement you entered into
+ * with Jala Foundation.
+ */
+
+package core.utils;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import org.apache.commons.lang3.ArrayUtils;
+
+/**
+ * CSVReader class.
+ *
+ * @author John Salazar Pinto
+ * @version 1.0
+ */
+public class CSVReader {
+
+    /**
+     * Gets all story names.
+     *
+     * @param file - CSV file name.
+     * @return Name story array
+     */
+    public String[] getNamesStory(final String file) {
+        String csvFile = System.getProperty("user.dir") + "/" + "src/test/resources/files/" + file;
+        BufferedReader bufferedReader = null;
+        String line = "";
+        String cvsSplitBy = ",";
+        int linenumber = 0;
+        try {
+            bufferedReader = new BufferedReader(new FileReader(csvFile));
+            while (bufferedReader.readLine() != null) {
+                linenumber++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String storyData[] = new String[linenumber];
+        try {
+            bufferedReader = new BufferedReader(new FileReader(csvFile));
+            for (int j = 0; j < storyData.length; j++) {
+                line = bufferedReader.readLine();
+                String[] storyField = line.split(cvsSplitBy);
+                storyData[j] = storyField[1];
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        storyData = ArrayUtils.remove(storyData, 0);
+        return storyData;
+    }
+}

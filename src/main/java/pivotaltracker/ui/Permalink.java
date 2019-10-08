@@ -27,8 +27,13 @@ public final class Permalink {
     public static final String ACCOUNT_PAGE = "/accounts";
     public static final String ACCOUNT_PLANS_PAGE = "/plans";
     public static final String ACCOUNT_SETTINGS_PAGE = "/settings";
+    public static final String PROJECT_PAGE = "/projects";
+    public static final String PROJECT_STORY_PAGE = "/n/projects";
+    public static final String PROJECT_IMPORT_PAGE = "/import";
+    public static final String PROJECT_EXPORT_PAGE = "/export";
 
     private static Map<String, String> course = new HashMap<>();
+
     static {
         course.put("Login", LOGIN_PAGE);
         course.put("Dashboard", DASHBOARD_PAGE);
@@ -48,5 +53,6 @@ public final class Permalink {
     /**
      * Constructor private.
      */
-    private Permalink() { }
+    private Permalink() {
+    }
 }
