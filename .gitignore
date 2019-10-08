@@ -34,7 +34,6 @@ out/
 gradlew.bat
 gradlew
 
-
 #IntelliJ
 .idea/
 log/

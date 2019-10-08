@@ -43,7 +43,6 @@ public class MembersPage extends BasePage {
     @FindBy(css = "button[data-aid=remove-from-project]")
     private WebElement removeButton;
 
-
     /**
      * Waits until page object is loaded.
      */
@@ -100,6 +99,9 @@ public class MembersPage extends BasePage {
         inviteButton.click();
     }
 
+    /**
+     * Click on actions and then on delete invitation for hook.
+     */
     public void deleteInvitation() {
         actionsButton.click();
         wait.until(ExpectedConditions.visibilityOf(removeButton));

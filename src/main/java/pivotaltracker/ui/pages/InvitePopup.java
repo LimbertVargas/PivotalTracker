@@ -41,12 +41,18 @@ public class InvitePopup extends BasePage {
     @FindBy(id = "ul.SelectBox__options li:first-child")
     private WebElement viewerRoleButton;
 
-
+    /**
+     * Override waitUntil method.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.elementToBeClickable(inviteButton));
     }
 
+    /**
+     * Fill invite form with mail parameter.
+     * @param mail - mail to send invitation.
+     */
     public void fillInviteForm(final String mail) {
         inviteField.sendKeys(mail);
         wait.until(ExpectedConditions.visibilityOf(inviteResults));
@@ -61,6 +67,9 @@ public class InvitePopup extends BasePage {
         inviteButton.click();
     }
 
+    /**
+     * Click on Set roles button web element.
+     */
     public void setRoles() {
         inviteRole.click();
         viewerRoleButton.click();

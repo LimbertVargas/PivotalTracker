@@ -12,7 +12,6 @@
 
 package steps;
 
-
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
@@ -38,11 +37,18 @@ public class InviteSteps {
     private InvitePopup invitePopup;
     private final int ID = 2402093; // This hardcode will be replaced with John's ProjectAPI with context manage.
 
+    /**
+     * Goes to the members page.
+     */
     @When("I go to the invite Page of the project.")
     public void iGoToTheInvitePageOfTheProject() {
         PageTransporter.navigatePageById("/projects", ID, Permalink.MEMBERSHIPS_PAGE);
     }
 
+    /**
+     * Fill the invite form with the parameter mail.
+     * @param mail - invited mail.
+     */
     @When("the user insert the invited mail \"(.*)\"$")
     public void theUserInsertTheInvitedListMails(final String mail) {
         membersPage = new MembersPage();
@@ -51,16 +57,25 @@ public class InviteSteps {
         invitePopup.fillInviteForm(mail);
     }
 
+    /**
+     * Set the role for invited.
+     */
     @When("the user sets the invitations type as member")
     public void theUserSetsTheInvitationsTypeAsViewer() {
         invitePopup.clickInviteButton();
     }
 
+    /**
+     * Verifies that the invitation was registered and its pending.
+     */
     @Then("the mail should be displayed with Invitation pending status")
     public void theMailsListShouldBeDisplayedWithInvitationPending() {
         Assert.assertEquals(membersPage.getInvitedStatus().getText(), Invitation.PENDING_STATUS);
     }
 
+    /**
+     * Verifies that the invitation has the Member tag type invitation.
+     */
     @Then("the mail should be displayed with Member tag")
     public void theMailsListShouldBeDisplayedWithViewerTag() {
         Assert.assertEquals(membersPage.getInvitedRole().getText(), Invitation.MEMBER);

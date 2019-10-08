@@ -26,6 +26,9 @@ public class ProjectHooks {
     private ProjectAPI projectAPI;
     private Context context;
 
+    /*
+     * Project Hooks constructor.
+     */
     public ProjectHooks(final Context context) {
         this.context = context;
     }
