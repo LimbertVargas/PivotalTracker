@@ -22,6 +22,7 @@ public class Context {
 
     private Account account;
     private User user;
+    private CSVFile csvFile;
 
     /**
      * Context for creation of the constructor.
@@ -29,6 +30,7 @@ public class Context {
     public Context() {
         this.account = new Account();
         this.user = new User();
+        this.csvFile = new CSVFile();
     }
 
     /**
@@ -47,5 +49,9 @@ public class Context {
      */
     public User getUser() {
         return user;
+    }
+
+    public CSVFile getCsvFile() {
+        return csvFile;
     }
 }

@@ -17,11 +17,14 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import java.util.Map;
+
 import org.testng.Assert;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.ProjectObject;
 import pivotaltracker.api.ProjectAPI;
+import pivotaltracker.entities.Context;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.story.ExportProjectPage;
 import pivotaltracker.ui.pages.story.ImportProjectPage;
@@ -36,6 +39,7 @@ public class ImportExportSteps {
     private ImportProjectPage importProjectPage;
     private ExportProjectPage exportProjectPage;
     private ProjectAPI projectAPI;
+    private Context context;
 
     public ImportExportSteps() {
         importProjectPage = new ImportProjectPage();
@@ -49,6 +53,8 @@ public class ImportExportSteps {
 
     @And("I load the CSV File {string} with stories")
     public void iLoadTheCSVFileWithStories(String fileName) {
+        context = new Context();
+        context.getCsvFile().setFileName(fileName);
         importProjectPage.importFile(fileName);
     }
 
@@ -58,11 +64,11 @@ public class ImportExportSteps {
         Assert.assertTrue(importProjectPage.messageCorrectImport().contains(message));
     }
 
-    @Then("I should see the stories created of the file {string}")
-    public void iShouldSeeTheStoriesCreatedOfTheFile(String file) {
+    @Then("I should see the stories created of the file")
+    public void iShouldSeeTheStoriesCreatedOfTheFile() {
         CSVReader CSVReader;
         CSVReader = new CSVReader();
-        Assert.assertEqualsNoOrder(importProjectPage.getList(), CSVReader.getNamesStory(file));
+        Assert.assertEqualsNoOrder(importProjectPage.getList(), CSVReader.getNamesStory(context.getCsvFile().getFileName()));
     }
 
     @When("I go to the Export Project page")
@@ -76,10 +82,6 @@ public class ImportExportSteps {
         exportProjectPage.exportProject();
     }
 
-    @Then("I should see the file in the folder download")
-    public void iShouldSeeTheFileInTheFolderDownload() {
-    }
-
     @When("I go to the Story page")
     public void iGoToTheStoryPage() {
         PageTransporter.navigatePageThroughId(Permalink.PROJECT_STORY_PAGE, ProjectObject.getIdProject());
@@ -90,5 +92,9 @@ public class ImportExportSteps {
         projectAPI = new ProjectAPI();
         String projectName = bodyFields.get("name");
         projectAPI.postProject(projectName);
+    }
+
+    @Then("I should see the file in the folder download")
+    public void iShouldSeeTheFileInTheFolderDownload() {
     }
 }
