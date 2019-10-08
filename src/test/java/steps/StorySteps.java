@@ -18,7 +18,6 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.ProjectObject;
-import pivotaltracker.api.StoryAPI;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.Story;
 import pivotaltracker.ui.Permalink;
@@ -84,13 +83,8 @@ public class StorySteps {
      */
     @Then("I should see the story on Accepted Stories on Current Iteration panel")
     public void iShouldSeeTheStoryOnAcceptedStoriesOnCurrentIterationPanel() {
-        StoryAPI storyAPI = new StoryAPI();
-        storyAPI.getStories();
-        System.out.println(context.getStoryObject().getName() + " ggg");
-        System.out.println(context.getStory().getStoryName() + " SSS");
-        Assert.assertEquals(context.getStoryObject().getName(), context.getStory().getStoryName());
-        Assert.assertEquals(context.getStoryObject().getEstimate(), context.getStory().getEstimate());
         Assert.assertEquals(storyPage.getStoryTitleTxt(), context.getStory().getStoryName());
         Assert.assertEquals(storyPage.getLabelTxt(), context.getStory().getLabel());
+        storyPage.waitToLoad();
     }
 }

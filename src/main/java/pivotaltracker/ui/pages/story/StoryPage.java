@@ -16,9 +16,11 @@ import core.utils.DriverMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pivotaltracker.BasePage;
 import pivotaltracker.entities.Context;
 
@@ -31,6 +33,7 @@ import pivotaltracker.entities.Context;
 public class StoryPage extends BasePage {
     private Context context;
     private Integer idProject;
+    private WebDriverWait webDriverWait;
 
     @FindBy(xpath = "//div[@data-type='backlog'] //div[@class='DropdownButton__icon___1qwu3upG tn-DropdownButton___nNklb3UY']")
     private WebElement actionsBtn;
@@ -65,7 +68,10 @@ public class StoryPage extends BasePage {
     @FindBy(css = "[class='autosaves button std save']")
     private WebElement saveStoryBtn;
 
-    @FindBy(xpath = "//span[@class='meta'] //span")
+    @FindBy(css = "[class='meta']")
+    private WebElement estimate;
+
+    @FindBy(css = "[class='this_project'] [class='meta']")
     private WebElement estimateTxt;
 
     @FindBy(css = "[class='tracker_markup']")
@@ -265,6 +271,7 @@ public class StoryPage extends BasePage {
         driver.findElement(By.xpath(storyStart(storyName))).click();
         driver.findElement(By.xpath(storyStart(storyName))).click();
         driver.findElement(By.xpath(buildAcceptStoryLocator(storyName))).click();
+
     }
 
     /**
@@ -290,5 +297,19 @@ public class StoryPage extends BasePage {
      */
     public void clickReloadBtn() {
         reloadPopUPBtn.click();
+    }
+
+    public String getEstimate() {
+        moveMouseTo();
+        return estimateTxt.getText();
+    }
+
+    public void moveMouseTo() {
+        Actions action = new Actions(driver);
+        action.moveToElement(estimate);
+    }
+
+    public void waitToLoad() {
+        driver.switchTo().alert().accept();
     }
 }

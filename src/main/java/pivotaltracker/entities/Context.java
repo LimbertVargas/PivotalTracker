@@ -35,6 +35,7 @@ public class Context {
      //   this.project = new Project();
         this.story = new Story();
         this.user = new User();
+        this.storyObject = new StoryObject();
     }
 
     /**

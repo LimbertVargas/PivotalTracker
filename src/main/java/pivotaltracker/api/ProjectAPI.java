@@ -13,11 +13,11 @@
 package pivotaltracker.api;
 
 import io.restassured.response.Response;
+import pivotaltracker.PageTransporter;
 import pivotaltracker.ProjectObject;
 import pivotaltracker.api.request.FactoryRequest;
 import pivotaltracker.api.request.RequestManagerAbstract;
-import pivotaltracker.entities.Story;
-import pivotaltracker.ui.pages.story.StoryPage;
+import pivotaltracker.ui.Permalink;
 
 import static pivotaltracker.api.Endpoints.PROJECT_ENDPOINT;
 
@@ -50,10 +50,11 @@ public class ProjectAPI {
      * Deletes a project created throught API.
      */
     public void deleteProject() {
+        PageTransporter.navigatePage(Permalink.DASHBOARD_PAGE);
         requestManagerAbstract = FactoryRequest.getRequest("DELETE");
         requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT + "/" + ProjectObject.getIdProject());
         response = requestManagerAbstract.makeRequest();
-        StoryPage storyPage = new StoryPage();
-        storyPage.clickReloadBtn();
+//        StoryPage storyPage = new StoryPage();
+//        storyPage.clickReloadBtn();
     }
 }
