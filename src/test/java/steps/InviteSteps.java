@@ -66,17 +66,26 @@ public class InviteSteps {
     }
 
     /**
-     * Verifies that the invitation was registered and its pending.
+     * Verifies that the invited mail is displayed in members list.
+     * @param mail - the invited mail.
      */
-    @Then("the mail should be displayed with Invitation pending status")
+    @Then("the invited mail {string} should be displayed in the members list")
+    public void theInvitedMailShouldBeDisplayedInTheMembersList(final String mail) {
+        Assert.assertEquals(membersPage.getInvitedMail().getText(), mail);
+    }
+
+    /**
+     * Verifies that the invitation was registered as pending status.
+     */
+    @Then("the invited should be displayed with Invitation pending status")
     public void theMailsListShouldBeDisplayedWithInvitationPending() {
         Assert.assertEquals(membersPage.getInvitedStatus().getText(), Invitation.PENDING_STATUS);
     }
 
     /**
-     * Verifies that the invitation has the Member tag type invitation.
+     * Verifies that the invitation has the Member tag as role.
      */
-    @Then("the mail should be displayed with Member tag")
+    @Then("the invited should be displayed with Member tag")
     public void theMailsListShouldBeDisplayedWithViewerTag() {
         Assert.assertEquals(membersPage.getInvitedRole().getText(), Invitation.MEMBER);
     }
