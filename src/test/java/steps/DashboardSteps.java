@@ -56,15 +56,15 @@ public class DashboardSteps {
         this.context = context;
         this.account = context.getAccount();
         this.user = context.getUser();
+        this.workspace = context.getWorkspace();
     }
-
 
     /**
      * Creates a new workspace sending the information.
      *
      * @param nameWorkspace contains the workspace values.
      */
-    @When("I create a new workspace (.*)")
+    @When("I create a new workspace \"(.*)\"")
     public void createANewWorkspace(final String nameWorkspace) {
         dashboardWorkspacePage = new DashboardWorkspacePage();
         logs.info("Create a new workspace " + nameWorkspace);
@@ -76,8 +76,8 @@ public class DashboardSteps {
     /**
      * This method check the created workspace in dashboard page.
      */
-    @Then("I should see the workspace in Dashboard Page.")
-    public void VerifyThatIShouldSeeTheWorkspaceInDashboardPage(final String nameWorkspace) {
+    @Then("I should see the workspace in Dashboard Page")
+    public void verifyThatIShouldSeeTheWorkspaceInDashboardPage(final String nameWorkspace) {
         dashboard = new DashboardWorkspacePage();
         Assert.assertEquals(dashboard.IsDisplayedWorkspaceInTheList(nameWorkspace), workspace.getNameWorkspace());
     }

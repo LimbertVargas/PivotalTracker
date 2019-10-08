@@ -15,7 +15,7 @@ public class WorkspacePage extends BasePage {
     @FindBy(id = "tracker")
     private WebElement workspaceForm;
 
-    @FindBy(className = "tc_context_name")
+    @FindBy(className = "raw_context_name")
     private WebElement nameWorkspaceLbl;
 
     /**

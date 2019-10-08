@@ -20,7 +20,7 @@ public class WorkspacePopup extends BasePage {
     @FindBy(className = "tc-form__input")
     private WebElement workspaceNameTxt;
 
-    @FindBy(className = "zWDds__Button pvXpn__Button--positive")
+    @FindBy(css = "[class='zWDds__Button pvXpn__Button--positive']")
     private WebElement createWorkspaceBtn;
 
     @FindBy(className = "zWDds__Button CMa1J__Button--open")

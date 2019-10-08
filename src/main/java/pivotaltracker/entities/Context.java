@@ -30,6 +30,7 @@ public class Context {
     public Context() {
         this.account = new Account();
         this.user = new User();
+        this.workspace = new Workspace();
     }
 
     /**

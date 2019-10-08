@@ -18,6 +18,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
+import pivotaltracker.ui.pages.workspace.DashboardWorkspacePage;
 
 /**
  * DashboardPage class.
@@ -34,6 +35,9 @@ public class DashboardPage extends BasePage {
 
     @FindBy(id = "create-project-button")
     private WebElement createProjectBtn;
+
+    @FindBy(css = "[class='Dashboard__Tabs__tab']")
+    private WebElement workspaceTab;
 
     /**
      * Waits until page object is loaded.
@@ -60,9 +64,20 @@ public class DashboardPage extends BasePage {
         createProjectBtn.click();
     }
 
-
+    /**
+     * This method is in charge of show the project Popup.
+     * @return
+     */
     public CreateProjectPopup clickCreateProjectBtn() {
         createProjectBtn();
         return new CreateProjectPopup();
+    }
+
+    /**
+     * This method verifies the access to a workspace tab.
+     */
+    public DashboardWorkspacePage accessWorkspaceTab() {
+        workspaceTab.click();
+        return new DashboardWorkspacePage();
     }
 }

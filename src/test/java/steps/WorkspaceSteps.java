@@ -1,11 +1,14 @@
 package steps;
 
 import core.utils.Log;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.Workspace;
+import pivotaltracker.ui.pages.DashboardPage;
 import pivotaltracker.ui.pages.workspace.WorkspacePage;
 
 /**
@@ -19,6 +22,7 @@ public class WorkspaceSteps {
     private Workspace workspace;
     private Context context;
     private WorkspacePage workspacePage;
+    private DashboardPage dashboardPage;
 
     /**
      * Constructor of workspace steps sending the context.
@@ -33,8 +37,15 @@ public class WorkspaceSteps {
     /**
      * This method check the created workspace in workspace page.
      */
-    @Then("I should see the workspace in Workspace Page.")
+    @Then("I should see the workspace in Workspace Page")
     public void verifyTheWorkspaceCreatedIsInWorkspacePage() {
+        workspacePage = new WorkspacePage();
         Assert.assertEquals(workspacePage.getNameWorkspace(),workspace.getNameWorkspace());
+    }
+
+    @When("I go to the Workspace Tab inside Dashboard page")
+    public void goToTheWorkspaceTabInsideDashboardPage() {
+        dashboardPage = new DashboardPage();
+        dashboardPage.accessWorkspaceTab();
     }
 }
