@@ -31,8 +31,8 @@ public class CSVReader {
     private static String TITLE = "title";
     private static String LABELS = "labels";
     private static String STORY_TYPE = "storyType";
-    private static String ID = "storyType";
-    private static String ESTIMATE = "storyType";
+    private static String ID = "id";
+    private static String ESTIMATE = "estimate";
 
     /**
      * Gets all story names.
@@ -73,13 +73,13 @@ public class CSVReader {
     }
 
     private Integer getAttributeStory(final String field) {
-        Map<String, Integer> strategyFileReader = new HashMap<>();
-        strategyFileReader.put(ID, 0);
-        strategyFileReader.put(TITLE, 1);
-        strategyFileReader.put(LABELS, 2);
-        strategyFileReader.put(STORY_TYPE, 6);
-        strategyFileReader.put(ESTIMATE, 7);
-        return strategyFileReader.get(field);
+        Map<String, Integer> mapFileReader = new HashMap<>();
+        mapFileReader.put(ID, 0);
+        mapFileReader.put(TITLE, 1);
+        mapFileReader.put(LABELS, 2);
+        mapFileReader.put(STORY_TYPE, 6);
+        mapFileReader.put(ESTIMATE, 7);
+        return mapFileReader.get(field);
     }
 
     public String[] getAttributeStory(final String file, final String attribute) {

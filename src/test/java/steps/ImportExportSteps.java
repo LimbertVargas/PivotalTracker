@@ -13,7 +13,6 @@
 package steps;
 
 import core.utils.CSVReader;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -58,7 +57,7 @@ public class ImportExportSteps {
         PageTransporter.navigatePageById(Permalink.PROJECT_PAGE, ProjectObject.getIdProject(), Permalink.PROJECT_IMPORT_PAGE);
     }
 
-    @And("I load the CSV File {string} with stories")
+    @When("I load the CSV File {string} with stories")
     public void iLoadTheCSVFileWithStories(String fileName) {
         context.getCsvFile().setFileName(fileName);
         importProjectPage.importFile(fileName);
@@ -68,16 +67,6 @@ public class ImportExportSteps {
     public void aMessageIsShownIndicatedThatTheStoriesWas(String message) {
         Assert.assertTrue(importProjectPage.messageCorrretImportPopUP().contains(message));
         Assert.assertTrue(importProjectPage.messageCorrectImport().contains(message));
-    }
-
-    @Then("I should see the stories created on the file")
-    public void iShouldSeeTheStoriesCreatedOfTheFile() {
-        CSVReader csvReader;
-        csvReader = new CSVReader();
-        csvFile.setTitlesStory(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.TITLE));
-        csvFile.setLabels(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.LABELS));
-        Assert.assertEqualsNoOrder(importProjectPage.getTitleList(), csvFile.getTitlesStory());
-        Assert.assertEqualsNoOrder(importProjectPage.getLabels(), csvFile.getLabels());
     }
 
     @When("I go to the Export Project page")
@@ -103,19 +92,11 @@ public class ImportExportSteps {
         projectAPI.postProject(projectName);
     }
 
-    @Then("I should see the file in the folder download")
-    public void iShouldSeeTheFileInTheFolderDownload() {
-    }
-
-    @Then("I should see the stories name created on the stories")
-    public void iShouldSeeTheStoriesNameCreatedOnTheFile() {
+    @Then("I should see the stories created on the stories")
+    public void iShouldSeeTheStoriesCreatedOnTheStories() {
         csvFile.setTitlesStory(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.TITLE));
-        Assert.assertEqualsNoOrder(importProjectPage.getTitleList(), csvFile.getTitlesStory());
-    }
-
-    @And("I should see the stories labels on the stories")
-    public void iShouldSeeTheStoriesLabelsOnTheStories() {
         csvFile.setLabels(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.LABELS));
+        Assert.assertEqualsNoOrder(importProjectPage.getTitleList(), csvFile.getTitlesStory());
         Assert.assertEqualsNoOrder(importProjectPage.getLabels(), csvFile.getLabels());
     }
 }

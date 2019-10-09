@@ -2,6 +2,7 @@ package pivotaltracker.entities;
 
 public class CSVFile {
     private String fileName;
+    private String[] id;
     private String[] titlesStory;
     private String[] labels;
 
@@ -27,5 +28,13 @@ public class CSVFile {
 
     public void setLabels(String[] labels) {
         this.labels = labels;
+    }
+
+    public String[] getId() {
+        return id;
+    }
+
+    public void setId(String[] id) {
+        this.id = id;
     }
 }

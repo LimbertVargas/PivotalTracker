@@ -34,8 +34,8 @@ public class ImportProjectPage extends BasePage {
     public static final String TITLE = "title";
     public static final String LABELS = "labels";
     public static final String STORY_TYPE = "storyType";
-    public static final String ID = "storyType";
-    public static final String ESTIMATE = "storyType";
+    public static final String ID = "id";
+    public static final String ESTIMATE = "estimate";
     private Context context;
     private CSVFile csvFile;
 
@@ -56,6 +56,9 @@ public class ImportProjectPage extends BasePage {
 
     @FindBy(css = "[class='std label']")
     private List<WebElement> listWebElementsLabels;
+
+    @FindBy(css = "[class=\"tn-panel__loom\"] [data-aid=\"StoryPreviewItem\"]")
+    private List<WebElement> listWebElementsID;
 
     private final String SELENIUM_PROJECT_PATH = System.getProperty("user.dir") + "/src/test/resources/files/";
     private final String storyLocator = "//div[@data-id=\"%s\"] //button[@tabindex=\"-1\"]";
@@ -132,11 +135,11 @@ public class ImportProjectPage extends BasePage {
      * @return list of text
      */
     public String[] getTitleList() {
-        String[] a = new String[listWebElements.size()];
+        String[] title = new String[listWebElements.size()];
         for (int i = 0; i < listWebElements.size(); i++) {
-            a[i] = listWebElements.get(i).getText();
+            title[i] = listWebElements.get(i).getText();
         }
-        return a;
+        return title;
     }
 
     /**
@@ -145,11 +148,24 @@ public class ImportProjectPage extends BasePage {
      * @return list of text
      */
     public String[] getLabels() {
-        String[] a = new String[listWebElementsLabels.size()];
+        String[] label = new String[listWebElementsLabels.size()];
         for (int i = 0; i < listWebElementsLabels.size(); i++) {
-            a[i] = listWebElementsLabels.get(i).getText();
+            label[i] = listWebElementsLabels.get(i).getText();
         }
-        return a;
+        return label;
+    }
+
+    /**
+     * Get array text from WebElements.
+     *
+     * @return list of text
+     */
+    public String[] getID() {
+        String[] id = new String[listWebElementsID.size()];
+        for (int i = 0; i < listWebElementsID.size(); i++) {
+            id[i] = listWebElementsID.get(i).getAttribute("data-id");
+        }
+        return id;
     }
 
     private void putArray() {
