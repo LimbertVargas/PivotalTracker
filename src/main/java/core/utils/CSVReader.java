@@ -19,9 +19,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import core.selenium.webDrivers.Chrome;
-import core.selenium.webDrivers.Firefox;
-import core.selenium.webDrivers.IDriver;
 import org.apache.commons.lang3.ArrayUtils;
 
 /**

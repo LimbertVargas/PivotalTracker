@@ -24,6 +24,7 @@ import org.testng.Assert;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.ProjectObject;
 import pivotaltracker.api.ProjectAPI;
+import pivotaltracker.entities.CSVFile;
 import pivotaltracker.entities.Context;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.story.ExportProjectPage;
@@ -40,10 +41,13 @@ public class ImportExportSteps {
     private ExportProjectPage exportProjectPage;
     private ProjectAPI projectAPI;
     private Context context;
+    private CSVFile csvFile;
 
-    public ImportExportSteps() {
+    public ImportExportSteps(Context context) {
+        this.context = new Context();
         importProjectPage = new ImportProjectPage();
         exportProjectPage = new ExportProjectPage();
+        csvFile = context.getCsvFile();
     }
 
     @When("I go to the Import Project page")
@@ -53,7 +57,6 @@ public class ImportExportSteps {
 
     @And("I load the CSV File {string} with stories")
     public void iLoadTheCSVFileWithStories(String fileName) {
-        context = new Context();
         context.getCsvFile().setFileName(fileName);
         importProjectPage.importFile(fileName);
     }
@@ -68,7 +71,8 @@ public class ImportExportSteps {
     public void iShouldSeeTheStoriesCreatedOfTheFile() {
         CSVReader csvReader;
         csvReader = new CSVReader();
-        Assert.assertEqualsNoOrder(importProjectPage.getList(), csvReader.getAttribute(context.getCsvFile().getFileName(), "title"));
+        csvFile.setTitlesStory(csvReader.getAttribute(context.getCsvFile().getFileName(), ImportProjectPage.TITLE_STORY));
+        Assert.assertEqualsNoOrder(importProjectPage.getList(), csvFile.getTitlesStory());
     }
 
     @When("I go to the Export Project page")
