@@ -37,7 +37,8 @@ public class CSVReader {
     /**
      * Gets all story names.
      *
-     * @param file - CSV file name.
+     * @param file  - CSV file name.
+     * @param field - CSV attribute field.
      * @return Name story array
      */
     public String[] getAttributeCSV(final String file, final Integer field) {
@@ -63,7 +64,7 @@ public class CSVReader {
                 storyData[j] = storyField[field];
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Log.getInstance().getLog().error(e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,7 +72,7 @@ public class CSVReader {
         return storyData;
     }
 
-    public Integer getAttributeStory(final String field) {
+    private Integer getAttributeStory(final String field) {
         Map<String, Integer> strategyFileReader = new HashMap<>();
         strategyFileReader.put(ID, 0);
         strategyFileReader.put(TITLE, 1);

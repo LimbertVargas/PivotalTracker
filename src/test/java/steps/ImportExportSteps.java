@@ -61,13 +61,13 @@ public class ImportExportSteps {
         importProjectPage.importFile(fileName);
     }
 
-    @Then("a message is shown indicated that the stories was (.*)")
+    @Then("a message is shown saying that the stories were (.*)")
     public void aMessageIsShownIndicatedThatTheStoriesWas(String message) {
         Assert.assertTrue(importProjectPage.messageCorrretImportPopUP().contains(message));
         Assert.assertTrue(importProjectPage.messageCorrectImport().contains(message));
     }
 
-    @Then("I should see the stories created of the file")
+    @Then("I should see the stories created on the file")
     public void iShouldSeeTheStoriesCreatedOfTheFile() {
         CSVReader csvReader;
         csvReader = new CSVReader();
