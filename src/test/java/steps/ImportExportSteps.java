@@ -72,7 +72,9 @@ public class ImportExportSteps {
         CSVReader csvReader;
         csvReader = new CSVReader();
         csvFile.setTitlesStory(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.TITLE));
-        Assert.assertEqualsNoOrder(importProjectPage.getList(), csvFile.getTitlesStory());
+        csvFile.setLabels(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.LABELS));
+        Assert.assertEqualsNoOrder(importProjectPage.getTitleList(), csvFile.getTitlesStory());
+        Assert.assertEqualsNoOrder(importProjectPage.getLabels(), csvFile.getLabels());
     }
 
     @When("I go to the Export Project page")

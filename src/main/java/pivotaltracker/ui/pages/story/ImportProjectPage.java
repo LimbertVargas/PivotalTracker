@@ -12,13 +12,17 @@
 
 package pivotaltracker.ui.pages.story;
 
+import core.utils.CSVReader;
 import core.utils.DriverMethods;
 
 import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pivotaltracker.BasePage;
+import pivotaltracker.entities.CSVFile;
+import pivotaltracker.entities.Context;
 
 /**
  * ImportProjectPAge class.
@@ -32,6 +36,8 @@ public class ImportProjectPage extends BasePage {
     public static final String STORY_TYPE = "storyType";
     public static final String ID = "storyType";
     public static final String ESTIMATE = "storyType";
+    private Context context;
+    private CSVFile csvFile;
 
     @FindBy(xpath = "//div[@class='file_uploader field_column'] //input")
     private WebElement chooseFileBtn;
@@ -48,7 +54,11 @@ public class ImportProjectPage extends BasePage {
     @FindBy(css = "[class='tracker_markup']")
     private List<WebElement> listWebElements;
 
+    @FindBy(css = "[class='std label']")
+    private List<WebElement> listWebElementsLabels;
+
     private final String SELENIUM_PROJECT_PATH = System.getProperty("user.dir") + "/src/test/resources/files/";
+    private final String storyLocator = "//div[@data-id=\"%s\"] //button[@tabindex=\"-1\"]";
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
@@ -121,11 +131,39 @@ public class ImportProjectPage extends BasePage {
      *
      * @return list of text
      */
-    public String[] getList() {
+    public String[] getTitleList() {
         String[] a = new String[listWebElements.size()];
         for (int i = 0; i < listWebElements.size(); i++) {
             a[i] = listWebElements.get(i).getText();
         }
         return a;
+    }
+
+    /**
+     * Get array text from WebElements.
+     *
+     * @return list of text
+     */
+    public String[] getLabels() {
+        String[] a = new String[listWebElementsLabels.size()];
+        for (int i = 0; i < listWebElementsLabels.size(); i++) {
+            a[i] = listWebElementsLabels.get(i).getText();
+        }
+        return a;
+    }
+
+    private void putArray() {
+        CSVReader csvReader;
+        csvReader = new CSVReader();
+        csvFile.setTitlesStory(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.TITLE));
+    }
+
+    private String storyLocatorByID(final String id) {
+        return String.format(storyLocator, id);
+    }
+
+    public void clickLocator() {
+        System.out.println(storyLocatorByID("169038621") + " The locator");
+        driver.findElement(By.xpath(storyLocatorByID("169038621"))).click();
     }
 }

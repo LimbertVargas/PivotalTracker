@@ -51,6 +51,11 @@ public class Context {
         return user;
     }
 
+    /**
+     * Gets csv file.
+     *
+     * @return csvFile
+     */
     public CSVFile getCsvFile() {
         return csvFile;
     }

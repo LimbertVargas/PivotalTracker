@@ -7,9 +7,9 @@ Feature: Import export project
      And I fill the field with credentials from user "Regular User1"
 
   @DeleteProjectAPI @logOut
-  Scenario: import story from CSV file  of Pivotal Tracker
+  Scenario: import story from CSV file on Pivotal Tracker
     When I go to the Import Project page
-    And I load the CSV File "test_20191006_1736.csv" with stories
+    And I load the CSV File "project91_20191009_0939.csv" with stories
     Then a message is shown saying that the stories were Successfully created
     When I go to the Story page
     Then I should see the stories created on the file
