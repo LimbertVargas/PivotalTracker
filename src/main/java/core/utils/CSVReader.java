@@ -28,7 +28,11 @@ import org.apache.commons.lang3.ArrayUtils;
  * @version 1.0
  */
 public class CSVReader {
-    private static String Title = "title";
+    private static String TITLE = "title";
+    private static String LABELS = "labels";
+    private static String STORY_TYPE = "storyType";
+    private static String ID = "storyType";
+    private static String ESTIMATE = "storyType";
 
     /**
      * Gets all story names.
@@ -36,21 +40,21 @@ public class CSVReader {
      * @param file - CSV file name.
      * @return Name story array
      */
-    public String[] getNamesStory(final String file, final Integer field) {
+    public String[] getAttributeCSV(final String file, final Integer field) {
         String csvFile = System.getProperty("user.dir") + "/" + "src/test/resources/files/" + file;
         BufferedReader bufferedReader = null;
         String line = "";
         String cvsSplitBy = ",";
-        int linenumber = 0;
+        int lineNumber = 0;
         try {
             bufferedReader = new BufferedReader(new FileReader(csvFile));
             while (bufferedReader.readLine() != null) {
-                linenumber++;
+                lineNumber++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String storyData[] = new String[linenumber];
+        String storyData[] = new String[lineNumber];
         try {
             bufferedReader = new BufferedReader(new FileReader(csvFile));
             for (int j = 0; j < storyData.length; j++) {
@@ -67,13 +71,17 @@ public class CSVReader {
         return storyData;
     }
 
-    public Integer getAttribute(final String field) {
+    public Integer getAttributeStory(final String field) {
         Map<String, Integer> strategyFileReader = new HashMap<>();
-        strategyFileReader.put(Title, 1);
+        strategyFileReader.put(ID, 0);
+        strategyFileReader.put(TITLE, 1);
+        strategyFileReader.put(LABELS, 2);
+        strategyFileReader.put(STORY_TYPE, 6);
+        strategyFileReader.put(ESTIMATE, 7);
         return strategyFileReader.get(field);
     }
 
-    public String[] getAttribute(final String file, final String attribute) {
-        return getNamesStory(file, getAttribute(attribute));
+    public String[] getAttributeStory(final String file, final String attribute) {
+        return getAttributeCSV(file, getAttributeStory(attribute));
     }
 }

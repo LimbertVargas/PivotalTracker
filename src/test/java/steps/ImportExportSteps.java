@@ -71,7 +71,7 @@ public class ImportExportSteps {
     public void iShouldSeeTheStoriesCreatedOfTheFile() {
         CSVReader csvReader;
         csvReader = new CSVReader();
-        csvFile.setTitlesStory(csvReader.getAttribute(context.getCsvFile().getFileName(), ImportProjectPage.TITLE_STORY));
+        csvFile.setTitlesStory(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.TITLE));
         Assert.assertEqualsNoOrder(importProjectPage.getList(), csvFile.getTitlesStory());
     }
 

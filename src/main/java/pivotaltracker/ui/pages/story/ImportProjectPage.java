@@ -27,7 +27,11 @@ import pivotaltracker.BasePage;
  * @version 1.0
  */
 public class ImportProjectPage extends BasePage {
-    public static final String TITLE_STORY = "title";
+    public static final String TITLE = "title";
+    public static final String LABELS = "labels";
+    public static final String STORY_TYPE = "storyType";
+    public static final String ID = "storyType";
+    public static final String ESTIMATE = "storyType";
 
     @FindBy(xpath = "//div[@class='file_uploader field_column'] //input")
     private WebElement chooseFileBtn;
