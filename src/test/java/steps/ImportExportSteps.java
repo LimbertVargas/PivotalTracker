@@ -68,7 +68,8 @@ public class ImportExportSteps {
     public void iShouldSeeTheStoriesCreatedOfTheFile() {
         CSVReader CSVReader;
         CSVReader = new CSVReader();
-        Assert.assertEqualsNoOrder(importProjectPage.getList(), CSVReader.getNamesStory(context.getCsvFile().getFileName()));
+        CSVReader.getAttribute("title");
+        Assert.assertEqualsNoOrder(importProjectPage.getList(), CSVReader.getAttribute(context.getCsvFile().getFileName(), "title"));
     }
 
     @When("I go to the Export Project page")

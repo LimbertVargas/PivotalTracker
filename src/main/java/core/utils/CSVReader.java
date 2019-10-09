@@ -16,6 +16,12 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import core.selenium.webDrivers.Chrome;
+import core.selenium.webDrivers.Firefox;
+import core.selenium.webDrivers.IDriver;
 import org.apache.commons.lang3.ArrayUtils;
 
 /**
@@ -25,6 +31,7 @@ import org.apache.commons.lang3.ArrayUtils;
  * @version 1.0
  */
 public class CSVReader {
+    private static String Title = "title";
 
     /**
      * Gets all story names.
@@ -32,7 +39,7 @@ public class CSVReader {
      * @param file - CSV file name.
      * @return Name story array
      */
-    public String[] getNamesStory(final String file) {
+    public String[] getNamesStory(final String file, final Integer field) {
         String csvFile = System.getProperty("user.dir") + "/" + "src/test/resources/files/" + file;
         BufferedReader bufferedReader = null;
         String line = "";
@@ -52,7 +59,7 @@ public class CSVReader {
             for (int j = 0; j < storyData.length; j++) {
                 line = bufferedReader.readLine();
                 String[] storyField = line.split(cvsSplitBy);
-                storyData[j] = storyField[1];
+                storyData[j] = storyField[field];
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -61,5 +68,15 @@ public class CSVReader {
         }
         storyData = ArrayUtils.remove(storyData, 0);
         return storyData;
+    }
+
+    public Integer getAttribute(final String field) {
+        Map<String, Integer> strategyBrowser = new HashMap<>();
+        strategyBrowser.put(Title, 1);
+        return strategyBrowser.get(field);
+    }
+
+    public String[] getAttribute(final String file, final String attribute) {
+        return getNamesStory(file, getAttribute(attribute));
     }
 }
