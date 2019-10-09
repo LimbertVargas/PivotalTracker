@@ -12,7 +12,9 @@ Feature: Import export project
     And I load the CSV File "project91_20191009_0939.csv" with stories
     Then a message is shown saying that the stories were Successfully created
     When I go to the Story page
-    Then I should see the stories created on the file
+    Then I should see the stories name created on the stories
+     And I should see the stories labels on the stories
+
 
   @CreateProjectAPI @CreateStoryAPI @DeleteProjectAPI @logOut
   Scenario: Export a story with a CSV file  of Pivotal Tracker

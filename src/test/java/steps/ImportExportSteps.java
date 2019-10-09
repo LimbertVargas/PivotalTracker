@@ -42,12 +42,15 @@ public class ImportExportSteps {
     private ProjectAPI projectAPI;
     private Context context;
     private CSVFile csvFile;
+    private CSVReader csvReader;
 
     public ImportExportSteps(Context context) {
         this.context = new Context();
         importProjectPage = new ImportProjectPage();
         exportProjectPage = new ExportProjectPage();
         csvFile = context.getCsvFile();
+        csvReader = new CSVReader();
+
     }
 
     @When("I go to the Import Project page")
@@ -102,5 +105,17 @@ public class ImportExportSteps {
 
     @Then("I should see the file in the folder download")
     public void iShouldSeeTheFileInTheFolderDownload() {
+    }
+
+    @Then("I should see the stories name created on the stories")
+    public void iShouldSeeTheStoriesNameCreatedOnTheFile() {
+        csvFile.setTitlesStory(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.TITLE));
+        Assert.assertEqualsNoOrder(importProjectPage.getTitleList(), csvFile.getTitlesStory());
+    }
+
+    @And("I should see the stories labels on the stories")
+    public void iShouldSeeTheStoriesLabelsOnTheStories() {
+        csvFile.setLabels(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.LABELS));
+        Assert.assertEqualsNoOrder(importProjectPage.getLabels(), csvFile.getLabels());
     }
 }

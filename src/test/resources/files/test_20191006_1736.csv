@@ -1,5 +1,0 @@
-Id,Title,Labels,Iteration,Iteration Start,Iteration End,Type,Estimate,Current State,Created at,Accepted at,Deadline,Requested By,Description,URL,Owned By
-168973930,Feature1,"",1,"Sep 30, 2019","Oct 6, 2019",feature,2,started,"Oct 6, 2019",,,usertestcx,,https://www.pivotaltracker.com/story/show/168973930,usertestcx
-168973932,Bug,"",1,"Sep 30, 2019","Oct 6, 2019",bug,,started,"Oct 6, 2019",,,usertestcx,,https://www.pivotaltracker.com/story/show/168973932,usertestcx
-168973938,Release,"",1,"Sep 30, 2019","Oct 6, 2019",release,,unstarted,"Oct 6, 2019",,,usertestcx,,https://www.pivotaltracker.com/story/show/168973938,
-168973935,Chore,"",1,"Sep 30, 2019","Oct 6, 2019",chore,,unstarted,"Oct 6, 2019",,,usertestcx,,https://www.pivotaltracker.com/story/show/168973935,
