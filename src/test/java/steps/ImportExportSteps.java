@@ -66,10 +66,9 @@ public class ImportExportSteps {
 
     @Then("I should see the stories created of the file")
     public void iShouldSeeTheStoriesCreatedOfTheFile() {
-        CSVReader CSVReader;
-        CSVReader = new CSVReader();
-        CSVReader.getAttribute("title");
-        Assert.assertEqualsNoOrder(importProjectPage.getList(), CSVReader.getAttribute(context.getCsvFile().getFileName(), "title"));
+        CSVReader csvReader;
+        csvReader = new CSVReader();
+        Assert.assertEqualsNoOrder(importProjectPage.getList(), csvReader.getAttribute(context.getCsvFile().getFileName(), "title"));
     }
 
     @When("I go to the Export Project page")

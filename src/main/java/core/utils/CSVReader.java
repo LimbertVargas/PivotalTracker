@@ -71,9 +71,9 @@ public class CSVReader {
     }
 
     public Integer getAttribute(final String field) {
-        Map<String, Integer> strategyBrowser = new HashMap<>();
-        strategyBrowser.put(Title, 1);
-        return strategyBrowser.get(field);
+        Map<String, Integer> strategyFileReader = new HashMap<>();
+        strategyFileReader.put(Title, 1);
+        return strategyFileReader.get(field);
     }
 
     public String[] getAttribute(final String file, final String attribute) {
