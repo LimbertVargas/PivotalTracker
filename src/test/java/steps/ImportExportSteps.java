@@ -85,7 +85,7 @@ public class ImportExportSteps {
         PageTransporter.navigatePageThroughId(Permalink.PROJECT_STORY_PAGE, ProjectObject.getIdProject());
     }
 
-    @Given("the user has created a project with the following data")
+    @Given("I had created a project with the following data")
     public void theUserCreatesAProjectWithTheFollowingData(final Map<String, String> bodyFields) {
         projectAPI = new ProjectAPI();
         String projectName = bodyFields.get("name");

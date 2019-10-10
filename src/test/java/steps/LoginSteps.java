@@ -14,6 +14,7 @@ package steps;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
+import org.codehaus.groovy.runtime.StringGroovyMethods;
 import pivotaltracker.PageTransporter;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
@@ -41,23 +42,31 @@ public class LoginSteps {
         this.user = context.getUser();
     }
 
-        /**
-         * This method opens the page.
-         *
-         * @param page for navigate.
-         */
+    /**
+     * This method opens the page.
+     *
+     * @param page for navigate.
+     */
     @Given("^I go to the (.*) Page$")
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
 
-        /**
-         * This method fills in the user data to be able to log in.
-         *
-         * @param userName is string
-         */
+    /**
+     * This method fills in the user data to be able to log in.
+     *
+     * @param userName is string
+     */
     @When("^I fill the field with credentials from user \"(.*)\"$")
     public void fillTheFieldWithCredentialsFromUser(final String userName) {
+        loginPage = new LoginPage();
+        loginPage.login(userName);
+        user.setUserName(userName);
+    }
+
+    @Given("I (.*) of pivotal tracker with the crendentials from user \"(.*)\"")
+    public void iLoginOfPivotalTrackerWithTheCrendentialsFromUser(final String urlKey, final String userName) {
+        PageTransporter.navigatePage(Permalink.getPermalink(urlKey));
         loginPage = new LoginPage();
         loginPage.login(userName);
         user.setUserName(userName);

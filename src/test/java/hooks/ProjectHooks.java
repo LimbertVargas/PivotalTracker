@@ -12,6 +12,7 @@
 
 package hooks;
 
+import core.utils.ValueAppender;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import pivotaltracker.api.ProjectAPI;
@@ -31,7 +32,7 @@ public class ProjectHooks {
     @Before("@CreateProjectAPI")
     public void postProject() {
         projectAPI = new ProjectAPI();
-        projectAPI.postProject("ProjectTest");
+        projectAPI.postProject("ProjectTest " + ValueAppender.suffix());
     }
 
     /**
