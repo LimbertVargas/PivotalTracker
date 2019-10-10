@@ -86,13 +86,13 @@ public class CSVReader {
      */
     private int getLinesNumber() {
         int lineNumber = 0;
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile))) {
             while (bufferedReader.readLine() != null) {
                 lineNumber++;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.getInstance().getLog().error(e.getMessage());
+            throw new RuntimeException(e);
         }
         return lineNumber;
     }
@@ -108,8 +108,8 @@ public class CSVReader {
         String cvsSplitBy = ",";
         String line = "";
         String[] storyData = new String[lineNumber];
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile));
+        ) {
             for (int j = 0; j < storyData.length; j++) {
                 line = bufferedReader.readLine();
                 String[] storyField = line.split(cvsSplitBy);
@@ -119,7 +119,7 @@ public class CSVReader {
             Log.getInstance().getLog().error(e.getMessage());
             throw new RuntimeException(e);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return storyData;
     }
