@@ -48,4 +48,22 @@ public class Context {
     public User getUser() {
         return user;
     }
+
+    /**
+     * Setter method.
+     *
+     * @param user A User instance to be shared across step definitions.
+     */
+    public void setUser(final User user) {
+        this.user = user;
+    }
+
+    /**
+     * Setter method.
+     *
+     * @param account A User instance to be shared across step definitions.
+     */
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }

@@ -12,12 +12,17 @@
 
 package core.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
+import org.apache.log4j.spi.ErrorCode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import pivotaltracker.entities.User;
 
 /**
  * CredentialsReader class.
@@ -26,72 +31,57 @@ import java.io.FileReader;
  * @version 1.0
  */
 public final class CredentialsReader {
-    private static final String JSONPATH = "credentials.json";
-    private JsonObject jsonObject;
     private static CredentialsReader instance;
+    private static JsonObject credentials;
+    private static final String USER_CONFIG_FILE = "credentials.json";
+    private static final Logger  LOGGER = LoggerFactory.getLogger(CredentialsReader.class);
+    private static final String LOGGER_MESSAGE = "Specified resource file not found!!!";
 
     /**
-     * Constructor class init initReader json file.
+     * Constructor class.
      */
-    private CredentialsReader() {
-        initReader();
+    public CredentialsReader() {
+        initialize();
     }
 
     /**
-     * Constructor of CredentialsReader.
-     * Gets CredentialsReader as Singleton.
+     * Returns the same and only instance of this class.
      *
-     * @return a instance.
+     * @return the same instance of CredentialDeserializer class.
      */
     public static CredentialsReader getInstance() {
-        if (instance == null) {
+        if ((instance == null) || (credentials == null)) {
             instance = new CredentialsReader();
         }
         return instance;
     }
 
     /**
-     * Reads json file and save the data in jsonObject.
+     * Deserializes the credentials information provided as a json file to a POJO entity class.
+     *
+     * @param user a String containing the type of user to retrieve.
+     * @return entity instance according to the value.
      */
-    private void initReader() {
+    public static User getUser(final String user) {
+        JsonElement jsonUser = credentials.getAsJsonObject(user);
+        Gson gson = new Gson();
+        User userObject = gson.fromJson(jsonUser, User.class);
+        return userObject;
+    }
+
+    /**
+     * Sets the initial value of credentials attribute of this class.
+     */
+    private void initialize() {
+        JsonParser parser = new JsonParser();
+        JsonElement jsonElement = null;
+        String jsonDirectory = USER_CONFIG_FILE;
         try {
-            JsonReader reader = new JsonReader(new FileReader(JSONPATH));
-            jsonObject = new JsonParser().parse(reader).getAsJsonObject();
-        } catch (FileNotFoundException e) {
-            Log.getInstance().getLog().error(e.getMessage());
+            jsonElement = parser.parse(new FileReader(jsonDirectory));
+        } catch (FileNotFoundException fnfex) {
+            LOGGER.error(LOGGER_MESSAGE, fnfex, ErrorCode.FILE_OPEN_FAILURE);
+            throw new RuntimeException(LOGGER_MESSAGE);
         }
-    }
-
-    /**
-     * Gets user name from json object from specific user.
-     *
-     * @param user - Keyword with which the credential will be searched.
-     * @return username - User name credential.
-     */
-    public String getUserName(final String user) {
-        String username = jsonObject.getAsJsonObject(user).get("username").getAsString();
-        return username;
-    }
-
-    /**
-     * Gets user password from json object from specific user.
-     *
-     * @param user - Keyword with which the credential will be searched.
-     * @return password - User password credential.
-     */
-    public String getUserPassword(final String user) {
-        String password = jsonObject.getAsJsonObject(user).get("password").getAsString();
-        return password;
-    }
-
-    /**
-     * Gets user password from json object from specific user.
-     *
-     * @param user - Keyword with which the credential will be searched.
-     * @return email - User password credential.
-     */
-    public String getUserEmail(final String user) {
-        String email = jsonObject.getAsJsonObject(user).get("email").getAsString();
-        return email;
+        credentials = jsonElement.getAsJsonObject();
     }
 }

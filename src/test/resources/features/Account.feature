@@ -41,3 +41,13 @@ Feature: Manage Account
       |user member  |user.test1@hotmail.com  |Member |
       |owner member |owner.test2@gmail.com   |Admin  |
       |admin member |admin.test3@outlook.com |Owner  |
+
+  @logOut
+  Scenario: Delete a account in Pivotal Tracker
+    When I go to the Account Page
+    And I create a new account "New Account"
+    Then I should see the new account in Account Plans Page
+    When I go to the Settings tab inside Account page
+    And I delete the account that was created
+    Then I should see a yellow message "New Account was successfully deleted." in Accounts Page
+    And I should see all of the accounts except the deleted account
