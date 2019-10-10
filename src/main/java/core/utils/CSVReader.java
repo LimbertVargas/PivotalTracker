@@ -65,6 +65,7 @@ public class CSVReader {
             }
         } catch (FileNotFoundException e) {
             Log.getInstance().getLog().error(e.getMessage());
+            throw new RuntimeException(e);
         } catch (IOException e) {
             e.printStackTrace();
         }
