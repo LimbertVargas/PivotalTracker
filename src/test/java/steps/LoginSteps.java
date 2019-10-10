@@ -14,12 +14,12 @@ package steps;
 
 import core.utils.CredentialsReader;
 import pivotaltracker.ui.PageTransporter;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.LoginPage;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 
 /**
  * LoginSteps class.
@@ -31,6 +31,7 @@ public class LoginSteps {
     private LoginPage loginPage;
     private User user;
     private Context context;
+
     /**
      * Constructor of account steps sending the context.
      *
@@ -38,28 +39,35 @@ public class LoginSteps {
      */
     public LoginSteps(final Context context) {
         this.context = context;
+        this.user = context.getUser();
     }
 
-    /**
-     * This method opens the page.
-     *
-     * @param page for navigate.
-     */
+        /**
+         * This method opens the page.
+         *
+         * @param page for navigate.
+         */
     @Given("^I go to the (.*) Page$")
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
 
-    /**
-     * This method fills in the user data to be able to log in.
-     *
-     * @param userName is string
-     */
+        /**
+         * This method fills in the user data to be able to log in.
+         *
+         * @param userName is string
+         */
     @When("^I fill the field with credentials from user \"(.*)\"$")
     public void fillTheFieldWithCredentialsFromUser(final String userName) {
         loginPage = new LoginPage();
         context.setUser(CredentialsReader.getInstance().getUser(userName));
         user = context.getUser();
         loginPage.loginAuthentication(user.getUserName(), user.getPassword());
+    }
+
+    @Given("I (.*) of pivotal tracker with the crendentials from user \"(.*)\"")
+    public void iLoginOfPivotalTrackerWithTheCrendentialsFromUser(final String urlKey, final String userName) {
+        goThePagesOfPivotalTracker(urlKey);
+        fillTheFieldWithCredentialsFromUser(userName);
     }
 }

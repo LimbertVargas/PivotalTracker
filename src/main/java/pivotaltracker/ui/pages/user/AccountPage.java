@@ -84,6 +84,12 @@ public class AccountPage extends BasePage {
         return driver.findElement(By.xpath(String.format(NAME_ACCOUNT, nameAccount))).getText();
     }
 
+    /**
+     * Search an WebElement with the name account.
+     *
+     * @param nameAccount - Name account
+     * @return webElements List
+     */
     public List<WebElement> elementDisappear(final String nameAccount) {
         return driver.findElements(By.xpath(String.format(NAME_ACCOUNT, nameAccount)));
     }
