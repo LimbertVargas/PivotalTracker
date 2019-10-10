@@ -12,14 +12,18 @@
 
 package steps;
 
+<<<<<<< HEAD
 import core.utils.CredentialsReader;
 import pivotaltracker.ui.PageTransporter;
+=======
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
+import pivotaltracker.PageTransporter;
+>>>>>>> develop
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.pages.LoginPage;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.When;
 
 /**
  * LoginSteps class.
@@ -31,6 +35,7 @@ public class LoginSteps {
     private LoginPage loginPage;
     private User user;
     private Context context;
+
     /**
      * Constructor of account steps sending the context.
      *
@@ -40,21 +45,21 @@ public class LoginSteps {
         this.context = context;
     }
 
-    /**
-     * This method opens the page.
-     *
-     * @param page for navigate.
-     */
+        /**
+         * This method opens the page.
+         *
+         * @param page for navigate.
+         */
     @Given("^I go to the (.*) Page$")
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
 
-    /**
-     * This method fills in the user data to be able to log in.
-     *
-     * @param userName is string
-     */
+        /**
+         * This method fills in the user data to be able to log in.
+         *
+         * @param userName is string
+         */
     @When("^I fill the field with credentials from user \"(.*)\"$")
     public void fillTheFieldWithCredentialsFromUser(final String userName) {
         loginPage = new LoginPage();
@@ -62,4 +67,8 @@ public class LoginSteps {
         user = context.getUser();
         loginPage.loginAuthentication(user.getUserName(), user.getPassword());
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> develop
