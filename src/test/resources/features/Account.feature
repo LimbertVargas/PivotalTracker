@@ -49,5 +49,5 @@ Feature: Manage Account
     Then I should see the new account in Account Plans Page
     When I go to the Settings tab inside Account page
     And I delete the account that was created
-    Then I should see a yellow message "New Account was successfully deleted." in Accounts Page
+    Then I should see a yellow message "was successfully deleted." in Accounts Page
     And I should see all of the accounts except the deleted account

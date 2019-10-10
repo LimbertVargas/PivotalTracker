@@ -12,6 +12,8 @@
 
 package hooks;
 
+import core.utils.ValueAppender;
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import pivotaltracker.api.ProjectAPI;
 
@@ -30,6 +32,15 @@ public class ProjectHooks {
     @Before("@CreateProjectAPI")
     public void postProject() {
         projectAPI = new ProjectAPI();
-        projectAPI.postProject();
+        projectAPI.postProject("ProjectTest " + ValueAppender.suffixDate());
+    }
+
+    /**
+     * This method delete a project
+     */
+    @After(value = "@DeleteProjectAPI",order = 1)
+    public void deleteProject() {
+        projectAPI = new ProjectAPI();
+        projectAPI.deleteProject();
     }
 }

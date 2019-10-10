@@ -39,6 +39,7 @@ public class LoginSteps {
      */
     public LoginSteps(final Context context) {
         this.context = context;
+        this.user = context.getUser();
     }
 
         /**
@@ -62,5 +63,11 @@ public class LoginSteps {
         context.setUser(CredentialsReader.getInstance().getUser(userName));
         user = context.getUser();
         loginPage.loginAuthentication(user.getUserName(), user.getPassword());
+    }
+
+    @Given("I (.*) of pivotal tracker with the crendentials from user \"(.*)\"")
+    public void iLoginOfPivotalTrackerWithTheCrendentialsFromUser(final String urlKey, final String userName) {
+        goThePagesOfPivotalTracker(urlKey);
+        fillTheFieldWithCredentialsFromUser(userName);
     }
 }
