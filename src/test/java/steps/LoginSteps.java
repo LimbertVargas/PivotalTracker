@@ -12,14 +12,10 @@
 
 package steps;
 
-<<<<<<< HEAD
 import core.utils.CredentialsReader;
 import pivotaltracker.ui.PageTransporter;
-=======
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import pivotaltracker.PageTransporter;
->>>>>>> develop
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
@@ -67,8 +63,4 @@ public class LoginSteps {
         user = context.getUser();
         loginPage.loginAuthentication(user.getUserName(), user.getPassword());
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> develop
