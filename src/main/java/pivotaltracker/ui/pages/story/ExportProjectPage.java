@@ -14,6 +14,7 @@ package pivotaltracker.ui.pages.story;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.BasePage;
 
 /**
@@ -28,6 +29,7 @@ public class ExportProjectPage extends BasePage {
 
     @Override
     protected void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(exportBtn));
     }
 
     /**
