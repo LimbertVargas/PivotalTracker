@@ -27,6 +27,9 @@ public class ExportProjectPage extends BasePage {
     @FindBy(id = "csv_import_file")
     private WebElement exportBtn;
 
+    /**
+     * Waits element for run steps.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(exportBtn));

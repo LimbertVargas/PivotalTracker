@@ -62,6 +62,9 @@ public class ImportProjectPage extends BasePage {
     private static final String SELENIUM_PROJECT_PATH = System.getProperty("user.dir") + "/src/test/resources/files/";
     private final String storyLocator = "//div[@data-id=\"%s\"] //button[@tabindex=\"-1\"]";
 
+    /**
+     * Waits element for run steps.
+     */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(importBtn));
@@ -153,28 +156,5 @@ public class ImportProjectPage extends BasePage {
             label[i] = listWebElementsLabels.get(i).getText();
         }
         return label;
-    }
-
-    /**
-     * Get array text from WebElements.
-     *
-     * @return list of text
-     */
-    public String[] getID() {
-        String[] id = new String[listWebElementsID.size()];
-        for (int i = 0; i < listWebElementsID.size(); i++) {
-            id[i] = listWebElementsID.get(i).getAttribute("data-id");
-        }
-        return id;
-    }
-
-    /**
-     * Gets story locator by id.
-     *
-     * @param id - Story id
-     * @return locator builder
-     */
-    private String storyLocatorByID(final String id) {
-        return String.format(storyLocator, id);
     }
 }

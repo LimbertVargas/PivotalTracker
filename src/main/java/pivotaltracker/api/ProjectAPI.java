@@ -1,5 +1,6 @@
 package pivotaltracker.api;
 
+import core.utils.ValueAppender;
 import io.restassured.response.Response;
 import pivotaltracker.ui.PageTransporter;
 import pivotaltracker.ProjectObject;
@@ -28,7 +29,7 @@ public class ProjectAPI {
     public void postProject(final String projectName) {
         requestManagerAbstract = FactoryRequest.getRequest("POST");
         requestManagerAbstract.setEndPoint(PROJECT_ENDPOINT);
-        String data = "{\"name\":\"" + projectName + "\"}";
+        String data = "{\"name\":\"" + projectName + " " + ValueAppender.suffixDate() + "\"}";
         requestManagerAbstract.setData(data);
         response = requestManagerAbstract.makeRequest();
         int id = response.jsonPath().get("id");

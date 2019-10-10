@@ -43,6 +43,11 @@ public class ImportExportSteps {
     private CSVFile csvFile;
     private CSVReader csvReader;
 
+    /**
+     * Constructor class.
+     *
+     * @param context
+     */
     public ImportExportSteps(Context context) {
         this.context = new Context();
         importProjectPage = new ImportProjectPage();
@@ -52,39 +57,65 @@ public class ImportExportSteps {
 
     }
 
+    /**
+     * This steps go to login page.
+     */
     @When("I go to the Import Project page")
-    public void iGoToTheImportProjectPage() {
+    public void goToTheImportProjectPage() {
         PageTransporter.navigatePageById(Permalink.PROJECT_PAGE, ProjectObject.getIdProject(), Permalink.PROJECT_IMPORT_PAGE);
     }
 
+    /**
+     * Loads csv file
+     *
+     * @param fileName - CSV file name.
+     */
     @When("I load the CSV File {string} with stories")
-    public void iLoadTheCSVFileWithStories(String fileName) {
+    public void loadTheCSVFileWithStories(String fileName) {
         context.getCsvFile().setFileName(fileName);
         importProjectPage.importFile(fileName);
     }
 
+    /**
+     * Gets message for confirm the csv load.
+     *
+     * @param message
+     */
     @Then("a message is shown saying that the stories were (.*)")
-    public void aMessageIsShownIndicatedThatTheStoriesWas(String message) {
+    public void getMessageIsShownIndicatedThatTheStoriesWas(String message) {
         Assert.assertTrue(importProjectPage.messageCorrretImportPopUP().contains(message));
         Assert.assertTrue(importProjectPage.messageCorrectImport().contains(message));
     }
 
+    /**
+     * Go to export project page.
+     */
     @When("I go to the Export Project page")
-    public void iGoToTheExportProjectPage() {
+    public void goToTheExportProjectPage() {
         PageTransporter.navigatePageById(Permalink.PROJECT_PAGE, ProjectObject.getIdProject(), Permalink.PROJECT_EXPORT_PAGE);
     }
 
+    /**
+     * Export the csv file.
+     */
     @When("I export the stories in a CSV File")
-    public void iExportTheStoriesInACSVFile() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir"));
+    public void exportTheStoriesInACSVFile() {
         exportProjectPage.exportProject();
     }
 
+    /**
+     * Go to story page.
+     */
     @When("I go to the Story page")
-    public void iGoToTheStoryPage() {
+    public void goToTheStoryPage() {
         PageTransporter.navigatePageThroughId(Permalink.PROJECT_STORY_PAGE, ProjectObject.getIdProject());
     }
 
+    /**
+     * Create project through API.
+     *
+     * @param bodyFields
+     */
     @Given("I had created a project with the following data")
     public void theUserCreatesAProjectWithTheFollowingData(final Map<String, String> bodyFields) {
         projectAPI = new ProjectAPI();
@@ -92,8 +123,11 @@ public class ImportExportSteps {
         projectAPI.postProject(projectName);
     }
 
+    /**
+     * Verify the correct load of the stories.
+     */
     @Then("I should see the stories created on the stories")
-    public void iShouldSeeTheStoriesCreatedOnTheStories() {
+    public void shouldSeeTheStoriesCreatedOnTheStories() {
         csvFile.setTitlesStory(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.TITLE));
         csvFile.setLabels(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.LABELS));
         Assert.assertEqualsNoOrder(importProjectPage.getTitleList(), csvFile.getTitlesStory());
