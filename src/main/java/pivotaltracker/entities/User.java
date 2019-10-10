@@ -55,7 +55,7 @@ public class User {
      *
      * @param password - password user
      */
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -73,7 +73,7 @@ public class User {
      *
      * @param email user
      */
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 }

@@ -21,8 +21,14 @@ import java.util.Date;
  * @author John Salazar Pinto.
  * @version 1.0
  */
-public class ValueAppender {
+public final class ValueAppender {
     private static String suffix;
+
+    /**
+     * Constructor class.
+     */
+    private ValueAppender() {
+    }
 
     /**
      * This method returns the actual date to differentiate the feature name.
@@ -44,4 +50,4 @@ public class ValueAppender {
     public static String prefix() {
         return "Develop by Automation";
     }
-} 
+}

@@ -12,12 +12,10 @@
 
 package pivotaltracker.ui.pages;
 
-import core.utils.CredentialsReader;
 import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pivotaltracker.entities.User;
 import pivotaltracker.ui.BasePage;
 
 /**
@@ -75,6 +73,9 @@ public class LoginPage extends BasePage {
 
     /**
      * Sets credentials and login on the page.
+     *
+     * @param userName - User name
+     * @param password - User password
      */
     public void loginAuthentication(final String userName, final String password) {
         setUserName(userName);

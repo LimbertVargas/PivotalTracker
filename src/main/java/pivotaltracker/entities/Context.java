@@ -65,7 +65,7 @@ public class Context {
      *
      * @param account A User instance to be shared across step definitions.
      */
-    public void setAccount(Account account) {
+    public void setAccount(final Account account) {
         this.account = account;
     }
 
