@@ -4,13 +4,13 @@
  * All rights reserved.
  *
  * This software is the confidential and proprietary information of
- * Jala Foundation, ("Confidential Information"). You shall not
+ * Jala Foundation, ("Confidential Information").  You shall not
  * disclose such Confidential Information and shall use it only in
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
  */
 
-package pivotaltracker;
+package pivotaltracker.ui;
 
 import core.selenium.WebDriverManager;
 import org.openqa.selenium.WebDriver;

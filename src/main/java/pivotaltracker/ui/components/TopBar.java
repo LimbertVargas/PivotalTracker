@@ -15,7 +15,7 @@ package pivotaltracker.ui.components;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pivotaltracker.BasePage;
+import pivotaltracker.ui.BasePage;
 
 /**
  * TopBar class.
