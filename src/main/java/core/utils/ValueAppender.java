@@ -29,7 +29,7 @@ public class ValueAppender {
      *
      * @return suffix.
      */
-    public static String suffix() {
+    public static String suffixDate() {
         Date actual = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         suffix = " at " + formatter.format(actual);

@@ -1,7 +1,7 @@
 package pivotaltracker.api;
 
 import io.restassured.response.Response;
-import pivotaltracker.PageTransporter;
+import pivotaltracker.ui.PageTransporter;
 import pivotaltracker.ProjectObject;
 import pivotaltracker.api.request.FactoryRequest;
 import pivotaltracker.api.request.RequestManagerAbstract;

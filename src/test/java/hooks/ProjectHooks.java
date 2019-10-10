@@ -32,7 +32,7 @@ public class ProjectHooks {
     @Before("@CreateProjectAPI")
     public void postProject() {
         projectAPI = new ProjectAPI();
-        projectAPI.postProject("ProjectTest " + ValueAppender.suffix());
+        projectAPI.postProject("ProjectTest " + ValueAppender.suffixDate());
     }
 
     /**

@@ -20,7 +20,7 @@ import cucumber.api.java.en.When;
 import java.util.Map;
 
 import org.testng.Assert;
-import pivotaltracker.PageTransporter;
+import pivotaltracker.ui.PageTransporter;
 import pivotaltracker.ProjectObject;
 import pivotaltracker.api.ProjectAPI;
 import pivotaltracker.entities.CSVFile;

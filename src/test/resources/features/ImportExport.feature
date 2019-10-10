@@ -1,7 +1,7 @@
 Feature: Import export project
 
   Background:
-    Given I login of pivotal tracker with the crendentials from user "Regular User1"
+    Given I Login of pivotal tracker with the crendentials from user "Regular User1"
 
   @DeleteProjectAPI @logOut
   Scenario: Import stories from CSV file on Pivotal Tracker
