@@ -12,7 +12,7 @@
 
 package pivotaltracker.ui.pages.account;
 
-import pivotaltracker.BasePage;
+import pivotaltracker.ui.BasePage;
 import pivotaltracker.ui.components.AccountMenu;
 
 /**

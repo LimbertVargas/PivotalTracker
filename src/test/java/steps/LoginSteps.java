@@ -12,7 +12,8 @@
 
 package steps;
 
-import pivotaltracker.PageTransporter;
+import core.utils.CredentialsReader;
+import pivotaltracker.ui.PageTransporter;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
@@ -37,7 +38,6 @@ public class LoginSteps {
      */
     public LoginSteps(final Context context) {
         this.context = context;
-        this.user = context.getUser();
     }
 
     /**
@@ -58,8 +58,8 @@ public class LoginSteps {
     @When("^I fill the field with credentials from user \"(.*)\"$")
     public void fillTheFieldWithCredentialsFromUser(final String userName) {
         loginPage = new LoginPage();
-        loginPage.login(userName);
-        user.setUserName(userName);
+        context.setUser(CredentialsReader.getInstance().getUser(userName));
+        user = context.getUser();
+        loginPage.loginAuthentication(user.getUserName(), user.getPassword());
     }
-
 }

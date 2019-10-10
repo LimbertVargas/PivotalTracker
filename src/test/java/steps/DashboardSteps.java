@@ -12,7 +12,6 @@
 
 package steps;
 
-import core.utils.CredentialsReader;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 import pivotaltracker.entities.Account;
@@ -62,8 +61,7 @@ public class DashboardSteps {
     public void verifyTheUserNameTheWillBeShownOnTheTopBar() {
         DashboardPage dashboardPage = new DashboardPage();
         String actual = dashboardPage.getTextProfileDrownBtn();
-        String userName = user.getUserName();
-        String expected = CredentialsReader.getInstance().getUserName(userName).toUpperCase();
+        String expected = user.getUserName().toUpperCase();
         Assert.assertEquals(actual, expected);
     }
 }

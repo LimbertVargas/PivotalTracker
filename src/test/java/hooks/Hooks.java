@@ -21,7 +21,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
-import pivotaltracker.PageTransporter;
+import pivotaltracker.ui.PageTransporter;
 import pivotaltracker.entities.Account;
 import pivotaltracker.entities.Context;
 import pivotaltracker.ui.Permalink;
