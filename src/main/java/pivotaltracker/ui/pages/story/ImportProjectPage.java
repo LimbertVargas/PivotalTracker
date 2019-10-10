@@ -13,7 +13,6 @@
 package pivotaltracker.ui.pages.story;
 
 import core.utils.DriverMethods;
-
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -138,11 +137,7 @@ public class ImportProjectPage extends BasePage {
      * @return list of text
      */
     public String[] getTitleList() {
-        String[] title = new String[listWebElements.size()];
-        for (int i = 0; i < listWebElements.size(); i++) {
-            title[i] = listWebElements.get(i).getText();
-        }
-        return title;
+        return DriverMethods.getElementsText(listWebElements);
     }
 
     /**
@@ -151,10 +146,6 @@ public class ImportProjectPage extends BasePage {
      * @return list of text
      */
     public String[] getLabels() {
-        String[] label = new String[listWebElementsLabels.size()];
-        for (int i = 0; i < listWebElementsLabels.size(); i++) {
-            label[i] = listWebElementsLabels.get(i).getText();
-        }
-        return label;
+        return DriverMethods.getElementsText(listWebElementsLabels);
     }
 }
