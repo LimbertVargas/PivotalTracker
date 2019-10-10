@@ -12,12 +12,10 @@
 
 package pivotaltracker.ui.pages.story;
 
-import core.utils.CSVReader;
 import core.utils.DriverMethods;
 
 import java.util.List;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pivotaltracker.BasePage;
@@ -60,7 +58,7 @@ public class ImportProjectPage extends BasePage {
     @FindBy(css = "[class=\"tn-panel__loom\"] [data-aid=\"StoryPreviewItem\"]")
     private List<WebElement> listWebElementsID;
 
-    private final String SELENIUM_PROJECT_PATH = System.getProperty("user.dir") + "/src/test/resources/files/";
+    private static final String SELENIUM_PROJECT_PATH = System.getProperty("user.dir") + "/src/test/resources/files/";
     private final String storyLocator = "//div[@data-id=\"%s\"] //button[@tabindex=\"-1\"]";
 
     @Override
@@ -168,18 +166,13 @@ public class ImportProjectPage extends BasePage {
         return id;
     }
 
-    private void putArray() {
-        CSVReader csvReader;
-        csvReader = new CSVReader();
-        csvFile.setTitlesStory(csvReader.getAttributeStory(context.getCsvFile().getFileName(), ImportProjectPage.TITLE));
-    }
-
+    /**
+     * Gets story locator by id.
+     *
+     * @param id - Story id
+     * @return locator builder
+     */
     private String storyLocatorByID(final String id) {
         return String.format(storyLocator, id);
-    }
-
-    public void clickLocator() {
-        System.out.println(storyLocatorByID("169038621") + " The locator");
-        driver.findElement(By.xpath(storyLocatorByID("169038621"))).click();
     }
 }

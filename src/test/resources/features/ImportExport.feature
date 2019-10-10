@@ -13,4 +13,3 @@ Feature: Import export project
     Then a message is shown saying that the stories were Successfully created
     When I go to the Story page
     Then I should see the stories created on the stories
-

@@ -28,11 +28,11 @@ import org.apache.commons.lang3.ArrayUtils;
  * @version 1.0
  */
 public class CSVReader {
-    private static String TITLE = "title";
-    private static String LABELS = "labels";
-    private static String STORY_TYPE = "storyType";
-    private static String ID = "id";
-    private static String ESTIMATE = "estimate";
+    private static final String TITLE = "title";
+    private static final String LABELS = "labels";
+    private static final String STORY_TYPE = "storyType";
+    private static final String ID = "id";
+    private static final String ESTIMATE = "estimate";
     private String csvFile;
 
     /**
@@ -45,25 +45,45 @@ public class CSVReader {
     private String[] getAttributeCSV(final String file, final Integer field) {
         csvFile = getCsvPath(file);
         int lineNumber = getLinesNumber();
-        String storyData[] = getAttributeList(lineNumber, field);
+        String[] storyData = getAttributeList(lineNumber, field);
         storyData = ArrayUtils.remove(storyData, 0);
         return storyData;
     }
 
-    private Integer getAttributeStory(final String field) {
+    /**
+     * Gets attribute story.
+     *
+     * @param attribute - Story attribute position
+     * @return specific attribute.
+     */
+    private Integer getAttributeStory(final String attribute) {
         Map<String, Integer> mapFileReader = new HashMap<>();
+        final int storyTypePosition = 6;
+        final int storyTypeEstimate = 7;
         mapFileReader.put(ID, 0);
         mapFileReader.put(TITLE, 1);
         mapFileReader.put(LABELS, 2);
-        mapFileReader.put(STORY_TYPE, 6);
-        mapFileReader.put(ESTIMATE, 7);
-        return mapFileReader.get(field);
+        mapFileReader.put(STORY_TYPE, storyTypePosition);
+        mapFileReader.put(ESTIMATE, storyTypeEstimate);
+        return mapFileReader.get(attribute);
     }
 
+    /**
+     * Gets attribute sotry.
+     *
+     * @param file      - File name
+     * @param attribute - Specific attribute
+     * @return attribute[]
+     */
     public String[] getAttributeStory(final String file, final String attribute) {
         return getAttributeCSV(file, getAttributeStory(attribute));
     }
 
+    /**
+     * Gets lines Number.
+     *
+     * @return linesNumber
+     */
     private int getLinesNumber() {
         int lineNumber = 0;
         try {
@@ -77,16 +97,23 @@ public class CSVReader {
         return lineNumber;
     }
 
-    private String[] getAttributeList(final int lineNumber, final Integer field) {
+    /**
+     * Gets attribute list.
+     *
+     * @param lineNumber - CSV Lines Number
+     * @param position   - Position
+     * @return storyData[]
+     */
+    private String[] getAttributeList(final int lineNumber, final Integer position) {
         String cvsSplitBy = ",";
         String line = "";
-        String storyData[] = new String[lineNumber];
+        String[] storyData = new String[lineNumber];
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile));
             for (int j = 0; j < storyData.length; j++) {
                 line = bufferedReader.readLine();
                 String[] storyField = line.split(cvsSplitBy);
-                storyData[j] = storyField[field];
+                storyData[j] = storyField[position];
             }
         } catch (FileNotFoundException e) {
             Log.getInstance().getLog().error(e.getMessage());
@@ -97,6 +124,12 @@ public class CSVReader {
         return storyData;
     }
 
+    /**
+     * Gets csv path.
+     *
+     * @param file - File name
+     * @return File path
+     */
     private String getCsvPath(final String file) {
         return System.getProperty("user.dir") + "/" + "src/test/resources/files/" + file;
     }
