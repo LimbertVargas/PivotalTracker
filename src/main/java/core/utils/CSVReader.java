@@ -33,6 +33,7 @@ public class CSVReader {
     private static String STORY_TYPE = "storyType";
     private static String ID = "id";
     private static String ESTIMATE = "estimate";
+    private String csvFile;
 
     /**
      * Gets all story names.
@@ -41,34 +42,10 @@ public class CSVReader {
      * @param field - CSV attribute field.
      * @return Name story array
      */
-    public String[] getAttributeCSV(final String file, final Integer field) {
-        String csvFile = System.getProperty("user.dir") + "/" + "src/test/resources/files/" + file;
-        BufferedReader bufferedReader = null;
-        String line = "";
-        String cvsSplitBy = ",";
-        int lineNumber = 0;
-        try {
-            bufferedReader = new BufferedReader(new FileReader(csvFile));
-            while (bufferedReader.readLine() != null) {
-                lineNumber++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String storyData[] = new String[lineNumber];
-        try {
-            bufferedReader = new BufferedReader(new FileReader(csvFile));
-            for (int j = 0; j < storyData.length; j++) {
-                line = bufferedReader.readLine();
-                String[] storyField = line.split(cvsSplitBy);
-                storyData[j] = storyField[field];
-            }
-        } catch (FileNotFoundException e) {
-            Log.getInstance().getLog().error(e.getMessage());
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private String[] getAttributeCSV(final String file, final Integer field) {
+        csvFile = getCsvPath(file);
+        int lineNumber = getLinesNumber();
+        String storyData[] = getAttributeList(lineNumber, field);
         storyData = ArrayUtils.remove(storyData, 0);
         return storyData;
     }
@@ -85,5 +62,42 @@ public class CSVReader {
 
     public String[] getAttributeStory(final String file, final String attribute) {
         return getAttributeCSV(file, getAttributeStory(attribute));
+    }
+
+    private int getLinesNumber() {
+        int lineNumber = 0;
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile));
+            while (bufferedReader.readLine() != null) {
+                lineNumber++;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lineNumber;
+    }
+
+    private String[] getAttributeList(final int lineNumber, final Integer field) {
+        String cvsSplitBy = ",";
+        String line = "";
+        String storyData[] = new String[lineNumber];
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(csvFile));
+            for (int j = 0; j < storyData.length; j++) {
+                line = bufferedReader.readLine();
+                String[] storyField = line.split(cvsSplitBy);
+                storyData[j] = storyField[field];
+            }
+        } catch (FileNotFoundException e) {
+            Log.getInstance().getLog().error(e.getMessage());
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return storyData;
+    }
+
+    private String getCsvPath(final String file) {
+        return System.getProperty("user.dir") + "/" + "src/test/resources/files/" + file;
     }
 }
