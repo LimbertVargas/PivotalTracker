@@ -13,6 +13,8 @@
 package pivotaltracker.ui.pages.story;
 
 import core.utils.DriverMethods;
+import java.util.concurrent.TimeUnit;
+import org.joda.time.Seconds;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -82,12 +84,23 @@ public class StoryPage extends BasePage {
     @FindBy(css = "[class='SMkCk__Button QbMBD__Button--primary']")
     private WebElement reloadPopUPBtn;
 
+    @FindBy(css = "[class='story_name']")
+    private WebElement storyNameElement;
+
+    @FindBy(css = "[class='StoryState__dropdown--label___3qsLBfq3']")
+    private WebElement storyStateDropDown;
+
+    @FindBy(css = "[class='autosaves button std close']")
+    private WebElement closeStoryBtn;
+
     private static final String ADDSTORYBTN = "//div[@id='panel_backlog_%S'] //a[@title='Add Story']";
     private static final String BACKLOGFOCUS = "panel_backlog_%S";
     private static final String STORYTYPE = "//a[@class='item_%s ']";
     private static final String STARTSTORY = "//div[@aria-label='%s'] //label[@data-aid='StateButton']";
     private static final String ACCEPTSTORY = "//div[@aria-label='%s'] //label[text()='Accept']";
     private static final String ESTIMATESTORY = "//div[@data-id='%s'] //span[@class='meta'] //span";
+    private static final String BUTTON_TEXT = "//div[@aria-label='%s'] //label";
+
 
     /**
      * Wait for a WebElement.
@@ -261,16 +274,26 @@ public class StoryPage extends BasePage {
     }
 
     /**
+     * Builds accept story button locator.
+     *
+     * @param storyType - Story type
+     * @return Locator
+     */
+    public String buildButtonLabelText(final String storyType) {
+        return String.format(BUTTON_TEXT, storyType);
+    }
+
+    /**
      * Complete the flow for finish the story.
      *
      * @param storyName - Story name
      */
-    public void finishStoryFlow(final String storyName) {
+    public void continueFlowClick(final String storyName) {
         driver.findElement(By.xpath(storyStart(storyName))).click();
-        driver.findElement(By.xpath(storyStart(storyName))).click();
-        driver.findElement(By.xpath(storyStart(storyName))).click();
-        driver.findElement(By.xpath(buildAcceptStoryLocator(storyName))).click();
+    }
 
+    public void acceptStory(final String storyName) {
+        driver.findElement(By.xpath(buildAcceptStoryLocator(storyName))).click();
     }
 
     /**
@@ -280,6 +303,10 @@ public class StoryPage extends BasePage {
      */
     public String getStoryTitleTxt() {
         return storyTitleTxt.getText();
+    }
+
+    public String getStoryStateText(final String storyName) {
+        return driver.findElement(By.xpath(buildButtonLabelText(storyName))).getText();
     }
 
     /**
@@ -308,7 +335,17 @@ public class StoryPage extends BasePage {
         action.moveToElement(estimate);
     }
 
-    public void waitToLoad() {
+    public void dualClick() {
+        Actions actions = new Actions(driver);
+        actions.doubleClick(storyNameElement).perform();
+    }
+
+    public String getStoryStateText() {
+        return storyStateDropDown.getText();
+    }
+
+    public void clickCloseStory() {
+        closeStoryBtn.click();
         driver.switchTo().alert().accept();
     }
 }

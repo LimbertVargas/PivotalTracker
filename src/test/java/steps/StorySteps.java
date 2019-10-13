@@ -14,6 +14,7 @@ package steps;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.testng.Assert;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.Story;
@@ -61,21 +62,64 @@ public class StorySteps {
         storyPage.createStory(storyName, storyType, storyEstimate, label);
     }
 
-    /**
-     * This step complete the story flow.
-     */
-    @And("I finish and deliver the story")
-    public void iFinishAndDeliverTheStory() {
-        storyPage.finishStoryFlow(story.getStoryName());
+    @Then("I should see the story on backlog panel")
+    public void iShouldSeeTheStoryOnBacklogPanel() {
+//        String actual = storyPage.getStoryStateText(story.getStoryName());
+//        String expected = "StartReject";
+//        Assert.assertEquals(actual, expected);
+    }
+
+    @When("I start the story")
+    public void iStartTheStory() {
+        storyPage.continueFlowClick(story.getStoryName());
+    }
+
+    @Then("I should see that the story can be finished")
+    public void iShouldSeeThatTheStoryCanBeFinished() {
+        String actual = storyPage.getStoryStateText(story.getStoryName());
+        String expected = "Finish";
+        Assert.assertEquals(actual, expected);
+    }
+
+    @When("I finish the story")
+    public void iFinishTheStory() {
+        storyPage.continueFlowClick(story.getStoryName());
+    }
+
+    @Then("I should see that the story can be deliver")
+    public void iShouldSeeThatTheStoryCanBeDeliver() {
+        String actual = storyPage.getStoryStateText(story.getStoryName());
+        String expected = "Deliver";
+        Assert.assertEquals(actual, expected);
+    }
+
+    @When("I deliver the story")
+    public void iDeliverTheStory() {
+        storyPage.continueFlowClick(story.getStoryName());
+    }
+
+    @Then("I should see that the story can be accept o reject")
+    public void iShouldSeeThatTheStoryCanBeAcceptOReject() {
+        String actual = storyPage.getStoryStateText(story.getStoryName());
+        String expected = "Reject";
+        Assert.assertEquals(actual, expected);
+    }
+
+
+    @When("I accept the sory")
+    public void iAcceptTheSory() {
+        storyPage.acceptStory(story.getStoryName());
     }
 
     /**
      * Asserts the data of the story.
      */
-    @Then("I should see the story on Accepted Stories on Current Iteration panel")
-    public void iShouldSeeTheStoryOnAcceptedStoriesOnCurrentIterationPanel() {
-        Assert.assertEquals(storyPage.getStoryTitleTxt(), context.getStory().getStoryName());
-        Assert.assertEquals(storyPage.getLabelTxt(), context.getStory().getLabel());
-        storyPage.waitToLoad();
+    @Then("I should see the story was Accepted")
+    public void iShouldSeeTheStoryWasAccepted() {
+        storyPage.dualClick();
+        String actual = storyPage.getStoryStateText();
+        String expected = "Accepted";
+        Assert.assertEquals(actual, expected);
+        storyPage.clickCloseStory();
     }
 }

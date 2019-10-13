@@ -13,5 +13,12 @@ Feature: Manage stories
       | Story Type | feature  |
       | Points     | 3        |
       | Labels     | test     |
-    And I finish and deliver the story
-    Then I should see the story on Accepted Stories on Current Iteration panel
+    Then I should see the story on backlog panel
+    When I start the story
+    Then I should see that the story can be finished
+    When I finish the story
+    Then I should see that the story can be deliver
+    When I deliver the story
+    Then I should see that the story can be accept o reject
+    When I accept the sory
+    Then I should see the story was Accepted
