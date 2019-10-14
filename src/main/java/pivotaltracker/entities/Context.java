@@ -24,6 +24,7 @@ public class Context {
     private Workspace workspace;
     private User user;
     private CSVFile csvFile;
+    private Story story;
 
     /**
      * Context for creation of the constructor.
@@ -33,6 +34,7 @@ public class Context {
         this.user = new User();
         this.workspace = new Workspace();
         this.csvFile = new CSVFile();
+        this.story = new Story();
     }
 
     /**
@@ -87,5 +89,14 @@ public class Context {
      */
     public CSVFile getCsvFile() {
         return csvFile;
+    }
+
+    /**
+     * Gets story context.
+     *
+     * @return story
+     */
+    public Story getStory() {
+        return story;
     }
 }
