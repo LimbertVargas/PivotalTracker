@@ -42,21 +42,21 @@ public class LoginSteps {
         this.user = context.getUser();
     }
 
-        /**
-         * This method opens the page.
-         *
-         * @param page for navigate.
-         */
+    /**
+     * This method opens the page.
+     *
+     * @param page for navigate.
+     */
     @Given("^I go to the (.*) Page$")
     public void goThePagesOfPivotalTracker(final String page) {
         PageTransporter.navigatePage(Permalink.getPermalink(page));
     }
 
-        /**
-         * This method fills in the user data to be able to log in.
-         *
-         * @param userName is string
-         */
+    /**
+     * This method fills in the user data to be able to log in.
+     *
+     * @param userName is string
+     */
     @When("^I fill the field with credentials from user \"(.*)\"$")
     public void fillTheFieldWithCredentialsFromUser(final String userName) {
         loginPage = new LoginPage();
@@ -65,6 +65,12 @@ public class LoginSteps {
         loginPage.loginAuthentication(user.getUserName(), user.getPassword());
     }
 
+    /**
+     * This method logges with a valid credentials.
+     *
+     * @param urlKey for acces to a ligin page.
+     * @param userName is string.
+     */
     @Given("I (.*) of pivotal tracker with the crendentials from user \"(.*)\"")
     public void iLoginOfPivotalTrackerWithTheCrendentialsFromUser(final String urlKey, final String userName) {
         goThePagesOfPivotalTracker(urlKey);

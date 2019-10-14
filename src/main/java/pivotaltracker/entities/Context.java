@@ -21,6 +21,7 @@ package pivotaltracker.entities;
 public class Context {
 
     private Account account;
+    private Workspace workspace;
     private User user;
     private CSVFile csvFile;
 
@@ -30,6 +31,7 @@ public class Context {
     public Context() {
         this.account = new Account();
         this.user = new User();
+        this.workspace = new Workspace();
         this.csvFile = new CSVFile();
     }
 
@@ -40,6 +42,15 @@ public class Context {
      */
     public Account getAccount() {
         return account;
+    }
+
+    /**
+     * Returns the workspace of context.
+     *
+     * @return workspace.
+     */
+    public Workspace getWorkspace() {
+        return workspace;
     }
 
     /**
