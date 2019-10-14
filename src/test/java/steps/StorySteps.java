@@ -34,6 +34,7 @@ public class StorySteps {
     private Context context;
     private Story story;
     private ImportProjectPage importProjectPage;
+
     /**
      * Constructor class.
      *
@@ -42,7 +43,7 @@ public class StorySteps {
     public StorySteps(Context context) {
         this.context = context;
         story = context.getStory();
-        importProjectPage =new ImportProjectPage();
+        importProjectPage = new ImportProjectPage();
     }
 
     /**
@@ -51,7 +52,7 @@ public class StorySteps {
      * @param bodyFields
      */
     @And("I create a story on Backlog with following characteristics")
-    public void iCreateAStoryOnPanelWithFollowingCharacteristics(final Map<String, String> bodyFields) {
+    public void createAStoryOnPanelWithFollowingCharacteristics(final Map<String, String> bodyFields) {
         String storyName = bodyFields.get("Story name");
         String storyType = bodyFields.get("Story Type");
         String storyEstimate = bodyFields.get("Points");
@@ -64,50 +65,73 @@ public class StorySteps {
         storyPage.createStory(storyName, storyType, storyEstimate, label);
     }
 
+    /**
+     * Assert that the story exists in the backlog.
+     */
     @Then("I should see the story on backlog panel")
-    public void iShouldSeeTheStoryOnBacklogPanel() {
+    public void shouldSeeTheStoryOnBacklogPanel() {
         Assert.assertEquals(context.getStory().getStoryName(), importProjectPage.getTitleList()[0]);
     }
 
+    /**
+     * Start the story.
+     */
     @When("I start the story")
-    public void iStartTheStory() {
+    public void startTheStory() {
         storyPage.continueFlowClick(story.getStoryName());
     }
 
+    /**
+     * Asserts that the story is started.
+     */
     @Then("I should see that the story can be finished")
-    public void iShouldSeeThatTheStoryCanBeFinished() {
+    public void shouldSeeThatTheStoryCanBeFinished() {
         String actual = storyPage.getStoryStateText(story.getStoryName());
         String expected = "Finish";
         Assert.assertEquals(actual, expected);
     }
 
+    /**
+     * Finish the story.
+     */
     @When("I finish the story")
-    public void iFinishTheStory() {
+    public void finishTheStory() {
         storyPage.continueFlowClick(story.getStoryName());
     }
 
+    /**
+     * Asserts that the story finished.
+     */
     @Then("I should see that the story can be deliver")
-    public void iShouldSeeThatTheStoryCanBeDeliver() {
+    public void shouldSeeThatTheStoryCanBeDeliver() {
         String actual = storyPage.getStoryStateText(story.getStoryName());
         String expected = "Deliver";
         Assert.assertEquals(actual, expected);
     }
 
+    /**
+     * Deliver the story.
+     */
     @When("I deliver the story")
-    public void iDeliverTheStory() {
+    public void deliverTheStory() {
         storyPage.continueFlowClick(story.getStoryName());
     }
 
+    /**
+     * Asserts that the story was delivered.
+     */
     @Then("I should see that the story can be accept o reject")
-    public void iShouldSeeThatTheStoryCanBeAcceptOReject() {
+    public void shouldSeeThatTheStoryCanBeAcceptOReject() {
         String actual = storyPage.getStoryStateText(story.getStoryName());
         String expected = "Reject";
         Assert.assertEquals(actual, expected);
     }
 
-
+    /**
+     * Accepts the story.
+     */
     @When("I accept the sory")
-    public void iAcceptTheSory() {
+    public void acceptTheSory() {
         storyPage.acceptStory(story.getStoryName());
     }
 
@@ -115,7 +139,7 @@ public class StorySteps {
      * Asserts the data of the story.
      */
     @Then("I should see the story was Accepted")
-    public void iShouldSeeTheStoryWasAccepted() {
+    public void shouldSeeTheStoryWasAccepted() {
         storyPage.dualClick();
         String actual = storyPage.getStoryStateText();
         String expected = "Accepted";
