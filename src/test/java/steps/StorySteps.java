@@ -130,8 +130,8 @@ public class StorySteps {
     /**
      * Accepts the story.
      */
-    @When("I accept the sory")
-    public void acceptTheSory() {
+    @When("I accept the story")
+    public void acceptTheStory() {
         storyPage.acceptStory(story.getStoryName());
     }
 
