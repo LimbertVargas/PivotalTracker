@@ -19,6 +19,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 /**
  * AccountMemberPage class.
  *
@@ -78,6 +80,8 @@ public class AccountMemberPage extends AccountBasePage {
 
     private static final String NAME_MEMBER = "//div[@class='name ellipsify'] [contains(text(),'%s')]";
     private static final String EMAIL_MEMBER = "//div[@class='email ellipsify'] [contains(text(),'%s')]";
+    private static final String ACTION_BTN_MEMBER =
+            "//div[@class='name ellipsify'] [contains(text(),'%s')] /following-sibling::div[@class='actions']";
 
     /**
      * Waits until page object is loaded.
@@ -236,4 +240,50 @@ public class AccountMemberPage extends AccountBasePage {
         return getNameMember(nameMember).concat("|")
                 .concat("|").concat(getEmailMember(emailMember));
     }
+
+    /**
+     *
+     * @param nameMember of type String
+     */
+    private void clickActionsMember(final String nameMember) {
+        wait.until(ExpectedConditions.visibilityOf(messageConfirmation));
+        driver.findElement(By.xpath(String.format(ACTION_BTN_MEMBER, nameMember))).click();
+    }
+
+    /**
+     * Clicks remove member tab button.
+     */
+    private void clickRemoveMemberTab() {
+        removeMemberTab.click();
+    }
+
+    /**
+     * Clicks remove member button.
+     */
+    private void clickRemoveMemberBtn() {
+        removeMemberBtn.click();
+    }
+
+    /**
+     * method for delete one member.
+     *
+     * @param member of type string.
+     */
+    public void deleteMember(final String member) {
+        clickActionsMember(member);
+        wait.until(ExpectedConditions.visibilityOf(saveRoles));
+        clickRemoveMemberTab();
+        clickRemoveMemberBtn();
+    }
+
+    /**
+     * Search an WebElement with the name member.
+     *
+     * @param nameMember - Name member.
+     * @return webElements List.
+     */
+    public List<WebElement> memberDisappear(final String nameMember) {
+        return driver.findElements(By.xpath(String.format(NAME_MEMBER, nameMember)));
+    }
+
 }

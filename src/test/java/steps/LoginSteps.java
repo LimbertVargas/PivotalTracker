@@ -71,8 +71,8 @@ public class LoginSteps {
      * @param urlKey for acces to a ligin page.
      * @param userName is string.
      */
-    @Given("I (.*) of pivotal tracker with the crendentials from user \"(.*)\"")
-    public void iLoginOfPivotalTrackerWithTheCrendentialsFromUser(final String urlKey, final String userName) {
+    @Given("I (.*) of pivotal tracker with the credentials from user \"(.*)\"")
+    public void loginOfPivotalTrackerWithTheCredentialsFromUser(final String urlKey, final String userName) {
         goThePagesOfPivotalTracker(urlKey);
         fillTheFieldWithCredentialsFromUser(userName);
     }

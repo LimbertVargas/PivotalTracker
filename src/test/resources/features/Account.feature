@@ -1,8 +1,7 @@
+@Cxristian
 Feature: Manage Account
   Background:
-    Given I go to the Login Page
-    When I fill the field with credentials from user "Regular User1"
-    Then I verify the user name will be shown on the top bar
+  Given I Login of pivotal tracker with the credentials from user "Regular User1"
 
   @deleteAccount @logOut
   Scenario: Create a new account in Pivotal Tracker
@@ -36,18 +35,50 @@ Feature: Manage Account
       And I add a Member "<nameMember>", "<memberEmail>" to the account and assign "<role>" with permission of project creator
     Then I should see message of confirmation "Invitation to <nameMember> sent" in the Member Page of Account
       And I should see the member that was added in the table of the Member Page of Account
+
     Examples:
       |nameMember   |memberEmail	         |role   |
       |user member  |user.test1@hotmail.com  |Member |
       |owner member |owner.test2@gmail.com   |Admin  |
       |admin member |admin.test3@outlook.com |Owner  |
 
+  @deleteAccount @logOut
+  Scenario Outline: Add member to the account of Pivotal Tracker without permission of Project Creator
+    When I go to the Account Page
+      And I create a new account "New Account4"
+    Then I should see the new account in Account Plans Page
+    When I go to the Members tab inside Account page
+    When I add a Member "<nameMember>", "<memberEmail>" to the account and assign a Account Role "<role>" without permission of project creator
+    Then I should see message of confirmation "Invitation to <nameMember> sent" in the Member Page of Account
+      And I should see the member that was added in the table of the Member Page of Account
+
+    Examples:
+      |nameMember   |memberEmail	         |role   |
+      |user member  |user.test1@hotmail.com  |Member |
+      |owner member |owner.test2@gmail.com   |Admin  |
+      |admin member |admin.test3@outlook.com |Owner  |
+
+  @deleteAccount @logOut
+  Scenario Outline: Delete member of an account Pivotal Tracker
+    When I go to the Account Page
+      And I create a new account "New Account5"
+    Then I should see the new account in Account Plans Page
+    When I go to the Members tab inside Account page
+      And I add a Member "<nameMember>", "<memberEmail>" to the account and assign "<role>" with permission of project creator
+    When I delete the member "<nameMember>" from Pivotal Tracker account in the Account Memberships
+      And I should not see the member of account in the table of the Membership Page of Account
+
+    Examples:
+      |nameMember   |memberEmail	         |role   |
+      |user member  |user.test1@hotmail.com  |Member |
+      |owner member |owner.test2@gmail.com   |Admin  |
+
   @logOut
   Scenario: Delete a account in Pivotal Tracker
     When I go to the Account Page
-    And I create a new account "New Account"
+      And I create a new account "New Account"
     Then I should see the new account in Account Plans Page
     When I go to the Settings tab inside Account page
-    And I delete the account that was created
+      And I delete the account that was created
     Then I should see a yellow message "was successfully deleted." in Accounts Page
-    And I should see all of the accounts except the deleted account
+      And I should see all of the accounts except the deleted account

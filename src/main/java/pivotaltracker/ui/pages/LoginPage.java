@@ -74,13 +74,15 @@ public class LoginPage extends BasePage {
     /**
      * Sets credentials and login on the page.
      *
-     * @param userName - User name
-     * @param password - User password
+     * @param userName for the credentials.
+     * @param password for the credentials.
+     * @return dashboard page.
      */
-    public void loginAuthentication(final String userName, final String password) {
+    public DashboardPage loginAuthentication(final String userName, final String password) {
         setUserName(userName);
         clickLogin();
         setPassword(password);
         clickLogin();
+        return new DashboardPage();
     }
 }

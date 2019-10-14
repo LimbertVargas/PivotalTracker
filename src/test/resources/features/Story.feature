@@ -3,7 +3,7 @@ Feature: Manage stories
   Background:
     Given I had created a project with the following data
       | name | ProjectTestDemo |
-    And I Login of pivotal tracker with the crendentials from user "Regular User1"
+    And I Login of pivotal tracker with the credentials from user "Regular User1"
 
   @DeleteProjectAPI @logOut @John
   Scenario: complete flow of a story of Pivotal Tracker
@@ -20,5 +20,5 @@ Feature: Manage stories
     Then I should see that the story can be deliver
     When I deliver the story
     Then I should see that the story can be accept o reject
-    When I accept the sory
+    When I accept the story
     Then I should see the story was Accepted
