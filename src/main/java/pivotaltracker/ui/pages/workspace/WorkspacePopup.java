@@ -43,7 +43,6 @@ public class WorkspacePopup extends BasePage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        Log.getInstance().getLog().info("Wait for Crete Workspace Popup upload in the Browser");
         wait.until(ExpectedConditions.visibilityOf(createWorkspacePopupForm));
     }
 
