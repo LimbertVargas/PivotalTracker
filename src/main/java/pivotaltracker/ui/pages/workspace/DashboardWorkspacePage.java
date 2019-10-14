@@ -19,14 +19,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.ui.BasePage;
 
 /**
- * DashboardWorkspacePage class
+ * DashboardWorkspacePage class.
  *
  * @author Limbert Vargas
  * @version 1.0
  */
 public class DashboardWorkspacePage extends BasePage {
     @FindBy(className = "Dashboard")
-    private WebElement DashboardForm;
+    private WebElement dashboardForm;
 
     @FindBy(css = "[class='Dashboard__Tabs__tab']")
     private WebElement projectTab;
@@ -41,14 +41,14 @@ public class DashboardWorkspacePage extends BasePage {
     /**
      * This method is in charge of finds the name of the workspace.
      */
-    private final String LIST_WORKSPACE = "//a[@class='WorkspaceTile__name'] [text()='nameWorkspace']";
+    private final String listWorkspace = "//a[@class='WorkspaceTile__name'] [text()='nameWorkspace']";
 
     /**
-     * Waits until page object is loaded
+     * Waits until page object is loaded.
      */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(DashboardForm));
+        wait.until(ExpectedConditions.visibilityOf(dashboardForm));
     }
 
     /**
@@ -57,8 +57,8 @@ public class DashboardWorkspacePage extends BasePage {
      * @param nameWorkspace is the name of the Workspace created.
      * @return the comparision of workspace's name.
      */
-    public boolean IsDisplayedWorkspaceInTheList(final String nameWorkspace) {
-        return driver.findElement(By.xpath(LIST_WORKSPACE.replace("nameWorkspace", nameWorkspace))).isDisplayed();
+    public boolean isDisplayedWorkspaceInTheList(final String nameWorkspace) {
+        return driver.findElement(By.xpath(listWorkspace.replace("nameWorkspace", nameWorkspace))).isDisplayed();
     }
 
     /**

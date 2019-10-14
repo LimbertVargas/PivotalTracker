@@ -36,5 +36,8 @@ public abstract class BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     * This method verifies if the page is loaded.
+     */
     protected abstract void waitUntilPageObjectIsLoaded();
 }

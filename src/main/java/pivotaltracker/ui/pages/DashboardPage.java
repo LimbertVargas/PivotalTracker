@@ -73,6 +73,8 @@ public class DashboardPage extends BasePage {
 
     /**
      * This method verifies the access to a workspace tab.
+     *
+     * @return Dashboard workspace page.
      */
     public DashboardWorkspacePage accessWorkspaceTab() {
         workspaceTab.click();

@@ -78,7 +78,8 @@ public class DashboardSteps {
     @Then("I should see the workspace in Dashboard Page")
     public void verifyThatIShouldSeeTheWorkspaceInDashboardPage() {
         dashboard = new DashboardWorkspacePage();
-        Assert.assertTrue(dashboard.IsDisplayedWorkspaceInTheList(workspace.getNameWorkspace()), workspace.getNameWorkspace());
+        Assert.assertTrue(dashboard.isDisplayedWorkspaceInTheList(workspace.getNameWorkspace()), workspace.
+            getNameWorkspace());
     }
 
     /**

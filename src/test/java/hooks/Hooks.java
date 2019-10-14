@@ -21,9 +21,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
-import pivotaltracker.ui.PageTransporter;
 import pivotaltracker.entities.Account;
 import pivotaltracker.entities.Context;
+import pivotaltracker.ui.PageTransporter;
 import pivotaltracker.ui.Permalink;
 import pivotaltracker.ui.components.TopBar;
 import pivotaltracker.ui.pages.LoginPage;
@@ -88,7 +88,7 @@ public class Hooks {
     /**
      * Method for logOut.
      */
-    @After(value = "@logOut",order = 0)
+    @After(value = "@logOut", order = 0)
     public void logOutWebSite() {
         topBar = new TopBar();
         topBar.logOut();

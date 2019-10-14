@@ -72,7 +72,8 @@ public final class DriverMethods {
     /**
      * Get array text from WebElements.
      *
-     * @return list of text
+     * @param listWebelements is a map.
+     * @return list of text.
      */
     public static String[] getElementsText(final List<WebElement> listWebelements) {
         String[] title = new String[listWebelements.size()];

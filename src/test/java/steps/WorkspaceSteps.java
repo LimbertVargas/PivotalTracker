@@ -13,7 +13,6 @@
 package steps;
 
 import core.utils.Log;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
@@ -24,7 +23,7 @@ import pivotaltracker.ui.pages.DashboardPage;
 import pivotaltracker.ui.pages.workspace.WorkspacePage;
 
 /**
- * WorkspaceSteps class
+ * WorkspaceSteps class.
  *
  * @author Limbert Vargas
  * @version 1.0
@@ -41,7 +40,7 @@ public class WorkspaceSteps {
      *
      * @param context init the context.
      */
-    public WorkspaceSteps(Context context) {
+    public WorkspaceSteps(final Context context) {
         this.context = context;
         this.workspace = context.getWorkspace();
     }
@@ -52,7 +51,7 @@ public class WorkspaceSteps {
     @Then("I should see the workspace in Workspace Page")
     public void verifyTheWorkspaceCreatedIsInWorkspacePage() {
         workspacePage = new WorkspacePage();
-        Assert.assertEquals(workspacePage.getNameWorkspace(),workspace.getNameWorkspace());
+        Assert.assertEquals(workspacePage.getNameWorkspace(), workspace.getNameWorkspace());
     }
 
     /**

@@ -22,5 +22,10 @@ import org.openqa.selenium.WebDriver;
  */
 @FunctionalInterface
 public interface IDriver {
+    /**
+     * This method init the Webdriver.
+     *
+     * @return Webdriver.
+     */
     WebDriver initDriver();
 }

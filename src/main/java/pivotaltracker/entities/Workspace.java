@@ -13,7 +13,7 @@
 package pivotaltracker.entities;
 
 /**
- * Workspace class
+ * Workspace class.
  *
  * @author Limbert Vargas
  * @version 1.0

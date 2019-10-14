@@ -13,16 +13,15 @@
 package pivotaltracker.ui.pages.workspace;
 
 import core.utils.DriverMethods;
-import core.utils.Log;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.ui.BasePage;
 
 /**
- * WorkspacePopup class
+ * WorkspacePopup class.
  *
- * @author Limbert Vargas
+ * @author Limbert Vargas.
  * @version 1.0
  */
 public class WorkspacePopup extends BasePage {

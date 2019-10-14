@@ -18,7 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import pivotaltracker.ui.BasePage;
 
 /**
- * WorkspaceTrackerPage class
+ * WorkspaceTrackerPage class.
  *
  * @author Limbert Vargas
  * @version 1.0
@@ -31,7 +31,7 @@ public class WorkspacePage extends BasePage {
     private WebElement nameWorkspaceLbl;
 
     /**
-     * Waits until page object is loaded
+     * Waits until page object is loaded.
      */
     @Override
     protected void waitUntilPageObjectIsLoaded() {
