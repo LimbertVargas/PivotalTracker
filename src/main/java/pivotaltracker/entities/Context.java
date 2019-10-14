@@ -21,8 +21,10 @@ package pivotaltracker.entities;
 public class Context {
 
     private Account account;
+    private Workspace workspace;
     private User user;
     private CSVFile csvFile;
+    private Story story;
 
     /**
      * Context for creation of the constructor.
@@ -30,7 +32,9 @@ public class Context {
     public Context() {
         this.account = new Account();
         this.user = new User();
+        this.workspace = new Workspace();
         this.csvFile = new CSVFile();
+        this.story = new Story();
     }
 
     /**
@@ -40,6 +44,15 @@ public class Context {
      */
     public Account getAccount() {
         return account;
+    }
+
+    /**
+     * Returns the workspace of context.
+     *
+     * @return workspace.
+     */
+    public Workspace getWorkspace() {
+        return workspace;
     }
 
     /**
@@ -76,5 +89,14 @@ public class Context {
      */
     public CSVFile getCsvFile() {
         return csvFile;
+    }
+
+    /**
+     * Gets story context.
+     *
+     * @return story
+     */
+    public Story getStory() {
+        return story;
     }
 }

@@ -9,8 +9,7 @@
  * accordance with the terms of the license agreement you entered into
  * with Jala Foundation.
  */
-
-package core.selenium.webDrivers;
+package core.selenium.webdrivers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

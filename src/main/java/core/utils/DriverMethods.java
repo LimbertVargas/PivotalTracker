@@ -18,6 +18,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
@@ -80,5 +81,13 @@ public final class DriverMethods {
             title[i] = listWebelements.get(i).getText();
         }
         return title;
+    }
+
+    /**
+     * Double click for open story.
+     */
+    public static void dualClick(final WebElement element,final WebDriver webDriver) {
+        Actions actions = new Actions(webDriver);
+        actions.doubleClick(element).perform();
     }
 }

@@ -33,5 +33,5 @@ out/
 
 #IntelliJ
 .idea/
-log/
 target/
+logs/
