@@ -65,6 +65,12 @@ public class LoginSteps {
         loginPage.loginAuthentication(user.getUserName(), user.getPassword());
     }
 
+    /**
+     * This method logges with a valid credentials.
+     *
+     * @param urlKey for acces to a ligin page.
+     * @param userName is string.
+     */
     @Given("I (.*) of pivotal tracker with the crendentials from user \"(.*)\"")
     public void iLoginOfPivotalTrackerWithTheCrendentialsFromUser(final String urlKey, final String userName) {
         goThePagesOfPivotalTracker(urlKey);

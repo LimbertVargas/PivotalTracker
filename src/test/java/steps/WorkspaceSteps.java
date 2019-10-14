@@ -55,6 +55,9 @@ public class WorkspaceSteps {
         Assert.assertEquals(workspacePage.getNameWorkspace(),workspace.getNameWorkspace());
     }
 
+    /**
+     * This method access a workspace tab in dashboard to see a workspace created.
+     */
     @When("I go to the Workspace Tab inside Dashboard page")
     public void goToTheWorkspaceTabInsideDashboardPage() {
         dashboardPage = new DashboardPage();
