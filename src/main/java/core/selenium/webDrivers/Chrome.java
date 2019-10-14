@@ -12,6 +12,7 @@
 
 package core.selenium.webDrivers;
 
+import core.selenium.webdrivers.IDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

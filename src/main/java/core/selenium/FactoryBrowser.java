@@ -13,8 +13,8 @@
 package core.selenium;
 
 import core.selenium.webDrivers.Chrome;
-import core.selenium.webDrivers.Firefox;
-import core.selenium.webDrivers.IDriver;
+import core.selenium.webdrivers.Firefox;
+import core.selenium.webdrivers.IDriver;
 import org.openqa.selenium.WebDriver;
 
 import java.util.HashMap;
