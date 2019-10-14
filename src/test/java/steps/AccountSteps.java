@@ -124,12 +124,20 @@ public class AccountSteps {
         logs.info("It is added a member into the account with permission of Project Creator");
     }
 
+    /**
+     * Verifies message of confirmation.
+     *
+     * @param message of type string.
+     */
     @Then("I should see message of confirmation {string} in the Member Page of Account")
     public void verifyMessageOfConfirmationInTheMemberPageOfAccount(final String message) {
         logs.info("Verify if a message of confirmation that " + account.getNameMember() + "was added");
         Assert.assertEquals(accountMemberPage.messageConfirmation(), message, "The message is not the correct");
     }
 
+    /**
+     * Verifies that member was created.
+     */
     @Then("I should see the member that was added in the table of the Member Page of Account")
     public void verifyTheMemberThatWasAddedInTheTableOfTheMemberPageOfAccount() {
         logs.info("Verify if " + account.getNameMember() + "was added to Membership Account");
@@ -138,20 +146,69 @@ public class AccountSteps {
                 "The member added is not correct, Member: " + account.getNameMember());
     }
 
-    @And("I delete the account that was created")
+    /**
+     * Deletes account created.
+     */
+    @When("I delete the account that was created")
     public void deleteTheAccountThatWasCreated() {
         accountSettingsPage = new AccountSettingsPage();
         accountPage = accountSettingsPage.deleteAccount();
     }
 
+    /**
+     * Verifies message in account page.
+     *
+     * @param message of type string.
+     */
     @Then("I should see a yellow message {string} in Accounts Page")
     public void verifyShouldSeeAYellowMessageInAccountsPage(final String message) {
         String messageSuffix = account.getNameAccount().concat(" ").concat(message);
         Assert.assertEquals(messageSuffix, accountPage.getMessageDelete(), "The message is not the correct");
     }
 
-    @And("I should see all of the accounts except the deleted account")
+    /**
+     * Verifies if account is deleted.
+     */
+    @Then("I should see all of the accounts except the deleted account")
     public void verifyShouldSeeAllOfTheAccountsExceptTheDeletedAccount() {
         Assert.assertTrue(accountPage.elementDisappear(account.getNameAccount()).isEmpty());
+    }
+
+    /**
+     * Creates a new member without permission of projector creator.
+     *
+     * @param nameMember of type string.
+     * @param email of type string.
+     * @param role of type string.
+     */
+    @When("I add a Member {string}, {string} to the account and assign a Account Role {string} without permission of project creator")
+    public void addAMemberToTheAccountWithoutPermissionOfProjectCreator(final String nameMember,
+                                                                     final String email, final String role) {
+        accountMemberPage = new AccountMemberPage();
+        accountMemberPage.addAccountMember(nameMember, role);
+        accountMemberPage.saveDatOfAccountMember(nameMember, email, false);
+        account.setNameMember(nameMember);
+        account.setEmail(email);
+        account.setRoleMember(role);
+        account.setProjectCreator(false);
+        logs.info("It is added a member into the account with permission of Project Creator");
+    }
+
+    /**
+     * Deletes member  created.
+     *
+     * @param nameMember of type string.
+     */
+    @When("I delete the member {string} from Pivotal Tracker account in the Account Memberships")
+    public void deleteTheMemberFromPivotalTrackerAccountInTheAccountMemberships(final String nameMember) {
+        accountMemberPage.deleteMember(nameMember);
+    }
+
+    /**
+     * Verifies if member is deleted.
+     */
+    @Then("I should not see the member of account in the table of the Membership Page of Account")
+    public void verifyShouldNotSeeTheMemberOfAccountInTheTableOfTheMembershipPageOfAccount() {
+        Assert.assertTrue(accountMemberPage.memberDisappear(account.getNameAccount()).isEmpty());
     }
 }

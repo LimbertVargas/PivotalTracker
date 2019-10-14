@@ -65,8 +65,8 @@ public class LoginSteps {
         loginPage.loginAuthentication(user.getUserName(), user.getPassword());
     }
 
-    @Given("I (.*) of pivotal tracker with the crendentials from user \"(.*)\"")
-    public void iLoginOfPivotalTrackerWithTheCrendentialsFromUser(final String urlKey, final String userName) {
+    @Given("I (.*) of pivotal tracker with the credentials from user \"(.*)\"")
+    public void loginOfPivotalTrackerWithTheCrendentialsFromUser(final String urlKey, final String userName) {
         goThePagesOfPivotalTracker(urlKey);
         fillTheFieldWithCredentialsFromUser(userName);
     }
