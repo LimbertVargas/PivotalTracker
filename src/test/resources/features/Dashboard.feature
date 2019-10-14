@@ -4,7 +4,7 @@ Background:
   When I fill the field with credentials from user "Regular User1"
   Then I verify the user name will be shown on the top bar
 
-  @Limbert
+  @Limbert   @logOut
   Scenario: Create workspace
     When I go to the Dashboard Page
       And I go to the Workspace Tab inside Dashboard page
