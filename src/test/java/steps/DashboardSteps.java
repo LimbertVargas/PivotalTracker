@@ -59,9 +59,7 @@ public class DashboardSteps {
      */
     @Then("I verify the user name will be shown on the top bar")
     public void verifyTheUserNameTheWillBeShownOnTheTopBar() {
-        DashboardPage dashboardPage = new DashboardPage();
-        String actual = dashboardPage.getTextProfileDrownBtn();
-        String expected = user.getUserName().toUpperCase();
-        Assert.assertEquals(actual, expected);
+        dashboardPage = new DashboardPage();
+        Assert.assertEquals(dashboardPage.getTextProfileDrownBtn(), user.getUserName().toUpperCase());
     }
 }

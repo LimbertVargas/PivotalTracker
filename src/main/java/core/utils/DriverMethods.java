@@ -13,6 +13,7 @@
 package core.utils;
 
 import core.selenium.WebDriverManager;
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -66,5 +67,18 @@ public final class DriverMethods {
             webDriverWait = WebDriverManager.getInstance().getWait();
         }
         return isDisplayed;
+    }
+
+    /**
+     * Get array text from WebElements.
+     *
+     * @return list of text
+     */
+    public static String[] getElementsText(final List<WebElement> listWebelements) {
+        String[] title = new String[listWebelements.size()];
+        for (int i = 0; i < listWebelements.size(); i++) {
+            title[i] = listWebelements.get(i).getText();
+        }
+        return title;
     }
 }

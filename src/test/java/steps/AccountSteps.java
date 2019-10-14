@@ -13,6 +13,7 @@
 package steps;
 
 import core.utils.Log;
+import core.utils.ValueAppender;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -64,8 +65,9 @@ public class AccountSteps {
         logs.info("Create a new account " + nameAccount + " in Pivotal Tracker");
         accountPage = new AccountPage();
         createAccountPopup = accountPage.clickNewAccountCreateBtn();
-        accountPlansPage = createAccountPopup.createNewAccount(nameAccount);
-        account.setNameAccount(nameAccount);
+        String nameWithSuffixDate = nameAccount.concat(ValueAppender.suffixDate());
+        accountPlansPage = createAccountPopup.createNewAccount(nameWithSuffixDate);
+        account.setNameAccount(nameWithSuffixDate);
         account.setId(accountPlansPage.getId());
     }
 
@@ -144,16 +146,12 @@ public class AccountSteps {
 
     @Then("I should see a yellow message {string} in Accounts Page")
     public void verifyShouldSeeAYellowMessageInAccountsPage(final String message) {
-        Assert.assertEquals(message, accountPage.getMessageDelete(), "The message is not the correct");
+        String messageSuffix = account.getNameAccount().concat(" ").concat(message);
+        Assert.assertEquals(messageSuffix, accountPage.getMessageDelete(), "The message is not the correct");
     }
 
     @And("I should see all of the accounts except the deleted account")
     public void verifyShouldSeeAllOfTheAccountsExceptTheDeletedAccount() {
         Assert.assertTrue(accountPage.elementDisappear(account.getNameAccount()).isEmpty());
     }
-
-//    @When("I delete the member {string} from Pivotal Tracker account in the Account Memberships")
-//    public void iDeleteTheMemberFromPivotalTrackerAccountInTheAccountMemberships(final String member) {
-//        accountMemberPage.deleteMember(nameMember);
-//    }
 }

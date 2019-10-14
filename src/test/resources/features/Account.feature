@@ -49,17 +49,5 @@ Feature: Manage Account
     Then I should see the new account in Account Plans Page
     When I go to the Settings tab inside Account page
     And I delete the account that was created
-    Then I should see a yellow message "New Account was successfully deleted." in Accounts Page
+    Then I should see a yellow message "was successfully deleted." in Accounts Page
     And I should see all of the accounts except the deleted account
-
-#  @deleteAccount
-#  Scenario Outline: Delete member of an account Pivotal Tracker
-#    Given I create a new account "Test Account" in Pivotal Tracker
-#    And I add a Member "<nameMember>", "<memberEmail>" to the account and assign "<role>" with permission of project creator
-#    When I delete the member "<nameMember>" from Pivotal Tracker account in the Account Memberships
-#    Then I should not see the member of account in the table of the Membership Page of Account
-#
-#    Examples:
-#      |nameMember    |memberEmail	          |role   |
-#      |user member   |user.test1@hotmail.com  |Member |
-#      |owner member  |owner.test2@gmail.com   |Admin  |
