@@ -18,6 +18,7 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.Story;
+import pivotaltracker.ui.pages.story.ImportProjectPage;
 import pivotaltracker.ui.pages.story.StoryPage;
 
 import java.util.Map;
@@ -32,7 +33,7 @@ public class StorySteps {
     public StoryPage storyPage;
     private Context context;
     private Story story;
-
+    private ImportProjectPage importProjectPage;
     /**
      * Constructor class.
      *
@@ -41,6 +42,7 @@ public class StorySteps {
     public StorySteps(Context context) {
         this.context = context;
         story = context.getStory();
+        importProjectPage =new ImportProjectPage();
     }
 
     /**
@@ -64,9 +66,7 @@ public class StorySteps {
 
     @Then("I should see the story on backlog panel")
     public void iShouldSeeTheStoryOnBacklogPanel() {
-//        String actual = storyPage.getStoryStateText(story.getStoryName());
-//        String expected = "StartReject";
-//        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(context.getStory().getStoryName(), importProjectPage.getTitleList()[0]);
     }
 
     @When("I start the story")

@@ -13,8 +13,6 @@
 package pivotaltracker.ui.pages.story;
 
 import core.utils.DriverMethods;
-import java.util.concurrent.TimeUnit;
-import org.joda.time.Seconds;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -23,7 +21,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pivotaltracker.ui.BasePage;
-import pivotaltracker.entities.Context;
 
 /**
  * StoryPage class.
@@ -32,11 +29,11 @@ import pivotaltracker.entities.Context;
  * @version 1.0
  */
 public class StoryPage extends BasePage {
-    private Context context;
     private Integer idProject;
     private WebDriverWait webDriverWait;
 
-    @FindBy(xpath = "//div[@data-type='backlog'] //div[@class='DropdownButton__icon___1qwu3upG tn-DropdownButton___nNklb3UY']")
+    @FindBy(xpath = "//div[@data-type='backlog'] "
+            + "//div[@class='DropdownButton__icon___1qwu3upG tn-DropdownButton___nNklb3UY']")
     private WebElement actionsBtn;
 
     @FindBy(xpath = "//span[contains(text(),'Split Current Iteration and Backlog')]")
@@ -242,7 +239,6 @@ public class StoryPage extends BasePage {
     public void createStory(final String storyName,
                             final String storyType, final String storyEstimate,
                             final String label) {
-        context = new Context();
         separateCurrentBacklog();
         clickBacklogMenuBtn();
         createBacklogStory(storyName);
@@ -292,19 +288,21 @@ public class StoryPage extends BasePage {
         driver.findElement(By.xpath(storyStart(storyName))).click();
     }
 
+    /**
+     * Accepts story.
+     *
+     * @param storyName - Story Name.
+     */
     public void acceptStory(final String storyName) {
         driver.findElement(By.xpath(buildAcceptStoryLocator(storyName))).click();
     }
 
     /**
-     * Gets story title.
+     * Get story state locator.
      *
-     * @return storyTitleTxt
+     * @param storyName - Story name.
+     * @return locator
      */
-    public String getStoryTitleTxt() {
-        return storyTitleTxt.getText();
-    }
-
     public String getStoryStateText(final String storyName) {
         return driver.findElement(By.xpath(buildButtonLabelText(storyName))).getText();
     }
@@ -319,33 +317,32 @@ public class StoryPage extends BasePage {
     }
 
     /**
-     * Click on reload popup button.
+     * Double click for open story.
      */
-    public void clickReloadBtn() {
-        reloadPopUPBtn.click();
-    }
-
-    public String getEstimate() {
-        moveMouseTo();
-        return estimateTxt.getText();
-    }
-
-    public void moveMouseTo() {
-        Actions action = new Actions(driver);
-        action.moveToElement(estimate);
-    }
-
     public void dualClick() {
         Actions actions = new Actions(driver);
         actions.doubleClick(storyNameElement).perform();
     }
 
+    /**
+     * Gets the state of the story.
+     *
+     * @return storyState
+     */
     public String getStoryStateText() {
         return storyStateDropDown.getText();
     }
 
+    /**
+     * Close story windows.
+     */
     public void clickCloseStory() {
         closeStoryBtn.click();
-        driver.switchTo().alert().accept();
+        final int timeFinishLoadStory = 5000;
+        try {
+            Thread.sleep(timeFinishLoadStory);
+        } catch (InterruptedException e) {
+            throw new RuntimeException();
+        }
     }
 }

@@ -3,7 +3,7 @@ Feature: Import export project
   Background:
     Given I Login of pivotal tracker with the crendentials from user "Regular User1"
 
-  @DeleteProjectAPI @logOut
+  @DeleteProjectAPI @logOut @John
   Scenario: Import stories from CSV file on Pivotal Tracker
     Given I had created a project with the following data
       | name | ProjectTestDemo |
