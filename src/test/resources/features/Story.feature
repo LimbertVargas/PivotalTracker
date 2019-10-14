@@ -3,9 +3,9 @@ Feature: Manage stories
   Background:
     Given I had created a project with the following data
       | name | ProjectTestDemo |
-    Given I Login of pivotal tracker with the crendentials from user "Regular User1"
+    And I Login of pivotal tracker with the crendentials from user "Regular User1"
 
-  @DeleteProjectAPI @John
+  @DeleteProjectAPI @logOut @John
   Scenario: complete flow of a story of Pivotal Tracker
     When I go to the Story page
     And I create a story on Backlog with following characteristics

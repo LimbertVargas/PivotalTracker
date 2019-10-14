@@ -140,7 +140,7 @@ public class StorySteps {
      */
     @Then("I should see the story was Accepted")
     public void shouldSeeTheStoryWasAccepted() {
-        storyPage.dualClick();
+        storyPage.openStory();
         String actual = storyPage.getStoryStateText();
         String expected = "Accepted";
         Assert.assertEquals(actual, expected);

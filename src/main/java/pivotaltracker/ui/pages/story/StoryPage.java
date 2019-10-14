@@ -29,7 +29,6 @@ import pivotaltracker.ui.BasePage;
  * @version 1.0
  */
 public class StoryPage extends BasePage {
-    private Integer idProject;
     private WebDriverWait webDriverWait;
 
     @FindBy(xpath = "//div[@data-type='backlog'] "
@@ -95,7 +94,6 @@ public class StoryPage extends BasePage {
     private static final String STORYTYPE = "//a[@class='item_%s ']";
     private static final String STARTSTORY = "//div[@aria-label='%s'] //label[@data-aid='StateButton']";
     private static final String ACCEPTSTORY = "//div[@aria-label='%s'] //label[text()='Accept']";
-    private static final String ESTIMATESTORY = "//div[@data-id='%s'] //span[@class='meta'] //span";
     private static final String BUTTON_TEXT = "//div[@aria-label='%s'] //label";
 
 
@@ -308,20 +306,10 @@ public class StoryPage extends BasePage {
     }
 
     /**
-     * Gets label.
-     *
-     * @return label
-     */
-    public String getLabelTxt() {
-        return labelTxt.getText();
-    }
-
-    /**
      * Double click for open story.
      */
-    public void dualClick() {
-        Actions actions = new Actions(driver);
-        actions.doubleClick(storyNameElement).perform();
+    public void openStory() {
+        DriverMethods.dualClick(storyNameElement, driver);
     }
 
     /**
