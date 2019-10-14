@@ -31,11 +31,8 @@ public class Context {
     public Context() {
         this.account = new Account();
         this.user = new User();
-<<<<<<< HEAD
         this.workspace = new Workspace();
-=======
         this.csvFile = new CSVFile();
->>>>>>> develop
     }
 
     /**
