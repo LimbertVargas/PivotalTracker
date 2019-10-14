@@ -13,6 +13,8 @@
 package steps;
 
 import core.utils.Log;
+import core.utils.ValueAppender;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.log4j.Logger;
@@ -24,6 +26,8 @@ import pivotaltracker.ui.pages.account.AccountSettingsPage;
 import pivotaltracker.ui.pages.user.AccountPage;
 import pivotaltracker.ui.pages.account.AccountPlansPage;
 import pivotaltracker.ui.pages.account.CreateAccountPopup;
+
+import static org.testng.Assert.assertTrue;
 
 /**
  * AccountSteps class.
@@ -61,8 +65,9 @@ public class AccountSteps {
         logs.info("Create a new account " + nameAccount + " in Pivotal Tracker");
         accountPage = new AccountPage();
         createAccountPopup = accountPage.clickNewAccountCreateBtn();
-        accountPlansPage = createAccountPopup.createNewAccount(nameAccount);
-        account.setNameAccount(nameAccount);
+        String nameWithSuffixDate = nameAccount.concat(ValueAppender.suffixDate());
+        accountPlansPage = createAccountPopup.createNewAccount(nameWithSuffixDate);
+        account.setNameAccount(nameWithSuffixDate);
         account.setId(accountPlansPage.getId());
     }
 
@@ -131,5 +136,22 @@ public class AccountSteps {
         Assert.assertEquals(accountMemberPage.getDataMemberInTheList(account.getNameMember(),
                 account.getEmail()), account.getFullInformationMember(),
                 "The member added is not correct, Member: " + account.getNameMember());
+    }
+
+    @And("I delete the account that was created")
+    public void deleteTheAccountThatWasCreated() {
+        accountSettingsPage = new AccountSettingsPage();
+        accountPage = accountSettingsPage.deleteAccount();
+    }
+
+    @Then("I should see a yellow message {string} in Accounts Page")
+    public void verifyShouldSeeAYellowMessageInAccountsPage(final String message) {
+        String messageSuffix = account.getNameAccount().concat(" ").concat(message);
+        Assert.assertEquals(messageSuffix, accountPage.getMessageDelete(), "The message is not the correct");
+    }
+
+    @And("I should see all of the accounts except the deleted account")
+    public void verifyShouldSeeAllOfTheAccountsExceptTheDeletedAccount() {
+        Assert.assertTrue(accountPage.elementDisappear(account.getNameAccount()).isEmpty());
     }
 }

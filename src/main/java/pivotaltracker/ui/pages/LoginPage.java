@@ -12,12 +12,11 @@
 
 package pivotaltracker.ui.pages;
 
-import core.utils.CredentialsReader;
 import core.utils.DriverMethods;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pivotaltracker.BasePage;
+import pivotaltracker.ui.BasePage;
 
 /**
  * LoginPage class.
@@ -55,26 +54,33 @@ public class LoginPage extends BasePage {
     }
 
     /**
-     * Sets credentials user.
+     * Sets credentials user name.
      *
-     * @param element - Element where will write the credentials.
-     * @param user    - Text for the credentials.
+     * @param user name for the credentials.
      */
-    private void setCredential(final WebElement element, final String user) {
-        DriverMethods.setText(element, user);
+    private void setUserName(final String user) {
+        DriverMethods.setText(userNameTxtBox, user);
+    }
+
+    /**
+     * Sets credentials password user.
+     *
+     * @param password for the credentials.
+     */
+    private void setPassword(final String password) {
+        DriverMethods.setText(passwordTxtBox, password);
     }
 
     /**
      * Sets credentials and login on the page.
      *
-     * @param user - User from where obtains the credentials.
+     * @param userName - User name
+     * @param password - User password
      */
-    public void login(final String user) {
-        String username = CredentialsReader.getInstance().getUserName(user);
-        String password = CredentialsReader.getInstance().getUserPassword(user);
-        setCredential(userNameTxtBox, username);
+    public void loginAuthentication(final String userName, final String password) {
+        setUserName(userName);
         clickLogin();
-        setCredential(passwordTxtBox, password);
+        setPassword(password);
         clickLogin();
     }
 }

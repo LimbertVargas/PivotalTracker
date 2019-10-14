@@ -21,7 +21,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
-import pivotaltracker.PageTransporter;
+import pivotaltracker.ui.PageTransporter;
 import pivotaltracker.entities.Account;
 import pivotaltracker.entities.Context;
 import pivotaltracker.ui.Permalink;
@@ -81,14 +81,14 @@ public class Hooks {
         int accountId = account.getId();
         PageTransporter.navigatePageById(Permalink.ACCOUNT_PAGE, accountId, Permalink.ACCOUNT_SETTINGS_PAGE);
         accountSettingsPage = new AccountSettingsPage();
-        accountSettingsPage.clickDeleteOption();
+        accountSettingsPage.deleteAccount();
         logs.info("The Account is deleting");
     }
 
     /**
      * Method for logOut.
      */
-    @After("@logOut")
+    @After(value = "@logOut",order = 0)
     public void logOutWebSite() {
         topBar = new TopBar();
         topBar.logOut();

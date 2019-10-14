@@ -20,6 +20,8 @@ package pivotaltracker.entities;
  */
 public class User {
     private String user;
+    private String password;
+    private String email;
 
     /**
      * This method get user name that user fill.
@@ -37,5 +39,41 @@ public class User {
      */
     public void setUserName(final String user) {
         this.user = user;
+    }
+
+    /**
+     * This method get user password that user fill.
+     *
+     * @return password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * This method set user password.
+     *
+     * @param password - password user
+     */
+    public void setPassword(final String password) {
+        this.password = password;
+    }
+
+    /**
+     * This method get user email that user fill.
+     *
+     * @return email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * This method set user email.
+     *
+     * @param email user
+     */
+    public void setEmail(final String email) {
+        this.email = email;
     }
 }

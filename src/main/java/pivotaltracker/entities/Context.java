@@ -23,6 +23,7 @@ public class Context {
     private Account account;
     private Workspace workspace;
     private User user;
+    private CSVFile csvFile;
 
     /**
      * Context for creation of the constructor.
@@ -30,7 +31,11 @@ public class Context {
     public Context() {
         this.account = new Account();
         this.user = new User();
+<<<<<<< HEAD
         this.workspace = new Workspace();
+=======
+        this.csvFile = new CSVFile();
+>>>>>>> develop
     }
 
     /**
@@ -58,5 +63,32 @@ public class Context {
      */
     public User getUser() {
         return user;
+    }
+
+    /**
+     * Setter method.
+     *
+     * @param user A User instance to be shared across step definitions.
+     */
+    public void setUser(final User user) {
+        this.user = user;
+    }
+
+    /**
+     * Setter method.
+     *
+     * @param account A User instance to be shared across step definitions.
+     */
+    public void setAccount(final Account account) {
+        this.account = account;
+    }
+
+    /**
+     * Gets csv file.
+     *
+     * @return csvFile
+     */
+    public CSVFile getCsvFile() {
+        return csvFile;
     }
 }

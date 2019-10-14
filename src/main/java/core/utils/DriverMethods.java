@@ -13,11 +13,13 @@
 package core.utils;
 
 import core.selenium.WebDriverManager;
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 /**
  * DriverMethods class.
@@ -27,8 +29,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public final class DriverMethods {
 
-    protected WebDriverWait webDriverWait;
-    protected WebDriver webDriver;
+    private static WebDriverWait webDriverWait = WebDriverManager.getInstance().getWait();
+    private static WebDriver webDriver;
+
     /**
      * Constructor class.
      */
@@ -52,7 +55,7 @@ public final class DriverMethods {
      * @param elementBy web element.
      * @return true or false
      */
-    private boolean isElementPresent(final By elementBy) {
+    public static boolean isElementPresent(final By elementBy) {
         webDriverWait = new WebDriverWait(webDriver, 1);
         boolean isDisplayed;
         try {
@@ -64,5 +67,18 @@ public final class DriverMethods {
             webDriverWait = WebDriverManager.getInstance().getWait();
         }
         return isDisplayed;
+    }
+
+    /**
+     * Get array text from WebElements.
+     *
+     * @return list of text
+     */
+    public static String[] getElementsText(final List<WebElement> listWebelements) {
+        String[] title = new String[listWebelements.size()];
+        for (int i = 0; i < listWebelements.size(); i++) {
+            title[i] = listWebelements.get(i).getText();
+        }
+        return title;
     }
 }

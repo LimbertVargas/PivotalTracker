@@ -12,9 +12,10 @@
 
 package steps;
 
+import core.utils.CredentialsReader;
+import pivotaltracker.ui.PageTransporter;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import pivotaltracker.PageTransporter;
 import pivotaltracker.entities.Context;
 import pivotaltracker.entities.User;
 import pivotaltracker.ui.Permalink;
@@ -59,7 +60,14 @@ public class LoginSteps {
     @When("^I fill the field with credentials from user \"(.*)\"$")
     public void fillTheFieldWithCredentialsFromUser(final String userName) {
         loginPage = new LoginPage();
-        loginPage.login(userName);
-        user.setUserName(userName);
+        context.setUser(CredentialsReader.getInstance().getUser(userName));
+        user = context.getUser();
+        loginPage.loginAuthentication(user.getUserName(), user.getPassword());
+    }
+
+    @Given("I (.*) of pivotal tracker with the crendentials from user \"(.*)\"")
+    public void iLoginOfPivotalTrackerWithTheCrendentialsFromUser(final String urlKey, final String userName) {
+        goThePagesOfPivotalTracker(urlKey);
+        fillTheFieldWithCredentialsFromUser(userName);
     }
 }

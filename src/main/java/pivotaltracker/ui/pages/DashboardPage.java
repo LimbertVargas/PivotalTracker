@@ -12,13 +12,11 @@
 
 package pivotaltracker.ui.pages;
 
-import core.utils.DriverMethods;
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pivotaltracker.BasePage;
 import pivotaltracker.ui.pages.workspace.DashboardWorkspacePage;
+import pivotaltracker.ui.BasePage;
 
 /**
  * DashboardPage class.
@@ -56,7 +54,6 @@ public class DashboardPage extends BasePage {
         return profileBtn.getText();
     }
 
-
     /**
      * Does click on create new project.
      */
@@ -65,8 +62,9 @@ public class DashboardPage extends BasePage {
     }
 
     /**
-     * This method is in charge of show the project Popup.
-     * @return
+     * Clicks new project button.
+     *
+     * @return create project popup.
      */
     public CreateProjectPopup clickCreateProjectBtn() {
         createProjectBtn();

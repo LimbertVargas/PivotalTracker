@@ -16,8 +16,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pivotaltracker.BasePage;
+import pivotaltracker.ui.BasePage;
 import pivotaltracker.ui.pages.account.CreateAccountPopup;
+
+import java.util.List;
 
 /**
  * AccountPage class.
@@ -67,7 +69,9 @@ public class AccountPage extends BasePage {
      * @return text of message.
      */
     public String getMessageDelete() {
-        return messageDelete.getText();
+        String text = messageDelete.getText();
+        text = text.substring(0, text.length() - 2);
+        return text;
     }
 
     /**
@@ -78,5 +82,15 @@ public class AccountPage extends BasePage {
      */
     public String isDisplayedNewAccount(final String nameAccount) {
         return driver.findElement(By.xpath(String.format(NAME_ACCOUNT, nameAccount))).getText();
+    }
+
+    /**
+     * Search an WebElement with the name account.
+     *
+     * @param nameAccount - Name account
+     * @return webElements List
+     */
+    public List<WebElement> elementDisappear(final String nameAccount) {
+        return driver.findElements(By.xpath(String.format(NAME_ACCOUNT, nameAccount)));
     }
 }
