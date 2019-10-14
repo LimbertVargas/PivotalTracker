@@ -16,10 +16,8 @@ import core.utils.DriverMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pivotaltracker.ui.BasePage;
 
 /**
@@ -29,7 +27,6 @@ import pivotaltracker.ui.BasePage;
  * @version 1.0
  */
 public class StoryPage extends BasePage {
-    private WebDriverWait webDriverWait;
 
     @FindBy(xpath = "//div[@data-type='backlog'] "
             + "//div[@class='DropdownButton__icon___1qwu3upG tn-DropdownButton___nNklb3UY']")
