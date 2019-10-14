@@ -50,14 +50,12 @@ public class DashboardPage extends BasePage {
         return profileBtn.getText();
     }
 
-
     /**
      * Does click on create new project.
      */
     private void createProjectBtn() {
         createProjectBtn.click();
     }
-
 
     /**
      * Clicks new project button.
